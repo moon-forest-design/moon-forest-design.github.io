@@ -228,6 +228,9 @@ h1 {
   height: auto;
   margin-bottom: .5em;
 }
+.office__comment {
+  letter-spacing: .1em;
+}
 .office__comment a {
   text-decoration: none;
   color: inherit;
@@ -291,7 +294,7 @@ h1 {
     flex-wrap: wrap;
   }
   .office {
-    width: 70%;
+    width: 45%;
   }
   .office__logo {
     width: 300px;

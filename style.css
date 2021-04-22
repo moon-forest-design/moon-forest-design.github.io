@@ -56,22 +56,29 @@ h1 {
   letter-spacing: .1em;
   color: #ffccaa;
 }
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .signboard__logo:hover {
+    opacity: .9;
+  }
+  .signboard__title:hover {
+    text-decoration: underline;
+  }
+}
 
-
-/* codeStorage
+/* labo
 ================================================== */
 @media screen and (max-width: 767px) { /* スマホ用 */
-  .codeStorage {
+  .labo {
     margin-bottom: 10em;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
-  .codeStorage {
+  .labo {
     margin-bottom: 5em;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
-  .codeStorage {
+  .labo {
     margin-bottom: 4em;
   }
 }
@@ -299,7 +306,7 @@ h1 {
     flex-wrap: wrap;
   }
   .profile__logo:hover {
-    opacity: .8;
+    opacity: .9;
   }
   .office__logo {
     width: 300px;

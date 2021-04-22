@@ -1,0 +1,336 @@
+@charset "utf-8";
+
+/* color list
+  #ec6800 黄赤
+  #302833 黒紅
+  #241c1c 重い赤（ほぼ黒色）
+  #fffffc 胡粉色
+  #ffccaa 淡い橙
+*/
+
+/* base
+================================================== */
+body, h1, h2, h3, p, ul, li, figure {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: Verdana, メイリオ, sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.7;
+  color: #302833;
+  background-color: #ec6800;
+}
+h1 {
+  line-height: 1;
+}
+
+
+/* header
+================================================== */
+.header {
+  margin-bottom: 5em;
+  background-color: #241c1c;
+}
+.header__inner {
+  padding: 2em 1.5em;
+}
+.signboard {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.signboard__logo {
+  width: 50px;
+  height: auto;
+  margin-right: 1.5em;
+  padding: .5em;
+  border-radius: 50%;
+  border: 2px solid #ffccaa;
+  background-color: #fffffc;
+}
+.signboard__title {
+  letter-spacing: .1em;
+  color: #ffccaa;
+}
+
+
+/* codeStorage
+================================================== */
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .codeStorage {
+    margin-bottom: 10em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .codeStorage {
+    margin-bottom: 5em;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .codeStorage {
+    margin-bottom: 4em;
+  }
+}
+
+
+/* cards
+================================================== */
+.cardsTitle {
+  font-size: 2.3rem;
+  text-align: center;
+  letter-spacing: .1em;
+  color: #302833;
+}
+.cardsTitle::after {
+  display: block;
+  font-size: 1rem;
+  content: attr(data-subtitle);
+  color: #ffccaa;
+}
+.card {
+  width: 260px;
+  height: auto;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+.cardTitle {
+  font-size: 1.6rem;
+  padding: .5em;
+  letter-spacing: .1em;
+  border-radius: 4px 4px 0 0;
+  color: #fffffc;
+  background-color: #302833;;
+}
+.cardTitle__link {
+  text-decoration: none;
+  color: inherit;
+}
+.cardThumbnail {
+  position: relative;
+  overflow: hidden;
+}
+.cardThumbnail__img {
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+.cardThumbnail__description {
+  font-size: 1.6rem;
+  position: absolute;
+  top: 189px;
+  left: 0;
+  width: 260px;
+  height: 140px;
+  padding: .1em .5em;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: rgba(0, 0, 0, .6);
+  color: #fffffc;
+}
+.cardMenu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.6rem;
+  height: 50px;
+  color: #fffffc;
+  background-color: #302833;
+  border-radius: 0 0 4px 4px;
+}
+.cardMenu__item {
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+}
+.cardMenu__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .cards {
+    padding: 0 2em;
+  }
+  .cardsTitle {
+    margin-bottom: 1em;
+  }
+  .card {
+    margin: 0 auto 3em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 1.5em;
+  }
+  .cardsTitle {
+    margin-bottom: 1.7em;
+  }
+  .card {
+    margin-bottom: 3.5em;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 2em;
+  }
+  .cardsTitle {
+    margin-bottom: 2em;
+  }
+  .card {
+    margin: 0 1em 4em;
+  }
+}
+
+
+/* footer
+================================================== */
+.footer {
+  background-color: #241c1c;
+}
+.footer__inner {
+  padding: 10em 1.5em 1em;
+}
+.profile {
+  font-size: 1.6rem;
+  margin: 0 auto 9em;
+  color: #fffffc;
+}
+.profile__logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 1.5em;
+  padding: .5em;
+  border-radius: 50%;
+  border: 2px solid #ffccaa;
+  background-color: #fffffc;
+}
+.office__logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: .5em;
+}
+.office__comment a {
+  text-decoration: none;
+  color: inherit;
+}
+.copyright {
+  text-align: center;
+  color: #ffccaa;
+}
+.copyrightHolder {
+  text-decoration: none;
+  color: inherit;
+}
+.profile {
+  font-size: 1.6rem;
+  margin: 0 auto 9em;
+  color: #fffffc;
+}
+.profile__logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 1.5em;
+  padding: .5em;
+  border-radius: 50%;
+  border: 2px solid #ffccaa;
+  background-color: #fffffc;
+}
+.office__logo {
+  margin-bottom: .5em;
+}
+.office__comment a {
+  text-decoration: none;
+  color: inherit;
+}
+.copyright {
+  text-align: center;
+  color: #ffccaa;
+}
+.copyrightHolder {
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .profile {
+    text-align: center;
+  }
+  .office__logo {
+    width: 250px;
+    height: auto;
+  }
+  .office__comment {
+    width: 260px;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .office {
+    width: 70%;
+  }
+  .office__logo {
+    width: 300px;
+    height: auto;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .profile__logo:hover {
+    opacity: .8;
+  }
+  .office__logo {
+    width: 300px;
+    height: auto;
+  }
+  .office__logo:hover {
+    opacity: .8;
+  }
+  .office__comment a:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/* back-to-top
+================================================== */
+.back-to-top {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 3em 3em auto;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  bottom: 0;
+  text-decoration: none;
+}
+.back-to-top-btn {
+  display: none;
+  font-size: 40px;
+  color: #241c1c;
+  background: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}

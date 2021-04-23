@@ -1,0 +1,319 @@
+@charset "utf-8";
+
+/* base
+================================================== */
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+body {
+  height: inherit;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.7;
+  color: #302833;
+  background-color: #fffffc;
+}
+h1 {
+  line-height: 1;
+}
+
+
+/* header
+================================================== */
+.header {
+  height: inherit;
+  margin-bottom: 10em;
+  background-color: #fffffc;
+}
+.header__container {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  padding-top: .7em;
+}
+.siteTitle {
+  color: #192f60;
+}
+.siteTitle::before {
+  display: block;
+  content: attr(data-subtitle);
+  margin-bottom: .5em;
+}
+@media screen and (max-width: 576px) { /* スマホ用 */
+  .siteTitle {
+    font-size: 3.1rem;
+  }
+  .siteTitle::before {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
+  .siteTitle {
+    font-size: 6rem;
+  }
+  .siteTitle::before {
+    font-size: 4.6rem;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .siteTitle {
+    font-size: 8rem;
+  }
+  .siteTitle::before {
+    font-size: 6.2rem;
+  }
+}
+
+
+/* pleaseScroll
+================================================== */
+.pleaseScroll {
+  display: none;
+  font-size: 2rem;
+  width: 200px;
+  margin: 0 50%;
+  position: absolute;
+  bottom: 30px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-weight: bold;
+  color: #192f60;
+}
+.pleaseScroll::after {
+  display: block;
+  content: attr(data-subarrow);
+}
+
+
+/* pleaseScroll animation
+================================================== */
+.animationBounce {
+  animation: bounce 2s ease infinite normal 0s none running;
+}
+@keyframes bounce {
+  0%, 100%, 20%, 50%, 80% {
+    transform: translate(-50%, 0px);
+  }
+  40% {
+    transform: translate(-50%, -30px);
+  }
+  60% {
+    transform: translate(-50%, -15px);
+  }
+}
+
+
+/* main
+================================================== */
+.main {
+  margin-bottom: 15em;
+}
+.main__inner {
+  margin: 0 auto;
+  padding: 0 1em;
+}
+@media screen and (max-width: 576px) { /* スマホ用 */
+  .main__inner {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
+  .main__inner {
+    width: 85%;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .main__inner {
+    width: 75%;
+  }
+}
+
+
+/* content
+================================================== */
+.content {
+  font-size: 1.6rem;
+  margin-bottom: 10rem;
+}
+.heading-2 {
+  font-size: 2rem;
+  margin-bottom: 2em;
+  padding: .5em 1em;
+  text-align: center;
+  color: #fffffc;
+  background-color: #302833;
+  border-radius: 4px;
+}
+.heading-2::after {
+  display: block;
+  font-size: 1rem;
+  content: attr(data-subheading);
+  color: #eae5e3;
+}
+.heading-3 {
+  font-size: 1.8rem;
+  margin: 3em 0 1em;
+  padding-left: 1em;
+  letter-spacing: .1em;
+  border-left: 10px solid #302833;
+  border-bottom: 2px solid #302833;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.heading-4 {
+  font-size: 1.8rem;
+  margin: 2em 0 .5em .1em;
+  letter-spacing: .1em;
+}
+.heading-4::before {
+  content: "\025cf";
+  margin-right: .5em;
+  color: #302833;
+}
+.content p {
+  margin-bottom: 1em;
+}
+.content ul {
+  margin: 0 1em 2em 2em;
+}
+.content a {
+  text-decoration: none;
+}
+.code {
+	padding: 0 1.5em;
+	box-sizing: border-box;
+	margin: 0 auto;
+	border: 1px solid #eae5e3;
+	box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
+	border-radius: 4px;
+	white-space: pre-wrap;
+}
+
+
+/* footer
+================================================== */
+.footer {
+  background-color: #241c1c;
+}
+.footer__inner {
+  padding: 10em 1.5em 1em;
+}
+.profile {
+  font-size: 1.6rem;
+  margin: 0 auto 9em;
+  color: #fffffc;
+}
+.profile__logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 1.5em;
+  padding: .5em;
+  border-radius: 50%;
+  border: 2px solid #ffccaa;
+  background-color: #fffffc;
+}
+.office__logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: .5em;
+}
+.office__comment {
+  letter-spacing: .1em;
+}
+.office__comment a {
+  text-decoration: none;
+  color: inherit;
+}
+.copyright {
+  text-align: center;
+  color: #ffccaa;
+}
+.copyrightHolder {
+  text-decoration: none;
+  color: inherit;
+}
+.profile {
+  font-size: 1.6rem;
+  margin: 0 auto 9em;
+  color: #fffffc;
+}
+.profile__logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 1.5em;
+  padding: .5em;
+  border-radius: 50%;
+  border: 2px solid #ffccaa;
+  background-color: #fffffc;
+}
+.office__logo {
+  margin-bottom: .5em;
+}
+.office__comment a {
+  text-decoration: none;
+  color: inherit;
+}
+.copyright {
+  text-align: center;
+  color: #ffccaa;
+}
+.copyrightHolder {
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .profile {
+    text-align: center;
+  }
+  .office__logo {
+    width: 250px;
+    height: auto;
+  }
+  .office__comment {
+    width: 260px;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .office {
+    width: 45%;
+  }
+  .office__logo {
+    width: 300px;
+    height: auto;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .profile__logo:hover {
+    opacity: .9;
+  }
+  .office__logo {
+    width: 300px;
+    height: auto;
+  }
+  .office__logo:hover {
+    opacity: .8;
+  }
+  .office__comment a:hover {
+    text-decoration: underline;
+  }
+}

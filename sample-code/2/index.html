@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/2">
+	<title>ページのスクロールを促すアニメーション</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="ページのスクロールを促す方法です。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けるアニメーション付きです。">
+	<meta name="author" content="イールド（月の森デザイン）">
+	<meta property="og:locale" content="ja_JP">
+	<meta property="og:site_name" content="キアカラボ">
+	<meta property="og:title" content="Please Scrollでバウンドする。">
+	<meta property="og:description" content="ページのスクロールを促す方法です。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けるアニメーション付きです。">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/2">
+</head>
+<body>
+
+	<header class="header">
+		<div class="header__container">
+			<h1 class="siteTitle" data-subtitle="ホームページ制作の">月の森デザイン</h1>
+		</div>
+	</header>
+
+	<p id="pleaseScroll" class="pleaseScroll animationBounce" data-subarrow="▼">Please Scroll</p>
+
+	<main class="main">
+		<section class="main__inner">
+
+			<h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+			<section class="content">
+				<h3 class="heading-3">要点</h3>
+				<p>ページのスクロールを促す方法を書き残しておきます。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けるアニメーション付きです。仕様は以下ようです。</p>
+				<ul>
+					<li>事前に、メッセージ「Please Scroll」を、CSSで非表示にしておきます。</li>
+					<li>3秒経っても、ユーザーがページをスクロールしなければ、メッセージ「Please Scroll」を jQueryを使って表示します。</li>
+					<li>メッセージ「Please Scroll」は、CSSアニメーションによりバウンドします。</li>
+					<li>ユーザーがページをスクロールしたら、メッセージ「Please Scroll」を jQueryを使って非表示にします。</li>
+				</ul>
+
+				<h3 class="heading-3">コード</h3>
+				<h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;p id="pleaseScroll" class="pleaseScroll animationBounce" data-subarrow="▼"&gt;Please Scroll&lt;/p&gt;
+</code>
+</pre>
+
+				<h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.pleaseScroll {
+ display: none;
+ font-size: 2rem;
+ width: 200px;
+ margin: 0 50%;
+ position: absolute;
+ bottom: 30px;
+ transform: translate(-50%, -50%);
+ text-align: center;
+ font-weight: bold;
+ color: #192f60;
+}
+.pleaseScroll::after {
+ display: block;
+ content: attr(data-subarrow);
+}
+.animationBounce {
+　animation: bounce 2s ease infinite normal 0s none running;
+}
+@keyframes bounce {
+　0%, 100%, 20%, 50%, 80% {
+　　transform: translate(-50%, 0px);
+　}
+　40% {
+　　transform: translate(-50%, -30px);
+　}
+　60% {
+　　transform: translate(-50%, -15px);
+　}
+}
+</code>
+</pre>
+
+				<h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+ // スクロールされないとき 「Please Scroll」を表示
+ setTimeout(function() { // 3秒待つ
+  if ($(window).scrollTop() &lt; 10) { // 3秒経っても上端から10px以上スクロールしない場合
+  $("#pleaseScroll").fadeIn(); // 「Please Scroll」を表示しスクロールを促す
+  }
+ }, 3000);
+
+ // スクロールされたら「Please Scroll」を非表示
+ $(window).scroll(function() {
+  $("#pleaseScroll").fadeOut();
+ });
+});
+</code>
+</pre>
+
+			</section>
+			<!-- /.content -->
+			<h2 class="heading-2" data-subheading="Document that I used as a reference">参考</h2>
+			<section class="content">
+				<p>アニメーション部分を参考にさせていただいたページが無くなってしまったようです。</p>
+			</section>
+			<!-- /.content -->
+		</section>
+		<!-- /.main__inner -->
+	</main>
+	
+	<footer class="footer">
+		<div class="footer__inner">
+			<div class="profile">
+				<a href="https://moon-forest-design.com/archives/135" target="_blank">
+					<img class="profile__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+				</a>
+				<div class="office">
+					<a href="https://moon-forest-design.com/" target="_blank">
+						<img class="office__logo" src="../../img/logo-moon-forest-design.png" alt="月の森デザインのロゴ">
+					</a>
+					<p class="office__comment">
+						<a href="https://moon-forest-design.com/" target="_blank">ホームページ制作の「月の森デザイン」</a>
+					</p>
+				</div>
+			</div>
+			<div class="copyright">
+				<p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/">月の森デザイン</a> All Rights Reserved.</small></p>
+			</div>
+		</div>
+	</footer>
+
+	<noscript>
+		<p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+		<p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+		<p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+	</noscript>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/1">
+	<title>ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法。">
+	<meta name="author" content="イールド（月の森デザイン）">
+	<meta property="og:locale" content="ja_JP">
+	<meta property="og:site_name" content="キアカラボ">
+	<meta property="og:title" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法">
+	<meta property="og:description" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法。">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/1">
+</head>
+<body>
+
+	<header class="header">
+		<div class="header__container">
+			<h1 class="siteTitle" data-subtitle="ホームページ制作の">月の森デザイン</h1>
+		</div>
+	</header>
+
+	<main class="main">
+		<section class="main__inner">
+
+			<h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+			<section class="content">
+				<h3 class="heading-3">要点</h3>
+				<p>ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法を書き残しておきます。CSSのポイントは以下ようです。</p>
+				<ul>
+					<li>html要素に、「height: 100%;」を指定する。</li>
+					<li>html要素のheightが継承されるように、タイトルの親要素まで「height: inherit;」を指定する。（例：body要素、header要素、div要素……など）</li>
+					<li>タイトルの親要素に、flexで上下左右中央揃えを指定する。</li>
+				</ul>
+
+				<h3 class="heading-3">コード</h3>
+				<h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;header class="header"&gt;
+　&lt;div class="header__container"&gt;
+　　&lt;h1 class="siteTitle" data-subtitle="ホームページ制作の"&gt;月の森デザイン&lt;/h1&gt;
+　&lt;/div&gt;
+&lt;/header&gt;
+</code>
+</pre>
+
+				<h3 class="heading-4">CSS</h3>
+<pre class="code">
+<code>
+html {
+　height: 100%;
+}
+body {
+　height: inherit;
+}
+.header {
+　height: inherit;
+}
+.header__container {
+　height: inherit;
+　display: flex;
+　align-items: center;
+　justify-content: center;  
+}
+</code>
+</pre>
+
+			</section>
+			<!-- /.content -->
+			<h2 class="heading-2" data-subheading="Document that I used as a reference">参考</h2>
+			<section class="content">
+				<p>参考にさせていただきました。ありがとうございました。</p>
+				<ul>
+					<li><a href="https://ics.media/entry/17522/" target="_blank">上下中央揃えのCSSまとめ。Flexboxがたった3行で最も手軽 - ICS MEDIA</a></li>
+					<li><a href="https://qiita.com/shouchida/items/205fed63b886681661bd" target="_blank">height: 100% の要素が画面の高さ100%にならない場合の対応方法 - Qiita</a></li>
+				</ul>
+			</section>
+			<!-- /.content -->
+		</section>
+		<!-- /.main__inner -->
+	</main>
+	
+	<footer class="footer">
+		<div class="footer__inner">
+			<div class="profile">
+				<a href="https://moon-forest-design.com/archives/135" target="_blank">
+					<img class="profile__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+				</a>
+				<div class="office">
+					<a href="https://moon-forest-design.com/" target="_blank">
+						<img class="office__logo" src="../../img/logo-moon-forest-design.png" alt="月の森デザインのロゴ">
+					</a>
+					<p class="office__comment">
+						<a href="https://moon-forest-design.com/" target="_blank">ホームページ制作の「月の森デザイン」</a>
+					</p>
+				</div>
+			</div>
+			<div class="copyright">
+				<p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/">月の森デザイン</a> All Rights Reserved.</small></p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

@@ -130,14 +130,14 @@ h1 {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .main__inner {
-    width: 75%;
+    width: 990px;
   }
 }
 
 
 /* content
 ================================================== */
-.content {
+.contents {
   font-size: 1.6rem;
   margin-bottom: 10rem;
 }

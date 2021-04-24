@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -26,20 +26,23 @@
 	</header>
 
 	<main class="main">
-		<section class="main__inner">
+		<div class="main__inner">
 
+			<section class="contents">
 			<h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
-			<section class="content">
-				<h3 class="heading-3">要点</h3>
-				<p>ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法を書き残しておきます。CSSのポイントは以下ようです。</p>
-				<ul>
-					<li>html要素に、「height: 100%;」を指定する。</li>
-					<li>html要素のheightが継承されるように、タイトルの親要素まで「height: inherit;」を指定する。（例：body要素、header要素、div要素……など）</li>
-					<li>タイトルの親要素に、flexで上下左右中央揃えを指定する。</li>
-				</ul>
-
-				<h3 class="heading-3">コード</h3>
-				<h4 class="heading-4">HTML</h4>
+				<section class="content">
+					<h3 class="heading-3">要点</h3>
+					<p>ショートコードの1つ目です。今回は、ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法を書き残しておきます。CSSのポイントは以下ようです。</p>
+					<ul>
+						<li>html要素に、「height: 100%;」を指定する。</li>
+						<li>html要素のheightを継承するために、タイトルの親要素まで「height: inherit;」を繰り返し指定する。（例：body要素、header要素、div要素……など）</li>
+						<li>タイトルの親要素に、flexで上下左右中央揃えを指定する。</li>
+					</ul>
+				</section>
+				<!-- /.content -->
+				<section class="content">
+					<h3 class="heading-3">コード</h3>
+					<h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
 &lt;header class="header"&gt;
@@ -71,18 +74,30 @@ body {
 </code>
 </pre>
 
+				</section>
+				<!-- /.content -->
 			</section>
-			<!-- /.content -->
-			<h2 class="heading-2" data-subheading="Document that I used as a reference">参考</h2>
-			<section class="content">
-				<p>参考にさせていただきました。ありがとうございました。</p>
-				<ul>
-					<li><a href="https://ics.media/entry/17522/" target="_blank">上下中央揃えのCSSまとめ。Flexboxがたった3行で最も手軽 - ICS MEDIA</a></li>
-					<li><a href="https://qiita.com/shouchida/items/205fed63b886681661bd" target="_blank">height: 100% の要素が画面の高さ100%にならない場合の対応方法 - Qiita</a></li>
-				</ul>
+			<!-- /.contents -->
+			
+			<section class="contents">
+				<h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+				<section class="content">
+					<h3 class="heading-3">あとがき</h3>
+					<p>ヘッダー部分をウィンドウ画面いっぱいに表示すると、インパクトありますね。JavaScriptを使わずに、ウィンドウ画面いっぱいに表示できるところがすごいです。</p>
+				</section>
+				<!-- /.content -->
+				<section class="content">
+					<h3 class="heading-3">参考</h3>
+					<p>コードを参考にさせていただきました。ありがとうございました。</p>
+					<ul>
+						<li><a href="https://ics.media/entry/17522/" target="_blank">上下中央揃えのCSSまとめ。Flexboxがたった3行で最も手軽 - ICS MEDIA</a></li>
+						<li><a href="https://qiita.com/shouchida/items/205fed63b886681661bd" target="_blank">height: 100% の要素が画面の高さ100%にならない場合の対応方法 - Qiita</a></li>
+					</ul>
+				</section>
+				<!-- /.content -->
 			</section>
-			<!-- /.content -->
-		</section>
+			<!-- /.contents -->
+		</div>
 		<!-- /.main__inner -->
 	</main>
 	

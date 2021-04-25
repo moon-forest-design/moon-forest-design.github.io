@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="style.css">
 	<link rel="icon" href="../../favicon.ico">
-	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/2">
-	<title>ページのスクロールを促す方法（アニメーション付き）</title>
+	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/3">
+	<title>ページをスクロールすると、各コンテンツが下からふわっと表れるようにする方法</title>
 	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="ページのスクロールを促す方法です。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けるアニメーション付きです。">
+	<meta name="description" content="ページをスクロールすると、各コンテンツが下からふわっと表れるようにする方法です。">
 	<meta name="author" content="イールド（月の森デザイン）">
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="キアカラボ">
-	<meta property="og:title" content="Please Scrollでバウンドする。">
-	<meta property="og:description" content="ページのスクロールを促す方法です。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けるアニメーション付きです。">
+	<meta property="og:title" content="スクロールするとふわっと表示">
+	<meta property="og:description" content="ページをスクロールすると、各コンテンツが下からふわっと表れるようにする方法です。">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/2">
+	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/3">
 </head>
 <body>
 
@@ -26,26 +26,18 @@
 		</div>
 	</header>
 
-	<p id="pleaseScroll" class="pleaseScroll animationBounce" data-subarrow="▼">Please Scroll</p>
-
 	<main class="main">
 		<div class="main__inner">
 
-			<section class="contents">
+			<section id="test" class="contents">
 				<h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>ショートコードの2つ目です。今回は、ページのスクロールを促す方法を書き残しておきます。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けるアニメーション付きです。仕様は以下ようです。</p>
-
+					<p>ショートコードの3つ目です。今回は、ページをスクロールしていくと、各コンテンツが少し下の位置からふわっと表れるようにする方法です。仕様は以下ようです。</p>
 					<ul>
-						<li>事前に、メッセージ「Please Scroll」を、CSSで非表示にしておきます。</li>
-						<li>3秒経っても、ユーザーがページをスクロールしなければ、メッセージ「Please Scroll」を jQueryを使って表示します。</li>
-						<li>メッセージ「Please Scroll」は、CSSアニメーションによりバウンドします。</li>
-						<li>ユーザーがページをスクロールしたら、メッセージ「Please Scroll」を jQueryを使って非表示にします。</li>
+						<li>事前に、.contents及び .contentの領域を、CSSで透過にしておきます。また、CSSの translate()を使って、100pxほど下にずらしてあります。</li>
+						<li>ユーザーがページをスクロールし、.contents あるいは .contentの領域に近づいたら jQueryを使いふわっと表示させています。</li>
 					</ul>
-
-					<p>何をしているのだか分かりにくい点があるとすれば、CSSの「transform: translate(-50%, -50%);」部分でしょうか。これをすることで、テキスト幅の半分だけずらして中央揃えにしています。</p>
-
 				</section>
 				<!-- /.content -->
 				<section class="content">
@@ -53,60 +45,46 @@
 					<h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;p id="pleaseScroll" class="pleaseScroll animationBounce" data-subarrow="▼"&gt;Please Scroll&lt;/p&gt;
+&lt;section class="contents"&gt;
+ &lt;section class="content"&gt;
+  ～（コンテンツ）～
+ &lt;/section&gt;
+&lt;/section&gt;
 </code>
 </pre>
 
-				<h4 class="heading-4">CSS</h4>
+					<h4 class="heading-4">CSS</h4>
 <pre class="code">
 <code>
-.pleaseScroll {
- display: none;
- font-size: 2rem;
- width: 200px;
- margin: 0 50%;
- position: absolute;
- bottom: 30px;
- transform: translate(-50%, -50%);
- text-align: center;
- font-weight: bold;
- color: #192f60;
+.contents,
+.content {
+ opacity: 0;
+ transform: translate(0, 100px);
+ transition: all 1.5s;
 }
-.pleaseScroll::after {
- display: block;
- content: attr(data-subarrow);
-}
-.animationBounce {
-　animation: bounce 2s ease infinite normal 0s none running;
-}
-@keyframes bounce {
-　0%, 100%, 20%, 50%, 80% {
-　　transform: translate(-50%, 0px);
-　}
-　40% {
-　　transform: translate(-50%, -30px);
-　}
-　60% {
-　　transform: translate(-50%, -15px);
-　}
+.contents.visible,
+.content.visible {
+ opacity: 1;
+ transform: translate(0, 0);
 }
 </code>
 </pre>
 
-				<h4 class="heading-4">jQuery</h4>
+					<h4 class="heading-4">jQuery</h4>
 <pre class="code">
 <code>
 $(function() {
- // スクロールされないとき 「Please Scroll」を表示
- setTimeout(function() { // 3秒待つ
-  if ($(window).scrollTop() &lt; 10) { // 3秒経っても上端から10px以上スクロールしない場合
-  $("#pleaseScroll").fadeIn(); // 「Please Scroll」を表示しスクロールを促す
-  }
- }, 3000);
-
- // スクロールされたら「Please Scroll」を非表示
+ // コンテンツの近くにスクロールされたら　ふんわり表示する
  $(window).scroll(function() {
-  $("#pleaseScroll").fadeOut();
+  const $winHeight = $(window).height(); // ウィンドウ画面の高さを取得
+  $(".contents, .content").each(function() {
+   const $scrollTop = $(window).scrollTop(); // スクロールした現在のtopの位置を取得
+   const $scrollBottom = $scrollTop + $winHeight; // スクロールした現在のtopの位置にウィンドウ画面の高さを加算してbottomの位置を算出
+   const $offsetTop = $(this).offset().top; // コンテンツの位置を取得
+   if ( $scrollBottom > $offsetTop) { // ふんわり表示させたいコンテンツにスクロールが及べば表示する
+    $(this).addClass("visible");
+   }
+  });
  });
 });
 </code>
@@ -122,7 +100,7 @@ $(function() {
 				<section class="content">
 					<ul>
 						<li><a href="https://yellowredfox.github.io/sample-code/1">ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法</a></li>
-						<li><a href="https://yellowredfox.github.io/sample-code/3">ページをスクロールすると、各コンテンツが下からふわっと表れるようにする方法</a></li>
+						<li><a href="https://yellowredfox.github.io/sample-code/2">ページのスクロールを促す方法（アニメーション付き）</a></li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -133,16 +111,18 @@ $(function() {
 				<h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
 				<section class="content">
 					<h3 class="heading-3">あとがき</h3>
-					<p>エンドユーザーが次に何をすれば良いのか迷ったときに、このような表示ができるとおもしろいかもしれません。うっとうしいと感じる人もいらっしゃるかもしれないので、しつこくない程度にですけども。</p>
+					<p>はじめてこのふわっと表示されるページを見たときは、「おっ、かっこいい！」と思いました。「どこかで使ってみたい」とも。ただこれ、「使いどころが難しいな」とも感じました。</p>
+					<p>表示されていない状態があるということは、とても落ち着かない心理をもたらすと思うので、安心感を与えたいようなサイトには向かないかもしれません。</p>
 				</section>
 				<!-- /.content -->
 				<section class="content">
 					<h3 class="heading-3">参考資料</h3>
-					<p>アニメーション部分のコードを参考にさせていただいたページが無くなってしまったようです。</p>
+					<p>参考にさせていただいたページは、とくにありませんでした。</p>
 				</section>
 				<!-- /.content -->
 			</section>
 			<!-- /.contents -->
+
 		</div>
 		<!-- /.main__inner -->
 	</main>

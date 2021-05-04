@@ -6,38 +6,42 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="style.css">
 	<link rel="icon" href="../../favicon.ico">
-	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/5">
-	<title>トップへ戻るボタン</title>
+	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/6">
+	<title>スムーズスクロール</title>
 	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="トップへ戻るボタンを設置する方法。必要なときに表示し、不要なときは非表示にします。jQuery使用。">
+	<meta name="description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。jQuery使用。">
 	<meta name="author" content="イールド（月の森デザイン）">
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="キアカラボ">
 	<meta property="og:title" content="トップへ戻るボタン">
-	<meta property="og:description" content="トップへ戻るボタンを設置する方法。必要なときに表示し、不要なときは非表示にします。jQuery使用。">
+	<meta property="og:description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。jQuery使用。">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/5">
+	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/6">
 </head>
 <body>
 
 	<header class="header">
 		<div class="header__container">
-			<h1 class="siteTitle">トップへ戻るボタン</h1>
+			<h1 class="siteTitle">スムーズスクロール</h1>
 		</div>
+		<ul class="menu">
+			<li class="menu__item"><a class="menu__link" href="#summary">コード概要</a></li>
+			<li class="menu__item"><a class="menu__link" href="#relate">関連記事</a></li>
+			<li class="menu__item"><a class="menu__link" href="#note">編集後記</a></li>
+		</ul>
 	</header>
 
 	<main class="main">
 		<div class="main__inner">
 
 			<section class="contents">
-				<h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+				<h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>今回は、トップへ戻るボタンです。仕様は以下ようです。</p>
+					<p>今回は、スムーズスクロール機能です。仕様は以下ようです。</p>
 					<ul>
-						<li>事前に、トップへ戻るボタンを、CSSで「display: none;」にしておきます。</li>
-						<li>トップへ戻るボタンの表示・非表示を切り替えるラインは、ページの 7割くらいの位置に基準線をもうけています。ページを下方へスクロールして 、基準線を越えると、jQueryでトップへ戻るボタンを表示します。クリックすると、トップの位置へ移動します。</li>
-						<li>トップへ戻るボタンをクリックすることなく、ページを上方へスクロールして基準線に戻った場合は、jQueryでトップへ戻るボタンを非表示にします。</li>
+						<li>事前に、HTMLファイル内の各 h2見出しに、それぞれ idをつけておきます。上部メニューには、各 h2見出しへページ内移動するリンクをつけてあります。</li>
+						<li>jQueryにて、a要素（href属性の値に#が付いているもの）がクリックされたら、ページ内移動がスムーズに行われます。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -47,35 +51,11 @@
 					<h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;a class="back-to-top" href="#"&gt;
-	&lt;img id="backToTopBtn" class="back-to-top__btn" src="arrow.png"&gt;
-&lt;/a&gt;
-</code>
-</pre>
-
-					<h4 class="heading-4">CSS</h4>
-<pre class="code">
-<code>
-.back-to-top {
-	display: block;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	width: 60px;
-	height: 60px;
-	margin: 3em;
-	text-decoration: none;
-}
-.back-to-top__btn {
-	display: none;
-	width: 100%;
-	height: auto;
-	padding: 1em;
-	box-sizing: border-box;
-	background-color: #241c1c;
-	border: 4px solid #fffffc;
-	border-radius: 50%;
-}
+&lt;h2 id="summary"&gt;コード概要&lt;/h2&gt;
+（～中略～）
+&lt;h2 id="relate"&gt;関連記事&lt;/h2&gt;
+（～中略～）
+&lt;h2 id="note"&gt;編集後記&lt;/h2&gt;
 </code>
 </pre>
 
@@ -83,16 +63,15 @@
 <pre class="code">
 <code>
 $(function() {
-	$(window).scroll(function() {
-		const $winHeight = $(this).height(); // ウィンドウ画面の高さを取得
-		const $scrollTop = $(this).scrollTop(); // スクロールした現在のtopの位置を取得
-		const $scrollBottom = $scrollTop + $winHeight; // スクロールした現在のtopの位置にウィンドウ画面の高さを加算してbottomの位置を算出
-		const $borderLine = $(document).height() * 0.7; // ページの高さの7割くらいを基準線にする 
-		if ( $scrollBottom > $borderLine ) {
-			$("#backToTopBtn").fadeIn(); // スクロールして基準線を超えたらトップへ戻るを表示
-		} else {
-			$("#backToTopBtn").hide(); // スクロールが基準線に達しない場合はトップへ戻るを非表示
-		}
+	$('a[href^="#"]').click(function() { // a要素（href属性の値に#が付いているもの）をクリックしたら実行
+		const $href = $(this).attr("href"); // a要素のhref属性の中身を取得
+		const $adjust = $href === "#" ? 0 : 10; // 移動先がピッタリにならないよう調整する　トップ以外は上に 10px余白
+		const $target = $($href === "#" || $href === "" ? "html" : $href); // トップへ戻る場合は"html"を代入　他はaリンクのhrefの中身を代入
+		const $position = $target.offset().top - $adjust; // 移動先の要素のtop位置を取得　及び$adjustで調整
+		$('body, html').animate({
+			scrollTop: $position
+		}, 500, 'swing'); // animate()を使ってスムーズにページ内移動　スピード500、動作swing
+		return false;
 	});
 });
 </code>
@@ -103,11 +82,22 @@ $(function() {
 			</section>
 			<!-- /.contents -->
 
+			<section id="relate" class="contents">
+				<h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+				<section class="content">
+					<ul>
+						<li><a href="https://yellowredfox.github.io/sample-code/5">トップへ戻るボタン</a></li>
+					</ul>
+				</section>
+				<!-- /.content -->
+			</section>
+			<!-- /.contents -->
+
 			<section class="contents">
-				<h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+				<h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
 				<section class="content">
 					<h3 class="heading-3">あとがき</h3>
-					<p>スムーズスクロール機能を外してあるので、トップへ戻るボタンを押すとバチっと戻ってしまいます。やはり、スムーズスクロールしたほうがいいですね。</p>
+					<p>スムーズスクロール機能を入れておくと、<a href="https://yellowredfox.github.io/sample-code/5">トップへ戻るボタン</a>を押したときも、いい感じになります。</p>
 				</section>
 				<!-- /.content -->
 				<section class="content">
@@ -142,10 +132,6 @@ $(function() {
 			</div>
 		</div>
 	</footer>
-
-	<a class="back-to-top" href="#">
-		<img id="backToTopBtn" class="back-to-top__btn" src="arrow.png">
-	</a>
 
 	<noscript>
 		<p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>

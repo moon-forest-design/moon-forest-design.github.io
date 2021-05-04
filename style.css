@@ -330,19 +330,21 @@ h1 {
 ================================================== */
 .back-to-top {
   display: block;
-  width: 40px;
-  height: 40px;
-  margin: 0 3em 3em auto;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
+  position: fixed;
+  right: 0;
   bottom: 0;
+  width: 60px;
+  height: 60px;
+  margin: 3em;
   text-decoration: none;
 }
-.back-to-top-btn {
+.back-to-top__btn {
   display: none;
-  font-size: 40px;
-  color: #241c1c;
-  background: #fff;
-  border: 3px solid #fff;
+  width: 100%;
+  height: auto;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: #241c1c;
+  border: 4px solid #fffffc;
   border-radius: 50%;
 }

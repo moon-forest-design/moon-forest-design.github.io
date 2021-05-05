@@ -147,28 +147,6 @@ body {
 	white-space: pre-wrap;
 }
 
-.sample {
-  margin-bottom: 4em;
-  text-align: center;
-  background-color: #ffccaa;
-  border-radius: 4px;
-}
-.sample__caseA {
-  width: 60%;
-  border-radius: 4px;
-}
-.sample__caseB {
-  width: 60%;
-  border-radius: 4px;
-  vertical-align: top;
-}
-.svg {
-  background-color: #ec6800;
-}
-.svg text {
-  fill: #fffffc;
-}
-
 
 /* footer
 ================================================== */

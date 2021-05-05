@@ -135,6 +135,15 @@ body {
 	white-space: pre-wrap;
 }
 
+.fontawesome {
+  margin: 70px 0 100px;
+  text-align: center;
+}
+.fa-envelope {
+  font-size: 20rem;
+  color: #241c1c;
+}
+
 
 /* footer
 ================================================== */
@@ -256,27 +265,4 @@ body {
   .office__comment a:hover {
     text-decoration: underline;
   }
-}
-
-/* back-to-top
-================================================== */
-.back-to-top {
-  display: block;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  width: 60px;
-  height: 60px;
-  margin: 3em;
-  text-decoration: none;
-}
-.back-to-top__btn {
-  display: none;
-  width: 100%;
-  height: auto;
-  padding: 1em;
-  box-sizing: border-box;
-  background-color: #241c1c;
-  border: 4px solid #fffffc;
-  border-radius: 50%;
 }

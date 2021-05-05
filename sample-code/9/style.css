@@ -135,6 +135,21 @@ body {
 	white-space: pre-wrap;
 }
 
+.fontawesome {
+  margin: 70px 0 100px;
+  text-align: center;
+}
+.phone {
+  font-size: 5rem;
+}
+.phone::before {
+  font-family: 'Font Awesome 5 Free'; /* Font Awesome 5の無料版を使うよ */
+  content: '\f2a0'; /* コピーした Unicodeを貼り付ける */
+  font-weight: 900; /* solidなので900を指定 */
+  margin-right: .6em;
+  color: #241c1c;
+}
+
 
 /* footer
 ================================================== */
@@ -256,27 +271,4 @@ body {
   .office__comment a:hover {
     text-decoration: underline;
   }
-}
-
-/* back-to-top
-================================================== */
-.back-to-top {
-  display: block;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  width: 60px;
-  height: 60px;
-  margin: 3em;
-  text-decoration: none;
-}
-.back-to-top__btn {
-  display: none;
-  width: 100%;
-  height: auto;
-  padding: 1em;
-  box-sizing: border-box;
-  background-color: #241c1c;
-  border: 4px solid #fffffc;
-  border-radius: 50%;
 }

@@ -156,6 +156,9 @@ h1 {
 	border-radius: 4px;
 	white-space: pre-wrap;
 }
+.postFooter {
+  font-size: 1.6rem;
+}
 
 
 /* footer

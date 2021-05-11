@@ -28,7 +28,7 @@ h1 {
 .header {
   height: inherit;
   margin-bottom: 10em;
-  background-color: #e4d2d8;
+  background-image: linear-gradient(#a0d8ef, #fff);
 }
 .header__container {
   height: inherit;
@@ -47,10 +47,10 @@ h1 {
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 3.1rem;
+    font-size: 2.8rem;
   }
   .siteTitle::before {
-    font-size: 2.4rem;
+    font-size: 2.3rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
@@ -63,7 +63,7 @@ h1 {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 8rem;
+    font-size: 7.4rem;
   }
   .siteTitle::before {
     font-size: 6.2rem;

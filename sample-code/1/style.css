@@ -38,6 +38,7 @@ h1 {
   padding-top: .7em;
 }
 .siteTitle {
+  letter-spacing: .1em;
   color: #fffffc;
 }
 .siteTitle::before {
@@ -47,26 +48,26 @@ h1 {
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 3.1rem;
+    font-size: 1.6rem;
   }
   .siteTitle::before {
-    font-size: 2.4rem;
+    font-size: 1.35rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
-    font-size: 6rem;
+    font-size: 3rem;
   }
   .siteTitle::before {
-    font-size: 4.6rem;
+    font-size: 2.5rem;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 8rem;
+    font-size: 4rem;
   }
   .siteTitle::before {
-    font-size: 6.2rem;
+    font-size: 3.35rem;
   }
 }
 

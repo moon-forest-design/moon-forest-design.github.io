@@ -107,13 +107,14 @@ h1 {
 }
 .cardTitle {
   font-size: 1.6rem;
-  padding: .5em;
   letter-spacing: .1em;
   border-radius: 4px 4px 0 0;
   color: #fffffc;
   background-color: #302833;;
 }
 .cardTitle__link {
+  display: block;
+  padding: .5em;
   text-decoration: none;
   color: inherit;
 }

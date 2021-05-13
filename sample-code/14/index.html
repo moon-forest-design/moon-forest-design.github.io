@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="../../favicon.ico">
+	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/14">
+	<title>object-fitで画像を画面いっぱいに表示する方法</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="CSSのobject-fitを使って画像を画面いっぱいに表示する方法です。">
+	<meta name="author" content="イールド（月の森デザイン）">
+	<meta property="og:locale" content="ja_JP">
+	<meta property="og:site_name" content="キアカラボ">
+	<meta property="og:title" content="object-fitで画像を画面いっぱいに表示する方法">
+	<meta property="og:description" content="CSSのobject-fitを使って画像を画面いっぱいに表示する方法です。">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/14">
+</head>
+<body>
+
+	<header class="header">
+		<div class="header__container">
+			<h1 class="siteTitle">object-fitで画像を画面いっぱいに表示する方法</h1>
+		</div>
+	</header>
+
+	<div class="mainVisual">
+		<img class="mainVisual__img" src="mainVisual.jpg" alt="object-fitを使ってメインビジュアル写真を表示">
+	</div>
+
+	<main class="main">
+		<div class="main__inner">
+
+			<section class="contents">
+				<h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+				<section class="content">
+					<h3 class="heading-3">要点</h3>
+					<p>今回は、CSSの object-fitプロパティを使って、画像を画面いっぱいに表示する方法について書きます。ポイントは以下ようです。</p>
+					<ul>
+						<li>img要素を使って画像を表示する。img要素を指定することで、画像検索の対象となりやすくなる。</li>
+						<li>widthに 100%、heightに 100vhを指定。画像の元サイズが幅 1920pxなので、max-widthで 1920pxを指定。max-widthを指定することで、画質をたもつ。</li>
+						<li>object-fitに coverを指定。coverを指定することで、レスポンシブ対応となる。スマホやタブレットで表示しても歪むことがない。</li>
+					</ul>
+				</section>
+				<!-- /.content -->
+				<section class="content">
+					<h3 class="heading-3">コード</h3>
+					<h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div class="mainVisual"&gt;
+	&lt;img class="mainVisual__img" src="mainVisual.jpg" alt="object-fitを使ってメインビジュアル写真を表示"&gt;
+&lt;/div&gt;
+</code>
+</code>
+</pre>
+
+					<h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.mainVisual__img {
+	width: 100%;
+	max-width: 1920px;
+	height: 100vh;
+	object-fit: cover;
+}
+</code>
+</pre>
+
+				</section>
+				<!-- /.content -->
+			</section>
+			<!-- /.contents -->
+
+			<section id="relate" class="contents">
+				<h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+				<section class="content">
+					<ul>
+						<li><a href="https://yellowredfox.github.io/sample-code/13">backgroundで画像を画面いっぱいに表示する方法</a></li>
+					</ul>
+				</section>
+				<!-- /.content -->
+			</section>
+			<!-- /.contents -->
+
+			<section class="contents">
+				<h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+				<section class="content">
+					<h3 class="heading-3">あとがき</h3>
+					<ul>
+						<li>object-fitプロパティには他にも、video要素（動画）にも活用できるという利点があります。この辺は、カルーセルスライダーと競合するのか、用途に応じた棲み分けがなされていくのか、いかがなものでしょう。</li>
+						<li>object-positionプロパティを使えば、画像の位置を柔軟に変更することも可能です。</li>
+						<li>IE対応のサイトにしたいときは、<a href="https://yellowredfox.github.io/sample-code/13">backgroundで表示する方法</a>を利用するほうが良いかもしれません。</li>
+					</ul>
+				</section>
+				<!-- /.content -->
+				<section class="content">
+					<h3 class="heading-3">参考資料</h3>
+					<ul>
+						<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/object-fit">object-fit - CSS: カスケーディングスタイルシート | MDN</a></li>
+					</ul>
+				</section>
+				<!-- /.content -->
+			</section>
+			<!-- /.contents -->
+
+			<div class="postFooter">
+				<div class="postDate">
+					作成日: <time class="releaseDate" datetime="2021-5-12">2021年5月12日</time>
+				</div>
+				<div class="postAuthor">
+					投稿者: イールド
+				</div>
+			</div>
+			<!-- /.postFooter -->
+
+		</div>
+		<!-- /.main__inner -->
+	</main>
+
+	<footer class="footer">
+		<div class="footer__inner">
+			<div class="profile">
+				<a class="backSignboard" href="https://yellowredfox.github.io/">
+					<img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+					<h2 class="backSignboard__title">キアカラボ</h2>
+				</a>
+				<p class="office">
+					キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank">月の森デザイン</a>」の姉妹サイトです。
+				</p>
+			</div>
+			<div class="copyright">
+				<p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/">月の森デザイン</a> All Rights Reserved.</small></p>
+			</div>
+		</div>
+	</footer>
+
+	<noscript>
+		<p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+		<p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+		<p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+	</noscript>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="main.js"></script>
+
+</body>
+</html>

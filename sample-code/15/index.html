@@ -6,28 +6,28 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="style.css">
 	<link rel="icon" href="../../favicon.ico">
-	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/14">
-	<title>object-fitで画像を画面いっぱいに表示する方法</title>
+	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/15">
+	<title>calc()で画像の高さを調整する方法</title>
 	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="CSSのobject-fitプロパティを使って画像を画面いっぱいに表示する方法です。">
+	<meta name="description" content="CSSのcalc()関数を使ってヘッダー分の高さを除いて、画像を画面いっぱいに表示する方法です。">
 	<meta name="author" content="イールド（月の森デザイン）">
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="キアカラボ">
-	<meta property="og:title" content="object-fitで画像を画面いっぱいに表示する方法">
-	<meta property="og:description" content="CSSのobject-fitプロパティを使って画像を画面いっぱいに表示する方法です。">
+	<meta property="og:title" content="calc()で画像の高さを調整する方法">
+	<meta property="og:description" content="CSSのcalc()関数を使ってヘッダー分の高さを除いて、画像を画面いっぱいに表示する方法です。">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/14">
+	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/15">
 </head>
 <body>
 
 	<header class="header">
 		<div class="header__container">
-			<h1 class="siteTitle">object-fitで画像を画面いっぱいに表示する方法</h1>
+			<h1 class="siteTitle">calc()で画像の高さを調整する方法</h1>
 		</div>
 	</header>
 
 	<div class="mainVisual">
-		<img class="mainVisual__img" src="mainVisual.jpg" alt="object-fitを使ってメインビジュアル写真を表示">
+		<img class="mainVisual__img" src="mainVisual.jpg" alt="calc()関数を使ってヘッダー分の高さを除いて、object-fitを使ってメインビジュアル写真を画面いっぱいに表示">
 	</div>
 
 	<main class="main">
@@ -37,11 +37,10 @@
 				<h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>今回は、CSSの object-fitプロパティを使って、画像を画面いっぱいに表示する方法について書きます。ポイントは以下ようです。</p>
+					<p>前回、<a href="https://yellowredfox.github.io/sample-code/14">object-fitプロパティを使って、画像を画面いっぱいに表示する方法</a>について書きました。今回は、ヘッダーを含めたくない場合の方法です。CSSの calc()関数を使います。ポイントは以下ようです。</p>
 					<ul>
-						<li>img要素を使って画像を表示する。img要素を指定することで、画像検索の対象となりやすくなる。</li>
-						<li>widthに 100%、heightに 100vhを指定。画像の元サイズが幅 1920pxなので、max-widthで 1920pxを指定。max-widthを指定することで、画質をたもつ。</li>
-						<li>object-fitに coverを指定。coverを指定することで、レスポンシブ対応となる。スマホやタブレットで表示しても歪むことがない。</li>
+						<li>ヘッダーの高さ（height）を指定する。ここでは、120pxとした。</li>
+						<li>画像の高さ（height）は、ブラウザ画面の高さから、ヘッダーの高さを引いた値となる。ゆえに「calc(100vh - 120px)」として算出している。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -50,6 +49,11 @@
 					<h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
+&lt;header class="header"&gt;
+	&lt;div class="header__container"&gt;
+		&lt;h1 class="siteTitle"&gt;calc()で高さを調整する方法&lt;/h1&gt;
+	&lt;/div&gt;
+&lt;/header&gt;
 &lt;div class="mainVisual"&gt;
 	&lt;img class="mainVisual__img" src="mainVisual.jpg"&gt;
 &lt;/div&gt;
@@ -60,10 +64,13 @@
 					<h4 class="heading-4">CSS</h4>
 <pre class="code">
 <code>
+.header__container {
+	height: 120px;
+}
 .mainVisual__img {
 	width: 100%;
 	max-width: 1920px;
-	height: 100vh;
+	height: calc(100vh - 120px);
 	object-fit: cover;
 }
 </code>
@@ -78,7 +85,7 @@
 				<h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
 				<section class="content">
 					<ul>
-						<li><a href="https://yellowredfox.github.io/sample-code/13">backgroundで画像を画面いっぱいに表示する方法</a></li>
+						<li><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -90,16 +97,15 @@
 				<section class="content">
 					<h3 class="heading-3">あとがき</h3>
 					<ul>
-						<li>object-fitプロパティには他にも、video要素（動画）にも活用できるという利点があります。この辺は、カルーセルスライダーと競合するのか、用途に応じた棲み分けがなされていくのか、いかがなものでしょう。</li>
-						<li>object-positionプロパティを使えば、画像の位置を柔軟に変更することも可能です。</li>
-						<li>IE対応のサイトにしたいときは、<a href="https://yellowredfox.github.io/sample-code/13">backgroundで表示する方法</a>を利用するほうが良いかもしれません。</li>
+						<li>JavaScriptを使わなくても、CSSの calc()関数を使えば画像の高さ調整ができるので便利です。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
 				<section class="content">
 					<h3 class="heading-3">参考資料</h3>
+					<p>参考になりました。ありがとうございました。</p>
 					<ul>
-						<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/object-fit">object-fit - CSS: カスケーディングスタイルシート | MDN</a></li>
+						<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/calc()">calc() - CSS: カスケーディングスタイルシート | MDN</a></li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -108,7 +114,7 @@
 
 			<div class="postFooter">
 				<div class="postDate">
-					作成日: <time class="releaseDate" datetime="2021-5-12">2021年5月12日</time>
+					作成日: <time class="releaseDate" datetime="2021-5-13">2021年5月13日</time>
 				</div>
 				<div class="postAuthor">
 					投稿者: イールド

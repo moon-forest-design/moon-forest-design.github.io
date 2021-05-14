@@ -9,12 +9,12 @@
 	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/14">
 	<title>object-fitで画像を画面いっぱいに表示する方法</title>
 	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="CSSのobject-fitプロパティを使って画像を画面いっぱいに表示する方法です。">
+	<meta name="description" content="CSSのobject-fitプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
 	<meta name="author" content="イールド（月の森デザイン）">
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="キアカラボ">
 	<meta property="og:title" content="object-fitで画像を画面いっぱいに表示する方法">
-	<meta property="og:description" content="CSSのobject-fitプロパティを使って画像を画面いっぱいに表示する方法です。">
+	<meta property="og:description" content="CSSのobject-fitプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/14">
 </head>
@@ -27,7 +27,7 @@
 	</header>
 
 	<div class="mainVisual">
-		<img class="mainVisual__img" src="mainVisual.jpg" alt="object-fitを使ってメインビジュアル写真を表示">
+		<img class="mainVisual__img" src="mainVisual.jpg" alt="object-fitを使ってメインビジュアル写真（ヒーローイメージ）を表示">
 	</div>
 
 	<main class="main">
@@ -37,7 +37,7 @@
 				<h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>今回は、CSSの object-fitプロパティを使って、画像を画面いっぱいに表示する方法について書きます。ポイントは以下ようです。</p>
+					<p>今回は、CSSの object-fitプロパティを使って、画像を画面いっぱいに表示する方法について書きます。前回は、backgroundを使用して、いわゆるヒーローイメージを設定しましたが、今回は object-fitプロパティを使います。ポイントは以下ようです。</p>
 					<ul>
 						<li>img要素を使って画像を表示する。img要素を指定することで、画像検索の対象となりやすくなる。</li>
 						<li>widthに 100%、heightに 100vhを指定。画像の元サイズが幅 1920pxなので、max-widthで 1920pxを指定。max-widthを指定することで、画質をたもつ。</li>

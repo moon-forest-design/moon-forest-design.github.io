@@ -9,12 +9,12 @@
 	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/13">
 	<title>backgroundで画像を画面いっぱいに表示する方法</title>
 	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="CSSのbackgroundプロパティを使って画像を画面いっぱいに表示する方法です。">
+	<meta name="description" content="CSSのbackgroundプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
 	<meta name="author" content="イールド（月の森デザイン）">
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="キアカラボ">
 	<meta property="og:title" content="backgroundで画像を画面いっぱいに表示する方法">
-	<meta property="og:description" content="CSSのbackgroundプロパティを使って画像を画面いっぱいに表示する方法です。">
+	<meta property="og:description" content="CSSのbackgroundプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/13">
 </head>
@@ -37,10 +37,11 @@
 				<h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>今回は、CSSの backgroundを使って画像を画面いっぱいに表示する方法について書きます。ポイントは以下ようです。</p>
+					<p>今回は、CSSの backgroundを使って、画像を画面いっぱいに表示する方法について書きます。いわゆるヒーローイメージを指定する方法です。ポイントは以下ようです。</p>
 					<ul>
-						<li>空の div要素を用意し、CSSで背景画像として backgroundで設定する。</li>
-						<li>高さ（height）を指定してあげないと表示されないので注意が必要です。</li>
+						<li>空の div要素を用意し、CSSの background-imageで背景画像（ヒーローイメージ）を指定する。</li>
+						<li>高さ（height）を指定してあげないと表示されないので、必ず高さも指定します。画面の高さいっぱいに表示するため 100vhを指定します。</li>
+						<li>background-positionに center、background-sizeに coverを指定することで、画像の位置と大きさをちょうど良く調整します。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -89,9 +90,10 @@
 				<section class="content">
 					<h3 class="heading-3">あとがき</h3>
 					<ul>
+						<li>ヒーローイメージは、そのサイトがどのようなサイトなのかをイメージづけるための画像です。ゆえに、とても大切です。エンドユーザーにとって、ファーストビューとなることもあるので、どのようなことを伝えたいのか？　その意図が明確な画像でなければいけません。「あら、きれいな人ね。まあこれでいっか」などという選び方をしてはいけないのです。</li>
 						<li>指定内容が分かり良いように分けて書きましたが、「background: center/cover url("mainVisual.jpg");」のようにひとまとめにして書くこともできます。</li>
 						<li>background-position、及び background-sizeの指定値によっては、画像のトリミングもできます。</li>
-						<li>backgroundを使って画像を画面いっぱいに表示する方法は、以前から使用されているおなじみのやり方です。しかし、あまり使われなくなってきているのかもしれません。状況によるのかもしれませんけれど、今どきは object-fitを使うことが増えてきているようです。</li>
+						<li>backgroundを使って画像を画面いっぱいに表示する方法は、以前から使用されているおなじみのやり方です。しかし、あまり使われなくなってきているかもしれません。今どきは <a href="https://yellowredfox.github.io/sample-code/14">object-fit</a>を使うことが増えてきているようです。</li>
 					</ul>				
 				</section>
 				<!-- /.content -->

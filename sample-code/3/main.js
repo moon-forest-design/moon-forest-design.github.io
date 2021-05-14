@@ -19,7 +19,7 @@ $(function() {
 
 
   // コンテンツのふんわり表示：中途半端な位置でリロードされたときも、ふんわり表示する
-  $(window).load(function(){
+  $(window).on("load", function() {
     $(".contents, .content").each(function() {
       $(this).addClass("visible");
     });

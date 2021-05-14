@@ -26,24 +26,20 @@ h1 {
 /* header
 ================================================== */
 .header {
-  height: inherit;
   margin-bottom: 10em;
-  background-color: #192f60;
+  background-color: #302833;
 }
 .header__container {
-  height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-  padding-top: .7em;
+  padding: 3em 1em;
 }
 .siteTitle {
   letter-spacing: .1em;
+  text-align: center;
   color: #fffffc;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
@@ -53,7 +49,7 @@ h1 {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 4rem;
+    font-size: 4.5rem;
   }
 }
 
@@ -145,6 +141,32 @@ h1 {
 }
 .postFooter {
   font-size: 1.6rem;
+}
+
+.demo {
+  margin: 3em 0 1em;
+  border-radius: 4px;
+  background-color: #ffccaa;
+}
+.demo--height {
+  height: 5.4em;
+}
+.noheight {
+  padding: 2em 1em;
+  text-align: center;
+}
+.lineHeight {
+  line-height: 5.4em;
+  text-align: center;
+}
+.flexBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.displayGrid {
+  display: grid;
+  place-items: center;
 }
 
 

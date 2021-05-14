@@ -7,14 +7,14 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="icon" href="../../favicon.ico">
 	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/1">
-	<title>ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法</title>
+	<title>ヘッダーを画面いっぱいに表示する方法</title>
 	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法。">
+	<meta name="description" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法です。">
 	<meta name="author" content="イールド（月の森デザイン）">
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="キアカラボ">
-	<meta property="og:title" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法">
-	<meta property="og:description" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法。">
+	<meta property="og:title" content="ヘッダーをウィンドウ画面いっぱいに表示する方法">
+	<meta property="og:description" content="ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法です。">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/1">
 </head>
@@ -22,7 +22,7 @@
 
 	<header class="header">
 		<div class="header__container">
-			<h1 class="siteTitle" data-subtitle="ヘッダーをウィンドウ画面いっぱいに表示して">タイトルを上下左右中央揃えにする方法</h1>
+			<h1 class="siteTitle">ヘッダーを画面いっぱいに表示する方法</h1>
 		</div>
 	</header>
 
@@ -37,7 +37,7 @@
 					<ul>
 						<li>html要素に、「height: 100%;」を指定する。</li>
 						<li>html要素のheightを継承するために、タイトルの親要素まで「height: inherit;」を繰り返し指定する。（例：body要素、header要素、div要素……など）</li>
-						<li>タイトルの親要素に、flexで上下左右中央揃えを指定する。</li>
+						<li>タイトルの親要素に、flexで上下左右の中央揃えを指定する。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -48,7 +48,7 @@
 <code>
 &lt;header class="header"&gt;
 　&lt;div class="header__container"&gt;
-　　&lt;h1 class="siteTitle" data-subtitle="ホームページ制作の"&gt;月の森デザイン&lt;/h1&gt;
+　　&lt;h1 class="siteTitle"&gt;ヘッダーを画面いっぱいに表示する方法&lt;/h1&gt;
 　&lt;/div&gt;
 &lt;/header&gt;
 </code>
@@ -84,8 +84,9 @@ body {
 				<h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
 				<section class="content">
 					<ul>
-						<li><a href="https://yellowredfox.github.io/sample-code/2">ページのスクロールを促す方法（アニメーション付き）</a></li>
-						<li><a href="https://yellowredfox.github.io/sample-code/3">ページをスクロールすると、各コンテンツが下からふわっと表れるようにする方法</a></li>
+						<li><a href="https://yellowredfox.github.io/sample-code/16">タイトルを上下左右で中央揃えにする方法</a></li>
+						<li><a href="https://yellowredfox.github.io/sample-code/13">backgroundで画像を画面いっぱいに表示する方法</a></li>
+						<li><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -96,7 +97,10 @@ body {
 				<h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
 				<section class="content">
 					<h3 class="heading-3">あとがき</h3>
-					<p>ヘッダー部分をウィンドウ画面いっぱいに表示すると、インパクトがあります。CSSだけでウィンドウ画面いっぱいに表示できてしまうところがすごいです。</p>
+					<ul>
+						<li>上下左右の中央揃えについては、「<a href="https://yellowredfox.github.io/sample-code/16">タイトルを上下左右で中央揃えにする方法</a>」にまとめてあります。</li>
+						<li>CSSだけでウィンドウ画面いっぱいに表示できてしまうところがすごいです。ただ、中の子要素が深くなってくるとちょっと大変かもしれません。</li>
+					</ul>
 				</section>
 				<!-- /.content -->
 				<section class="content">

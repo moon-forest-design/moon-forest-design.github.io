@@ -46,7 +46,7 @@ body {
 
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */

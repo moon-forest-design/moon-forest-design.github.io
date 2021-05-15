@@ -4,7 +4,7 @@
 
 // jQueryを使うよ
 $(function() {
-  // コンテンツのふんわり表示：コンテンツの近くにスクロールされたら、ふんわり表示する
+  // コンテンツの近くにスクロールされたら、ふんわり表示する
   $(window).scroll(function() {
     const $winHeight = $(window).height(); // ウィンドウ画面の高さを取得
     $(".contents, .content").each(function() {
@@ -16,15 +16,7 @@ $(function() {
       }
     });
   });
-
-
-  // コンテンツのふんわり表示：中途半端な位置でリロードされたときも、ふんわり表示する
-  $(window).on("load", function() {
-    $(".contents, .content").each(function() {
-      $(this).addClass("visible");
-    });
-  });
-
+  jQuery(window).scroll(); // 中途半端な位置でリロードされたときも、ふんわり表示する
 
 });
 

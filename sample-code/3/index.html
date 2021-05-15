@@ -33,10 +33,11 @@
 				<h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>今回は、ページをスクロールしていくと、各コンテンツが少し下の位置からふわっと表れるようにする方法です。仕様は以下ようです。</p>
+					<p>今回は、ページをスクロールしていくと、各コンテンツが少し下の位置からふわっと表れるようにする方法です。jQueryとCSSアニメーションを利用して自作しました。仕様は以下ようです。</p>
 					<ul>
-						<li>事前に、.contents及び .contentの領域を、CSSで透過にしておきます。また、CSSの translate()を使って、100pxほど下にずらしてあります。</li>
-						<li>ユーザーがページをスクロールし、.contents あるいは .contentの領域に近づいたら jQueryを使いふわっと表示させています。</li>
+						<li>事前に、ふわっと表示したい領域（ここでは、.contents及び .content）を、CSSで透過にしておく。また、CSSの translate()を使って、100pxほど下にずらしておく。</li>
+						<li>ユーザーがページをスクロールし、ふわっと表示したい領域（.contents あるいは .content）に近づいたら jQueryを使いふわっと表示させる。100pxのズレも戻す。</li>
+						<li>リロードボタンが押された場合もふわっと表示する。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -86,12 +87,7 @@ $(function() {
    }
   });
  });
- // コンテンツのふんわり表示：中途半端な位置でリロードされたときも、ふんわり表示する
- $(window).load(function(){
-  $(".contents, .content").each(function() {
-   $(this).addClass("visible");
-  });
- });
+ jQuery(window).scroll(); // 中途半端な位置でリロードされたときも、ふんわり表示する
 });
 </code>
 </pre>
@@ -117,13 +113,18 @@ $(function() {
 				<h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
 				<section class="content">
 					<h3 class="heading-3">あとがき</h3>
-					<p>はじめてこのふわっと表示されるページを見たときは、「おっ、かっこいい！」と思いました。「どこかで使ってみたい」とも。ただこれ、「使いどころが難しいな」とも感じました。</p>
-					<p>なぜなら、表示されていない状態があるということは、とても落ち着かない心理をもたらすと思ったからです。安心感を与えたいようなサイトには向かないテクニックかもしれません。</p>
+					<ul>
+						<li>スクロールするとふわっと表示される機能は、いわゆる「パララックス･スクロールエフェクト」と呼ばれる表現手法のうちの一つと言えるかと思います。視差効果によって、訴求力を高めるための手法です。</li>
+						<li>はじめてこのふわっと表示されるページを見たときは、「おっ、かっこいい！」と思いました。「どこかで使ってみたい」とも。ただこれ、「使いどころが難しいな」とも感じました。なぜなら、表示されていない状態があるということは、とても落ち着かない心理をもたらすと思ったからです。安心感を重視したいサイトには向かないテクニックかもしれません。このページは悪い事例として、参考になりそうです。文章が読みにくい。</li>
+					</ul>
 				</section>
 				<!-- /.content -->
 				<section class="content">
 					<h3 class="heading-3">参考資料</h3>
-					<p>参考にさせていただいたページは、とくにありませんでした。</p>
+					<p>リロードされたときの処理コードを、まるっと参考にさせていただきました。ありがとうございました。</p>
+					<ul>
+						<li><a href="https://mittaniblog.com/jquery-fadein/" target="_blank">スクロールしたときに要素をjQueryでフェードインする方法【コピペOK】 | mittaniblog</a></li>
+					</ul>
 				</section>
 				<!-- /.content -->
 			</section>

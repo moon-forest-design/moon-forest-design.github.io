@@ -6,23 +6,23 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="style.css">
 	<link rel="icon" href="../../favicon.ico">
-	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/6">
-	<title>スムーズスクロール（jQuery版）</title>
+	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/17">
+	<title>スムーズスクロール（scroll-behavior版）</title>
 	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。jQuery使用。">
+	<meta name="description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。scroll-behavior使用。">
 	<meta name="author" content="イールド（月の森デザイン）">
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="キアカラボ">
-	<meta property="og:title" content="スムーズスクロール（jQuery版）">
-	<meta property="og:description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。jQuery使用。">
+	<meta property="og:title" content="スムーズスクロール（scroll-behavior版）">
+	<meta property="og:description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。scroll-behavior使用。">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/6">
+	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/17">
 </head>
 <body>
 
 	<header class="header">
 		<div class="header__container">
-			<h1 class="siteTitle">スムーズスクロール（jQuery版）</h1>
+			<h1 class="siteTitle">スムーズスクロール（scroll-behavior版）</h1>
 			<ul class="menu">
 				<li class="menu__item"><a class="menu__link" href="#summary">コード概要</a></li>
 				<li class="menu__item"><a class="menu__link" href="#relate">関連記事</a></li>
@@ -33,15 +33,14 @@
 
 	<main class="main">
 		<div class="main__inner">
-
 			<section class="contents">
 				<h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>今回は、スムーズスクロール機能です。仕様は以下ようです。</p>
+					<p>今回は、スムーズスクロール機能です。scroll-behaviorプロパティを使えば、CSSだけでスムーズにスクロールができてしまうとのことなので試してみました。仕様は以下ようです。</p>
 					<ul>
 						<li>事前に、HTMLファイル内の各 h2見出しに、それぞれ idをつけておきます。上部メニューには、各 h2見出しへページ内移動するリンクをつけてあります。</li>
-						<li>jQueryにて、a要素（href属性の値に#が付いているもの）がクリックされたら、ページ内移動がスムーズに行われます。</li>
+						<li>html要素に「scroll-behavior: smooth;」をあてます。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
@@ -58,25 +57,16 @@
 &lt;h2 id="note"&gt;編集後記&lt;/h2&gt;
 </code>
 </pre>
-
-					<h4 class="heading-4">jQuery</h4>
+	
+					<h4 class="heading-4">CSS</h4>
 <pre class="code">
 <code>
-$(function() {
-	$('a[href^="#"]').click(function() { // a要素（href属性の値に#が付いているもの）をクリックしたら実行
-		const $href = $(this).attr("href"); // a要素のhref属性の中身を取得
-		const $adjust = $href === "#" ? 0 : 10; // 移動先がピッタリにならないよう調整する　トップ以外は上に 10px余白
-		const $target = $($href === "#" || $href === "" ? "html" : $href); // トップへ戻る場合は"html"を代入　他はaリンクのhrefの中身を代入
-		const $position = $target.offset().top - $adjust; // 移動先の要素のtop位置を取得　及び$adjustで調整
-		$('body, html').animate({
-			scrollTop: $position
-		}, 500, 'swing'); // animate()を使ってスムーズにページ内移動　スピード500、動作swing
-		return false;
-	});
-});
+html {
+	scroll-behavior: smooth;
+}
 </code>
 </pre>
-
+	
 				</section>
 				<!-- /.content -->
 			</section>
@@ -86,35 +76,39 @@ $(function() {
 				<h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
 				<section class="content">
 					<ul>
-						<li><a href="https://yellowredfox.github.io/sample-code/17">スムーズスクロール（scroll-behavior版）</a></li>
-						<li><a href="https://yellowredfox.github.io/sample-code/5">トップへ戻るボタン</a></li>
+						<li><a href="https://yellowredfox.github.io/sample-code/6">スムーズスクロール（jQuery版）</a></li>
 					</ul>
 				</section>
 				<!-- /.content -->
 			</section>
 			<!-- /.contents -->
-
+	
 			<section class="contents">
 				<h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
 				<section class="content">
 					<h3 class="heading-3">あとがき</h3>
 					<ul>
-						<li>トップへ戻るボタンを押したときに、いい感じになるので、スムーズスクロール機能は入れておきたいところです。</li>
-						<li>CSSだけで出来る「<a href="https://yellowredfox.github.io/sample-code/17">scroll-behavior: smooth;</a>」は、ブラウザ対応がもう少し進んでからでしょうか。</li>
+						<li>「scroll-behavior: smooth;」は、使えると簡便でありがたいのだけれど、ブラウザ対応がまだ足りていません。IEはしょうがないとしても、Safariもダメとなると現状においては使い難い感じがいたします。</li>
+						<li>ページ内検索時に「ゆっくりとスクロールされる」という不具合もあるようです。<a href="https://coliss.com/articles/build-websites/operation/css/fixing-smooth-scrolling-with-page-search.html">改善策はあるので問題はない</a>のでしょうけれど、ただ、ブラウザ対応の問題も含め、そこまでしてという気持ちになってしまいます。もう少し様子を見たい機能です。</li>
 					</ul>
 				</section>
 				<!-- /.content -->
 				<section class="content">
 					<h3 class="heading-3">参考資料</h3>
-					<p>コードを参考にさせていただいたページは無くなってしまったようです。</p>
+					<p>参考になりました。ありがとうございました。</p>
+					<ul>
+						<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/scroll-behavior">scroll-behavior - CSS: カスケーディングスタイルシート | MDN</a></li>
+						<li><a href="https://coliss.com/articles/build-websites/operation/css/fixing-smooth-scrolling-with-page-search.html">scroll-behavior: smooth;によるページ内検索時のスクロールを除外するテクニック | コリス</a></li>
+					</ul>
 				</section>
 				<!-- /.content -->
 			</section>
 			<!-- /.contents -->
 
+
 			<div class="postFooter">
 				<div class="postDate">
-					作成日: <time class="releaseDate" datetime="2021-5-4">2021年5月4日</time>
+					作成日: <time class="releaseDate" datetime="2021-5-16">2021年5月16日</time>
 				</div>
 				<div class="postAuthor">
 					投稿者: イールド
@@ -148,8 +142,6 @@ $(function() {
 		<p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
 		<p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
 	</noscript>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="main.js"></script>
 
 </body>
 </html>

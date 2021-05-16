@@ -41,6 +41,8 @@ h1 {
 .signboard {
   display: flex;
   align-items: center;
+}
+.signboard__link {
   text-decoration: none;
 }
 .signboard__logo {
@@ -64,6 +66,7 @@ h1 {
     text-decoration: underline;
   }
 }
+
 
 /* labo
 ================================================== */

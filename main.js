@@ -18,7 +18,7 @@ $(function() {
     }
     $lackCell = $gridCount - $cellCount; // 左寄せするために不足している子要素の数を算出
     for (let $j = 0; $j < $lackCell; $j++) { // 左寄せするために不足している子要素の数だけ空要素を付け加える
-      $(`${$aId[$i]} .cards`).append('<div class="card isEmpty"></div>');
+      $(`${$aId[$i]} .cardBox`).append('<div class="card isEmpty"></div>');
     }
   }
 

@@ -32,7 +32,7 @@
 				<h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
 				<section class="content">
 					<h3 class="heading-3">要点</h3>
-					<p>今回は、「カード」と呼ばれているレイアウトについて書きます。ホームページ制作において、サムネイル画像・タイトル・テキストなどを一組として、横並びにしたレイアウトをカードと呼びます。仕様は以下ようです。</p>
+					<p>今回は、「カード」と呼ばれているレイアウトについて書きます。サムネイル画像・タイトル・テキストなどを一組のグループとして、そののグループを横並びにしたレイアウトを、ホームページ制作においては「カード」と呼びます。仕様は以下ようです。</p>
 					<ul>
 						<li>Flexboxを使って横並びにしています。子要素の配置は space-betweenです。</li>
 						<li>画像の widthは calc()で算出しています。</li>
@@ -40,7 +40,7 @@
 					</ul>
 					<h4 class="heading-4">2カラム</h4>
 					<div class="cardBox cardBox--col2">
-						<div class="card">
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-chocolate.jpg" alt="チョコレートケーキ">
@@ -51,8 +51,8 @@
 									チョコレートケーキ
 								</a>
 							</div>
-						</div>
-						<div class="card">
+						</article>
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-strawberries.jpg" alt="ストロベリーケーキ">
@@ -63,11 +63,11 @@
 									ストロベリーケーキ
 								</a>
 							</div>
-						</div>
+						</article>
 					</div>
 					<h4 class="heading-4">3カラム</h4>
 					<div class="cardBox cardBox--col3">
-						<div class="card">
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-chocolate.jpg" alt="チョコレートケーキ">
@@ -78,8 +78,8 @@
 									チョコレートケーキ
 								</a>
 							</div>
-						</div>
-						<div class="card">
+						</article>
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-strawberries.jpg" alt="ストロベリーケーキ">
@@ -90,8 +90,8 @@
 									ストロベリーケーキ
 								</a>
 							</div>
-						</div>
-						<div class="card">
+						</article>
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-sacher.jpg" alt="ザッハトルテ">
@@ -102,11 +102,11 @@
 									ザッハトルテ
 								</a>
 							</div>
-						</div>
+						</article>
 					</div>
 					<h4 class="heading-4">4カラム</h4>
 					<div class="cardBox cardBox--col4">
-						<div class="card">
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-chocolate.jpg" alt="チョコレートケーキ">
@@ -117,8 +117,8 @@
 									チョコレートケーキ
 								</a>
 							</div>
-						</div>
-						<div class="card">
+						</article>
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-strawberries.jpg" alt="ストロベリーケーキ">
@@ -129,8 +129,8 @@
 									ストロベリーケーキ
 								</a>
 							</div>
-						</div>
-						<div class="card">
+						</article>
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-sacher.jpg" alt="ザッハトルテ">
@@ -141,8 +141,8 @@
 									ザッハトルテ
 								</a>
 							</div>
-						</div>
-						<div class="card">
+						</article>
+						<article class="card">
 							<figure class="cardThumbnail">
 								<a class="cardThumbnail__link" href="">
 									<img class="cardThumbnail__img" src="cake-mandarin.jpg" alt="マンダリンケーキ">
@@ -153,7 +153,7 @@
 									マンダリンケーキ
 								</a>
 							</div>
-						</div>
+						</article>
 					</div>
 				</section>
 				<!-- /.content -->
@@ -165,7 +165,7 @@
 <code>
 &lt;!-- 2カラム --&gt;
 &lt;div class="cardBox cardBox--col2"&gt;
-    &lt;div class="card"&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-chocolate.jpg"&gt;
@@ -176,8 +176,8 @@
                 チョコレートケーキ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="card"&gt;
+    &lt;/article&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-mandarin.jpg"&gt;
@@ -188,12 +188,12 @@
                 マンダリンケーキ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
+    &lt;/article&gt;
 &lt;/div&gt;
 
 &lt;!-- 3カラム --&gt;
 &lt;div class="cardBox cardBox--col3"&gt;
-    &lt;div class="card"&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-chocolate.jpg"&gt;
@@ -204,8 +204,8 @@
                 チョコレートケーキ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="card"&gt;
+    &lt;/article&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-mandarin.jpg"&gt;
@@ -216,8 +216,8 @@
                 マンダリンケーキ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="card"&gt;
+    &lt;/article&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-sacher.jpg"&gt;
@@ -225,15 +225,15 @@
         &lt;/figure&gt;
         &lt;div class="cardTitle"&gt;
             &lt;a class="cardTitle__link" href=""&gt;
-				ザッハトルテ
+                ザッハトルテ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
+    &lt;/article&gt;
 &lt;/div&gt;
 
 &lt;!-- 4カラム --&gt;
 &lt;div class="cardBox cardBox--col4"&gt;
-    &lt;div class="card"&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-chocolate.jpg"&gt;
@@ -244,8 +244,8 @@
                 チョコレートケーキ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="card"&gt;
+    &lt;/article&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-mandarin.jpg"&gt;
@@ -256,8 +256,8 @@
                 マンダリンケーキ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="card"&gt;
+    &lt;/article&gt;
+    &lt;article class="card"&gt;
         &lt;figure class="cardThumbnail"&gt;
             &lt;a class="cardThumbnail__link" href=""&gt;
                 &lt;img class="cardThumbnail__img" src="cake-sacher.jpg"&gt;
@@ -265,22 +265,22 @@
         &lt;/figure&gt;
         &lt;div class="cardTitle"&gt;
             &lt;a class="cardTitle__link" href=""&gt;
-				ザッハトルテ
+                ザッハトルテ
             &lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-	&lt;div class="card"&gt;
-		&lt;figure class="cardThumbnail"&gt;
-			&lt;a class="cardThumbnail__link" href=""&gt;
-				&lt;img class="cardThumbnail__img" src="cake-strawberries.jpg"&gt;
-			&lt;/a&gt;
-		&lt;/figure&gt;
-		&lt;div class="cardTitle"&gt;
-			&lt;a class="cardTitle__link" href=""&gt;
-				ストロベリーケーキ
-			&lt;/a&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
+    &lt;/article&gt;
+    &lt;article class="card"&gt;
+        &lt;figure class="cardThumbnail"&gt;
+            &lt;a class="cardThumbnail__link" href=""&gt;
+                &lt;img class="cardThumbnail__img" src="cake-strawberries.jpg"&gt;
+            &lt;/a&gt;
+        &lt;/figure&gt;
+        &lt;div class="cardTitle"&gt;
+            &lt;a class="cardTitle__link" href=""&gt;
+                ストロベリーケーキ
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/article&gt;
 &lt;/div&gt;
 </code>
 </pre>
@@ -353,6 +353,7 @@
 					<h3 class="heading-3">あとがき</h3>
 					<ul>
 						<li>シンプルに横並びさせる部分だけのコードです。画像の枚数をカラム数にあわせて用意して良ければ、今回のように簡単に横並びさせることができます。</li>
+						<li>ここでは、タイトルを div要素で囲みましたが、状況に応じてヘディング要素（h3要素など）に変更することでより良いマークアップとなります。</li>
 						<li>画像の枚数がカラム数を超える場合は、<a href="https://yellowredfox.github.io/sample-code/10">space-betweenの最後の行を左寄せにする方法</a>で書いたように、flex-wrap: wrap;で折り返したり、jQueryで最後の行を調整する必要があります。</li>
 					</ul>
 				</section>

@@ -29,26 +29,31 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 3em 1em;
+  padding: 6em 1em;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, .5);
 }
 .siteTitle {
-  letter-spacing: .1em;
+  letter-spacing: .15em;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
     font-size: 2.2rem;
   }
+  .siteTitle__br {
+    display: none;
+  }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 3.3rem;
+    font-size: 3.5rem;
+  }
+  .siteTitle__br {
+    display: none;
   }
 }
 
@@ -58,9 +63,8 @@ body {
 .mainVisual {
   height: 100vh;
   margin-bottom: 10em;
-  background-image: url("mainVisual.jpg");
-  background-position: center;
-  background-size: cover;
+  background: center/cover url("mainVisual.jpg");
+  background-attachment: fixed;
 }
 
 

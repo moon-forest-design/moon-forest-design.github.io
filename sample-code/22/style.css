@@ -21,35 +21,39 @@ body {
 /* header
 ================================================== */
 .header {
-  position: relative;
+  /* position: relative; */
   color: #fffffc;
 }
 .header__container {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 1920px;
-  padding: 3em 1em;
+  padding: 6em 1em;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, .5);
 }
 .siteTitle {
-  letter-spacing: .1em;
+  letter-spacing: .15em;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
+  }
+  .siteTitle__br {
+    display: none;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
     font-size: 3.5rem;
+  }
+  .siteTitle__br {
+    display: none;
   }
 }
 
@@ -57,12 +61,17 @@ body {
 /* mainVisual
 ================================================== */
 .mainVisual {
-  /* margin-bottom: 10em; */
+  position: relative;
+  height: 100vh;
 }
 .mainVisual__img {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   max-width: 1920px;
   height: 100vh;
+  z-index: -1;
   object-fit: cover;
 }
 
@@ -70,7 +79,8 @@ body {
 /* main
 ================================================== */
 .main {
-  /* margin-bottom: 15em; */
+  margin-bottom: 500px;
+  background-color: #fff;
 }
 .main__inner {
   margin: 0 auto;

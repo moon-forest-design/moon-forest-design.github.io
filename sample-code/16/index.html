@@ -1,204 +1,204 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" href="style.css">
-	<link rel="icon" href="../../favicon.ico">
-	<link rel="canonical" href="https://yellowredfox.github.io/sample-code/16">
-	<title>タイトルを上下左右で中央揃えにする方法</title>
-	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="タイトルを上下左右で中央揃えにする方法です。やり方は 4通りあります。（paddingとtext-align、line-height、flex、grid）">
-	<meta name="author" content="イールド（月の森デザイン）">
-	<meta property="og:locale" content="ja_JP">
-	<meta property="og:site_name" content="キアカラボ">
-	<meta property="og:title" content="タイトルを上下左右で中央揃えにする方法">
-	<meta property="og:description" content="タイトルを上下左右で中央揃えにする方法です。やり方は 4通りあります。（paddingとtext-align、line-heightとtext-align、flex、grid）">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://yellowredfox.github.io/sample-code/16">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/16">
+  <title>タイトルを上下左右で中央揃えにする方法</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="タイトルを上下左右で中央揃えにする方法です。やり方は 4通りあります。（paddingとtext-align、line-height、flex、grid）">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="タイトルを上下左右で中央揃えにする方法">
+  <meta property="og:description" content="タイトルを上下左右で中央揃えにする方法です。やり方は 4通りあります。（paddingとtext-align、line-heightとtext-align、flex、grid）">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/16">
 </head>
 <body>
 
-	<header class="header">
-		<div class="header__container">
-			<h1 class="siteTitle">タイトルを上下左右で中央揃えにする方法</h1>
-		</div>
-	</header>
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">タイトルを上下左右で中央揃えにする方法</h1>
+    </div>
+  </header>
 
-	<main class="main">
-		<div class="main__inner">
+  <main class="main">
+    <div class="main__inner">
 
-			<section class="contents">
-			<h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
-				<section class="content">
-					<h3 class="heading-3">要点</h3>
-					<p>今回は、タイトルを上下左右で中央揃えにする方法について書きます。よく知られているものを 4通りだけ書きました。サンプルとして、以下の見出し部分を上下左右で中央揃えにしてあります。</p>
-					<ol>
-						<li>paddingと text-alignを使う方法</li>
-						<li>line-heightと text-alignを使う方法</li>
-						<li>flexを使う方法</li>
-						<li>gridを使う方法</li>
-					</ol>
-					<p>サンプルとして、以下の見出し部分を上下左右で中央揃えにしてあります。背景色が淡い橙色（赤みが少しあるクリーム色）の部分です。見出しの下にそれぞれの説明を入れています。</p>
+      <section class="contents">
+      <h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、タイトルを上下左右で中央揃えにする方法について書きます。よく知られているものを 4通りだけ書きました。サンプルとして、以下の見出し部分を上下左右で中央揃えにしてあります。</p>
+          <ol>
+            <li>paddingと text-alignを使う方法</li>
+            <li>line-heightと text-alignを使う方法</li>
+            <li>flexを使う方法</li>
+            <li>gridを使う方法</li>
+          </ol>
+          <p>サンプルとして、以下の見出し部分を上下左右で中央揃えにしてあります。背景色が淡い橙色（赤みが少しあるクリーム色）の部分です。見出しの下にそれぞれの説明を入れています。</p>
 
-					<div class="demo">
-						<h4 class="noheight">1：paddingと text-alignを使う方法</h4>
-					</div>
-					<ul>
-						<li>1つ目は、paddingと text-alignを使う方法です。</li>
-						<li>上下は paddingで中央揃えにし、左右は text-alignで中央揃えにしています。</li>
-						<li>親要素に heightを指定してしまうとうまくいきません。上下でズレます。</li>
-					</ul>
+          <div class="demo">
+            <h4 class="noheight">1：paddingと text-alignを使う方法</h4>
+          </div>
+          <ul>
+            <li>1つ目は、paddingと text-alignを使う方法です。</li>
+            <li>上下は paddingで中央揃えにし、左右は text-alignで中央揃えにしています。</li>
+            <li>親要素に heightを指定してしまうとうまくいきません。上下でズレます。</li>
+          </ul>
 
-					<div class="demo demo--height">
-						<h4 class="lineHeight">2：line-heightとtext-alignを使う方法</h4>
-					</div>
-					<ul>
-						<li>2つ目は、line-heightと text-alignを使う方法です。</li>
-						<li>上下は line-heightで中央揃えにし、左右は text-alignで中央揃えにしています。</li>
-						<li>親要素の heightの値を変更するときは、忘れずに line-heightの値も変更する必要があります。少し手間です。</li>
-					</ul>
+          <div class="demo demo--height">
+            <h4 class="lineHeight">2：line-heightとtext-alignを使う方法</h4>
+          </div>
+          <ul>
+            <li>2つ目は、line-heightと text-alignを使う方法です。</li>
+            <li>上下は line-heightで中央揃えにし、左右は text-alignで中央揃えにしています。</li>
+            <li>親要素の heightの値を変更するときは、忘れずに line-heightの値も変更する必要があります。少し手間です。</li>
+          </ul>
 
-					<div class="demo demo--height flexBox">
-						<h4>3：flexを使う方法</h4>
-					</div>
-					<ul>
-						<li>3つ目は、flexを使う方法です。</li>
-						<li>上下は align-itemsで中央揃えにし、左右は justify-contentで中央揃えにしています。</li>
-						<li>親要素に heightが指定されていてもいなくてもどちらでも大丈夫です。</li>
-						<li>IE11にも対応しています。</li>
-					</ul>
-					
-					<div class="demo demo--height displayGrid">
-						<h4>4：gridを使う方法</h4>
-					</div>
-					<ul>
-						<li>4つ目は、gridを使う方法です。</li>
-						<li>上下左右を place-itemsで中央揃えにしています。</li>
-						<li>親要素に heightが指定されていてもいなくてもどちらでも大丈夫です。</li>
-						<li>残念ながら、IE11に対応していません。</li>
-					</ul>
+          <div class="demo demo--height flexBox">
+            <h4>3：flexを使う方法</h4>
+          </div>
+          <ul>
+            <li>3つ目は、flexを使う方法です。</li>
+            <li>上下は align-itemsで中央揃えにし、左右は justify-contentで中央揃えにしています。</li>
+            <li>親要素に heightが指定されていてもいなくてもどちらでも大丈夫です。</li>
+            <li>IE11にも対応しています。</li>
+          </ul>
+          
+          <div class="demo demo--height displayGrid">
+            <h4>4：gridを使う方法</h4>
+          </div>
+          <ul>
+            <li>4つ目は、gridを使う方法です。</li>
+            <li>上下左右を place-itemsで中央揃えにしています。</li>
+            <li>親要素に heightが指定されていてもいなくてもどちらでも大丈夫です。</li>
+            <li>残念ながら、IE11に対応していません。</li>
+          </ul>
 
 
 
-				</section>
-				<!-- /.content -->
-				<section class="content">
-					<h3 class="heading-3">コード</h3>
-					<h4 class="heading-4">HTML</h4>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
 &lt;header class="header"&gt;
-	&lt;h1 class="title">タイトル&lt;/h1&gt;
+  &lt;h1 class="title">タイトル&lt;/h1&gt;
 &lt;/div&gt;
 </code>
 </pre>
 
-				<h4 class="heading-4">CSS</h4>
+        <h4 class="heading-4">CSS</h4>
 <pre class="code">
 <code>
 /* 1：paddingと text-alignを使う方法 */
 .title {
-	padding: 2em 1em;
-	text-align: center;
+  padding: 2em 1em;
+  text-align: center;
 }
 
 /* 2：line-heightと text-alignを使う方法 */
 .header {
-	height: 120px;
+  height: 120px;
 }
 .title {
-	line-height: 120px;
-	text-align: center;
+  line-height: 120px;
+  text-align: center;
 }
 
 /* 3：flexを使う方法 */
 .title {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 4：gridを使う方法 */
 .title {
-	display: grid;
-	place-items: center;
+  display: grid;
+  place-items: center;
 }
 </code>
 </pre>
 
-				</section>
-				<!-- /.content -->
-			</section>
-			<!-- /.contents -->
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
 
-			<section class="contents">
-				<h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
-				<section class="content">
-					<ul>
-						<li><a href="https://yellowredfox.github.io/sample-code/1">ヘッダーを画面いっぱいに表示する方法</a></li>
-					</ul>
-				</section>
-				<!-- /.content -->
-			</section>
-			<!-- /.contents -->
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/1">ヘッダーを画面いっぱいに表示する方法</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
 
-			<section class="contents">
-				<h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
-				<section class="content">
-					<h3 class="heading-3">あとがき</h3>
-					<p>どれが優れているということはなく、今のところ状況に応じて使い分けています。今後さらに、いろいろと良い方法が出てくると思うので、どのようにするのが良いものか見直しつつ書き加えていきます。</p>
-					<ul>
-						<li>親要素に heightを指定しなくて良いデザインレイアウトであれば、「1：paddingと text-alignを使う方法」で済ます。</li>
-						<li>親要素に heightを指定する場合は、「3：flexを使う方法」を使う。</li>
-						<li>今後は、「4：gridを使う方法」が増えていくかもしれない。</li>
-					</ul>
-				</section>
-				<!-- /.content -->
-				<section class="content">
-					<h3 class="heading-3">参考資料</h3>
-					<p>参考にさせていただきました。ありがとうございました。</p>
-					<ul>
-						<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/align-items" target="_blank">align-items - CSS: カスケーディングスタイルシート | MDN</a></li>
-						<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/justify-content" target="_blank">justify-content - CSS: カスケーディングスタイルシート | MDN</a></li>
-						<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/place-items" target="_blank">place-items - CSS: カスケーディングスタイルシート | MDN</a></li>
-					</ul>
-				</section>
-				<!-- /.content -->
-			</section>
-			<!-- /.contents -->
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <p>どれが優れているということはなく、今のところ状況に応じて使い分けています。今後さらに、いろいろと良い方法が出てくると思うので、どのようにするのが良いものか見直しつつ書き加えていきます。</p>
+          <ul>
+            <li>親要素に heightを指定しなくて良いデザインレイアウトであれば、「1：paddingと text-alignを使う方法」で済ます。</li>
+            <li>親要素に heightを指定する場合は、「3：flexを使う方法」を使う。</li>
+            <li>今後は、「4：gridを使う方法」が増えていくかもしれない。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/align-items" target="_blank">align-items - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/justify-content" target="_blank">justify-content - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/place-items" target="_blank">place-items - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
 
-			<div class="postFooter">
-				<div class="postDate">
-					作成日: <time class="releaseDate" datetime="2021-5-13">2021年5月13日</time>
-				</div>
-				<div class="postAuthor">
-					投稿者: イールド
-				</div>
-			</div>
-			<!-- /.postFooter -->
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-5-13">2021年5月13日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
 
-		</div>
-		<!-- /.main__inner -->
-	</main>
-	
-	<footer class="footer">
-		<div class="footer__inner">
-			<div class="profile">
-				<a class="backSignboard" href="https://yellowredfox.github.io/">
-					<img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
-					<h2 class="backSignboard__title">キアカラボ</h2>
-				</a>
-				<p class="office">
-					キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank">月の森デザイン</a>」の姉妹サイトです。
-				</p>
-			</div>
-			<div class="copyright">
-				<p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/">月の森デザイン</a> All Rights Reserved.</small></p>
-			</div>
-		</div>
-	</footer>
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <a class="backSignboard" href="https://yellowredfox.github.io/">
+          <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+          <h2 class="backSignboard__title">キアカラボ</h2>
+        </a>
+        <p class="office">
+          キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

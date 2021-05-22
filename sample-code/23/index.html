@@ -6,69 +6,82 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/14">
-  <title>object-fitで画像を画面いっぱいに表示する方法</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/23">
+  <title>ヘッダーを固定する方法（position: fixed;版）</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="CSSのobject-fitプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
+  <meta name="description" content="「position: fixed;」を使って、ヘッダーを固定する方法です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="object-fitで画像を画面いっぱいに表示する方法">
-  <meta property="og:description" content="CSSのobject-fitプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
+  <meta property="og:title" content="ヘッダーを固定する方法（position: fixed;版）">
+  <meta property="og:description" content="「position: fixed;」を使って、ヘッダーを固定する方法です。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/14">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/23">
 </head>
 <body>
 
   <header class="header">
     <div class="header__container">
-      <h1 class="siteTitle">object-fitで画像を画面いっぱいに表示する方法</h1>
+      <h1 class="siteTitle">ヘッダーを固定する方法<br class="siteTitle__br">（position: fixed;版）</h1>
     </div>
   </header>
 
-  <div class="mainVisual">
-    <img class="mainVisual__img" src="mainVisual.jpg" alt="object-fitを使ってメインビジュアル写真（ヒーローイメージ）を表示">
-  </div>
-
   <main class="main">
     <div class="main__inner">
-
       <section class="contents">
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、CSSの object-fitプロパティを使って、画像を画面いっぱいに表示する方法について書きます。前回は、backgroundを使用して、いわゆるヒーローイメージを設定しましたが、今回は object-fitプロパティを使います。ポイントは以下ようです。</p>
+          <p>今回は、ヘッダーを固定する方法です。positionプロパティに fixedを指定することで、ヘッダーを固定します。仕様は以下ようです。</p>
           <ul>
-            <li>img要素を使って画像を表示する。img要素を指定することで、画像検索の対象となりやすくなる。</li>
-            <li>widthに 100%、heightに 100vhを指定。画像の元サイズが幅 1920pxなので、max-widthで 1920pxを指定。max-widthを指定することで、画質をたもつ。</li>
-            <li>object-fitに coverを指定。coverを指定することで、レスポンシブ対応となる。スマホやタブレットで表示しても歪むことがない。</li>
+            <li>親要素を起点にしておきたいので、header要素に「position: relative;」を指定します。</li>
+            <li>header要素に width・heightを指定し、固定するヘッダーの領域を確保します。</li>
+            <li>header要素の中にコンテナ（.header__container）を用意し、コンテナに「position: fixed;」を指定することでヘッダーを固定します。位置をずらす必要はないので、「top: 0;」、「left: 0;」を指定します。</li>
+            <li>flex関連のプロパティは、上下左右中央揃えにするために指定しています。</li>
+            <li>ヘッダーの固定表示により、息苦しくならないように、コンテナ（.header__container）の背景色は透過指定しています。</li>
           </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">コード</h3>
+
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div class="mainVisual"&gt;
-  &lt;img class="mainVisual__img" src="mainVisual.jpg"&gt;
-&lt;/div&gt;
-</code>
+&lt;header class="header"&gt;
+  &lt;div class="header__container"&gt;
+    &lt;h1 class="siteTitle"&gt;ヘッダーを固定する方法&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
 </code>
 </pre>
-
+  
           <h4 class="heading-4">CSS</h4>
 <pre class="code">
 <code>
-.mainVisual__img {
+.header {
+  position: relative;
   width: 100%;
-  max-width: 1920px;
-  height: 100vh;
-  object-fit: cover;
+  height: 105px;
+}
+.header__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, .85);
+}
+.siteTitle {
+  text-align: center;
 }
 </code>
 </pre>
-
+  
         </section>
         <!-- /.content -->
       </section>
@@ -78,37 +91,40 @@
         <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/13">backgroundで画像を画面いっぱいに表示する方法</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/24">ヘッダーを固定する方法（position: sticky;版）</a></li>
           </ul>
         </section>
         <!-- /.content -->
       </section>
       <!-- /.contents -->
-
+  
       <section class="contents">
         <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>object-fitプロパティには他にも、video要素（動画）にも活用できるという利点があります。この辺は、カルーセルスライダーと競合するのか、用途に応じた棲み分けがなされていくのか、いかがなものでしょう。</li>
-            <li>object-positionプロパティを使えば、画像の位置を柔軟に変更することも可能です。</li>
-            <li>IE対応のサイトにしたいときは、<a href="https://yellowredfox.github.io/sample-code/13">backgroundで表示する方法</a>を利用するほうが良いかもしれません。</li>
+            <li>ヘッダーを固定する主な利点は、Call To Actionを高める効果が期待できるところかと思います。スクロールしてもヘッダー部分を残すことで、お問い合わせページへのリンクや電話番号を表示し続けることができます。</li>
+            <li>ただその反面、ヘッダーの高さ（height）によってコンテンツ部分が狭くなり、肝心の文章が読みにくくなることが懸念されます。使用するのであれば、煩わしさを感じさせない配慮は必要になりそうです。</li>
+            <li>「will-change: transform;」の指定は見合わせました。パフォーマンスやアクセシビリティの問題を引き起こす場合は、必要になりそうです。</li>
           </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
+          <p>参考になりました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/object-fit">object-fit - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/position" target="_blank">position - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/will-change" target="_blank">will-change - CSS: カスケーディングスタイルシート | MDN</a></li>
           </ul>
         </section>
         <!-- /.content -->
       </section>
       <!-- /.contents -->
 
+
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-5-12">2021年5月12日</time>
+          作成日: <time class="releaseDate" datetime="2021-5-22">2021年5月22日</time>
         </div>
         <div class="postAuthor">
           投稿者: イールド
@@ -142,8 +158,6 @@
     <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
     <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
   </noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="main.js"></script>
 
 </body>
 </html>

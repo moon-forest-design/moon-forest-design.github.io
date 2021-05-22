@@ -41,11 +41,11 @@
           <p><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画面いっぱいに表示した画像</a>を固定することで、スクロールすると画像の下に位置するコンテンツ部分（main要素）が少しずつかぶっていくような表示になります。</p>
           <p>やっていることは、前回の <a href="https://yellowredfox.github.io/sample-code/21">background-attachmentで背景画像を固定する方法</a>と同じですが、background-attachmentプロパティは Safari（iOS）がまだ十分に対応できていないようなので、他のやり方も検討しておくことにしました。ポイントは以下ようです。</p>
           <ul>
-						<li>img要素を入れる親要素を起点とするために「position: relative;」を指定し、「height: 100vh;」も指定しておきます。親要素にも「height: 100vh;」しておかないとダメみたいです。</li>
-						<li>img要素を固定するために「position: fixed;」、「top: 0;」、「left: 0;」を指定します。また、レイヤーを下層にしたいので「z-index: -1;」も指定します。</li>
-						<li>この背景画像部分（mainVisual）とその下に表示するコンテンツ（main要素）との間は margin-bottomを使用していましたが、効かないようなので、コンテンツ側に paddingを入れて調整しました。</li>
-						<li>コンテンツ（main要素）に背景色をつけていない場合は透過してしまうので、色を指定しました。</li>
-						<li>コンテンツ（main要素）と footer要素の間に margin-bottomを入れると隙間ができて、再び背景画像が出現するかのような表現になります。たまたまこうなったのですが、こういう形にしているホームページがどこかにあったような気がするので、そのままにしてあります。</li>
+            <li>img要素を入れる親要素を起点とするために「position: relative;」を指定し、「height: 100vh;」も指定しておきます。親要素にも「height: 100vh;」しておかないとダメみたいです。</li>
+            <li>img要素を固定するために「position: fixed;」、「top: 0;」、「left: 0;」を指定します。また、レイヤーを下層にしたいので「z-index: -1;」も指定します。</li>
+            <li>この背景画像部分（mainVisual）とその下に表示するコンテンツ（main要素）との間は margin-bottomを使用していましたが、効かないようなので、コンテンツ側に paddingを入れて調整しました。</li>
+            <li>コンテンツ（main要素）に背景色をつけていない場合は透過してしまうので、色を指定しました。</li>
+            <li>コンテンツ（main要素）と footer要素の間に margin-bottomを入れると隙間ができて、再び背景画像が出現するかのような表現になります。たまたまこうなったのですが、こういう形にしているホームページがどこかにあったような気がするので、そのままにしてあります。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -90,9 +90,9 @@
         <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-						<li><a href="https://yellowredfox.github.io/sample-code/21">background-attachmentで背景画像を固定する方法</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/21">background-attachmentで背景画像を固定する方法</a></li>
             <li><a href="https://yellowredfox.github.io/sample-code/13">backgroundで画像を画面いっぱいに表示する方法</a></li>
-						<li><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
           </ul>
         </section>
         <!-- /.content -->

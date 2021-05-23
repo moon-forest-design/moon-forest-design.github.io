@@ -61,7 +61,7 @@ const outputView = (_json) => {
 		const htmlTemplate = `
 			<div class="col-sm-12 col-md-4 col-lg-3 col-xl-2">
 				<section class="mx-2 mb-5">
-					<a href="j.html_url" class="text-warning">
+					<a href="${j.html_url}" class="text-warning" target="_blank" rel="noopener noreferrer">
 				
 						<div><span class="display-4 font-weight-bold">${rankingCnt}</span> ( ★ ${j.stargazers_count} )</div>
 						

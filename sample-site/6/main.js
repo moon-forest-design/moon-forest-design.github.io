@@ -28,7 +28,7 @@ $(function() {
 	const doneProcess = (_data) => {
 		$.each(_data, function(i, _xhr){
 			let $profImg = $("<td>").append($("<img>").attr("src", _xhr.user.profile_image_url).attr("alt", _xhr.user.id).attr("class", "user-img")); // 投稿者の画像を設定。CSS（.user-img）で画像の大きさを調整するためclass属性もつけた
-			let $anchorTitle = $("<td>").attr("class", "anchor-title").append($("<a>").attr("href", _xhr.url).text(_xhr.title)); // リンク付きの記事タイトルを設定
+			let $anchorTitle = $("<td>").attr("class", "anchor-title").append($("<a>").attr("href", _xhr.url).attr("target", "_blank").attr("rel", "noopener noreferrer").text(_xhr.title)); // リンク付きの記事タイトルを設定
 			let $likesCount = $("<td>").text(_xhr.likes_count); // いいね数を設定
 			let $tableRow = $("<tr>").append($profImg).append($anchorTitle).append($likesCount); // 上述の画像・記事タイトル・いいね数をまとめる
 			$("#titleLists").append($tableRow); // 表示エリアtitleListsに、tableRowの内容をエスケープ後に書き出す

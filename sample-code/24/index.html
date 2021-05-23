@@ -6,23 +6,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/23">
-  <title>ヘッダーを固定する方法（position: fixed;版）</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/24">
+  <title>ヘッダーを固定する方法（position: sticky;版）</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="「position: fixed;」を使って、ヘッダーを固定する方法です。">
+  <meta name="description" content="「position: sticky;」を使って、ヘッダーを固定する方法です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="ヘッダーを固定する方法（position: fixed;版）">
-  <meta property="og:description" content="「position: fixed;」を使って、ヘッダーを固定する方法です。">
+  <meta property="og:title" content="ヘッダーを固定する方法（position: sticky;版）">
+  <meta property="og:description" content="「position: sticky;」を使って、ヘッダーを固定する方法です。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/23">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/24">
 </head>
 <body>
 
   <header class="header">
     <div class="header__container">
-      <h1 class="siteTitle">ヘッダーを固定する方法<br class="siteTitle__br">（position: fixed;版）</h1>
+      <h1 class="siteTitle">ヘッダーを固定する方法<br class="siteTitle__br">（position: sticky;版）</h1>
     </div>
   </header>
 
@@ -32,13 +32,13 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、ヘッダーを固定する方法です。positionプロパティに fixedを指定することで、ヘッダーを固定します。仕様は以下ようです。</p>
+          <p>今回も、ヘッダーを固定する方法について書きます。前回は、<a href="https://yellowredfox.github.io/sample-code/23">positionプロパティに fixedを指定することで、ヘッダーを固定</a>しまたが、今回は stickyを試してみます。仕様は以下ようです。</p>
           <ul>
-            <li>親要素を起点にしておきたいので、header要素に「position: relative;」を指定します。</li>
+            <li>header要素に「position: sticky;」を指定します。（※：stickyを使用したい場合は、きょうだい要素が必要です。）</li>
+            <li>今回は位置をずらす必要はないので、「top: 0;」を指定します。</li>
             <li>header要素に width・heightを指定し、固定するヘッダーの領域を確保します。</li>
-            <li>header要素の中にコンテナ（.header__container）を用意し、コンテナに「position: fixed;」を指定することでヘッダーを固定します。今回は位置をずらす必要はないので、「top: 0;」を指定します。</li>
             <li>flex関連のプロパティは、上下左右中央揃えにするために指定しています。</li>
-            <li>ヘッダーの固定表示により、息苦しくならないように、コンテナ（.header__container）の背景色は透過指定しています。</li>
+            <li>ヘッダーの固定表示により、息苦しくならないように、header要素の背景色は透過指定しています。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -60,18 +60,14 @@
 <pre class="code">
 <code>
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 105px;
-}
-.header__container {
-  position: fixed;
-  top: 0;
-  width: inherit;
-  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10em;
   color: #fff;
   background-color: rgba(0, 0, 0, .85);
 }
@@ -90,7 +86,7 @@
         <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/24">ヘッダーを固定する方法（position: sticky;版）</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/23">ヘッダーを固定する方法（position: fixed;版）</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -102,9 +98,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>ヘッダーを固定する主な利点は、Call To Actionを高める効果が期待できるところかと思います。スクロールしてもヘッダー部分を残すことで、お問い合わせページへのリンクや電話番号を表示し続けることができます。</li>
-            <li>ただその反面、ヘッダーの高さ（height）によってコンテンツ部分が狭くなり、肝心の文章が読みにくくなることが懸念されます。使用するのであれば、煩わしさを感じさせない配慮は必要になりそうです。</li>
-            <li>「will-change: transform;」の指定は見合わせました。パフォーマンスやアクセシビリティの問題を引き起こす場合は、必要になりそうです。</li>
+            <li>ヘッダーを固定するためだけに stickyを使うのは過分かもしれません。ブラウザの対応状況も考えれば、<a href="https://yellowredfox.github.io/sample-code/23">position: fixed;</a>を使うほうが良さそうです。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -113,7 +107,6 @@
           <p>参考になりました。ありがとうございました。</p>
           <ul>
             <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/position" target="_blank">position - CSS: カスケーディングスタイルシート | MDN</a></li>
-            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/will-change" target="_blank">will-change - CSS: カスケーディングスタイルシート | MDN</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -123,7 +116,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-5-22">2021年5月22日</time>
+          作成日: <time class="releaseDate" datetime="2021-5-23">2021年5月23日</time>
         </div>
         <div class="postAuthor">
           投稿者: イールド

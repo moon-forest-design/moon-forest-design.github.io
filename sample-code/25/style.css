@@ -16,25 +16,23 @@ body {
   color: #302833;
   background-color: #fffffc;
 }
+h1 {
+  line-height: 1;
+}
 
 
 /* header
 ================================================== */
 .header {
-  position: relative;
-  color: #fffffc;
-}
-.header__container {
-  position: absolute;
   display: flex;
   justify-content: center;
-  width: 100%;
-  max-width: 1920px;
-  padding: 3em 1em;
-  box-sizing: border-box;
-  background-color: rgba(0, 0, 0, .5);
+  align-items: center;
+  height: 130px;
+  color: #fffffc;
+  background-color: #302833;
 }
 .siteTitle {
+  text-align: center;
   letter-spacing: .1em;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
@@ -54,12 +52,54 @@ body {
 }
 
 
+/* nav
+================================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  color: #fffffc;
+  background-color: #302833;
+}
+.navList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  list-style-type: none;
+}
+.navList__item {
+  width: 100%;
+}
+.navList__link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (max-width: 576px) { /* スマホ用 */
+  .navList {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
+  .navList {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .navList {
+    font-size: 1.8rem;
+  }
+}
+
+
 /* mainVisual
 ================================================== */
 .mainVisual__img {
   width: 100%;
   max-width: 1920px;
-  height: 100vh;
+  height: calc(100vh - 150px - 5em);
   object-fit: cover;
 }
 

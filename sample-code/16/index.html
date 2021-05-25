@@ -33,12 +33,13 @@
       <h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、タイトルを上下左右で中央揃えにする方法について書きます。よく知られているものを 4通りだけ書きました。サンプルとして、以下の見出し部分を上下左右で中央揃えにしてあります。</p>
+          <p>今回は、タイトルを上下左右で中央揃えにする方法について書きます。よく知られているものを 5通りだけ書きました。サンプルとして、以下の見出し部分を上下左右で中央揃えにしてあります。</p>
           <ol>
             <li>paddingと text-alignを使う方法</li>
             <li>line-heightと text-alignを使う方法</li>
             <li>flexを使う方法</li>
             <li>gridを使う方法</li>
+            <li>table-cellを使う方法</li>
           </ol>
           <p>サンプルとして、以下の見出し部分を上下左右で中央揃えにしてあります。背景色が淡い橙色（赤みが少しあるクリーム色）の部分です。見出しの下にそれぞれの説明を入れています。</p>
 
@@ -46,7 +47,7 @@
             <h4 class="noheight">1：paddingと text-alignを使う方法</h4>
           </div>
           <ul>
-            <li>1つ目は、paddingと text-alignを使う方法です。</li>
+            <li>1つ目は、paddingと text-alignプロパティを使う方法です。</li>
             <li>上下は paddingで中央揃えにし、左右は text-alignで中央揃えにしています。</li>
             <li>親要素に heightを指定してしまうとうまくいきません。上下でズレます。</li>
           </ul>
@@ -55,7 +56,7 @@
             <h4 class="lineHeight">2：line-heightとtext-alignを使う方法</h4>
           </div>
           <ul>
-            <li>2つ目は、line-heightと text-alignを使う方法です。</li>
+            <li>2つ目は、line-heightと text-alignプロパティを使う方法です。</li>
             <li>上下は line-heightで中央揃えにし、左右は text-alignで中央揃えにしています。</li>
             <li>親要素の heightの値を変更するときは、忘れずに line-heightの値も変更する必要があります。少し手間です。</li>
           </ul>
@@ -64,8 +65,8 @@
             <h4>3：flexを使う方法</h4>
           </div>
           <ul>
-            <li>3つ目は、flexを使う方法です。</li>
-            <li>上下は align-itemsで中央揃えにし、左右は justify-contentで中央揃えにしています。</li>
+            <li>3つ目は、flex（display: flex;）を使う方法です。</li>
+            <li>上下は align-itemsプロパティで中央揃えにし、左右は justify-contentプロパティで中央揃えにしています。</li>
             <li>親要素に heightが指定されていてもいなくてもどちらでも大丈夫です。</li>
             <li>IE11にも対応しています。</li>
           </ul>
@@ -74,10 +75,23 @@
             <h4>4：gridを使う方法</h4>
           </div>
           <ul>
-            <li>4つ目は、gridを使う方法です。</li>
-            <li>上下左右を place-itemsで中央揃えにしています。</li>
+            <li>4つ目は、grid（display: grid;）を使う方法です。</li>
+            <li>上下左右を place-itemsプロパティで中央揃えにしています。</li>
             <li>親要素に heightが指定されていてもいなくてもどちらでも大丈夫です。</li>
             <li>残念ながら、IE11に対応していません。</li>
+          </ul>
+          
+          <div class="demo demo--height displayTable">
+            <div class="displayTable__inner">
+              <h4 class="displayTableCell">5：table-cellを使う方法</h4>
+            </div>
+          </div>
+          <ul>
+            <li>5つ目は、table（display: table-cell;）を使う方法です。</li>
+            <li>上下は 子要素に「display: table-cell;」「vertical-align: middle;」することで中央揃えにし、左右は 親要素に「display: inline-block;」、及び大親要素で「text-align: center;」することにより中央揃えしています。</li>
+            <li>親要素に heightを指定しなければいけません。子要素は heightを継承する必要があります。</li>
+            <li>HTML側で、div要素（.header__inner）を増やす必要があります。手間が増えます。</li>
+            <li>IE11にも対応しています。</li>
           </ul>
 
 
@@ -89,9 +103,17 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
+&lt;-- 1～4用 --&gt;
 &lt;header class="header"&gt;
   &lt;h1 class="title">タイトル&lt;/h1&gt;
-&lt;/div&gt;
+&lt;/header&gt;
+
+&lt;-- 5：table-cell用 --&gt;
+&lt;header class="header"&gt;
+  &lt;div class="header__inner"&gt;
+    &lt;h1 class="title">タイトル&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
 </code>
 </pre>
 
@@ -114,16 +136,30 @@
 }
 
 /* 3：flexを使う方法 */
-.title {
+.header {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 /* 4：gridを使う方法 */
-.title {
+.header {
   display: grid;
   place-items: center;
+}
+
+/* 5：tableを使う方法 */
+.header {
+  text-align: center;
+}
+.header__inner {
+  display: inline-block;
+  height: inherit;
+}
+.title {
+  display: table-cell;
+  height: inherit;
+  vertical-align: middle;
 }
 </code>
 </pre>
@@ -150,9 +186,9 @@
           <h3 class="heading-3">あとがき</h3>
           <p>どれが優れているということはなく、今のところ状況に応じて使い分けています。今後さらに、いろいろと良い方法が出てくると思うので、どのようにするのが良いものか見直しつつ書き加えていきます。</p>
           <ul>
-            <li>親要素に heightを指定しなくて良いデザインレイアウトであれば、「1：paddingと text-alignを使う方法」で済ます。</li>
-            <li>親要素に heightを指定する場合は、「3：flexを使う方法」を使う。</li>
-            <li>今後は、「4：gridを使う方法」が増えていくかもしれない。</li>
+            <li>親要素に heightを指定しなくて良いデザインレイアウトであれば、「1：paddingと text-alignを使う方法」で済みます。</li>
+            <li>親要素に heightを指定する場合は、「3：flexを使う方法」を使います。</li>
+            <li>今後は、「4：gridを使う方法」が増えていくかもしれません。</li>
           </ul>
         </section>
         <!-- /.content -->

@@ -168,7 +168,18 @@ h1 {
   display: grid;
   place-items: center;
 }
-
+.displayTable {
+  text-align: center;
+}
+.displayTable__inner {
+  display: inline-block;
+  height: inherit;
+}
+.displayTableCell {
+  display: table-cell;
+  height: inherit;
+  vertical-align: middle;
+}
 
 /* footer
 ================================================== */

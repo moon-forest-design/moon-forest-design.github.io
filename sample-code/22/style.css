@@ -21,11 +21,9 @@ body {
 /* header
 ================================================== */
 .header {
-  /* position: relative; */
   color: #fffffc;
 }
 .header__container {
-  /* position: absolute; */
   display: flex;
   justify-content: center;
   width: 100%;
@@ -107,7 +105,7 @@ body {
 ================================================== */
 .contents {
   font-size: 1.6rem;
-  margin-bottom: 10rem;
+  margin-bottom: 10em;
 }
 .heading-2 {
   font-size: 2rem;

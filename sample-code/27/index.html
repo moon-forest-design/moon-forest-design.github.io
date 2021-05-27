@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/27">
+  <title>画像3枚を並べてフル画面表示する方法</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="画像3枚を並べてフル画面表示する方法です。object-fitプロパティやcalc()等を使用。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="画像3枚を並べてフル画面表示する方法">
+  <meta property="og:description" content="画像3枚を並べてフル画面表示する方法です。object-fitプロパティやcalc()等を使用。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/27">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">画像3枚を並べてフル画面表示する方法</h1>
+    </div>
+  </header>
+  
+  <ul class="mainVisual">
+    <li class="mainVisual__item"><img class="mainVisual__img" src="fruits-bananas.jpg" alt="バナナの写真"></li>
+    <li class="mainVisual__item"><img class="mainVisual__img" src="fruits-strawberries.jpg" alt="いちごの写真"></li>
+    <li class="mainVisual__item"><img class="mainVisual__img" src="fruits-pear.jpg" alt="梨の写真"></li>
+  </ul>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、画像3枚を並べてフル画面表示する方法について書きます。ポイントは以下ようです。</p>
+          <ul>
+            <li>ul要素にリストを用意し、画像を 3枚入れます。ul要素には class名 .mainVisualを指定し、flexをかけます。</li>
+            <li>各 li要素（.mainVisual__item）の幅は、calc()で算出します。これで横幅いっぱいに表示します。</li>
+            <li>各 img要素（.mainVisual__img）の高さは 100vhを指定し、「object-fit: cover;」をあてることで縦の高さいっぱいで表示できます。</li>
+            <li>スマートフォンでは、3枚の画像を横並びにせず、縦に並ぶ形にしました。レスポンシブ対応。</li>
+          </ul>
+
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;ul class="mainVisual"&gt;
+  &lt;li class="mainVisual__item"&gt;&lt;img class="mainVisual__img" src="fruits-bananas.jpg"&gt;&lt;/li&gt;
+  &lt;li class="mainVisual__item"&gt;&lt;img class="mainVisual__img" src="fruits-strawberries.jpg"&gt;&lt;/li&gt;
+  &lt;li class="mainVisual__item"&gt;&lt;img class="mainVisual__img" src="fruits-pear.jpg"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
+  
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.mainVisual {
+  display: flex;
+  list-style-type: none;
+}
+.mainVisual__item {
+  width: calc(100% / 3);
+}
+.mainVisual__img {
+  height: 100vh;
+  object-fit: cover;
+}
+@media screen and (max-width: 576px) { /* スマホ用 */
+  .mainVisual {
+    flex-direction: column;
+  }
+  .mainVisual__item {
+    width: 100%;
+  }
+  .mainVisual__img {
+    height: calc(100vh / 3);
+  }
+}
+</code>
+</pre>
+  
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/18">カード</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+  
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>calc()は、割り切れない値でもうまいこと処理してくれるらしいのでありがたいです。太古の昔みたいに「33%でいいか、しょうがないよ」みたいなことをしなくて良いので助かります。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考になりました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/calc()">calc() - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/object-fit">object-fit - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-5-27">2021年5月27日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <a class="backSignboard" href="https://yellowredfox.github.io/">
+          <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+          <h2 class="backSignboard__title">キアカラボ</h2>
+        </a>
+        <p class="office">
+          キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+
+</body>
+</html>

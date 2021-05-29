@@ -157,56 +157,6 @@ img, svg {
 }
 
 
-/* mediaBox
-================================================== */
-.mediaBox {
-  padding: 6em 0;
-}
-.media {
-  display: flex;
-  margin-bottom: 5em;
-}
-.media:nth-child(even) {
-  flex-direction: row-reverse;
-}
-.mediaThumbnail {
-  flex: 0 1 30%;
-}
-.mediaThumbnail__img {
-  width: 100%;
-  vertical-align: top;
-  border-radius: 2px;
-}
-.mediaContent {
-  flex: 1;
-  padding: 0 2em;
-}
-.mediaTitle {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: .5em;
-}
-.mediaTitle__link {
-  text-decoration: none;
-  color: inherit;
-}
-@media screen and (max-width: 767px) { /* スマホ用 */
-  .media {
-    flex-direction: column;
-  }
-  .mediaThumbnail__img {
-    margin-bottom: 1em;
-  }
-  .mediaContent {
-    padding: 0;
-  }
-  .mediaTitle {
-    text-align: center;
-  }
-}
-
-
-
 /* footer
 ================================================== */
 .footer {

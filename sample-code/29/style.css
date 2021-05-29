@@ -2,7 +2,7 @@
 
 /* base
 ================================================== */
-body, h1, h2, p, ul, li, figure {
+body, h1, h2, p, ul, li, dl, dt, dd, figure {
   margin: 0;
   padding: 0;
 }
@@ -17,6 +17,9 @@ body {
   color: #302833;
   background-color: #fffffc;
 }
+h1 {
+  line-height: 1;
+}
 img {
   max-width: 100%;
 }
@@ -28,25 +31,20 @@ img, svg {
 /* header
 ================================================== */
 .header {
-  position: relative;
+  margin-bottom: 10em;
   color: #fffffc;
+  background-color: #302833;
 }
 .header__container {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 1920px;
-  padding: 3em 1em;
-  box-sizing: border-box;
-  background-color: rgba(0, 0, 0, .5);
+  padding: 3em 1em 2em;
 }
 .siteTitle {
+  text-align: center;
   letter-spacing: .1em;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
@@ -61,30 +59,22 @@ img, svg {
 }
 
 
-/* mainVisual
+/* accordion
 ================================================== */
-.mainVisual {
-  display: flex;
-  margin-bottom: 10em;
-  list-style-type: none;
+.accordion {
+  font-size: 1.7rem;
+  margin-bottom: 8em;
 }
-.mainVisual__item {
-  width: calc(100% / 3);
+.question {
+  padding: 1em;
+  cursor: pointer;
+  border-bottom: 2px solid #fffffc;
+  background-color: #e6cde3;
 }
-.mainVisual__img {
-  height: 100vh;
-  object-fit: cover;
-}
-@media screen and (max-width: 576px) { /* スマホ用 */
-  .mainVisual {
-    flex-direction: column;
-  }
-  .mainVisual__item {
-    width: 100%;
-  }
-  .mainVisual__img {
-    height: calc(100vh / 3);
-  }
+.answer {
+  display: none;
+  padding: 1em;
+  background-color: #fffffc;
 }
 
 

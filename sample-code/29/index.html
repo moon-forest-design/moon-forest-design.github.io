@@ -35,13 +35,13 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <p>今回は、アコーディオン Q&Aについて書きます。ポイントは以下ようです。</p>
-          <ol>
+          <ul>
             <li>Q&Aは、dl要素で組みます。dt要素に .question（質問）、dd要素に .answer（回答）という class名をつけてあります。</li>
             <li>クリックできる場所だと分かりやすいように、.questionには「cursor: pointer;」を指定してあります。</li>
             <li>.answerは、初期状態では非表示にしたいので「display: none;」を指定してあります。</li>
             <li>jQueryを使用しています。クリックされたら、一度 hide()メソッドですべて閉じます。そして、slideToggle()メソッドでクリックされた要素（this）を開く仕組みです。</li>
             <li>next()メソッドは、クリックされた要素（this）の弟要素に対して slideToggle()をかけるために使用しています。</li>
-          </ol>
+          </ul>
 
           <h4 class="heading-4">「アコーディオン Q&A」に関するご質問と回答</h4>
           <dl class="accordion">

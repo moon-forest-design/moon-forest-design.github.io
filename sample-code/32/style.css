@@ -83,6 +83,26 @@ img, svg {
 }
 
 
+/* sample
+================================================== */
+.sample {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 0;
+}
+.thumbnail {
+  width: calc(100% / 2 - 100px);
+  padding: 20px;
+  background-color: #302833;
+  border-radius: 3px;
+}
+.thumbnail__img {
+  width: 100%;
+  height: 330px;
+  object-fit: contain;
+}
+
+
 /* main
 ================================================== */
 .main {

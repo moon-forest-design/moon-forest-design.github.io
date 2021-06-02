@@ -38,7 +38,16 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、メディアクエリを使用して画像を切り替える方法です。スマートフォン用の画像とそれ以外用の画像を 2枚用意して、メディアクエリで切り替えているだけです。とくに特筆するようなことはありません。</p>
+          <p>今回は、メディアクエリを使用して画像を切り替える方法です。スマートフォン用の縦長の画像とそれ以外用の横長の画像を 2枚用意して、メディアクエリで切り替えています。とくに特筆するようなことはありません。</p>
+
+          <div class="sample">
+            <figure class="thumbnail">
+              <img class="thumbnail__img" src="mainVisual-sp-s.jpg" alt="スマートフォン用の画像">
+            </figure>
+            <figure class="thumbnail">
+              <img class="thumbnail__img" src="mainVisual-pc-s.jpg" alt="それ以外用の画像">
+            </figure>
+          </div>
 
           </section>
         <!-- /.content -->
@@ -60,7 +69,6 @@
 .mainVisual {
   width: 100%;
   height: 100vh;
-  margin-bottom: 10em;
   background-image: url("mainVisual-pc.jpg");
   background-position: center;
   background-size: cover;

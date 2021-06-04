@@ -6,28 +6,28 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/33">
-  <title>ローディング待ちを表示する方法</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/34">
+  <title>Googleマップを表示する方法</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="ローディング待ちを表示する方法です。閲覧者は待ち状態であると認識しやすくなる効果があります。jQuery使用。">
+  <meta name="description" content="Googleマップを埋め込み表示する方法です。横幅をウィンドウ画面いっぱい、高さはそのままに表示したい場合です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="ローディング待ちを表示する方法">
-  <meta property="og:description" content="ローディング待ちを表示する方法です。閲覧者は待ち状態であると認識しやすくなる効果があります。jQuery使用。">
+  <meta property="og:title" content="Googleマップを表示する方法">
+  <meta property="og:description" content="Googleマップを埋め込み表示する方法です。横幅をウィンドウ画面いっぱい、高さはそのままに表示したい場合です。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/33">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/34">
 </head>
 <body>
 
   <header class="header">
     <div class="header__container">
-      <h1 class="siteTitle">ローディング待ちを表示する方法</h1>
+      <h1 class="siteTitle">Googleマップを表示する方法</h1>
     </div>
   </header>
 
-  <div class="loadingWait">
-    <img class="loadingWait__img" src="loading.gif" alt="デモ：ローディング待ち画像">
+  <div class="googleMap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27814513.897056308!2d120.28738306351387!3d31.679643717212578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34674e0fd77f192f%3A0xf54275d47c665244!2z5pel5pys!5e0!3m2!1sja!2sjp!4v1622793985610!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 
   <main class="main">
@@ -36,15 +36,16 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、ローディング待ちを表示する方法について書きます。ローディング待ちとは、画面上に表示されるべきはずの要素がすべて表示されず、閲覧者が待っている状態のことを言います。そのような待ち状態のときに何も表示されないと、何が起きているのか分かりにくいため、閲覧者を不安にさせてしまう可能性があります。</p>
-          <p>閲覧者に不安感を与えないためには、「待ち状態」であることをお伝えするほうが親切です。一般的には、待ち状態であることを伝えために、くるくる回るような画像を使用することが多いようです。</p>
-          <p>何の話だか分からない場合は、ブラウザのリロードボタンを押していただくと、デモ用のローディング待ち画像が改めて表示されるはずです。お試しあれ。</p>
-          <p>制作する上でのポイントは、以下ようです。</p>
-          <ul>
-            <li>ローディング待ちの画像（loading.gif）を用意します。</li>
-            <li>画像（loading.gif）は、CSSで固定配置にして、さらに上下左右中央揃えにします。</li>
-            <li>要素がすべて表示（ロード）されたら、jQueryを使って、非表示に（フェードアウト）しています。</li>
-          </ul>
+          <p>今回は、Googleマップを表示する方法について書きます。横幅をウィンドウ画面いっぱい、高さはそのままに表示したい場合です。導入の作業手順は以下ようです。</p>
+          <ol>
+            <li><a href="https://www.google.com/maps/" target="_blank" rel="noopener noreferrer">Googleマップ</a>へアクセスする。</li>
+            <li>住所を入力し検索する。</li>
+            <li>「共有」ボタンをクリックする。</li>
+            <li>「地図を埋め込む」タブをクリックする。</li>
+            <li>「HTMLをコピー」をクリックする。</li>
+            <li>HTMLファイルの表示したい箇所に貼り付ける。</li>
+            <li>CSSで widthを 100%にする。</li>
+          </ol>
 
           </section>
         <!-- /.content -->
@@ -54,8 +55,8 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div class="loadingWait"&gt;
-  &lt;img class="loadingWait__img" src="loading.gif"&gt;
+&lt;div class="googleMap"&gt;
+  &lt;iframe src="～（省略）～" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 </code>
 </pre>
@@ -63,27 +64,9 @@
           <h4 class="heading-4">CSS</h4>
 <pre class="code">
 <code>
-.loadingWait {
-  width: 100px;
-  height: 100px;
-  position: fixed;
-  top: calc(50% - 50px);
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-}
-.loadingWait__img {
+.googleMap iframe {
   width: 100%;
 }
-</code>
-</pre>
-
-          <h4 class="heading-4">jQuery</h4>
-<pre class="code">
-<code>
-$(function() {
-  $(".loadingWait__img").fadeOut("slow");
-});
 </code>
 </pre>
 
@@ -97,17 +80,13 @@ $(function() {
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>デモ用では、fadeOut(3000)にしてあります。長めに設定しないと一瞬で消えてしまい、デモの意味がなくなるためです。"slow"を指定するか、あるいは指定なしが良いかは、そのサイトによります。</li>
-            <li>フェードアウトではなく、ローディング待ちの画像をさっさと消してしまいたいという方は、fadeOut()ではなく、hide()を使うと良いでしょう。</li>
+            <li>今回は高さを固定していますが、案件によって（あるいは多くの場合？）は縦横比を維持して表示させることもあるようです。一般的には、positionやpaddingを駆使して実現させているようです。しかし面倒くさい印象があります。それなら calc()は使えないのかと思いついて試してみました。例えば、600:450（4:3）なら、「height: calc(100vw * 0.75);」で良さそうです。ところが、vwという単位はスクロールバーの値も含むそうです。微妙に歪むのかな。残念でした。</li>
           </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
-          <p>参考にさせていただいたページはとくにありませんでした。ローディング待ちの画像は、以下のサイトを利用させていただきました。ありがとうございました。</p>
-          <ul>
-            <li><a href="http://www.ajaxload.info/" target="_blank" rel="noopener noreferrer">Ajaxload - Ajax loading gif generator</a></li>
-          </ul>
+          <p>参考にさせていただいたページはとくにありませんでした。</p>
         </section>
         <!-- /.content -->
       </section>
@@ -116,7 +95,7 @@ $(function() {
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-6-3">2021年6月3日</time>
+          作成日: <time class="releaseDate" datetime="2021-6-4">2021年6月4日</time>
         </div>
         <div class="postAuthor">
           投稿者: イールド

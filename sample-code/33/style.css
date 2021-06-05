@@ -168,6 +168,7 @@ img, svg {
 /* footer
 ================================================== */
 .footer {
+  font-family: Verdana, メイリオ, sans-serif;
   background-color: #241c1c;
 }
 .footer__inner {
@@ -175,6 +176,9 @@ img, svg {
 }
 .backSignboard {
   margin: 0 auto 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
 }
 .backSignboard__logo {
@@ -208,12 +212,6 @@ img, svg {
   .profile {
     margin-bottom: 12em;
   }
-  .backSignboard {
-    display: flex;
-    width: 235px;
-    justify-content: center;
-    align-items: center;
-  }
   .backSignboard__logo {
     width: 70px;
     height: 70px;
@@ -221,7 +219,6 @@ img, svg {
   }
   .backSignboard__title {
     font-size: 3rem;
-    width: 155px;
   }
   .office {
     font-size: 1.4rem;
@@ -234,12 +231,6 @@ img, svg {
   .profile {
     margin-bottom: 12em;
   }
-  .backSignboard {
-    display: flex;
-    width: 420px;
-    justify-content: center;
-    align-items: center;
-  }
   .backSignboard__logo {
     width: 100px;
     height: 100px;
@@ -247,7 +238,6 @@ img, svg {
   }
   .backSignboard__title {
     font-size: 6rem;
-    width: 305px;
   }
   .office {
     font-size: 1.6rem;
@@ -257,12 +247,6 @@ img, svg {
 @media screen and (min-width: 992px) { /* それ以外用 */
   .profile {
     margin-bottom: 12em;
-  }
-  .backSignboard {
-    display: flex;
-    width: 420px;
-    justify-content: center;
-    align-items: center;
   }
   .backSignboard__logo {
     width: 100px;
@@ -274,7 +258,6 @@ img, svg {
   }
   .backSignboard__title {
     font-size: 6rem;
-    width: 305px;
   }
   .backSignboard__title:hover {
     color: #fffffc;

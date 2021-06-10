@@ -94,6 +94,14 @@ img, svg, iframe {
   height: 100vh;
   object-fit: cover;
 }
+/* ----- ページネーションの位置 ----- */
+.slick-dots {
+  bottom: 25px;
+}
+/* ----- ページネーションの色 ----- */
+.slick-dots li.slick-active button:before {
+  color: #fff;
+}
 
 
 /* main

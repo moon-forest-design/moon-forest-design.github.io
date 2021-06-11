@@ -42,11 +42,11 @@
           <h3 class="heading-3">要点</h3>
           <p>今回は、カルーセルスライダー「Slick」の使い方です。ポイントは以下ようです。</p>
           <ul>
-            <li>Slick本体はダウンロードしてもいいし、CDNを利用してもどちらでも構わない。今回は、CDNを利用した。</li>
-            <li>slick.cssと slick-theme.cssの後に style.cssを読み込まなければいけない。そうしないと不必要にも、!importantをつけなければいけなくなる。</li>
+            <li>Slick本体はダウンロードしてもいいし、CDNを利用してもどちらでも構わない。今回は、手間が少ないので CDNを利用した。</li>
+            <li>slick.cssと slick-theme.cssの後に style.cssを読み込まなければいけない。そうしないと !importantをつけなければいけなくなる。無意味。順番をまもりましょう。</li>
             <li>jquery.min.jsの後に、slick.min.jsを読み込まなければいけない。Slickは jQueryライブラリなので順番を間違うと動かない。</li>
-            <li>CSSでデザイン等を変更したい場合は、slick-theme.cssを見るといい。</li>
-            <li>.slick-prevの「z-index: 100;」は指定したほうがいいようだ。指定しないと表示されない。</li>
+            <li>CSSでデザイン等を変更したい場合は、slick-theme.cssを見ればいい。slick-theme.cssで指定されている class名に対して、style.cssで追加・変更する形となる。</li>
+            <li>.slick-prevの「z-index: 100;」は指定したほうがいい。他の場所で position系（static以外）の処理を使っていると、階層の問題で表示されなくなることがある。</li>
           </ul>
 
           </section>

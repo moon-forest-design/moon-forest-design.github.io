@@ -6,22 +6,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/40">
-  <title>borderを使った三角リストマーカーの作り方</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/41">
+  <title>clip-pathを使った三角リストマーカーの作り方</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="borderを使った三角リストマーカーの作り方です。">
+  <meta name="description" content="clip-pathを使った三角リストマーカーの作り方です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="borderを使った三角リストマーカーの作り方">
-  <meta property="og:description" content="borderを使った三角リストマーカーの作り方です。">
+  <meta property="og:title" content="clip-pathを使った三角リストマーカーの作り方">
+  <meta property="og:description" content="clip-pathを使った三角リストマーカーの作り方です。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/40">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/41">
 </head>
 <body>
   <header class="header">
     <div class="header__container">
-      <h1 class="siteTitle">borderを使った三角リストマーカーの作り方</h1>
+      <h1 class="siteTitle">clip-pathを使った三角リストマーカーの作り方</h1>
     </div>
   </header>
 
@@ -31,19 +31,13 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、borderを使った三角リストマーカーの作り方です。ポイントは以下ようです。</p>
+          <p>今回は、clip-pathを使った三角リストマーカーの作り方です。前回の<a href="https://yellowredfox.github.io/sample-code/40">borderを使った方法</a>は、ほんの少しだけ理解するために時間を要する内容でしたが、clip-pathを使った方法はとても理解しやすいものです。ポイントは以下ようです。</p>
           <ul>
-            <li>なぜ borderで三角形を作ることができるのかと言えば、width・heightの指定なく、borderに一定の太さをもたせると次のようになるためです。分かり良いように、各borderには色をつけてあります。top（赤）、right（緑）、bottom（黄）、left（青）です。</li>
-            <li>この各borderが接している箇所が斜めになる borderの特性がとくに重要なポイントとなります。あとは、ほしい三角形は 1つだけですから、他の3つを消してあげれば良いわけです。</li>
+            <li>三角形を作るための領域が必要です。三角形の大きさは width・heightで指定します。</li>
+            <li>三角形を描くために、clip-pathの polygonを利用します。「clip-path: polygon(0 0, 0% 100%, 100% 50%);」とすれば、三角形を描くことができます。polygonで指定しているのは、最初のXY座標（0 0）、二番目のXY座標（0% 100%）、三番目のXY座標（100% 50%）です。</li>
+            <li>あとは、background-colorで色を塗り、位置を「position: absolute;」で調整してあげれば、三角リストマーカーの完成です。</li>
           </ul>
 
-          <div class="demo">
-            <div class="demo__triangle">
-              <!-- borderの特性を説明するデモ -->
-            </div>
-          </div>
-
-          <p>top（赤）、right（緑）、bottom（黄）の三角形を、borderの透過機能を利用して見えなくしました。これをリストマーカーで使うと、次のようになります。位置は「position: absolute;」で調整してあげれば済みます。三角リストマーカーの完成です。</p>
           <ul class="triangleList">
             <li>項目1</li>
             <li>項目2</li>
@@ -99,7 +93,7 @@
         <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/41">clip-pathを使った三角リストマーカーの作り方</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/40">borderを使った三角リストマーカーの作り方</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -111,7 +105,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>こういった borderの特性に気づき、初めて活用した人は「賢いな！」と感じます。Web業界は、エンジニアの汗と涙で築きあげられているのだなあ。先人の知恵ですね。</li>
+            <li>気になるのはブラウザの対応状況です。Can I useで調べてみると、一瞬ぎょっとしますが、clip-pathの polygonくらいは問題ないようです。実際に試してみたところ、Google Chrome、Firefox、Edge等のモダンブラウザであれば問題なく表示されました。ただ、IE11は三角ではなく四角が表示されます。IEに対応させたければ、旧来の<a href="https://yellowredfox.github.io/sample-code/40">borderを使った方法</a>にしておくのが良さそうです。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -119,7 +113,8 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://www.granfairs.com/blog/staff/make-triangle-with-css" target="_blank" rel="noopener noreferrer">CSSだけで三角形を作ろう！その1：borderプロパティの仕組みをマスター | 株式会社グランフェアズ</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/clip-path" target="_blank" rel="noopener noreferrer">clip-path - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://zenn.dev/seya/articles/f642acf1c47358" target="_blank" rel="noopener noreferrer">新時代のCSS三角の作り方 clip-path 〜 さらば、すべての border 〜</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -129,7 +124,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-6-11">2021年6月11日</time>
+          作成日: <time class="releaseDate" datetime="2021-6-12">2021年6月12日</time>
         </div>
         <div class="postAuthor">
           投稿者: イールド

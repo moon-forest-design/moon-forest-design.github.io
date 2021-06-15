@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/44">
+  <title>ドロップシャドウの方法</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="ドロップシャドウの方法をいろいろと比較してみます。text-shadow、box-shadow、filter（drop-shadow()）による影つけの違い。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="ドロップシャドウの方法">
+  <meta property="og:description" content="ドロップシャドウの方法をいろいろと比較してみます。text-shadow、box-shadow、filter（drop-shadow()）による影つけの違い。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/44">
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">ドロップシャドウの方法</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、ドロップシャドウの方法をいろいろと試します。text-shadow、box-shadow、filter（drop-shadow()）など、いろいろとあるようですが、どのような違いがあるのでしょうか。</p>
+
+          <h4 class="heading-4">text-shadow</h4>
+          <p>これまでテキストに影をつけたければ、text-shadowを使ってきました。例えば、「text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);」のように指定することで、次のようにテキスト（文字列）に影をつけることができます。指定するプロパティ値は左から、X軸・Y軸・ぼかし・色です。</p>
+          <div class="demoBox">
+            <p class="textShadow">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+          </div>
+
+          <h4 class="heading-4">box-shadow</h4>
+          <p>画像や div要素に影をつけたければ、box-shadowを使います。例えば、「box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);」のように指定することで、次のように画像の縁（ふち）に影をつけることができます。指定するプロパティ値は左から、X軸・Y軸・ぼかし・広がり・色です。</p>
+          <div class="demoBox">
+            <img class="boxShadow" src="pngSample.png" alt="box-shadowを使って、png画像に影をつけた場合のデモ">
+          </div>
+
+          <h4 class="heading-4">filter（drop-shadow()）：テキスト</h4>
+          <p>filter（drop-shadow()）を使うことで、影をつけることもできます。例えば、「filter: drop-shadow(2px 2px 2px #555);」のように指定することで、次のようにテキストに影をつけることができます。指定するプロパティ値は左から、X軸・Y軸・ぼかし・色です。</p>
+          <div class="demoBox">
+            <p class="filterDropShadow">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+          </div>
+
+          <h4 class="heading-4">filter（drop-shadow()）：画像</h4>
+          <p>filter（drop-shadow()）は、テキストだけでなく画像にも影をつけることができます。興味深いのは、png透過画像に影をつけた場合です。例えば、「filter: drop-shadow(2px 2px 2px #555);」のように指定すると透過を無視して、中身（オブジェクト）に対して影がつきます。これは、svg画像でも同様の結果が得られます。</p>
+          <div class="demoBox">
+            <img class="filterDropShadow" src="pngSample.png" alt="filter（drop-shadow()）を使って、png画像に影をつけた場合のデモ">
+          </div>
+
+          </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+  &lt;!-- text-shadow --&gt;
+  &lt;p class="textShadow"&gt;テキストテキストテキストテキストテキストテキストテキストテキストテキスト&lt;/p&gt;
+  
+  &lt;!-- box-shadow --&gt;
+  &lt;img class="boxShadow" src="pngSample.png"&gt;
+  
+  &lt;!-- filter（drop-shadow()）：テキスト --&gt;
+  &lt;p class="filterDropShadow"&gt;テキストテキストテキストテキストテキストテキストテキストテキストテキスト&lt;/p&gt;
+  
+  &lt;!-- filter（drop-shadow()）：画像 --&gt;
+  &lt;img class="filterDropShadow" src="pngSample.png"&gt;  
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+/* text-shadow */
+.textShadow {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+}
+
+/* box-shadow */
+.boxShadow {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
+}
+
+/* filter（drop-shadow()） */
+.filterDropShadow {
+  filter: drop-shadow(2px 2px 2px #555);
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>filterのdrop-shadow()は、IEに対応していません。IEに対応させたければ、text-shadowや box-shadowを利用することになりそうです。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/text-shadow" target="_blank" rel="noopener noreferrer">text-shadow - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/box-shadow" target="_blank" rel="noopener noreferrer">box-shadow - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/filter" target="_blank" rel="noopener noreferrer">filter - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-6-15">2021年6月15日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <a class="backSignboard" href="https://yellowredfox.github.io/">
+          <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+          <h2 class="backSignboard__title">キアカラボ</h2>
+        </a>
+        <p class="office">
+          キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+
+</body>
+</html>

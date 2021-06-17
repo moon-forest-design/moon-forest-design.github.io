@@ -164,19 +164,19 @@ img, svg, iframe {
   color: inherit;
 }
 .hoverAnime__link::after {
-  width: 100%;
+  width: 0%;
   height: 2px;
   position: absolute;
-  bottom: -8px;
+  bottom: 0;
   left: 0;
   content: "";
   border-bottom: 2px solid #302833;
   opacity: 0;
-  transition: .4s;
+  transition: .7s;
 }
 .hoverAnime__link:hover::after {
+  width: 100%;
   opacity: 1;
-  bottom: 0;
 }
 
 /* footer

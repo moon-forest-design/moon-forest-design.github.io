@@ -6,22 +6,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/45">
-  <title>リンク下線をふわっと表示するホバーアニメ</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/46">
+  <title>リンクの下線が伸び表れるホバーアニメ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="リンクに下線を表示するホバーアニメーションです。文字列の上にマウスポインターをのせると、リンクであることを示す下線が下の方からふわっと表れます。">
+  <meta name="description" content="リンクの下線が左から伸びて表れるホバーアニメーションです。文字列の上にマウスポインターをのせると、リンクであることを示す下線が左から伸びて表示されます。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="リンクに下線を表示するホバーアニメ">
-  <meta property="og:description" content="リンクに下線を表示するホバーアニメーションです。文字列の上にマウスポインターをのせると、リンクであることを示す下線が下の方からふわっと表れます。">
+  <meta property="og:title" content="リンクの下線が伸びるホバーアニメ">
+  <meta property="og:description" content="リンクの下線が左から伸びて表れるホバーアニメーションです。文字列の上にマウスポインターをのせると、リンクであることを示す下線が左から伸びて表示されます。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/45">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/46">
 </head>
 <body>
   <header class="header">
     <div class="header__container">
-      <h1 class="siteTitle">リンク下線をふわっと表示する<br class="brNone">ホバーアニメ</h1>
+      <h1 class="siteTitle">リンクの下線が伸びるホバーアニメ</h1>
     </div>
   </header>
 
@@ -31,17 +31,17 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、リンク下線を表示するホバーアニメーションです。文字列の上にマウスポインターをのせる（ホバーする）と、リンクであることを示す下線が下の方からふわっと表れる仕様です。ポイントは以下ようです。</p>
+          <p>今回も、リンク下線を表示するホバーアニメーションです。前回は、<a href="https://yellowredfox.github.io/sample-code/45">リンク下線をふわっと表示するホバーアニメ</a>でしたが、今回は文字列の上にマウスポインターをのせる（ホバーする）と、下線が伸びるタイプです。ポイントは以下ようです。</p>
           <ul>
             <li>a要素に疑似要素（::after）を作成し、この疑似要素にホバーアニメをほどこします。</li>
-            <li>ホバーされない状態では、非表示（opacity: 0;）にしてあります。</li>
-            <li>「position: absolute;」を使って、位置を少し下げておきます。（bottom: -8px;）</li>
-            <li>ホバーされたら、表示（opacity: 1;）し、位置を戻します。（bottom: 0;）</li>
-            <li>アニメーションの時間は、0.4sです。（transition: .4s;）</li>
+            <li>ホバーされない状態では、非表示（opacity: 0;）にしてあります。幅も 0です。（width: 0%;）</li>
+            <li>「position: absolute;」を使って、左下すみに置きます。（left: 0; 及び bottom: 0;）</li>
+            <li>ホバーされたら、表示（opacity: 1;）し、幅を大きくします。（width: 100%;）</li>
+            <li>アニメーションの時間は、0.7sです。（transition: .7s;）</li>
           </ul>
 
           <div class="hoverAnime">
-            <a class="hoverAnime__link" href="https://yellowredfox.github.io/">ホバーアニメ「マウスポインターをのせると下線を表示します」</a>
+            <a class="hoverAnime__link" href="https://yellowredfox.github.io/">ホバーアニメ「マウスをのせると下線を表示します」</a>
           </div>
 
         </section>
@@ -53,7 +53,7 @@
 <pre class="code">
 <code>
 &lt;div class="hoverAnime"&gt;
-  &lt;a class="hoverAnime__link" href=""&gt;ホバーアニメ「マウスポインターをのせると下線を表示します」&lt;/a&gt;
+  &lt;a class="hoverAnime__link" href=""&gt;ホバーアニメ「マウスをのせると下線を表示します」&lt;/a&gt;
 &lt;/div&gt;
 </code>
 </pre>
@@ -66,19 +66,19 @@
   position: relative;
 }
 .hoverAnime__link::after {
-  width: 100%;
+  width: 0%;
   height: 2px;
   position: absolute;
-  bottom: -8px;
   left: 0;
+  bottom: 0;
   content: "";
   border-bottom: 2px solid #302833;
   opacity: 0;
-  transition: .4s;
+  transition: .7s;
 }
 .hoverAnime__link:hover::after {
+  width: 100%;
   opacity: 1;
-  bottom: 0;
 }
 </code>
 </pre>
@@ -92,7 +92,7 @@
         <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/46">リンクの下線が伸びるホバーアニメ</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/45">リンク下線をふわっと表示するホバーアニメ</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -104,8 +104,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>実際に使う場合は、リンクだと分かるような場所で使用することになるでしょうか。例えば、ナビゲーションメニューなどですね。文章内で使用したらうるさくなりそうです。</li>
-            <li>borderの指定（border-bottom: 2px solid #302833;）を、:hoverのほうにつけると変な感じになるので気をつけましょう。</li>
+            <li>どこのサイトで見たのか忘れてしまいましたが、初めて見たときは「おぉっ！」と思いました。実際に使う場合は、これもナビゲーションメニューなどで使用することになりそうです。文章内で使用したらうるさいかもしれません。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -123,7 +122,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-6-16">2021年6月16日</time>
+          作成日: <time class="releaseDate" datetime="2021-6-17">2021年6月17日</time>
         </div>
         <div class="postAuthor">
           投稿者: イールド

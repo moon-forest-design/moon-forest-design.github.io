@@ -6,22 +6,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/47">
-  <title>ボタンを透過するホバーアニメ</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/48">
+  <title>ボタンの色が反転するホバーアニメ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="ボタンを透過するホバーアニメーションです。ボタンの上にマウスポインターをのせると、うっすら透過表示します。">
+  <meta name="description" content="ボタンの色を変えるホバーアニメーションです。ボタンの上にマウスポインターをのせると、文字色と背景色を反転表示します。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="ボタンを透過するホバーアニメ">
-  <meta property="og:description" content="ボタンを透過するホバーアニメーションです。ボタンの上にマウスポインターをのせると、うっすら透過表示します。">
+  <meta property="og:title" content="ボタンの色が反転するホバーアニメ">
+  <meta property="og:description" content="ボタンの色を変えるホバーアニメーションです。ボタンの上にマウスポインターをのせると、文字色と背景色を反転表示します。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/47">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/48">
 </head>
 <body>
   <header class="header">
     <div class="header__container">
-      <h1 class="siteTitle">ボタンを透過するホバーアニメ</h1>
+      <h1 class="siteTitle">ボタンの色が反転するホバーアニメ</h1>
     </div>
   </header>
 
@@ -31,15 +31,13 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、ボタンを透過するホバーアニメーションです。ポイントは以下ようです。</p>
+          <p>今回は、ボタンの色を変えるホバーアニメーションです。前回の<a href="https://yellowredfox.github.io/sample-code/47">ボタンを透過するホバーアニメ</a>とおおよそ内容は同じです。ホバー時の処理のみ違います。ポイントは以下ようです。</p>
           <ul>
-            <li>a要素をボタンに仕立てます。「padding: .6em 3em;」で余白を調整し、ボタンの大きさをきめます。また、影（box-shadow）をつけたり、角丸（border-radius）にすることで、よりボタンらしく見えるようにします。</li>
-            <li>ホバーされたら、透過（opacity: .8;）します。</li>
-            <li>一瞬でパッと変わっても良いですが、じんわり変化させるために transitionも指定しました。アニメーションの時間は、0.5sです。（transition: .5s;）</li>
+            <li>ホバーされたら、文字色と背景色を反転表示します。また、見やすくするために枠線を表示し、文字の太さも変更しています。</li>
           </ul>
 
           <div class="hoverAnime">
-            <a class="hoverAnime__link" href="https://yellowredfox.github.io/">ホバーアニメ「マウスをのせると透過します」</a>
+            <a class="hoverAnime__link" href="https://yellowredfox.github.io/">ホバーアニメ「マウスをのせると色が変わります」</a>
           </div>
 
         </section>
@@ -51,7 +49,7 @@
 <pre class="code">
 <code>
 &lt;div class="hoverAnime"&gt;
-  &lt;a class="hoverAnime__link" href=""&gt;ホバーアニメ「マウスをのせると透過します」&lt;/a&gt;
+  &lt;a class="hoverAnime__link" href=""&gt;ホバーアニメ「マウスをのせると色が変わります」&lt;/a&gt;
 &lt;/div&gt;
 </code>
 </pre>
@@ -71,7 +69,10 @@
   transition: .5s;
 }
 .hoverAnime__link:hover {
-  opacity: .8;
+  font-weight: bold;
+  border: 1px solid #69821b;
+  color: #69821b;
+  background-color: #fffffc;
 }
 </code>
 </pre>
@@ -85,7 +86,7 @@
         <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/48">ボタンの色が反転するホバーアニメ</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/47">ボタンを透過するホバーアニメ</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -97,7 +98,8 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>ボタンを透過するホバーアニメーションは、うっすらと透過させることで、押下（クリック）できることを気づきやすくさせるメリットがあります。定番化しているため、他の凝ったホバーアニメーションにするよりも、クリック率は高まるかもしれません。</li>
+            <li><a href="https://yellowredfox.github.io/sample-code/47">ボタンを透過するホバーアニメーション</a>と同様に、押下（クリック）できる要素であると気づきやすくさせるメリットがあります。</li>
+            <li>お問い合わせメールの送信ボタンなど、特別なボタンに利用されることが多いようです。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -115,7 +117,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-6-18">2021年6月18日</time>
+          作成日: <time class="releaseDate" datetime="2021-6-19">2021年6月19日</time>
         </div>
         <div class="postAuthor">
           投稿者: イールド

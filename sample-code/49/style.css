@@ -156,21 +156,23 @@ img, svg, iframe {
 ================================================== */
 .hoverAnime {
   margin: 70px 0 100px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   text-align: center;
+  list-style-type: none;
 }
-.hoverAnime__link {
-  padding: .6em 3em;
-  color: #fffffc;
-  background-color: #69821b;
-  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .5);
-  border-radius: 4px;
-  transition: .5s;
+.hoverAnime__item {
+  width: calc(100% / 3 - 20px);
+  margin-bottom: 30px;
+  overflow: hidden;
 }
-.hoverAnime__link:hover {
-  font-weight: bold;
-  border: 1px solid #69821b;
-  color: #69821b;
-  background-color: #fffffc;
+.hoverAnime__img {
+  width: 100%;
+  transition: .7s;
+}
+.hoverAnime__img:hover {
+  transform: scale(1.2);
 }
 
 

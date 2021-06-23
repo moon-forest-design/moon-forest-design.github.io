@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/52">
+  <title>Gridレイアウト入門編</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Gridレイアウトの入門編です。今後はもっと使う機会が増えていくはず。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="Gridレイアウト入門編">
+  <meta property="og:description" content="Gridレイアウトの入門編です。今後はもっと使う機会が増えていくはず。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/52">
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">Gridレイアウト入門編</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、Gridレイアウトです。サムネイル画像を並べるだけの簡単なレイアウトを試してみます。</p>
+          <ul>
+            <li>画像は div要素（.grid__item）に入れます。それらの div要素（.grid__item）を、親 div要素（.grid）で囲みます。親要素となる div要素（.grid）に対して「display: grid;」を指定します。</li>
+            <li>3列に並べたいので、「grid-template-columns」プロパティを使います。「grid-template-columns: 1fr 1fr 1fr;」と指定するだけで 3列に並びます。単位 frは fraction（分数）の略称です。ただ「grid-template-columns: repeat(3, 1fr);」と書くほうがスマートです。一般的には、repeat()を使って書きます。</li>
+            <li>スマートフォンサイズでは、2列にするために「grid-template-columns: repeat(2, 1fr);」と指定しました。</li>
+            <li>画像と画像の間の余白は gapで指定します。例えば、「gap: 20px;」とすれば良いだけです。</li>
+          </ul>
+
+          <div class="grid">
+            <div class="grid__item"><img class="grid__img" src="family1.jpg" alt="デモ画像：親子1"></div>
+            <div class="grid__item"><img class="grid__img" src="family2.jpg" alt="デモ画像：親子2"></div>
+            <div class="grid__item"><img class="grid__img" src="family3.jpg" alt="デモ画像：親子3"></div>
+            <div class="grid__item"><img class="grid__img" src="family4.jpg" alt="デモ画像：親子4"></div>
+            <div class="grid__item"><img class="grid__img" src="family5.jpg" alt="デモ画像：親子5"></div>
+          </div>
+
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div class="grid"&gt;
+  &lt;div class="grid__item"&gt;&lt;img class="grid__img" src="family1.jpg"&gt;&lt;/div&gt;
+  &lt;div class="grid__item"&gt;&lt;img class="grid__img" src="family2.jpg"&gt;&lt;/div&gt;
+  &lt;div class="grid__item"&gt;&lt;img class="grid__img" src="family3.jpg"&gt;&lt;/div&gt;
+  &lt;div class="grid__item"&gt;&lt;img class="grid__img" src="family4.jpg"&gt;&lt;/div&gt;
+  &lt;div class="grid__item"&gt;&lt;img class="grid__img" src="family5.jpg"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>レイアウトなら flexでも十分足りるのではと思っていましたが、<a href="https://yellowredfox.github.io/sample-code/10" target="_blank" rel="noopener noreferrer">space-betweenを使った場合に、少々問題が起こる</a>ので、Gridレイアウトのほうが便利に使えそうです。しかし、IEに対応しなくてはいけない案件なら、見合わせることになるでしょうか。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout" target="_blank" rel="noopener noreferrer">グリッドレイアウトの基本概念 - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-6-23">2021年6月23日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <a class="backSignboard" href="https://yellowredfox.github.io/">
+          <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+          <h2 class="backSignboard__title">キアカラボ</h2>
+        </a>
+        <p class="office">
+          キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+
+
+</body>
+</html>

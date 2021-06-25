@@ -47,7 +47,7 @@ body {
     font-size: 3rem;
   }
   .siteTitle::after {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
@@ -55,7 +55,7 @@ body {
     font-size: 6rem;
   }
   .siteTitle::after {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
@@ -63,7 +63,7 @@ body {
     font-size: 7.4rem;
   }
   .siteTitle::after {
-    font-size: 2.4rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -100,19 +100,6 @@ body {
   font-size: 1.6rem;
   margin-bottom: 10em;
 }
-
-.contents,
-.content {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: all 1.5s;
-}
-.contents.visible,
-.content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .heading-2 {
   font-size: 2rem;
   margin-bottom: 2em;
@@ -158,13 +145,13 @@ body {
   text-decoration: none;
 }
 .code {
-	padding: 0 1.5em;
-	box-sizing: border-box;
-	margin: 0 auto;
-	border: 1px solid #eae5e3;
-	box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
-	border-radius: 4px;
-	white-space: pre-wrap;
+  padding: 0 1.5em;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border: 1px solid #eae5e3;
+  box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
+  border-radius: 4px;
+  white-space: pre-wrap;
 }
 .postFooter {
   font-size: 1.6rem;

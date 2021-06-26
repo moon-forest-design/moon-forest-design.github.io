@@ -33,7 +33,7 @@
           <h3 class="heading-3">要点</h3>
           <p>今回は、Gridレイアウトです。サムネイル画像を並べるだけの簡単なレイアウトを試してみます。</p>
           <ul>
-            <li>画像は div要素（.grid__item）に入れます。それらの div要素（.grid__item）を、親 div要素（.grid）で囲みます。親要素となる div要素（.grid）に対して「display: grid;」を指定します。</li>
+            <li>画像は div要素（.grid__item）に入れます。それらの div要素（.grid__item）を、親 div要素（.grid）で囲みます。親要素となる div要素（.grid）に対して「display: grid;」を指定することで Gridコンテナ化します。</li>
             <li>3列に並べたいので、「grid-template-columns」プロパティを使います。「grid-template-columns: 1fr 1fr 1fr;」と指定するだけで 3列に並びます。単位 frは fraction（分数）の略称です。ただ「grid-template-columns: repeat(3, 1fr);」と書くほうがスマートです。一般的には、repeat()を使って書きます。</li>
             <li>スマートフォンサイズでは、2列にするために「grid-template-columns: repeat(2, 1fr);」と指定しました。</li>
             <li>画像と画像の間の余白は gapで指定します。例えば、「gap: 20px;」とすれば良いだけです。</li>
@@ -92,7 +92,8 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>レイアウトなら flexでも十分足りるのではと思っていましたが、<a href="https://yellowredfox.github.io/sample-code/10" target="_blank" rel="noopener noreferrer">space-betweenを使った場合に、少々問題が起こる</a>ので、Gridレイアウトのほうが便利に使えそうです。しかし、IEに対応しなくてはいけない案件なら、見合わせることになるでしょうか。</li>
+            <li>レイアウトなら Flexboxでも十分足りるのではと思っていましたが、<a href="https://yellowredfox.github.io/sample-code/10" target="_blank" rel="noopener noreferrer">space-betweenを使った場合に、少々問題が起こる</a>ので、Gridレイアウトのほうが便利に使えそうです。この辺が、Grid Layoutは二次元、Flexboxは一次元レイアウトと呼ばれる所以でしょうか。</li>
+            <li>IEに対応しなくてはいけない案件なら、見合わせることになるでしょうか。</li>
           </ul>
         </section>
         <!-- /.content -->

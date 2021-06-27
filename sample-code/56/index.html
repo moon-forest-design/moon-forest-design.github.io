@@ -6,28 +6,30 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/14">
-  <title>object-fitで画像を画面いっぱいに表示する方法</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/56">
+  <title>object-fitで動画を画面いっぱいに表示する方法</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="CSSのobject-fitプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
+  <meta name="description" content="CSSのobject-fitプロパティを使って動画を画面いっぱいに表示する方法です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="object-fitで画像を画面いっぱいに表示する方法">
-  <meta property="og:description" content="CSSのobject-fitプロパティを使って画像（ヒーローイメージ）を画面いっぱいに表示する方法です。">
+  <meta property="og:title" content="object-fitで動画を画面いっぱいに表示する方法">
+  <meta property="og:description" content="CSSのobject-fitプロパティを使って動画を画面いっぱいに表示する方法です。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/14">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/56">
 </head>
 <body>
 
   <header class="header">
     <div class="header__container">
-      <h1 class="siteTitle">object-fitで画像を画面いっぱいに表示する方法</h1>
+      <h1 class="siteTitle">動画を画面いっぱいに表示する方法</h1>
     </div>
   </header>
 
   <div class="mainVisual">
-    <img class="mainVisual__img" src="mainVisual.jpg" alt="object-fitを使ってメインビジュアル写真（ヒーローイメージ）を表示">
+    <video class="mainVisual__video" autoplay loop playsinline muted poster="amapola.jpg">
+      <source src="amapola.mp4" type="video/mp4">
+    </video>
   </div>
 
   <main class="main">
@@ -37,11 +39,13 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>今回は、CSSの object-fitプロパティを使って、画像を画面いっぱいに表示する方法について書きます。前回は、backgroundを使用して、いわゆるヒーローイメージを設定しましたが、今回は object-fitプロパティを使います。ポイントは以下ようです。</p>
+          <p>今回は、動画を画面いっぱいに表示する方法について書きます。以前、<a href="https://yellowredfox.github.io/sample-code/14">静止画像（jpeg）を画面いっぱいに表示する方法</a>について書きましたが、今回はその動画版です。ポイントは以下ようです。</p>
           <ul>
-            <li>img要素を使って画像を表示する。img要素を指定することで、画像検索の対象となりやすくなる。</li>
-            <li>widthに 100%、heightに 100vhを指定。画像の元サイズが幅 1920pxなので、max-widthで 1920pxを指定。max-widthを指定することで、画質をたもつ。</li>
-            <li>object-fitに coverを指定。coverを指定することで、レスポンシブ対応となる。スマホやタブレットで表示しても歪むことがない。</li>
+            <li>video要素を用意する。状況に応じて必要な属性を各種設定する。autoplay（自動再生）、loop（繰り返し）、playsinline（インライン再生）、muted（音無し）、poster（動画対応していないブラウザ対策用の静止画）など。</li>
+            <li>video要素に直接 src属性を記述して動画を呼び出しても良いが、一般的には source要素を使って指定する。mp4だけでなく、aviや ogvなどの異なるフォーマットを複数指定しておくとユーザーのコーデック環境に左右されにくくなるメリットがある。</li>
+            <li>widthに 100%、heightに 100vhを指定。画像の元サイズが幅 1920pxなので、max-widthで 1920pxを指定。</li>
+            <li>object-fitに coverを指定。coverを指定することで、レスポンシブ対応となる。スマホやタブレットなど異なる画面サイズで表示してもうまく調整して表示してくれる。</li>
+            <li>video要素内に、念のため「Sorry, your browser doesn't support embedded videos.」と書いても良い。ただ、poster属性で静止画像を指定しておけば、とくに必要ないかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -51,7 +55,9 @@
 <pre class="code">
 <code>
 &lt;div class="mainVisual"&gt;
-  &lt;img class="mainVisual__img" src="mainVisual.jpg"&gt;
+  &lt;video class="mainVisual__video" autoplay loop playsinline muted poster="amapola.jpg"&gt;
+    &lt;source src="amapola.mp4" type="video/mp4"&gt;
+  &lt;/video&gt;
 &lt;/div&gt;
 </code>
 </code>
@@ -60,7 +66,7 @@
           <h4 class="heading-4">CSS</h4>
 <pre class="code">
 <code>
-.mainVisual__img {
+.mainVisual__video {
   width: 100%;
   max-width: 1920px;
   height: 100vh;
@@ -78,7 +84,7 @@
         <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/56">object-fitで動画を画面いっぱいに表示する方法</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
             <li><a href="https://yellowredfox.github.io/sample-code/13">backgroundで画像を画面いっぱいに表示する方法</a></li>
           </ul>
         </section>
@@ -86,14 +92,14 @@
       </section>
       <!-- /.contents -->
 
+
       <section class="contents">
         <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>object-positionプロパティを使えば、画像の位置を柔軟に変更することも可能です。</li>
-            <li>object-fitプロパティには他にも、<a href="https://yellowredfox.github.io/sample-code/56">video要素（動画）</a>にも活用できるという利点があります。</li>
-            <li>IE対応のサイトにしたいときは、<a href="https://yellowredfox.github.io/sample-code/13">backgroundで表示する方法</a>を利用するほうが良いかもしれません。</li>
+            <li>CSSの設定は、<a href="https://yellowredfox.github.io/sample-code/14">静止画像を画面いっぱいに表示する場合</a>と同じです。動画なんてものは、もっと何かしらいろいろと手間がかかりそうなイメージがありましたけれど、このくらいの作業量でうまいこと表示してくれるのだからありがたいです。</li>
+            <li>懸念されるのは、表示速度でしょうか。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -101,7 +107,8 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/object-fit">object-fit - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/video" target="_blank" rel="noopener noreferrer">&lt;video&gt;: 動画埋め込み要素 - HTML: HyperText Markup Language | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/object-fit" target="_blank" rel="noopener noreferrer">object-fit - CSS: カスケーディングスタイルシート | MDN</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -110,7 +117,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-5-12">2021年5月12日</time>
+          作成日: <time class="releaseDate" datetime="2021-6-27">2021年6月27日</time>
         </div>
         <div class="postAuthor">
           投稿者: イールド
@@ -144,8 +151,7 @@
     <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
     <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
   </noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="main.js"></script>
+
 
 </body>
 </html>

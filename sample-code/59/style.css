@@ -154,29 +154,40 @@ img, svg, iframe {
 
 /* clickAnimeBtn
 ================================================== */
-.clickAnime {
-  margin: 70px 0 100px;
-  text-align: center;
+.burgerMenu {
+  width: 30px;
+  height: 30px;
+  margin: 70px auto 100px;
+  position: relative;
+  cursor: pointer;
 }
-.clickAnime__link {
-  padding: .6em 3em;
-  display: inline-block;
-  user-select: none;
-  color: #fffffc;
-  background-color: #6e7955;
-  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .5);
-  border-radius: 4px;
-  transition: .3s;
+.burgerMenu__line {
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  transition: .6s;
 }
-.clickAnime__link:hover {
-  opacity: .9;
+.burgerMenu__line--1 {
+  top: 6px;
 }
-.clickAnime__link:active {
-  transform: translate(2px, 3px);
-  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .2),
-              2px 2px 3px 0 rgba(0, 0, 0, .3) inset;
+.burgerMenu__line--2 {
+  top: 14px;
 }
-
+.burgerMenu__line--3 {
+  top: 22px;
+}
+.burgerMenu.open .burgerMenu__line--1 {
+  top: 14px;
+  transform: rotate(315deg);
+}
+.burgerMenu.open .burgerMenu__line--2 {
+  opacity: 0;
+}
+.burgerMenu.open .burgerMenu__line--3 {
+  top: 14px;
+  transform: rotate(-315deg);
+}
 
 
 /* footer

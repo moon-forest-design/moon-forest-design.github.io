@@ -33,15 +33,18 @@ img, svg, iframe {
 }
 .signBoard {
   width: 100%;
+  height: inherit;
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fffffc;
   background-color: #302833;
 }
 .siteTitle {
   text-align: center;
-  line-height: 100px;
   letter-spacing: .1em;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */

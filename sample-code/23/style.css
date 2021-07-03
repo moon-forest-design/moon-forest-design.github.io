@@ -142,13 +142,14 @@ body {
   text-decoration: none;
 }
 .code {
-	padding: 0 1.5em;
-	box-sizing: border-box;
-	margin: 0 auto;
-	border: 1px solid #eae5e3;
-	box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
-	border-radius: 4px;
-	white-space: pre-wrap;
+  padding: 0 1.5em;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border: 1px solid #eae5e3;
+  box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .postFooter {
   font-size: 1.6rem;

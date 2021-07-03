@@ -2,13 +2,12 @@
 
 /* base
 ================================================== */
-body, h1, h2, p, ul, li, dl, dt, dd, figure {
+body, h1, h2, p, ul, li, ol, dl, dt, dd, figure {
   margin: 0;
   padding: 0;
 }
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
@@ -17,13 +16,10 @@ body {
   color: #302833;
   background-color: #fffffc;
 }
-h1 {
-  line-height: 1;
-}
 img {
   max-width: 100%;
 }
-img, svg {
+img, svg, iframe {
   vertical-align: top;
 }
 
@@ -31,12 +27,22 @@ img, svg {
 /* header
 ================================================== */
 .header {
+  height: 100px;
   margin-bottom: 10em;
+  position: relative;
+}
+.signBoard {
+  width: 100%;
+  height: inherit;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fffffc;
   background-color: #302833;
-}
-.header__container {
-  padding: 3em 1em 2em;
 }
 .siteTitle {
   text-align: center;
@@ -44,34 +50,61 @@ img, svg {
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
     font-size: 2.2rem;
   }
+  .brNone {
+    display: none;
+  }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
     font-size: 3.3rem;
   }
+  .brNone {
+    display: none;
+  }
 }
 
 
-/* loadingWait
+/* drawer.js
 ================================================== */
-.loadingWait {
-  width: 100px;
-  height: 100px;
-  position: fixed;
-  top: calc(50% - 50px);
-  right: 0;
-  left: 0;
-  margin: 0 auto;
+/* メニュー全体 */
+.drawer-nav {
+  padding-top: 1rem; /* 初期値：なし */
+  background-color: #302833; /* 初期値：#fff */
 }
-.loadingWait__img {
-  width: 100%;
+ /* メニュー大項目 */
+.drawer-brand {
+  font-size: 1.6rem; /* 初期値：1.5rem */
+  padding-left: 1rem; /* 初期値：.75rem */
+  color: #fff; /* 初期値：#222 */
+}
+/* メニュー小項目 */
+.drawer-menu-item {
+  font-size: 1.5rem; /* 初期値：1rem */
+  padding: .75rem .75rem .35rem 2.75rem; /* 初期値：.75rem */
+  color: #fff; /* 初期値：#222 */
+}
+/* ハンバーガーボタン全体 */
+.drawer-hamburger {
+  width: 3rem; /* 線幅　初期値：2rem */
+  padding-top: 35px; /* 位置調整　初期値：18px */
+  padding-right: 1.8rem; /* 位置調整　初期値：.75rem */
+}
+/* ハンバーガーボタンの三本線 */
+.drawer-hamburger-icon,
+.drawer-hamburger-icon:after,
+.drawer-hamburger-icon:before {
+  background-color: #fff; /* 線色　初期値：#222 */
+}
+/* オーバーレイ */
+.drawer-overlay {
+  background-color: rgba(0, 0, 0, .7); /* 初期値：0, 0, 0, .2 */
 }
 
 

@@ -29,7 +29,6 @@ body {
 }
 .header__container {
   height: inherit;
-  padding-top: .7em;
   display: flex;
   justify-content: center;
   align-items: center;

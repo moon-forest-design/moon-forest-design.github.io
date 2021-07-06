@@ -8,12 +8,10 @@ body, h1, h2, p, ul, li {
 }
 html {
   font-size: 62.5%;
-  height: 100%;
 }
 body {
-  height: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 1.0rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   line-height: 1.7;
   color: #302833;
   background-color: #fffffc;
@@ -23,7 +21,7 @@ body {
 /* header
 ================================================== */
 .header {
-  height: inherit;
+  height: 100vh;
   margin-bottom: 10em;
   background-color: #192f60;
 }
@@ -31,7 +29,7 @@ body {
   height: inherit;
   padding-top: .7em;
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
 }
 .siteTitle {

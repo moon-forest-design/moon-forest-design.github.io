@@ -8,7 +8,6 @@ body, h1, h2, p, ul, li {
 }
 html {
   font-size: 62.5%;
-  height: 100%;
 }
 body {
   height: inherit;
@@ -130,34 +129,30 @@ h1 {
 .content a {
   text-decoration: none;
 }
-.code {
-  padding: 0 1.5em;
-  box-sizing: border-box;
-  margin: 0 auto;
-  border: 1px solid #eae5e3;
-  box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
-  border-radius: 4px;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-}
 .postFooter {
   font-size: 1.6rem;
 }
 
+
+/* demo
+================================================== */
 .demo {
   margin: 3em 0 1em;
   border-radius: 4px;
   background-color: #ffccaa;
 }
+.demo h2 {
+  font-size: 1.6rem;
+}
 .demo--height {
-  height: 5.4em;
+  height: 100px;
 }
 .noheight {
   padding: 2em 1em;
   text-align: center;
 }
 .lineHeight {
-  line-height: 5.4em;
+  line-height: 100px;
   text-align: center;
 }
 .flexBox {

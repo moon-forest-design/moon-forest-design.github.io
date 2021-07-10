@@ -48,7 +48,7 @@ h1 {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 4.5rem;
+    font-size: 3.8rem;
   }
 }
 

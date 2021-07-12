@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/5">
-  <title>トップへ戻るボタン</title>
+  <title>デモページ：トップへ戻るボタン</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="トップへ戻るボタンを設置する方法。必要なときに表示し、不要なときは非表示にします。jQuery使用。">
   <meta name="author" content="イールド（月の森デザイン）">
@@ -30,95 +30,73 @@
     <div class="main__inner">
 
       <section class="contents">
-        <h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <h2 class="heading-2">デモ h2タイトル</h2>
         <section class="content">
-          <h3 class="heading-3">要点</h3>
-          <p>今回は、トップへ戻るボタンです。仕様は以下ようです。</p>
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li>事前に、トップへ戻るボタンを、CSSで「display: none;」にしておきます。</li>
-            <li>トップへ戻るボタンの表示・非表示を切り替えるラインは、ページの 7割くらいの位置に基準線をもうけています。ページを下方へスクロールして 、基準線を越えると、jQueryでトップへ戻るボタンを表示します。クリックすると、トップの位置へ移動します。</li>
-            <li>トップへ戻るボタンをクリックすることなく、ページを上方へスクロールして基準線に戻った場合は、jQueryでトップへ戻るボタンを非表示にします。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
           </ul>
         </section>
         <!-- /.content -->
+
         <section class="content">
-          <h3 class="heading-3">コード</h3>
-
-          <h4 class="heading-4">HTML</h4>
-<pre class="code">
-<code>
-&lt;a class="back-to-top" href="#"&gt;
-  &lt;img id="backToTopBtn" class="back-to-top__btn" src="arrow.png"&gt;
-&lt;/a&gt;
-</code>
-</pre>
-
-          <h4 class="heading-4">CSS</h4>
-<pre class="code">
-<code>
-.back-to-top {
-  display: block;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  width: 60px;
-  height: 60px;
-  margin: 3em;
-  text-decoration: none;
-}
-.back-to-top__btn {
-  display: none;
-  width: 100%;
-  height: auto;
-  padding: 1em;
-  box-sizing: border-box;
-  background-color: #241c1c;
-  border: 4px solid #fffffc;
-  border-radius: 50%;
-}
-</code>
-</pre>
-
-          <h4 class="heading-4">jQuery</h4>
-<pre class="code">
-<code>
-$(function() {
-  $(window).scroll(function() {
-    const $winHeight = $(this).height(); // ウィンドウ画面の高さを取得
-    const $scrollTop = $(this).scrollTop(); // スクロールした現在のtopの位置を取得
-    const $scrollBottom = $scrollTop + $winHeight; // スクロールした現在のtopの位置にウィンドウ画面の高さを加算してbottomの位置を算出
-    const $borderLine = $(document).height() * 0.7; // ページの高さの7割くらいを基準線にする 
-    if ( $scrollBottom > $borderLine ) {
-      $("#backToTopBtn").fadeIn(); // スクロールして基準線を超えたらトップへ戻るを表示
-    } else {
-      $("#backToTopBtn").hide(); // スクロールが基準線に達しない場合はトップへ戻るを非表示
-    }
-  });
-});
-</code>
-</pre>
-
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <ul>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+          </ul>
         </section>
         <!-- /.content -->
+  
       </section>
       <!-- /.contents -->
-
+  
       <section class="contents">
-        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <h2 class="heading-2">デモ h2タイトル</h2>
         <section class="content">
-          <h3 class="heading-3">あとがき</h3>
-          <p>スムーズスクロール機能を外してあるので、トップへ戻るボタンを押すとバチっと戻ってしまいます。やはり、スムーズスクロールしたほうがいいですね。</p>
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <ul>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+          </ul>
         </section>
         <!-- /.content -->
+
         <section class="content">
-          <h3 class="heading-3">参考資料</h3>
-          <p>参考にさせていただいたページは、とくにありませんでした。</p>
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <ul>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+          </ul>
         </section>
         <!-- /.content -->
+
       </section>
       <!-- /.contents -->
 
       <div class="postFooter">
+        <p class="postDescription">
+          ※：記事『<a href="https://moon-forest-design.com/archives/495" target="_blank" rel="noopener noreferrer">
+            トップへ戻るボタンの作り方
+          </a>』のデモページです。
+        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-5-4">2021年5月4日</time>
         </div>

@@ -35,35 +35,21 @@ body {
   padding-top: .7em;
 }
 .siteTitle {
-  color: inherit;
-  line-height: 1.3;
-}
-.siteTitle::after {
-  display: block;
-  content: attr(data-subtitle);
+  text-align: center;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 3rem;
-  }
-  .siteTitle::after {
-    font-size: 1.0rem;
+    font-size: 1.6rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
-    font-size: 6rem;
-  }
-  .siteTitle::after {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 7.4rem;
-  }
-  .siteTitle::after {
-    font-size: 2.4rem;
+    font-size: 5rem;
   }
 }
 

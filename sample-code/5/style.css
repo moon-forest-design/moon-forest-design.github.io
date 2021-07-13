@@ -119,6 +119,7 @@ body {
 }
 .content p {
   margin-bottom: 1em;
+  text-indent: 1em;
 }
 .content ul {
   margin: 0 1em 2em 2em;
@@ -252,13 +253,14 @@ body {
 ================================================== */
 .back-to-top {
   display: block;
-  position: fixed;
-  right: 0;
-  bottom: 0;
   width: 60px;
   height: 60px;
-  margin: 3em;
-  text-decoration: none;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+.back-to-top:hover {
+  opacity: .7;
 }
 .back-to-top__btn {
   display: none;

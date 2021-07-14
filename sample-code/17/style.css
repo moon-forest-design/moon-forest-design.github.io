@@ -11,7 +11,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   font-size: 1.0rem;
   line-height: 1.7;
   color: #302833;
@@ -27,23 +27,34 @@ body {
   background-color: #302833;
 }
 .header__container {
-  padding: 3em 1em 2em;
+  padding: 3em 1em 0;
 }
 .siteTitle {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   text-align: center;
   letter-spacing: .1em;
 }
 
 .menu {
+  max-width: 990px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  text-align: center;
   list-style-type: none;
 }
+.menu__item {
+  width: calc(100% / 3);
+}
 .menu__link {
-  font-size: 2rem;
+  font-size: 1.6rem;
+  padding: 1em;
+  display: block;
   text-decoration: none;
   color: #fffffc;
+}
+.menu__link:hover {
+  opacity: .7;
 }
 
 @media screen and (max-width: 576px) { /* スマホ用 */
@@ -55,10 +66,16 @@ body {
   .siteTitle {
     font-size: 2.2rem;
   }
+  .brNone {
+    display: none;
+  }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
     font-size: 3.3rem;
+  }
+  .brNone {
+    display: none;
   }
 }
 
@@ -132,6 +149,7 @@ body {
 }
 .content p {
   margin-bottom: 1em;
+  text-indent: 1em;
 }
 .content ul {
   margin: 0 1em 2em 2em;

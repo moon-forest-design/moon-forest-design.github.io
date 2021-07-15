@@ -2,7 +2,7 @@
 
 /* base
 ================================================== */
-body, h1, h2, p, ul, li {
+body, h1, h2, p, ul, li, dl, dt, dd, figure {
   margin: 0;
   padding: 0;
 }
@@ -17,6 +17,12 @@ body {
   line-height: 1.7;
   color: #302833;
   background-color: #fffffc;
+}
+img {
+  max-width: 100%;
+}
+img, svg, iframe {
+  vertical-align: bottom;
 }
 
 

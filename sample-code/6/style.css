@@ -16,6 +16,12 @@ body {
   color: #302833;
   background-color: #fffffc;
 }
+img {
+  max-width: 100%;
+}
+img, svg, iframe {
+  vertical-align: bottom;
+}
 
 
 /* header

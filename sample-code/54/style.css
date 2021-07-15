@@ -12,11 +12,17 @@ html {
 }
 body {
   height: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   font-size: 1.0rem;
   line-height: 1.7;
   color: #302833;
   background-color: #fffffc;
+}
+img {
+  max-width: 100%;
+}
+img, svg, iframe {
+  vertical-align: bottom;
 }
 
 

@@ -40,9 +40,9 @@
           <figure class="sample">
             <img class="sample__caseA" src="yellowredfox.png" alt="img要素の下に余白ができる画像の例">
           </figure>
-          <p>なぜこんなことが起きるのかと言うと、img要素の vertical-alignの初期値が「baseline」だからなのです。原因が分かれば、改善する方法は簡単です。img要素に「vertical-align: top;」を指定してあげるだけで解決します。画像の下の不必要な余白が消えて、ぴたっと無駄なくおさまります。</p>
+          <p>なぜこんなことが起きるのかと言うと、img要素の vertical-alignの初期値が「baseline」だからなのです。原因が分かれば、改善する方法は簡単です。img要素に「vertical-align: bottom;」を指定してあげるだけで解決します。画像の下の不必要な余白が消えて、ぴたっと無駄なくおさまります。</p>
           <figure class="sample">
-            <img class="sample__caseB" src="yellowredfox.png" alt="vertical-alignにtopを指定することで、img要素の下の余白が消えた画像の例">
+            <img class="sample__caseB" src="yellowredfox.png" alt="vertical-alignにbottomを指定することで、img要素の下の余白が消えた画像の例">
           </figure>
           <h4 class="heading-4">svg要素の下にできる不要な余白を消す方法</h4>
           <p>これは、svg要素にも同じことが言えます。やはり、不必要な余白が画像の下にできてしまいます。これじつは、インライン要素の vertical-alignの初期値が「baseline」だから発生するんですよね。</p>
@@ -53,7 +53,7 @@
               </text>
             </svg>
           </div>
-          <p>ゆえに、img要素と同様の方法で解決します。svg要素に「vertical-align: top;」を指定してあげるだけです。svg要素の下にできた不必要な余白が消えて、ぴたっと無駄なくおさまります。</p>
+          <p>ゆえに、img要素と同様の方法で解決します。svg要素に「vertical-align: bottom;」を指定してあげるだけです。svg要素の下にできた不必要な余白が消えて、ぴたっと無駄なくおさまります。</p>
           <div class="sample">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="1000" height="200" class="svg sample__caseB">
               <text font-family="Arial" x="420" y="105" font-size="40" text-anchor="middle">
@@ -71,7 +71,7 @@
 <pre class="code">
 <code>
 img, svg {
- vertical-align: top;
+ vertical-align: bottom;
 }
 </code>
 </pre>
@@ -86,8 +86,7 @@ img, svg {
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>分かり良いように、「vertical-align: top;」を指定すると書きましたが、じつは middleや bottomを指定しても OKです。</li>
-            <li>あるいは、画像をブロックレベル要素にしてもかまわなければ、「display: block;」を指定しても OKです。</li>
+            <li>画像をブロックレベル要素にしてもかまわなければ、「display: block;」を指定しても良いかもしれません。</li>
           </ul>
         </section>
         <!-- /.content -->

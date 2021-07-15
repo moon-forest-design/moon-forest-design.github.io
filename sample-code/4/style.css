@@ -152,7 +152,7 @@ body {
 .sample__caseB {
   width: 60%;
   border-radius: 4px;
-  vertical-align: top;
+  vertical-align: bottom;
 }
 .svg {
   background-color: #ec6800;

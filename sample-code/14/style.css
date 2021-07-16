@@ -45,12 +45,12 @@ img, svg, iframe {
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
@@ -155,6 +155,17 @@ img, svg, iframe {
 }
 .postFooter {
   font-size: 1.6rem;
+}
+.postDescription {
+  margin-bottom: 1em;
+  color: #c9171e;
+}
+.postDescription a {
+  text-decoration: none;
+  color: inherit;
+}
+.postDescription a:hover {
+  text-decoration: underline;
 }
 
 

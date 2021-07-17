@@ -50,7 +50,7 @@ img, svg, iframe {
   .siteTitle {
     font-size: 2.2rem;
   }
-  .siteTitle__br {
+  .brNone {
     display: none;
   }
 }
@@ -58,7 +58,7 @@ img, svg, iframe {
   .siteTitle {
     font-size: 3.5rem;
   }
-  .siteTitle__br {
+  .brNone {
     display: none;
   }
 }
@@ -67,9 +67,10 @@ img, svg, iframe {
 /* mainVisual
 ================================================== */
 .mainVisual {
+  width: 100%;
   height: 100vh;
   margin-bottom: 10em;
-  background: center/cover url("mainVisual.jpg");
+  background: center/cover url("mainVisual.jpg") no-repeat;
   background-attachment: fixed;
 }
 
@@ -162,6 +163,17 @@ img, svg, iframe {
 }
 .postFooter {
   font-size: 1.6rem;
+}
+.postDescription {
+  margin-bottom: 1em;
+  color: #c9171e;
+}
+.postDescription a {
+  text-decoration: none;
+  color: inherit;
+}
+.postDescription a:hover {
+  text-decoration: underline;
 }
 
 

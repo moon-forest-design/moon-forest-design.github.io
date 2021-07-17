@@ -48,7 +48,7 @@ img, svg, iframe {
   .siteTitle {
     font-size: 2.1rem;
   }
-  .siteTitle__br {
+  .brNone {
     display: none;
   }
 }
@@ -56,7 +56,7 @@ img, svg, iframe {
   .siteTitle {
     font-size: 3.5rem;
   }
-  .siteTitle__br {
+  .brNone {
     display: none;
   }
 }
@@ -74,7 +74,7 @@ img, svg, iframe {
   left: 0;
   width: 100%;
   max-width: 1920px;
-  height: 100vh;
+  height: inherit;
   z-index: -1;
   object-fit: cover;
 }
@@ -169,6 +169,17 @@ img, svg, iframe {
 }
 .postFooter {
   font-size: 1.6rem;
+}
+.postDescription {
+  margin-bottom: 1em;
+  color: #c9171e;
+}
+.postDescription a {
+  text-decoration: none;
+  color: inherit;
+}
+.postDescription a:hover {
+  text-decoration: underline;
 }
 
 

@@ -8,13 +8,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/39">
-  <title>Swiperの使い方</title>
+  <title>デモページ：Swiperの使い方</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="カルーセルスライダー「Swiper」の使い方です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="Swiperの使い方">
+  <meta property="og:title" content="デモページ：Swiperの使い方">
   <meta property="og:description" content="カルーセルスライダー「Swiper」の使い方です。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/39">
@@ -49,149 +49,76 @@
 
   <main class="main">
     <div class="main__inner">
+
       <section class="contents">
-        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <h2 class="heading-2">デモ h2タイトル</h2>
         <section class="content">
-          <h3 class="heading-3">要点</h3>
-          <p>今回は、カルーセルスライダー「Swiper」の使い方です。やることは、前回の「<a href="https://yellowredfox.github.io/sample-code/38">Slick</a>」とそれほど大きく変わるものではありません。ポイントは以下ようです。</p>
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li>Swiper本体はダウンロードしてもいいし、CDNを利用してもどちらでも構わない。今回は、CDNを利用した。</li>
-            <li>swiper-bundle.min.cssの後に style.cssを読み込まなければいけない。そうしないと不必要な !importantをつけなければいけなくなる。</li>
-            <li>SwiperはjQueryに依存しないようなので、jQueryを読み込む必要はない。</li>
-            <li>CSSでデザイン等を変更したい場合は、swiper-bundle.cssを参考にするといい。</li>
-            <li>スクロールバーは必要ないので、「&lt;div class="swiper-scrollbar"&gt;&lt;/div&gt;」は削除した。</li>
-            <li>垂直にスライドさせたければ、JavaScript内のSwiperオプションに「direction: 'vertical',」を記述。水平のほうが良ければ削除する。</li>
-          </ul>
-
-          </section>
-        <!-- /.content -->
-        <section class="content">
-          <h3 class="heading-3">コード</h3>
-
-          <h4 class="heading-4">HTML</h4>
-<pre class="code">
-<code>
-&lt;!-- CSSファイルの読み込み --&gt;
-&lt;link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /&gt;
-&lt;link rel="stylesheet" href="style.css"&gt;
-
-&lt;!-- JSファイルの読み込み --&gt;
-&lt;script src="https://unpkg.com/swiper/swiper-bundle.min.js"&gt;&lt;/script&gt;
-&lt;script src="main.js"&gt;&lt;/script&gt;
-
-&lt;!-- カルーセルスライダーの表示 --&gt;
-&lt;!-- swiperのコンテナ --&gt;
-&lt;div class="swiper-container"&gt;
-  &lt;!-- swiperのラッパー --&gt;
-  &lt;div class="swiper-wrapper"&gt;
-    &lt;!-- スライド画像を指定 --&gt;
-    &lt;div class="swiper-slide"&gt;&lt;img class="swiper-slide__img" src="slider1.jpg"&gt;&lt;/div&gt;
-    &lt;div class="swiper-slide"&gt;&lt;img class="swiper-slide__img" src="slider2.jpg"&gt;&lt;/div&gt;
-    &lt;div class="swiper-slide"&gt;&lt;img class="swiper-slide__img" src="slider3.jpg"&gt;&lt;/div&gt;
-    &lt;div class="swiper-slide"&gt;&lt;img class="swiper-slide__img" src="slider4.jpg"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;!-- ページネーションが必要なら記述 --&gt;
-  &lt;div class="swiper-pagination"&gt;&lt;/div&gt;
-  &lt;!-- ナビゲーションボタンが必要なら記述 --&gt;
-  &lt;div class="swiper-button-prev"&gt;&lt;/div&gt;
-  &lt;div class="swiper-button-next"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</code>
-</pre>
-
-          <h4 class="heading-4">CSS</h4>
-<pre class="code">
-<code>
-/* ----- Swiperコンテナの大きさ ----- */
-.swiper-container {
-  width: 100%;
-  height: 100vh;
-}
-/* ----- Swiper画像の大きさ ----- */
-.swiper-slide__img {
-  width: inherit;
-  height: inherit;
-  object-fit: cover;
-}
-/* ----- ページネーションの色 ----- */
-.swiper-pagination-bullet {
-  background-color: #fff;
-}
-/* ----- 矢印の色 ----- */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #fff;
-}
-
-/* ----- ページネーションと矢印の色は、IE非対応で良いなら次のようにしてもいい ----- */
-:root {
-  --swiper-theme-color: #fff;
-}
-</code>
-</pre>
-
-          <h4 class="heading-4">JavaScript</h4>
-<pre class="code">
-<code>
-const swiper = new Swiper('.swiper-container', {
-  // 各オプションパラメタ
-  autoplay: true, // 自動再生するか？
-  loop: true, // 繰り返し再生するか？
-  speed: 1000, // 画像が切り替わる速度
-
-  // ページネーションが必要なら記述
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // ナビゲーションボタンが必要なら記述
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
-</code>
-</pre>
-
-        </section>
-        <!-- /.content -->
-      </section>
-      <!-- /.contents -->
-
-      <section id="relate" class="contents">
-        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
-        <section class="content">
-          <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/38">Slickの使い方</a></li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
           </ul>
         </section>
         <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <ul>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+
       </section>
       <!-- /.contents -->
 
       <section class="contents">
-        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <h2 class="heading-2">デモ h2タイトル</h2>
         <section class="content">
-          <h3 class="heading-3">あとがき</h3>
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/38">Slick</a>よりも、カスタマイズがしやすい印象でした。いや、<a href="https://yellowredfox.github.io/sample-code/38">Slick</a>の後に試したからかも。それほど違いはないですよね。どちらもしっかり考えて設計されているので、甲乙つけるようなレベルにありません。どちらも便利で使い良いカルーセルスライダーです。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
           </ul>
         </section>
         <!-- /.content -->
+
         <section class="content">
-          <h3 class="heading-3">参考資料</h3>
-          <p>参考にさせていただきました。ありがとうございました。</p>
+          <h3 class="heading-3">デモ h3タイトル</h3>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li><a href="https://swiperjs.com/" target="_blank" rel="noopener noreferrer">Swiper - The Most Modern Mobile Touch Slider</a></li>
-            <li><a href="https://www.webdesignleaves.com/pr/plugins/swiper_js.html" target="_blank" rel="noopener noreferrer">スライダープラグイン Swiper（v5）の使い方 / Web Design Leaves</a></li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
           </ul>
         </section>
         <!-- /.content -->
+
       </section>
       <!-- /.contents -->
 
 
       <div class="postFooter">
+        <p class="postDescription">
+          ※：記事『<a href="https://moon-forest-design.com/archives/591" target="_blank" rel="noopener noreferrer">
+            カルーセルスライダー「Swiper」の使い方
+          </a>』のデモページです。
+        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-6-10">2021年6月10日</time>
         </div>

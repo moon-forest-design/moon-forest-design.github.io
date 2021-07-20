@@ -93,6 +93,7 @@ img, svg, iframe {
   --swiper-theme-color: #fff;
 } */
 
+
 /* main
 ================================================== */
 .main {
@@ -181,6 +182,17 @@ img, svg, iframe {
 }
 .postFooter {
   font-size: 1.6rem;
+}
+.postDescription {
+  margin-bottom: 1em;
+  color: #c9171e;
+}
+.postDescription a {
+  text-decoration: none;
+  color: inherit;
+}
+.postDescription a:hover {
+  text-decoration: underline;
 }
 
 

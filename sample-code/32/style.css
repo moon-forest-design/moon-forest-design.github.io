@@ -152,6 +152,7 @@ img, svg {
 }
 .content p {
   margin-bottom: 1em;
+  text-indent: 1em;
 }
 .content ul {
   margin: 0 1em 2em 2em;

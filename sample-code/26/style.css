@@ -8,7 +8,6 @@ body, h1, h2, p, ul, li, figure {
 }
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
 }
 body {
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -38,11 +37,11 @@ img, svg, iframe {
   text-align: center;
   letter-spacing: .1em;
 }
-.titles--even {
+.pileup:nth-of-type(even) {
   color: #fffffc;
   background-color: #302833;
 }
-.titles--odd {
+.pileup:nth-of-type(odd) {
   color: #302833;
   background-color: #fffffc;
 }
@@ -52,7 +51,7 @@ img, svg, iframe {
 @media screen and (max-width: 576px) { /* スマホ用 */
   .siteTitle,
   .subTitle {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
@@ -135,6 +134,7 @@ img, svg, iframe {
 }
 .content p {
   margin-bottom: 1em;
+  text-indent: 1em;
 }
 .content ul {
   margin: 0 1em 2em 2em;
@@ -154,6 +154,17 @@ img, svg, iframe {
 }
 .postFooter {
   font-size: 1.6rem;
+}
+.postDescription {
+  margin-bottom: 1em;
+  color: #c9171e;
+}
+.postDescription a {
+  text-decoration: none;
+  color: inherit;
+}
+.postDescription a:hover {
+  text-decoration: underline;
 }
 
 

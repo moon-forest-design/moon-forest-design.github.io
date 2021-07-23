@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code65">
-  <title>デモページ：React入門3</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code67">
+  <title>デモページ：React入門4</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すページその3。コンポーネントを使ってみる。">
+  <meta name="description" content="デモページ：Reactを試すページその4。JSXを使ってみる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門3">
-  <meta property="og:description" content="デモページ：Reactを試すページその3。コンポーネントを使ってみる。">
+  <meta property="og:title" content="デモページ：React入門4">
+  <meta property="og:description" content="デモページ：Reactを試すページその4。JSXを使ってみる。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/65">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/67">
   <meta name="robots" content="noindex">
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門3</h1>
+      <h1 class="siteTitle">React入門4</h1>
     </div>
   </header>
 
@@ -38,21 +38,29 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>前回の React入門2の続き。関数に引数を渡す方法。</li>
-            <li>「name=""」のようにすれば、プロパティ値を関数に渡すことができる。引数名は propsとし、関数内で「{props.name}」と書けば参照できる。</li>
-            <li>propsは、「プロパティ」を意味する言葉。</li>
+            <li>「JSX」を使った書き方その1。()かっこ。例えば、return ();にすれば、複数行の要素を書いてもいい。ただし、returnは単一要素にしないとエラーになるので、div要素で囲んである。</li>
+            <li>「JSX」を使った書き方その2。{}かっこ。いろいろな用途に使えるようだ。イメージとしては、JavaScriptの ${}や ``に近いかも。例えば、HTML内で変数を使いたいときに利用できる。constや letで宣言した値を、{変数名}で参照できるようになる。また、関数を呼び出すこともできる。
+            </li>
+            <li>「JSX」を使った書き方その3。class属性はclassNameと書く。</li>
+            <li>「JSX」を使った書き方その4。CSSをあてるときは、style={{}}として、JSON形式で書く。</li>
           </ul>
 
-          <div id="root2" class="reactRoot"></div>
+          <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            function App(props) {
-              return <p>Reactテスト：コンポーネントで{props.name}を使う</p>;
+            function App() {
+              const prefix = "Reactテスト：";
+              return (
+                <div className="reactText">
+                  <p style={{ fontWeight: 'bold' }}>{prefix}JSXを使うと</p>
+                  <p>{prefix}複数行書ける</p>
+                </div>
+              );
             }
             ReactDOM.render(
               <React.StrictMode>
-                <App name="引数" />
+                <App />
               </React.StrictMode>,
-              document.getElementById('root2')
+              document.getElementById('root')
             );
           </script>
 
@@ -64,16 +72,22 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div id="root2" class="reactRoot"&gt;&lt;/div&gt;
+&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  function App(props) {
-    return &lt;p&gt;Reactテスト：コンポーネントで{props.name}を使う&lt;/p&gt;;
+  function App() {
+    const prefix = "Reactテスト：";
+    return (
+      &lt;div className="reactText"&gt;
+        &lt;p style={{ fontWeight: 'bold' }}&gt;{prefix}JSXを使うと&lt;/p&gt;
+        &lt;p&gt;{prefix}複数行書ける&lt;/p&gt;
+      &lt;/div&gt;
+    );
   }
   ReactDOM.render(
     &lt;React.StrictMode&gt;
-      &lt;App name="引数" /&gt;
+      &lt;App /&gt;
     &lt;/React.StrictMode&gt;,
-    document.getElementById('root2')
+    document.getElementById('root')
   );
 &lt;/script&gt;
 </code>
@@ -91,7 +105,7 @@
           </a>』のデモページです。
         </p> -->
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月22日</time>
+          作成日: <time class="releaseDate" datetime="2021-7-23">2021年7月23日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

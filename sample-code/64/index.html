@@ -9,12 +9,12 @@
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code64">
   <title>デモページ：React入門1</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すページその1。基礎の基礎。">
+  <meta name="description" content="デモページ：Reactを試すページその1。基礎の基礎にふれる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
   <meta property="og:title" content="デモページ：React入門1">
-  <meta property="og:description" content="デモページ：Reactを試すページその1。基礎の基礎。">
+  <meta property="og:description" content="デモページ：Reactを試すページその1。基礎の基礎にふれる。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/64">
   <meta name="robots" content="noindex">
@@ -38,6 +38,8 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
+            <li>reactを試すために CDNを使用。react.development.js、react-dom.development.jsを読み込んだ。これは開発者用。プロダクション用としては、react.production.min.js、react-dom.production.min.jsを使う。</li>
+            <li>babel.min.jsも読み込む。しかし、事前にコンパイルしておけばいいことなので、使用するのはあまり好ましくない。今回のようにちょっとだけ試すような場合にのみ使う。</li>
             <li>空のdiv要素（#root）を作る。この中に script要素を使って、p要素を作成した。</li>
             <li>script要素には、type属性で "text/babel"を指定。</li>
             <li>ReactDOM.render()にて、HTMLを差し込む。第一引数に HTML。第二引数に差し込み先。</li>
@@ -62,6 +64,12 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
+&lt;!-- reactの使用に必要なものを読み込む --&gt;
+&lt;script src="https://unpkg.com/react@17/umd/react.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- reactを使用したコード --&gt;
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
   ReactDOM.render(

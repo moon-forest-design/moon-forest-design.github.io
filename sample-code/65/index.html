@@ -21,7 +21,7 @@
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
   <!-- Don't use this in production: -->
-  <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
@@ -39,7 +39,8 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>前回の React入門1の続き。「コンポーネント」と呼ばれる書き方。</li>
-            <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で書く。このような書き方をすることで再利用できるようにもなる。関数名は自由につけられないのかな。例えば、&lt;App /&gt;を &lt;textView /&gt;に変えるとうまくいかない。</li>
+            <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で書く。このような書き方をすることで再利用できるようにもなる。</li>
+            <li>関数名は、一文字目を大文字にしなければいけない。例えば、サンプルコードで見かける&lt;App /&gt;もそう。試しに&lt;TextView /&gt;としてみた。これは JSXのルールらしい。</li>
             <li>昨今は、関数で書くが、少し前までは ES6の classで定義していたそうだ。いくつか書き方があるので、古いコードを見たときに混乱することがあるかもしれない。</li>
             <li>React.StrictModeは、おそらく JavaScriptの "use strict";みたいなものだろう。</li>
           </ul>
@@ -47,12 +48,12 @@
 
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            function App() {
+            function TextView() {
               return <p>Reactテスト：コンポーネントを使う</p>;
             }
             ReactDOM.render(
               <React.StrictMode>
-                <App />
+                <TextView />
               </React.StrictMode>,
               document.getElementById('root')
             );

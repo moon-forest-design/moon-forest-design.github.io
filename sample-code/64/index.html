@@ -21,7 +21,7 @@
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
   <!-- Don't use this in production: -->
-  <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
@@ -39,7 +39,7 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>reactを試すために CDNを利用。CDNは、開発者用とプロダクション用が用意されている。開発者用を開発するときに指定するものと解釈してしまったが勘違いだったようだ。開発者用は、いわゆる「開発者が中身を見たい」ときに使うためのもの。ゆえに圧縮・最適化されていない。CDNを利用する場合に指定するのはプロダクション用。react.production.min.js、react-dom.production.min.jsを使う。</li>
-            <li>開発者用のCDNを利用する場合は babel.min.jsも読み込む必要があるようだ。プロダクション用に含まれているのかもしれない。本来は、事前にコンパイルしておけばいいことなので、使用するのはあまり好ましくない。</li>
+            <li>CDNを利用する場合は、開発者用でもプロダクション用でも babel.min.jsも読み込む必要があるようだ。本来は、事前にコンパイルしておけばいいことなので、使用するのはあまり好ましくない。</li>
             <li>空のdiv要素（#root）を作る。この中に script要素を使って、p要素を作成するようなイメージ。仮想DOM。</li>
             <li>script要素には、type属性で "text/babel"を指定。</li>
             <li>ReactDOM.render()にて、HTMLを差し込む。第一引数に element（HTML文）。第二引数に container（差し込み先）。</li>

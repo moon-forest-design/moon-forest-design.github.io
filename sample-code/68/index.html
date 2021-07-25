@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code65">
-  <title>デモページ：React入門2</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code68">
+  <title>デモページ：React入門5</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すページその2。コンポーネント（関数で定義）を使ってみる。">
+  <meta name="description" content="デモページ：Reactを試すページその5。コンポーネント（classで定義）を使ってみる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門2">
-  <meta property="og:description" content="デモページ：Reactを試すページその2。コンポーネント（関数で定義）を使ってみる。">
+  <meta property="og:title" content="デモページ：React入門5">
+  <meta property="og:description" content="デモページ：Reactを試すページその5。コンポーネント（classで定義）を使ってみる。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/65">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/68">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門2</h1>
+      <h1 class="siteTitle">React入門5</h1>
     </div>
   </header>
 
@@ -38,25 +38,50 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>前回の React入門1の続き。「コンポーネント」と呼ばれる書き方。</li>
-            <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で定義する書き方。このようにすることで再利用できるようにもなる。</li>
-            <li>関数名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける&lt;App /&gt;も一文字目が「A」になっている。試しに&lt;textView /&gt;にしたらダメで&lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。</li>
-            <li>関数で書く以外にも ES6の classで定義する方法もある。状況に応じて使い分けることになる。他にもいくつか書き方があるようだが、廃止になったものもある。はじめのうちは混乱するかもしれない。</li>
-            <li>React.StrictModeは、おそらく JavaScriptの "use strict";みたいなものだろう。</li>
+            <li>React入門2でも書いた「コンポーネント」と呼ばれる書き方。今回は classで定義する「クラス構文」と呼ばれる方法。関数の propsと似たような役割として state（状態）がある。</li>
+            <li>公式 Docsの MAIN CONCEPTSの「state とライフサイクル」に、classにしたほうが良い場合の事例が掲載されている。引数を受け取る書き方ではないほうが都合が良いときもあるらしい。関数で書いていたコンポーネントを単に classで書くのではなく、classで書くことによるメリットがある。状況に応じて使い分けることになるようだ。</li>
+            <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形。</li>
           </ul>
 
 
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            function TextView() {
-              return <p>Reactテスト：コンポーネントを使う（関数で定義）</p>;
+            class Clock extends React.Component {
+              constructor(props) {
+                super(props);
+                this.state = {date: new Date()};
+              }
+
+              componentDidMount() {
+                this.timerID = setInterval(
+                  () => this.tick(),
+                  1000
+                );
+              }
+
+              componentWillUnmount() {
+                clearInterval(this.timerID);
+              }
+              
+              tick() {
+                this.setState({
+                  date: new Date()
+                });
+              }
+
+              render() {
+                return <p>Reactテスト：コンポーネントを使う（classで定義） 時刻　{this.state.date.toLocaleTimeString()}</p>;
+              }
+
             }
+
             ReactDOM.render(
               <React.StrictMode>
-                <TextView />
+                <Clock />
               </React.StrictMode>,
               document.getElementById('root')
             );
+
           </script>
 
 
@@ -71,15 +96,42 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  function App() {
-    return &lt;p&gt;Reactテスト：コンポーネントを使う&lt;/p&gt;;
+  class Clock extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {date: new Date()};
+    }
+
+    componentDidMount() {
+      this.timerID = setInterval(
+        () =&gt; this.tick(),
+        1000
+      );
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+    
+    tick() {
+      this.setState({
+        date: new Date()
+      });
+    }
+
+    render() {
+      return &lt;p&gt;Reactテスト：コンポーネントを使う（classで定義） 時刻　{this.state.date.toLocaleTimeString()}&lt;/p&gt;;
+    }
+
   }
+
   ReactDOM.render(
     &lt;React.StrictMode&gt;
-      &lt;App /&gt;
+      &lt;Clock /&gt;
     &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
+
 &lt;/script&gt;
 </code>
 </pre>
@@ -98,7 +150,7 @@
           </a>』のデモページです。
         </p> -->
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月22日</time>
+          作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月25日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

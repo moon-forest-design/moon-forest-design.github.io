@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code65">
-  <title>デモページ：React入門2</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code69">
+  <title>デモページ：React入門6</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すページその2。コンポーネント（関数で定義）を使ってみる。">
+  <meta name="description" content="デモページ：Reactを試すページその6。関数で定義したイベント処理。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門2">
-  <meta property="og:description" content="デモページ：Reactを試すページその2。コンポーネント（関数で定義）を使ってみる。">
+  <meta property="og:title" content="デモページ：React入門6">
+  <meta property="og:description" content="デモページ：Reactを試すページその6。関数で定義したイベント処理。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/65">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/69">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門2</h1>
+      <h1 class="siteTitle">React入門6</h1>
     </div>
   </header>
 
@@ -38,25 +38,34 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>前回の React入門1の続き。「コンポーネント」と呼ばれる書き方。</li>
-            <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で定義する書き方。このようにすることで再利用できるようにもなる。</li>
-            <li>関数名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける&lt;App /&gt;も一文字目が「A」になっている。試しに&lt;textView /&gt;にしたらダメで&lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。</li>
-            <li>関数で書く以外にも ES6の classで定義する方法もある。状況に応じて使い分けることになる。他にもいくつか書き方があるようだが、廃止になったものもある。はじめのうちは混乱するかもしれない。</li>
-            <li>React.StrictModeは、おそらく JavaScriptの "use strict";みたいなものだろう。</li>
+            <li>button要素をクリックすると、onSubmit属性に指定している関数handleSubmitを呼び出す。関数内では2つの処理を行っている。</li>
+            <li>1つは、button要素をクリックしたことで発生するデフォルト処理を抑止するために、「e.preventDefault();」している。</li>
+            <li>2つ目は、クリックされたことが分かるよう「You clicked submit.」とコンソール表示している。</li>
           </ul>
 
 
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            function TextView() {
-              return <p>Reactテスト：コンポーネントを使う（関数で定義）</p>;
+            function Form() {
+              function handleSubmit(e) {
+                e.preventDefault();
+                console.log('You clicked submit.');
+              }
+
+              return (
+                <form onSubmit={handleSubmit}>
+                  <button type="submit">Submit</button>
+                </form>
+              );
             }
+
             ReactDOM.render(
               <React.StrictMode>
-                <TextView />
+                <Form />
               </React.StrictMode>,
               document.getElementById('root')
             );
+
           </script>
 
 
@@ -71,15 +80,26 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  function App() {
-    return &lt;p&gt;Reactテスト：コンポーネントを使う&lt;/p&gt;;
+  function Form() {
+    function handleSubmit(e) {
+      e.preventDefault();
+      console.log('You clicked submit.');
+    }
+
+    return (
+      &lt;form onSubmit={handleSubmit}&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+      &lt;/form&gt;
+    );
   }
+
   ReactDOM.render(
     &lt;React.StrictMode&gt;
-      &lt;App /&gt;
+      &lt;Form /&gt;
     &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
+
 &lt;/script&gt;
 </code>
 </pre>

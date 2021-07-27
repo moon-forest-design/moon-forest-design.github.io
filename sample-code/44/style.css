@@ -143,9 +143,10 @@ img, svg, iframe {
   padding: 0 1.5em;
   box-sizing: border-box;
   margin: 0 auto;
-  border: 1px solid #eae5e3;
-  box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
+  border: 1px dashed #fff;
   border-radius: 4px;
+  color: #fff;
+  background-color: #302833;
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }

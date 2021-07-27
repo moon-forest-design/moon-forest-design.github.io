@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/68">
-  <title>デモページ：React入門5</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/70">
+  <title>デモページ：React入門7</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すページその5。コンポーネント（classで定義）を使ってみる。">
+  <meta name="description" content="デモページ：Reactを試すページその7。class構文で定義したイベント処理。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門5">
-  <meta property="og:description" content="デモページ：Reactを試すページその5。コンポーネント（classで定義）を使ってみる。">
+  <meta property="og:title" content="デモページ：React入門7">
+  <meta property="og:description" content="デモページ：Reactを試すページその7。class構文で定義したイベント処理。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/68">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/70">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門5</h1>
+      <h1 class="siteTitle">React入門7</h1>
     </div>
   </header>
 
@@ -38,51 +38,39 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>React入門2でも書いた「コンポーネント」と呼ばれる書き方。今回は classで定義する「クラス構文」と呼ばれる方法でコンポーネントを作成する。関数の propsと似たような役割として state（状態）がある。</li>
-            <li>公式 Docsの MAIN CONCEPTSの「state とライフサイクル」に、classにしたほうが良い場合の事例が掲載されている。引数を受け取る書き方ではないほうが都合が良いときもあるらしい。関数で書いていたコンポーネントを単に classで書くのではなく、classで書くことによるメリットがある。状況に応じて使い分けることになるようだ。</li>
-            <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形。</li>
-            <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
-            <li>Classが DOMとして描画されるときのことを Reactでは「マウント (mounting)」と呼ぶ。Classが生成した DOMが削除されるときのことを React では「アンマウント (unmounting)」と呼ぶ。</li>
-            <li>componentDidMount()メソッドには、DOMに描画された直後に実行したい処理を書く。</li>
-            <li>componentWillUnmount()メソッドには、componentDidMount()メソッドの解除処理を書く。</li>
+            <li>class構文で定義したイベント処理のサンプル Toggleボタン。</li>
+            <li>onClick={this.handleClick} のように ()を末尾に付けずにメソッドを参照する場合は、そのメソッドは bind()しておく必要がある。コンストラクタ内で書かれている this.handleClickの thisは関数外なので bind()しなければならない。</li>
+            <li>setState()で、コンポーネントの更新を要求する。ただし、処理効率をより良くするため、即時に更新するとは限らない。</li>
           </ul>
 
 
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            class Clock extends React.Component {
+            class Toggle extends React.Component {
               constructor(props) {
                 super(props);
-                this.state = {date: new Date()};
+                this.state = {isToggleOn: true};
+                this.handleClick = this.handleClick.bind(this); // bind()は、コールバックで thisを機能させるために必要
               }
 
-              componentDidMount() {
-                this.timerID = setInterval(
-                  () => this.tick(),
-                  1000
-                );
-              }
-
-              componentWillUnmount() {
-                clearInterval(this.timerID);
-              }
-              
-              tick() {
-                this.setState({
-                  date: new Date()
-                });
+              handleClick() {
+                // setState()で、コンポーネントの更新を要求する
+                this.setState(prevState => ({
+                  isToggleOn: !prevState.isToggleOn
+                }));
               }
 
               render() {
-                return <p>Reactテスト：コンポーネントを使う（classで定義） 時刻　{this.state.date.toLocaleTimeString()}</p>;
+                return (
+                  <button onClick={this.handleClick}>
+                    {this.state.isToggleOn ? 'ON' : 'OFF'}
+                  </button>
+                );
               }
-
             }
 
             ReactDOM.render(
-              <React.StrictMode>
-                <Clock />
-              </React.StrictMode>,
+              <Toggle />,
               document.getElementById('root')
             );
 
@@ -100,39 +88,32 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  class Clock extends React.Component {
+  class Toggle extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {date: new Date()};
+      this.state = {isToggleOn: true};
+      // bind()は、コールバックで thisを機能させるために必要
+      this.handleClick = this.handleClick.bind(this);
     }
 
-    componentDidMount() {
-      this.timerID = setInterval(
-        () =&gt; this.tick(),
-        1000
-      );
-    }
-
-    componentWillUnmount() {
-      clearInterval(this.timerID);
-    }
-    
-    tick() {
-      this.setState({
-        date: new Date()
-      });
+    handleClick() {
+      // setState()で、コンポーネントの更新を要求する
+      this.setState(prevState =&gt; ({
+        isToggleOn: !prevState.isToggleOn
+      }));
     }
 
     render() {
-      return &lt;p&gt;Reactテスト：コンポーネントを使う（classで定義） 時刻　{this.state.date.toLocaleTimeString()}&lt;/p&gt;;
+      return (
+        &lt;button onClick={this.handleClick}&gt;
+          {this.state.isToggleOn ? 'ON' : 'OFF'}
+        &lt;/button&gt;
+      );
     }
-
   }
 
   ReactDOM.render(
-    &lt;React.StrictMode&gt;
-      &lt;Clock /&gt;
-    &lt;/React.StrictMode&gt;,
+    &lt;Toggle /&gt;,
     document.getElementById('root')
   );
 
@@ -154,7 +135,7 @@
           </a>』のデモページです。
         </p> -->
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月25日</time>
+          作成日: <time class="releaseDate" datetime="2021-7-26">2021年7月26日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

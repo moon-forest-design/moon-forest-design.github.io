@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/64">
-  <title>デモページ：React入門1</title>
+  <title>デモページ：React入門「Hello World!」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すページその1。基礎の基礎にふれる。">
+  <meta name="description" content="デモページ：Reactを試すシリーズ。初回はReactの基礎にふれる。「Hello World!」を表示する。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門1">
-  <meta property="og:description" content="デモページ：Reactを試すページその1。基礎の基礎にふれる。">
+  <meta property="og:title" content="デモページ：React入門「Hello World!」">
+  <meta property="og:description" content="デモページ：Reactを試すシリーズ。初回はReactの基礎にふれる。「Hello World!」を表示する。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/64">
   <meta name="robots" content="noindex">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門1</h1>
+      <h1 class="siteTitle">React入門「Hello World!」</h1>
     </div>
   </header>
 
@@ -38,8 +38,8 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>reactを試すために CDNを利用。CDNは、開発者用とプロダクション用が用意されている。開発者用を「開発するときに指定するやり方」と解釈してしまったが勘違いだったようだ。開発者用は、いわゆる「開発者が中身を見たい」ときに使うためのもの。ゆえに圧縮・最適化されていない。CDNを利用する場合に指定するのはプロダクション用。react.production.min.js、react-dom.production.min.jsを使う。</li>
-            <li>CDNを利用する場合は、開発者用でもプロダクション用でも babel.min.jsも読み込む必要があるようだ。本来は、事前にコンパイルしておけばいいことなので、使用するのはあまり好ましくない。</li>
+            <li>reactを試すために CDNを利用。CDNは、開発者用とプロダクション用が用意されている。開発者用を「開発するときに使用するもの」と解釈してしまったが勘違いだったようだ。開発者用は、いわゆる「開発者が中身を見たい」ときに使うためのもの。ゆえに圧縮・最適化されていない。CDNを利用する場合に指定するのはプロダクション用。react.production.min.js、react-dom.production.min.jsを使う。</li>
+            <li>CDNを利用する場合は、開発者用でもプロダクション用でもどちらにせよ babel.min.jsも読み込む必要があるようだ。本来は、事前にコンパイルしておけばいいことなので、使用するのはあまり好ましくないが仕方がない。</li>
             <li>空のdiv要素（#root）を作る。この中に script要素を使って、p要素を作成するようなイメージ。仮想DOM。</li>
             <li>script要素には、type属性で "text/babel"を指定。</li>
             <li>ReactDOM.render()にて、HTMLを差し込む。第一引数に element（HTML文）。第二引数に container（差し込み先）。</li>
@@ -52,7 +52,7 @@
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
             ReactDOM.render(
-              <p>Reactテスト：はじめの一歩</p>,
+              <p>Hello World!</p>,
               document.getElementById('root')
             );
           </script>
@@ -75,7 +75,7 @@
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
   ReactDOM.render(
-    &lt;p&gt;Reactテスト：はじめの一歩&lt;/p&gt;,
+    &lt;p&gt;Hello World!&lt;/p&gt;,
     document.getElementById('root')
   );
 &lt;/script&gt;

@@ -38,9 +38,9 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>React入門2でも書いた「コンポーネント」と呼ばれる書き方。今回は classで定義する「クラス構文」と呼ばれる方法でコンポーネントを作成する。関数の propsと似たような役割として state（状態）がある。</li>
-            <li>公式 Docsの MAIN CONCEPTSの「state とライフサイクル」に、classにしたほうが良い場合の事例が掲載されている。引数を受け取る書き方ではないほうが都合が良いときもあるらしい。関数で書いていたコンポーネントを単に classで書くのではなく、classで書くことによるメリットがある。状況に応じて使い分けることになるようだ。</li>
-            <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形。</li>
+            <li>React入門2でも書いた「コンポーネント」と呼ばれる書き方。今回は classで定義する「クラス構文（class）」と呼ばれる方法でコンポーネントを作成する。関数の propsと似たような役割として state（状態）がある。</li>
+            <li>公式 Docsの MAIN CONCEPTSの「state とライフサイクル」に、クラス構文にしたほうが良い場合の事例が掲載されている。引数を受け取る書き方ではないほうが都合が良いときもあるらしい。クラス構文で書くことによってのみ発生するメリット、あるいはクラス構文でしか成しえない処理があるということだろうか。状況に応じて使い分けることになるようだ。</li>
+            <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形にする。</li>
             <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
             <li>Classが DOMとして描画されるときのことを Reactでは「マウント (mounting)」と呼ぶ。Classが生成した DOMが削除されるときのことを React では「アンマウント (unmounting)」と呼ぶ。</li>
             <li>componentDidMount()メソッドには、DOMに描画された直後に実行したい処理を書く。</li>
@@ -50,12 +50,15 @@
 
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
+            // クラス構文でコンポーネントを作成
             class Clock extends React.Component {
               constructor(props) {
+                // super(props)は、this.stateを使うために必要
                 super(props);
                 this.state = {date: new Date()};
               }
 
+              // componentDidMount()は、連打―直後に実行したい処理を書く
               componentDidMount() {
                 this.timerID = setInterval(
                   () => this.tick(),
@@ -63,6 +66,7 @@
                 );
               }
 
+              // componentWillUnmount()は、componentDidMount()の解除処理を書く
               componentWillUnmount() {
                 clearInterval(this.timerID);
               }
@@ -100,12 +104,15 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
+  // クラス構文でコンポーネントを作成
   class Clock extends React.Component {
     constructor(props) {
+      // super(props)は、this.stateを使うために必要
       super(props);
       this.state = {date: new Date()};
     }
 
+    // componentDidMount()は、連打―直後に実行したい処理を書く
     componentDidMount() {
       this.timerID = setInterval(
         () =&gt; this.tick(),
@@ -113,6 +120,7 @@
       );
     }
 
+    // componentWillUnmount()は、componentDidMount()の解除処理を書く
     componentWillUnmount() {
       clearInterval(this.timerID);
     }

@@ -48,6 +48,7 @@
           <script type="text/babel">
             function Form() {
               function handleSubmit(e) {
+                // button要素をクリックしたことで発生するデフォルト処理を抑止
                 e.preventDefault();
                 console.log('You clicked submit.');
               }
@@ -82,6 +83,7 @@
 &lt;script type="text/babel"&gt;
   function Form() {
     function handleSubmit(e) {
+      // button要素をクリックしたことで発生するデフォルト処理を抑止
       e.preventDefault();
       console.log('You clicked submit.');
     }

@@ -50,7 +50,8 @@
               constructor(props) {
                 super(props);
                 this.state = {isToggleOn: true};
-                this.handleClick = this.handleClick.bind(this); // bind()は、コールバックで thisを機能させるために必要
+                // bind()は、コールバックで thisを機能させるために必要
+                this.handleClick = this.handleClick.bind(this);
               }
 
               handleClick() {

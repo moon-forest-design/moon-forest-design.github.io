@@ -38,7 +38,7 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>前回の React入門1の続き。「コンポーネント」と呼ばれる書き方。</li>
+            <li>前回の React入門 Hello World!の続き。「コンポーネント」と呼ばれる書き方。</li>
             <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で定義する書き方。このようにすることで再利用できるようにもなる。</li>
             <li>関数名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける&lt;App /&gt;も一文字目が「A」になっている。試しに&lt;textView /&gt;にしたらダメで&lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。</li>
             <li>関数で書く以外にも ES6の classで定義する方法もある。状況に応じて使い分けることになる。他にもいくつか書き方があるようだが、廃止になったものもある。はじめのうちは混乱するかもしれない。</li>
@@ -72,7 +72,7 @@
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
   function App() {
-    return &lt;p&gt;Reactテスト：コンポーネントを使う&lt;/p&gt;;
+    return &lt;p&gt;Reactテスト：コンポーネントを使う（関数で定義）&lt;/p&gt;;
   }
   ReactDOM.render(
     &lt;React.StrictMode&gt;

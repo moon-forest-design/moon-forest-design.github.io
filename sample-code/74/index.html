@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/72">
-  <title>デモページ：React入門「propsなしの引数」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/74">
+  <title>デモページ：React入門「バリデーション」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すシリーズ。propsなしの引数。">
+  <meta name="description" content="デモページ：Reactを試すシリーズ。入力欄にバリデーションを仕込む。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門「propsなしの引数」">
-  <meta property="og:description" content="デモページ：Reactを試すシリーズ。propsなしの引数。">
+  <meta property="og:title" content="デモページ：React入門「バリデーション」">
+  <meta property="og:description" content="デモページ：Reactを試すシリーズ。入力欄にバリデーションを仕込む。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/72">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/74">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門「propsなしの引数」</h1>
+      <h1 class="siteTitle">React入門「バリデーション」</h1>
     </div>
   </header>
 
@@ -38,30 +38,43 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>引数を受け取るときに、関数を ()ではなく ({ ... })とすると、「props.」をつけなくても良くなるらしい。これは Reactの話ではなく、JavaScriptの分割代入。</li>
+            <li>event.targetは、「イベントを発生させたオブジェクトへの参照」するプロパティ。ここでは、event.target.valueとし、input要素で入力された値を参照することになる。似たような名称のものに、event.currentTargetがある。用途に応じて使い分ける。</li>
+            <li>input要素の value属性は初期状態で空にしておく。入力されたら値を表示するのに使用する。</li>
+            <li>input要素の onChange属性は、入力イベントが発生したら関数setTextDataを起動する役割。</li>
+            <li>関数setTextData内で 10文字以上入力できないバリデーションを行っている。10文字を越えたら slice()で 10文字までに切り整える。</li>
+            <li>関数setTextDataが呼び出されるたびに render()で再描画することで、入力した値が value属性値として表示できる。</li>
           </ul>
 
 
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            const Hello = ({ name, color }) => (
-              <div>
-                <p style={{ color }}>Hello {name}</p>
+            const style = {
+              width: '100%',
+              padding: '1em',
+              boxSizing: 'border-box',
+            };
+            let textData = '';
+            const setTextData = (event) => {
+              textData = event.target.value; // 入力された値を格納
+              if (textData.length > 10) {
+                textData = textData.slice(0, 10); // 10文字を越えたら10文字までに切り整える
+              }
+              render(); // 入力されるたびに再描画する
+            };
+            const InputForm = () => (
+              // value属性　入力された値を表示　初期値は空''
+              // onChange属性　入力イベントが発生したら関数setTextDataを起動
+              <div style={style}>
+                <input type="text" value={textData} onChange={setTextData} style={style} />
               </div>
             );
-            const TextView = () => (
-              <div>
-                <Hello name="Rabbit" color="red" />
-                <Hello name="Cat" color="blue" />
-                <Hello name="Raccoon dog" color="green" />
-              </div>
-            );
-            ReactDOM.render(
+            const render = () => ReactDOM.render(
               <React.StrictMode>
-                <TextView />
+                <InputForm />
               </React.StrictMode>,
               document.getElementById('root')
             );
+            render();
           </script>
 
 
@@ -74,26 +87,34 @@
             <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  const Hello = ({ name, color }) =&gt; (
-    &lt;div&gt;
-      &lt;p style={{ color }}&gt;Hello {name}&lt;/p&gt;
+  const style = {
+    width: '100%',
+    padding: '1em',
+    boxSizing: 'border-box',
+  };
+  let textData = '';
+  const setTextData = (event) =&gt; {
+    textData = event.target.value; // 入力された値を格納
+    if (textData.length &gt; 10) {
+      textData = textData.slice(0, 10); // 10文字を越えたら10文字までに切り整える
+    }
+    render(); // 入力されるたびに再描画する
+  };
+  const InputForm = () =&gt; (
+    // value属性　入力された値を表示　初期値は空''
+    // onChange属性　入力イベントが発生したら関数setTextDataを起動
+    &lt;div style={style}&gt;
+      &lt;input type="text" value={textData} onChange={setTextData} style={style} /&gt;
     &lt;/div&gt;
   );
-  const TextView = () =&gt; (
-    &lt;div&gt;
-      &lt;Hello name="Rabbit" color="red" /&gt;
-      &lt;Hello name="Cat" color="blue" /&gt;
-      &lt;Hello name="Raccoon dog" color="green" /&gt;
-    &lt;/div&gt;
-  );
-  ReactDOM.render(
+  const render = () =&gt; ReactDOM.render(
     &lt;React.StrictMode&gt;
-      &lt;TextView /&gt;
+      &lt;InputForm /&gt;
     &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
+  render();
 &lt;/script&gt;
 </code>
 </pre>

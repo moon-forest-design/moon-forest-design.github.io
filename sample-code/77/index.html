@@ -6,27 +6,32 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/76">
-  <title>デモページ：カウントアップボタン「class構文によるコンポーネント」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/77">
+  <title>デモページ：React入門「PropTypes」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すシリーズ。class構文によるコンポーネント化。クリックするとカウントアップするボタンを作る。">
+  <meta name="description" content="デモページ：Reactを試すシリーズ。型チェックを行うPropTypesについて。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：カウントアップボタン「class構文によるコンポーネント」">
-  <meta property="og:description" content="デモページ：Reactを試すシリーズ。class構文によるコンポーネント化。クリックするとカウントアップするボタンを作る。">
+  <meta property="og:title" content="デモページ：React入門「PropTypes」">
+  <meta property="og:description" content="デモページ：Reactを試すシリーズ。型チェックを行うPropTypesについて。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/76">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/77">
   <meta name="robots" content="noindex">
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script> -->
+  <!-- 開発用のReactを使用 -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <!-- PropTypesライブラリを使用 -->
+  <script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.min.js"></script>
   <!-- Don't use this in production: -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">カウントアップボタン<br class="brNone">「class構文によるコンポーネント」</h1>
+      <h1 class="siteTitle">React入門「PropTypes」</h1>
     </div>
   </header>
 
@@ -38,40 +43,30 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>class構文で定義したイベント処理のサンプル カウントアップボタン。</li>
-            <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
-            <li>onClick={this.incrementCount} のように ()を末尾に付けずにメソッドを参照する場合は、そのメソッドは bind()しておく必要がある。</li>
-            <li>setState()で、コンポーネントの更新を要求する。ただし、処理効率をより良くするため、即時に更新するとは限らない。</li>
+            <li>Reactには、型をチェックするためのライブラリがある。例えば、Stringなのか Numberなのか、あるいは他の予想外のおかしなデータが混入していないかを開発時にチェックするためだ。型をチェックするためのライブラリは「PropTypes」と呼ばれている。</li>
+            <li>試しに 開発用の Reactと prop-types.min.jsを CDNで読み込む形にした。</li>
+            <li>数値データを受け取りたいところ {this.props.num}に、あえて文字列 "Sara"を渡したとこｒ、コンソールに warningエラーが出るはずなのだが、なぜか出なかった。何か足りないのか。保留。</li>
+            <li>また、何かしらのトラブルで期待する値が入らない場合のためにデフォルト値を設定することができる。</li>
           </ul>
 
 
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            class CountUpBtn extends React.Component {
-              constructor(props) {
-                super(props);
-                this.state = { count: 1 };
-                // bind()は、コールバックで thisを機能させるために必要
-                this.incrementCount = this.incrementCount.bind(this);
-              }
-              incrementCount() {
-                // setState()で、コンポーネントの更新を要求する
-                this.setState({ count: this.state.count + 1 });
-              }
+            class NumList extends React.Component {
               render() {
                 return (
-                  <div>
-                    <button onClick={this.incrementCount} className='countBtn'>
-                      {this.state.count}
-                    </button>
-                  </div>
+                  <div>No. {this.props.num}</div>
                 );
               }
             }
-
+            // PropTypesライブラリによる型チェックに必要な設定　数値であることをチェックしたい
+            NumList.propTypes = {
+              num: PropTypes.number
+            };
             const render = () => ReactDOM.render(
+              // 試しにあえて文字列を渡す
               <React.StrictMode>
-                <CountUpBtn />
+                <NumList num="Sara" />
               </React.StrictMode>,
               document.getElementById('root')
             );
@@ -81,40 +76,37 @@
 
         </section>
         <!-- /.content -->
-
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML</h4>
+          <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
+&lt;!-- 開発用のReactを使用 --&gt;
+&lt;script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"&gt;&lt;/script&gt;
+&lt;script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"&gt;&lt;/script&gt;
+&lt;!-- PropTypesライブラリを使用 --&gt;
+&lt;script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- 数値データを受け取りたいところにあえて文字列を渡している例 --&gt;
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  class CountUpBtn extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { count: 1 };
-      // bind()は、コールバックで thisを機能させるために必要
-      this.incrementCount = this.incrementCount.bind(this);
-    }
-    incrementCount() {
-      // setState()で、コンポーネントの更新を要求する
-      this.setState({ count: this.state.count + 1 });
-    }
+  class NumList extends React.Component {
     render() {
       return (
-        &lt;div&gt;
-          &lt;button onClick={this.incrementCount} className='countBtn'&gt;
-            {this.state.count}
-          &lt;/button&gt;
-        &lt;/div&gt;
+        &lt;div&gt;No. {this.props.num}&lt;/div&gt;
       );
     }
   }
-
+  // PropTypesライブラリによる型チェックに必要な設定　数値であることをチェックしたい
+  NumList.propTypes = {
+    num: PropTypes.number
+  };
   const render = () =&gt; ReactDOM.render(
+    // 試しにあえて文字列を渡す
     &lt;React.StrictMode&gt;
-      &lt;CountUpBtn /&gt;
+      &lt;NumList num="Sara" /&gt;
     &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
@@ -122,14 +114,12 @@
 &lt;/script&gt;
 </code>
 </pre>
-
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
-
+      
       <div class="postFooter">
         <!-- <p class="postDescription">
           ※：記事『<a href="https://moon-forest-design.com/archives/？" target="_blank" rel="noopener noreferrer">
@@ -137,7 +127,7 @@
           </a>』のデモページです。
         </p> -->
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-8-2">2021年8月2日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-3">2021年8月3日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

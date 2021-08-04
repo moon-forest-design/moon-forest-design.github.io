@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/16">
+  <title>デモページ：タイトルを上下左右で中央揃えにする方法</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="タイトルを上下左右で中央揃えにする方法です。5通りのやり方を試行。（paddingとtext-align、line-height、flex、grid、table-cell）">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="タイトルを上下左右で中央揃えにする方法">
+  <meta property="og:description" content="タイトルを上下左右で中央揃えにする方法です。5通りのやり方を試行。（paddingとtext-align、line-height、flex、grid、table-cell）">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/16">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">タイトルを上下左右で中央揃えにする方法</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <div class="demo">
+          <h2 class="noheight">1：paddingと text-alignを使う方法</h2>
+        </div>
+
+        <div class="demo demo--height">
+          <h2 class="lineHeight">2：line-heightと text-alignを使う方法</h2>
+        </div>
+
+        <div class="demo demo--height flexBox">
+          <h2>3：flexを使う方法</h2>
+        </div>
+
+        <div class="demo demo--height displayGrid">
+          <h2>4：gridを使う方法</h2>
+        </div>
+
+        <div class="demo demo--height displayTable">
+          <div class="displayTable__inner">
+            <h2 class="displayTableCell">5：table-cellを使う方法</h2>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="postFooter">
+        <p class="postDescription">
+          ※：記事『<a href="https://moon-forest-design.com/archives/425" target="_blank" rel="noopener noreferrer">
+            タイトルを上下左右で中央揃えにする方法
+          </a>』のデモページです。
+        </p>
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-5-13">2021年5月13日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <a class="backSignboard" href="https://yellowredfox.github.io/">
+          <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ">
+          <h2 class="backSignboard__title">キアカラボ</h2>
+        </a>
+        <p class="office">
+          キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/1">
-  <title>デモページ：ヘッダーを画面いっぱいに表示する方法（「height: 100%;」を使用）</title>
+  <title>ヘッダーを画面いっぱいに表示する方法（「height: 100%;」を使用）</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：ヘッダーをウィンドウ画面いっぱいに表示する方法です。「height: 100%;」を使うやり方です。">
+  <meta name="description" content="ヘッダーをウィンドウ画面いっぱいに表示する方法です。「height: 100%;」を使うやり方です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：ヘッダーを画面いっぱいに表示する方法（「height: 100%;」を使用）">
-  <meta property="og:description" content="デモページ：ヘッダーをウィンドウ画面いっぱいに表示する方法です。「height: 100%;」を使うやり方です。">
+  <meta property="og:title" content="ヘッダーを画面いっぱいに表示する方法（「height: 100%;」を使用）">
+  <meta property="og:description" content="ヘッダーをウィンドウ画面いっぱいに表示する方法です。「height: 100%;」を使うやり方です。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/1">
   <meta name="robots" content="noindex">
@@ -31,83 +31,86 @@
     <div class="main__inner">
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+      <h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法を書き残しておきます。CSSのポイントは以下ようです。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>html要素に、「height: 100%;」を指定する。</li>
+            <li>html要素のheightを継承するために、タイトルの親要素まで「height: inherit;」を繰り返し指定する。（例：body要素、header要素、div要素……など）</li>
+            <li>タイトルの親要素に、flexで上下左右中央揃えを指定する。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;header class="header"&gt;
+　&lt;div class="header__container"&gt;
+　　&lt;h1 class="siteTitle" data-subtitle="ホームページ制作の"&gt;月の森デザイン&lt;/h1&gt;
+　&lt;/div&gt;
+&lt;/header&gt;
+</code>
+</pre>
+
+        <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+html {
+　height: 100%;
+}
+body {
+　height: inherit;
+}
+.header {
+　height: inherit;
+}
+.header__container {
+　height: inherit;
+　display: flex;
+　align-items: center;
+　justify-content: center;  
+}
+</code>
+</pre>
+
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://yellowredfox.github.io/sample-code/2">ページのスクロールを促す方法（アニメーション付き）</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/3">ページをスクロールすると、各コンテンツが下からふわっと表れるようにする方法</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
-      <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/419" target="_blank" rel="noopener noreferrer">
-            CSSでヘッダーを画面っぱいに表示する方法
-          </a>』のデモページです。
-        </p>
-        <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-4-23">2021年4月23日</time>
-        </div>
-        <div class="postAuthor">
-          作成者: イールド
-        </div>
-      </div>
-      <!-- /.postFooter -->
-
-
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <p>ヘッダー部分をウィンドウ画面いっぱいに表示すると、インパクトがあります。CSSだけでウィンドウ画面いっぱいに表示できてしまうところがすごいです。</p>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>コードを参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://ics.media/entry/17522/" target="_blank">上下中央揃えのCSSまとめ。Flexboxがたった3行で最も手軽 - ICS MEDIA</a></li>
+            <li><a href="https://qiita.com/shouchida/items/205fed63b886681661bd" target="_blank">height: 100% の要素が画面の高さ100%にならない場合の対応方法 - Qiita</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
     </div>
     <!-- /.main__inner -->
   </main>

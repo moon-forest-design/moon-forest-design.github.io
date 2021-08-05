@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/2">
-  <title>デモページ：ページのスクロールを促すCSSアニメーション</title>
+  <title>ページのスクロールを促すCSSアニメーション</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="ページのスクロールを促すCSSアニメーションです。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けます。jQueryとCSSアニメーションを使用。">
   <meta name="author" content="イールド（月の森デザイン）">
@@ -35,73 +35,114 @@
     <div class="main__inner">
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、ページのスクロールを促す方法を書き残しておきます。スクロールされるまでメッセージ「Please Scroll」がバウンドし続けるアニメーション付きです。ポイントは以下ようです。</p>
 
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>事前に、メッセージ「Please Scroll」を、CSSで非表示にしておきます。</li>
+            <li>3秒経っても、ユーザーがページをスクロールしなければ、メッセージ「Please Scroll」を jQueryを使って表示します。</li>
+            <li>メッセージ「Please Scroll」は、CSSアニメーションによりバウンドします。</li>
+            <li>ユーザーがページをスクロールしたら、メッセージ「Please Scroll」を jQueryを使って非表示にします。</li>
+            <li>「transform: translate(-50%, -50%);」は、テキスト幅の半分だけずらして中央揃えにしています。</li>
           </ul>
+
         </section>
         <!-- /.content -->
-  
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;h1 class="siteTitle"&gt;ページのスクロールを促すCSSアニメーション&lt;/h1&gt;
+</code>
+</pre>
+
+        <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.pleaseScroll {
+  display: none;
+  font-size: 2rem;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  left: 0;
+  text-align: center;
+  color: #192f60;
+}
+.animationBounce {
+  animation: bounce 2s ease infinite normal 0s none running;
+}
+@keyframes bounce {
+  0%, 100%, 20%, 50%, 80% {
+    transform: translateY(0px);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+</code>
+</pre>
+
+        <h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+  // スクロールされないとき メッセージ「Please Scroll」を表示
+  setTimeout(function() { // 3秒待つ
+    if ($(window).scrollTop() &lt; 10) { // 3秒経っても上端から10px以上スクロールしない場合
+      $("#pleaseScroll").fadeIn(); // 「Please Scroll」を表示しスクロールを促す
+    }
+  }, 3000);
+
+  // スクロールされたら「Please Scroll」を非表示
+  $(window).scroll(function() {
+    $("#pleaseScroll").fadeOut();
+  });
+
+});
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
       </section>
       <!-- /.contents -->
-  
+
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://yellowredfox.github.io/sample-code/1">ヘッダーをウィンドウ画面いっぱいに表示して、タイトルを上下左右中央揃えにする方法</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/3">ページをスクロールすると、各コンテンツが下からふわっと表れるようにする方法</a></li>
           </ul>
         </section>
         <!-- /.content -->
+      </section>
+      <!-- /.contents -->
 
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
+          <h3 class="heading-3">あとがき</h3>
+          <p>エンドユーザーが次に何をすれば良いのか迷ったときに、このような表示ができるとおもしろいかもしれません。うっとうしいと感じる人もいらっしゃるかもしれないので、しつこくない程度にですけども。</p>
         </section>
         <!-- /.content -->
-
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>アニメーション部分のコードを参考にさせていただいたページが無くなってしまったようです。</p>
+        </section>
+        <!-- /.content -->
       </section>
       <!-- /.contents -->
 
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/456" target="_blank" rel="noopener noreferrer">
-            ページのスクロールを促すCSSアニメーション
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-4-23">2021年4月23日</time>
         </div>

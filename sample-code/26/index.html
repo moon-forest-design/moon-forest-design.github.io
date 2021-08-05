@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/26">
-  <title>デモページ：CSSで画面をパイルアップさせる表現方法</title>
+  <title>CSSで画面をパイルアップさせる表現方法</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：スクロールすると画面がスライドしながらパイルアップしていくような表現方法です。position（sticky）を使用。">
+  <meta name="description" content="スクロールすると画面がスライドしながらパイルアップしていくような表現方法です。position（sticky）を使用。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：CSSで画面をパイルアップさせる表現方法">
-  <meta property="og:description" content="デモページ：スクロールすると画面がスライドしながらパイルアップしていくような表現方法です。position（sticky）を使用。">
+  <meta property="og:title" content="CSSで画面をパイルアップさせる表現方法">
+  <meta property="og:description" content="スクロールすると画面がスライドしながらパイルアップしていくような表現方法です。position（sticky）を使用。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/26">
   <meta name="robots" content="noindex">
@@ -22,16 +22,16 @@
 <body>
 
   <header class="header">
-    <div class="pileup titles--odd">
+    <div class="pileup">
       <h1 class="siteTitle">CSSで画面をパイルアップさせる表現方法</h1>
     </div>
-    <div class="pileup titles--even">
+    <div class="pileup">
       <p class="subTitle">画面を下へスクロールすると……</p>
     </div>
-    <div class="pileup titles--odd">
+    <div class="pileup">
       <p class="subTitle">パイルアップしているように……</p>
     </div>
-    <div class="pileup titles--even">
+    <div class="pileup">
       <p class="subTitle">見えます。</p>
     </div>
   </header>
@@ -40,74 +40,102 @@
     <div class="main__inner">
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">要点</h3>
+          <p>すでにタイトルに書いた通り、画面を下へスクロールするとパイルアップ（pile up）していくように見える方法について書きます。ウィンドウ画面がスライドして積み重なっていくようなイメージです。ポイントは以下ようです。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>画面をパイルアップしたい要素を並べます。今回は div要素を使用しました。class名は .pileupです。</li>
+            <li>.pileupで重要なのは、「position: sticky;」と「top: 0;」です。これによって、ウィンドウ画面を積み重ねていくような動作がうまれます。他のプロパティは、ウィンドウにフル画面表示したり、上下左右で中央揃えする方法などです。</li>
+            <li>.titles--oddと .titles--evenは、色を交互につけるために使用しています。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;header class="header"&gt;
+  &lt;div class="pileup"&gt;
+    &lt;h1 class="siteTitle"&gt;CSSで画面をパイルアップさせる表現方法&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class="pileup"&gt;
+    &lt;p class="subTitle"&gt;画面を下へスクロールすると……&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="pileup"&gt;
+    &lt;p class="subTitle"&gt;パイルアップしているように……&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="pileup"&gt;
+    &lt;p class="subTitle"&gt;見えます。&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.pileup {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  letter-spacing: .1em;
+}
+.pileup:nth-of-type(even) {
+  color: #fffffc;
+  background-color: #302833;
+}
+.pileup:nth-of-type(odd) {
+  color: #302833;
+  background-color: #fffffc;
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://yellowredfox.github.io/sample-code/24">ヘッダーを固定する方法（position: sticky;版）</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/16">タイトルを上下左右で中央揃えにする方法</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>このような表現方法にも、正式名称があるのかもしれません。しかし、残念ながら存じあげないので、とりあえず「パイルアップスライダー」もしくは「パイリアップ」と呼ぶことにしました。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考になりました。ありがとうございました。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/position" target="_blank" rel="noopener noreferrer">position - CSS: カスケーディングスタイルシート | MDN</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
-
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/609" target="_blank" rel="noopener noreferrer">
-            CSSで画面をパイルアップさせる表現方法
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-5-26">2021年5月26日</time>
         </div>

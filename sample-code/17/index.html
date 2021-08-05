@@ -7,134 +7,107 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/17">
-  <title>デモページ：スムーズスクロール（scroll-behavior版）</title>
+  <title>スムーズスクロール（scroll-behavior版）</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。scroll-behavior使用。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：スムーズスクロール（scroll-behavior版）">
+  <meta property="og:title" content="スムーズスクロール（scroll-behavior版）">
   <meta property="og:description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。scroll-behavior使用。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/17">
   <meta name="robots" content="noindex">
 </head>
 <body>
-
   <header class="header">
     <div class="header__container">
       <h1 class="siteTitle">スムーズスクロール<br class="brNone">（scroll-behavior版）</h1>
       <ul class="menu">
-        <li class="menu__item"><a class="menu__link" href="#menu1">メニュー1</a></li>
-        <li class="menu__item"><a class="menu__link" href="#menu2">メニュー2</a></li>
-        <li class="menu__item"><a class="menu__link" href="#menu3">メニュー3</a></li>
+        <li class="menu__item"><a class="menu__link" href="#summary">コード概要</a></li>
+        <li class="menu__item"><a class="menu__link" href="#relate">関連記事</a></li>
+        <li class="menu__item"><a class="menu__link" href="#note">編集後記</a></li>
       </ul>
     </div>
   </header>
 
   <main class="main">
     <div class="main__inner">
-
       <section class="contents">
-        <h2 id="menu1" class="heading-2">メニュー1 の デモ h2タイトル</h2>
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、スムーズスクロール機能です。scroll-behaviorプロパティを使えば、CSSだけでスムーズにスクロールができてしまうとのことなので試してみました。仕様は以下ようです。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>事前に、HTMLファイル内の各 h2見出しに、それぞれ idをつけておきます。上部メニューには、各 h2見出しへページ内移動するリンクをつけてあります。</li>
+            <li>html要素に「scroll-behavior: smooth;」をあてます。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;h2 id="summary"&gt;コード概要&lt;/h2&gt;
+（～中略～）
+&lt;h2 id="relate"&gt;関連記事&lt;/h2&gt;
+（～中略～）
+&lt;h2 id="note"&gt;編集後記&lt;/h2&gt;
+</code>
+</pre>
+  
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+html {
+  scroll-behavior: smooth;
+}
+</code>
+</pre>
+  
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
-      <section class="contents">
-        <h2 id="menu2" class="heading-2">メニュー2 の デモ h2タイトル</h2>
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://yellowredfox.github.io/sample-code/6">スムーズスクロール（jQuery自作版）</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/42">スムーズスクロール（smooth-scroll.js版）</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
-
       </section>
       <!-- /.contents -->
-
+  
       <section class="contents">
-        <h2 id="menu3" class="heading-2">メニュー3 の デモ h2タイトル</h2>
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>「scroll-behavior: smooth;」は、使えると簡便でありがたいのだけれど、ブラウザ対応がまだ足りていません。IEはしょうがないとしても、Safariもダメとなると現状においては使い難い感じがいたします。</li>
+            <li>ページ内検索時に「ゆっくりとスクロールされる」という不具合もあるようです。<a href="https://coliss.com/articles/build-websites/operation/css/fixing-smooth-scrolling-with-page-search.html">改善策はあるので問題はない</a>のでしょうけれど、ただ、ブラウザ対応の問題も含め、そこまでしてという気持ちになってしまいます。もう少し様子を見たい機能です。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考になりました。ありがとうございました。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/scroll-behavior">scroll-behavior - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://coliss.com/articles/build-websites/operation/css/fixing-smooth-scrolling-with-page-search.html">scroll-behavior: smooth;によるページ内検索時のスクロールを除外するテクニック | コリス</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
 
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/504" target="_blank" rel="noopener noreferrer">
-            スムーズスクロールの作り方
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-5-16">2021年5月16日</time>
         </div>

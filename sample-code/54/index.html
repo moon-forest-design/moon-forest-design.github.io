@@ -31,73 +31,84 @@
     <div class="main__inner">
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
-          <section class="content">
-            <h3 class="heading-3">デモ h3タイトル</h3>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <ul>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            </ul>
-          </section>
-          <!-- /.content -->
-  
-          <section class="content">
-            <h3 class="heading-3">デモ h3タイトル</h3>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <ul>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            </ul>
-          </section>
-          <!-- /.content -->
-  
+        <h2 class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、ふわっと表示です。ページをスクロールしていくと、各コンテンツが少し下の位置からふわっと表れるようにする方法です。以前、<a href="https://yellowredfox.github.io/sample-code/3">jQueryを利用して自作</a>しましたが、今回は jQueryライブラリのScrollReveal.jsを試してみました。ポイントは以下ようです。</p>
+          <ul>
+            <li>事前に、ふわっと表示したい領域（ここでは .content）を用意しておく。</li>
+            <li>jQuery・ScrollReveal.js・main.jsを読み込む。</li>
+            <li>ScrollReveal.jsに関する設定を main.jsで行う。ふわっと表示したい領域（ここでは '.content'）を指定し、あとは、duration・viewFactor・distanceなどの設定を行えば OKです。</li>
+          </ul>
         </section>
-        <!-- /.contents -->
-  
-        <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
-          <section class="content">
-            <h3 class="heading-3">デモ h3タイトル</h3>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <ul>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            </ul>
-          </section>
-          <!-- /.content -->
-  
-          <section class="content">
-            <h3 class="heading-3">デモ h3タイトル</h3>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-            <ul>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-              <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            </ul>
-          </section>
-          <!-- /.content -->
-  
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;!-- ふわっと表示したい領域 --&gt;
+&lt;section class="content"&gt;
+～（コンテンツ）～
+&lt;/section&gt;
+
+&lt;!-- jQuery・ScrollReveal.js・main.jsを読み込む --&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/scrollreveal"&gt;&lt;/script&gt;
+&lt;script src="main.js"&gt;&lt;/script&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+  ScrollReveal().reveal('.content', { 
+    duration: 2000, // アニメーションの開始から終了までの時間
+    viewFactor: 0.3, // どれくらい見えたら実行するか指定（値：0～1）
+    distance: '100px', // 下から移動表示する場合の長さ
+  });
+});
+</code>
+</pre>
+
         </section>
-        <!-- /.contents -->
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/3">スクロール時に、ふわっと表示させる方法（jQuery自作版）</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>時間をかけずに、スクロール時にふわっと表示させたいときは便利です。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>試用しました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://scrollrevealjs.org/" target="_blank" rel="noopener noreferrer">ScrollReveal</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
 
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/475" target="_blank" rel="noopener noreferrer">
-            スクロール時に「ふわっ」と表示させる方法
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-6-25">2021年6月25日</time>
         </div>

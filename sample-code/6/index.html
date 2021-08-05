@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/6">
-  <title>デモページ：スムーズスクロール（jQuery自作版）</title>
+  <title>スムーズスクロール（jQuery自作版）</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。jQueryで自作しました。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：スムーズスクロール（jQuery自作版）">
+  <meta property="og:title" content="スムーズスクロール（jQuery自作版）">
   <meta property="og:description" content="スムーズスクロール機能を導入する方法。するするっとページ内で移動します。jQueryで自作しました。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/6">
@@ -25,9 +25,9 @@
     <div class="header__container">
       <h1 class="siteTitle">スムーズスクロール<br class="brNone">（jQuery自作版）</h1>
       <ul class="menu">
-        <li class="menu__item"><a class="menu__link" href="#menu1">メニュー1</a></li>
-        <li class="menu__item"><a class="menu__link" href="#menu2">メニュー2</a></li>
-        <li class="menu__item"><a class="menu__link" href="#menu3">メニュー3</a></li>
+        <li class="menu__item"><a class="menu__link" href="#summary">コード概要</a></li>
+        <li class="menu__item"><a class="menu__link" href="#relate">関連記事</a></li>
+        <li class="menu__item"><a class="menu__link" href="#note">編集後記</a></li>
       </ul>
     </div>
   </header>
@@ -36,105 +36,86 @@
     <div class="main__inner">
 
       <section class="contents">
-        <h2 id="menu1" class="heading-2">メニュー1 の デモ h2タイトル</h2>
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、スムーズスクロール機能です。仕様は以下ようです。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>事前に、HTMLファイル内の各 h2見出しに、それぞれ idをつけておきます。上部メニューには、各 h2見出しへページ内移動するリンクをつけてあります。</li>
+            <li>jQueryにて、a要素（href属性の値に#が付いているもの）がクリックされたら、ページ内移動がスムーズに行われます。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;h2 id="summary"&gt;コード概要&lt;/h2&gt;
+（～中略～）
+&lt;h2 id="relate"&gt;関連記事&lt;/h2&gt;
+（～中略～）
+&lt;h2 id="note"&gt;編集後記&lt;/h2&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+  // スムーズスクロール
+  $('a[href^="#"]').click(function() { // a要素（href属性の値に#が付いているもの）をクリックしたら実行
+    const $href = $(this).attr("href"); // a要素のhref属性の値を取得
+    const $adjust = $href === "#" ? 0 : 10; // 移動先の位置がピッタリにならないよう調整する　トップ以外は上に 10px余白
+    const $target = $($href === "#" || $href === "" ? "html" : $href); // トップへ戻る場合は"html"を代入　他はaリンクのhrefの値を代入
+    const $position = $target.offset().top - $adjust; // 移動先の要素のtop位置を取得　及び$adjustで調整
+    $('body, html').animate({
+      scrollTop: $position
+    }, 500, 'swing'); // animate()を使ってスムーズにページ内移動　スピード500、動作swing
+    return false;
+  });
+});
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://yellowredfox.github.io/sample-code/17">スムーズスクロール（scroll-behavior版）</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/42">スムーズスクロール（smooth-scroll.js版）</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/5">トップへ戻るボタン</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
       <section class="contents">
-        <h2 id="menu2" class="heading-2">メニュー2 の デモ h2タイトル</h2>
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>トップへ戻るボタンなどを押したときに、いい感じになるので、スムーズスクロール機能は入れておきたいところです。</li>
+            <li>CSSだけで出来る「<a href="https://yellowredfox.github.io/sample-code/17">scroll-behavior: smooth;</a>」は、ブラウザ対応がもう少し進んでからでしょうか。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
+          <h3 class="heading-3">参考資料</h3>
+          <p>コードを参考にさせていただいたページは無くなってしまったようです。</p>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
-      <section class="contents">
-        <h2 id="menu3" class="heading-2">メニュー3 の デモ h2タイトル</h2>
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
-
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
-
-      </section>
-      <!-- /.contents -->
-
-      
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/504" target="_blank" rel="noopener noreferrer">
-            スムーズスクロールの作り方
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-5-4">2021年5月4日</time>
         </div>
@@ -147,6 +128,7 @@
     </div>
     <!-- /.main__inner -->
   </main>
+
 
   <footer class="footer">
     <div class="footer__inner">

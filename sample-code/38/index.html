@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/38">
-  <title>デモページ：Slickの使い方</title>
+  <title>Slickの使い方</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="カルーセルスライダー「Slick」の使い方です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：Slickの使い方">
+  <meta property="og:title" content="Slickの使い方">
   <meta property="og:description" content="カルーセルスライダー「Slick」の使い方です。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/38">
@@ -37,76 +37,140 @@
 
   <main class="main">
     <div class="main__inner">
-
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、カルーセルスライダー「Slick」の使い方です。ポイントは以下ようです。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>Slick本体はダウンロードしてもいいし、CDNを利用してもどちらでも構わない。今回は、手間が少ないので CDNを利用した。</li>
+            <li>slick.cssと slick-theme.cssの後に style.cssを読み込まなければいけない。そうしないと !importantをつけなければいけなくなる。無意味。順番をまもりましょう。</li>
+            <li>jquery.min.jsの後に、slick.min.jsを読み込まなければいけない。Slickは jQueryライブラリなので順番を間違うと動かない。</li>
+            <li>CSSでデザイン等を変更したい場合は、slick-theme.cssを見ればいい。slick-theme.cssで指定されている class名に対して、style.cssで追加・変更する形となる。</li>
+            <li>.slick-prevの「z-index: 100;」は指定したほうがいい。他の場所で position系（static以外）の処理を使っていると、階層の問題で表示されなくなることがある。</li>
+          </ul>
+
+          </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;!-- CSSファイルの読み込み --&gt;
+&lt;link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/&gt;
+&lt;link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;!-- JSファイルの読み込み --&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"&gt;&lt;/script&gt;
+&lt;script src="main.js"&gt;&lt;/script&gt;
+
+&lt;!-- カルーセルスライダーの表示 --&gt;
+&lt;ul class="slider"&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider1.jpg"&gt;&lt;/li&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider2.jpg"&gt;&lt;/li&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider3.jpg"&gt;&lt;/li&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider4.jpg"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+/* ----- リストマーカー非表示 ----- */
+.slider {
+  list-style-type: none;
+}
+/* ----- 矢印の位置 ----- */
+.slick-next {
+  right: 45px;
+  z-index: 99;
+}
+.slick-prev {
+  left: 20px;
+  z-index: 100;
+}
+/* ----- 矢印の大きさ ----- */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 50px;
+}
+/* ----- 画像の大きさ ----- */
+.slider__img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+/* ----- ページネーションの位置 ----- */
+.slick-dots {
+  bottom: 25px;
+}
+/* ----- ページネーションの色 ----- */
+.slick-dots li.slick-active button:before {
+  color: #fff;
+}
+</code>
+</pre>
+
+          <h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+  $('.slider').slick({
+    autoplay: true, // 自動再生するか？
+    autoplaySpeed: 3000, // 自動再生時の間隔ms
+    speed: 1000, // 画像が切り替わる速度
+    pauseOnHover: false, // 画像にマウスオーバしたときに停止するか？
+    dots: true, // ページネーションを表示するか？
+  });
+});
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/39">Swiperの使い方</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>想定していたより軽快に動作するので驚きました。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://kenwheeler.github.io/slick/" target="_blank" rel="noopener noreferrer">slick - the last carousel you'll ever need</a></li>
+            <li><a href="https://qiita.com/katsunory/items/25b385aae0f07b41e611" target="_blank" rel="noopener noreferrer">【jQuery】スライダー系プラグイン slickの使用方法 - Qiita</a></li>
+            <li><a href="https://qiita.com/ymeeto/items/7fc56eea4bd44487cdb7" target="_blank" rel="noopener noreferrer">スライダープラグイン「Slick」便利なオプション&動きサンプル集 - Qiita</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
 
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/569" target="_blank" rel="noopener noreferrer">
-            カルーセルスライダー「Slick」の使い方
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-6-9">2021年6月9日</time>
         </div>

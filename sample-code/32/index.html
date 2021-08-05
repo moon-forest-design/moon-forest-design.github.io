@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/32">
-  <title>デモページ：picture要素を使用して画像を切り替える方法</title>
+  <title>picture要素を使用して画像を切り替える方法</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="picture要素を使用して画像を切り替える方法です。スマートフォン用と、それ以外用、それぞれ別の画像を表示します。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：picture要素を使用して画像を切り替える方法">
+  <meta property="og:title" content="picture要素を使用して画像を切り替える方法">
   <meta property="og:description" content="picture要素を使用して画像を切り替える方法です。スマートフォン用と、それ以外用、それぞれ別の画像を表示します。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/32">
@@ -34,76 +34,98 @@
 
   <main class="main">
     <div class="main__inner">
-
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、picture要素を使用して画像を切り替える方法です。前回は<a href="https://yellowredfox.github.io/sample-code/31">背景画像をメディアクエリで切り替える方法</a>でしたが、今回は「画像を背景にしない」という大きな違いがあります。ポイントは、以下ようです。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>スマートフォン用の縦長の画像と、それ以外用の横長の画像を 2枚用意します。</li>
+            <li>picture要素内に、souce要素とimg要素を記述します。souce要素にはスマートフォン用の画像、img要素にはそれ以外用の画像を指定します。</li>
+            <li>souce要素のmedia属性には、スマートフォン用として扱うためのサイズを指定します。srcset属性には、スマートフォン用の画像がある場所を指定します。</li>
+            <li>CSSは<a href="https://yellowredfox.github.io/sample-code/13">画像をウィンドウ画面いっぱいに表示するための指定</a>がほとんどです。</li>
+            <li>picture要素はインライン要素のようです。ここではブロックレベル要素のほうが都合が良いので、「display: block;」で変更しました。</li>
+          </ul>
+
+          <div class="sample">
+            <figure class="thumbnail">
+              <img class="thumbnail__img" src="mainVisual-sp-s.jpg" alt="スマートフォン用の画像">
+            </figure>
+            <figure class="thumbnail">
+              <img class="thumbnail__img" src="mainVisual-pc-s.jpg" alt="それ以外用の画像">
+            </figure>
+          </div>
+
+          </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;picture class="mainVisual"&gt;
+  &lt;source media="(max-width: 576px)" srcset="mainVisual-sp.jpg"&gt;
+  &lt;img class="mainVisual__img" src="mainVisual-pc.jpg"&gt;
+&lt;/picture&gt;
+</code>
+</pre>
+  
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.mainVisual {
+  display: block;
+  width: 100%;
+  max-width: 1920px;
+  height: 100vh;
+}
+.mainVisual__img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+</code>
+</pre>
+ 
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/31">メディアクエリを使用して背景画像を切り替える方法</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>IEを気にせずとも良くなってきたこともあり、<a href="https://yellowredfox.github.io/sample-code/31">画像の切り替えはメディアクエリを使って行うより</a>も、picture要素を使うことが増えていきそうです。<a href="https://yellowredfox.github.io/sample-code/13">object-fitプロパティ</a>もそうですが、backgroundプロパティ（背景画像）の役割は減少していくのかもしれません。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/picture" target="_blank" rel="noopener noreferrer">&lt;picture&gt;: 画像要素 - HTML: HyperText Markup Language | MDN</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
 
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/545" target="_blank" rel="noopener noreferrer">
-            CSSでレスポンシブに画像を切り替える方法
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-6-1">2021年6月1日</time>
         </div>

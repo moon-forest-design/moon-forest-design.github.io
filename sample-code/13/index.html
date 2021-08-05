@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/13">
-  <title>デモページ：backgroundで画像をフル表示する方法</title>
+  <title>backgroundで画像をフル表示する方法</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="CSSのbackgroundプロパティを使って、画像（ヒーローイメージ）をブラウザのウィンドウ画面いっぱいにフル表示する方法です。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：backgroundで画像をフル表示する方法">
+  <meta property="og:title" content="backgroundで画像をフル表示する方法">
   <meta property="og:description" content="CSSのbackgroundプロパティを使って、画像（ヒーローイメージ）をブラウザのウィンドウ画面いっぱいにフル表示する方法です。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/13">
@@ -35,74 +35,83 @@
     <div class="main__inner">
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、CSSの backgroundを使って、画像を画面いっぱいに表示する方法について書きます。いわゆるヒーローイメージを指定する方法です。ポイントは以下ようです。</p>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>空の div要素を用意し、CSSの background-imageで背景画像（ヒーローイメージ）を指定する。</li>
+            <li>高さ（height）を指定してあげないと表示されないので、必ず高さも指定します。画面の高さいっぱいに表示するため 100vhを指定します。</li>
+            <li>background-positionに center、background-sizeに coverを指定することで、画像の位置と大きさをちょうど良く調整します。</li>
           </ul>
         </section>
         <!-- /.content -->
-
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div class="mainVisual"&gt;
+  &lt;!-- CSSのbackgroundで画像を背景表示する領域 --&gt;
+&lt;/div&gt;
+</code>
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.mainVisual {
+  height: 100vh;
+  background-image: url("mainVisual.jpg");
+  background-position: center;
+  background-size: cover;
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li><a href="https://yellowredfox.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
       <section class="contents">
-        <h2 class="heading-2">デモ h2タイトル</h2>
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
+          <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
+            <li>ヒーローイメージは、そのサイトがどのようなサイトなのかをイメージづけるための画像です。ゆえに、とても大切です。エンドユーザーにとって、ファーストビューとなることもあるので、どのようなことを伝えたいのか？　その意図が明確な画像でなければいけません。「あら、きれいな人ね。まあこれでいっか」などという選び方をしてはいけないのです。</li>
+            <li>指定内容が分かり良いように分けて書きましたが、「background: center/cover url("mainVisual.jpg");」のようにひとまとめにして書くこともできます。</li>
+            <li>background-position、及び background-sizeの指定値によっては、画像のトリミングもできます。</li>
+            <li>backgroundを使って画像を画面いっぱいに表示する方法は、以前から使用されているおなじみのやり方です。しかし、あまり使われなくなってきているかもしれません。今どきは <a href="https://yellowredfox.github.io/sample-code/14">object-fit</a>を使うことが増えてきているようです。</li>
+          </ul>				
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/background-image" target="_blank" rel="noopener noreferrer">background-image - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/background-position" target="_blank" rel="noopener noreferrer">background-position - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/background-size" target="_blank" rel="noopener noreferrer">background-size - CSS: カスケーディングスタイルシート | MDN</a></li>
           </ul>
         </section>
         <!-- /.content -->
-
-        <section class="content">
-          <h3 class="heading-3">デモ h3タイトル</h3>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <p>デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。デモ pテキスト。</p>
-          <ul>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-            <li>デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。デモ ulリスト。</li>
-          </ul>
-        </section>
-        <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
-
       <div class="postFooter">
-        <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/524" target="_blank" rel="noopener noreferrer">
-            CSSで画像をフル表示する方法
-          </a>』のデモページです。
-        </p>
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-5-12">2021年5月12日</time>
         </div>

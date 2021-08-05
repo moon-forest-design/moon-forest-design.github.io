@@ -83,6 +83,26 @@ img, svg {
 }
 
 
+/* sample
+================================================== */
+.sample {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 0;
+}
+.thumbnail {
+  width: calc(100% / 2 - 100px);
+  padding: 20px;
+  background-color: #302833;
+  border-radius: 3px;
+}
+.thumbnail__img {
+  width: 100%;
+  height: 330px;
+  object-fit: contain;
+}
+
+
 /* main
 ================================================== */
 .main {
@@ -164,9 +184,10 @@ img, svg {
   padding: 0 1.5em;
   box-sizing: border-box;
   margin: 0 auto;
-  border: 1px solid #eae5e3;
-  box-shadow: 0 0 10px -5px rgba(0, 0, 0, .5) inset;
+  border: 1px dashed #fff;
   border-radius: 4px;
+  color: #fff;
+  background-color: #302833;
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }

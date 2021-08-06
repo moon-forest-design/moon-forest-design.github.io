@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/65">
-  <title>デモページ：React入門「関数によるコンポーネント化」</title>
+  <title>React入門「関数によるコンポーネント化」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すシリーズ。関数によるコンポーネント化。">
+  <meta name="description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門「関数によるコンポーネント化」">
-  <meta property="og:description" content="デモページ：Reactを試すシリーズ。関数によるコンポーネント化。">
+  <meta property="og:title" content="React入門「関数によるコンポーネント化」">
+  <meta property="og:description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/65">
   <meta name="robots" content="noindex">
@@ -39,9 +39,8 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>前回の React入門 Hello World!の続き。「コンポーネント」と呼ばれる書き方。</li>
-            <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で定義する書き方。このようにすることで再利用できるようにもなる。</li>
-            <li>関数名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける&lt;App /&gt;も一文字目が「A」になっている。試しに&lt;textView /&gt;にしたらダメで&lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。これ忘れやすい。はじめのうちはとくに、うっかりしてなぜ動かないのか気づかずに無駄に時間をすごすことになりがち。</li>
-            <li>関数で書く以外にも ES6の classで定義する方法もある。状況に応じて使い分けることになる。他にもいくつか書き方があるようだが、廃止になったものもある。はじめのうちは混乱するかもしれない。</li>
+            <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で定義する書き方。このようにすることで再利用しやすくなる。</li>
+            <li>関数名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける &lt;App /&gt;も一文字目が「A」になっている。試しに &lt;textView /&gt;にしたらダメで &lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。</li>
             <li>React.StrictModeは、おそらく JavaScriptの "use strict";みたいなものだろう。</li>
           </ul>
 
@@ -90,13 +89,39 @@
       </section>
       <!-- /.contents -->
 
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/75">React入門「コンポーネントのいろいろな書き方」</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>関数名の一文字目を大文字にするルールは忘れやすい。はじめのうちはとくに忘れやすい。うっかりしてなぜ動かないのか気づかずに無駄に時間をすごすことになりがち。気をつけよう。</li>
+            <li>関数で書く方法以外にも ES6の classで定義する方法もある。他にもいくつか書き方があるようだが、廃止になったものもある。古いコードを見たときに、はじめのうちは混乱するかもしれない。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://www.tohoho-web.com/ex/react.html" target="_blank">React入門 - とほほのWWW入門</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
 
       <div class="postFooter">
-        <!-- <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/？" target="_blank" rel="noopener noreferrer">
-            
-          </a>』のデモページです。
-        </p> -->
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月22日</time>
         </div>

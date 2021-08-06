@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/67">
-  <title>デモページ：React入門「JSX」</title>
+  <title>React入門「JSX」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すシリーズ。JSXという書き方。">
+  <meta name="description" content="Reactを試すシリーズ。JSXという書き方。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：React入門「JSX」">
-  <meta property="og:description" content="デモページ：Reactを試すシリーズ。JSXという書き方。">
+  <meta property="og:title" content="React入門「JSX」">
+  <meta property="og:description" content="Reactを試すシリーズ。JSXという書き方。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/67">
   <meta name="robots" content="noindex">
@@ -37,13 +37,15 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>「JSX」は、XMLの文法に従って書かなければならない。</p>
+          <p>「JSX」は、JavaScriptの拡張言語。XMLの文法に従って記述するルールがある。以下、主な書き方の例。</p>
           <ul>
-            <li>「JSX」を使った書き方その1。()かっこ。例えば、return ();にすれば、複数行の要素を書いてもいい。ただし、returnは単一要素にしないとエラーになるので、div要素で囲んである。</li>
-            <li>「JSX」を使った書き方その2。{}かっこ。いろいろな用途に使えるようだ。イメージとしては、JavaScriptの ${}や ``に近いかも。例えば、HTML内で変数を使いたいときに、constや letで宣言した値を、{変数名}と書くことで参照できるようになる。また、関数を呼び出すこともできる。
+            <li>()かっこ。例えば、return ();にすれば、複数行の要素を書いてもいい。ただし、returnは単一要素にしないとエラーになるので、div要素で囲む。</li>
+            <li>{}かっこ。JSX内で JavaScriptのコードを書きたい場合に使う。例えば、HTML内で変数を使いたいときに、constや letで宣言した値を、{変数名}と書くことで参照できるようになる。また、関数を呼び出すこともできる。
             </li>
-            <li>「JSX」を使った書き方その3。class属性はclassNameと書く。</li>
-            <li>「JSX」を使った書き方その4。CSSをあてるときは、style={{}}として、JSON形式で書く。</li>
+            <li>予約語とバッティングして使えない属性名がある。例えば、class属性は classNameと書く。for属性は htmlForと書く。value属性は defaultValueと書く。checked属性は defaultCheckedと書く。</li>
+            <li>CSSをあてるときは、style={{}}として、JSON形式で書く。</li>
+            <li>コメントは、{/* コメント */}のように書く。</li>
+            <li>終了タグ（閉じタグ）のない要素は、 / をつける。例えば、&lt;App /&gt;のように書く。</li>
           </ul>
 
 
@@ -53,8 +55,8 @@
               const prefix = "Reactテスト：";
               return (
                 <div className="reactText">
-                  <p style={{ fontWeight: 'bold' }}>{prefix}JSXを使って</p>
-                  <p>{prefix}複数行書いた</p>
+                  <p style={{ fontWeight: 'bold' }}>{prefix}JSX</p>
+                  <p>JSXを使って書いた</p>
                 </div>
               );
             }
@@ -81,8 +83,8 @@
     const prefix = "Reactテスト：";
     return (
       &lt;div className="reactText"&gt;
-        &lt;p style={{ fontWeight: 'bold' }}&gt;{prefix}JSXを使うと&lt;/p&gt;
-        &lt;p&gt;{prefix}複数行書ける&lt;/p&gt;
+        &lt;p style={{ fontWeight: 'bold' }}&gt;{prefix}JSX&lt;/p&gt;
+        &lt;p&gt;JSXを使って書いた&lt;/p&gt;
       &lt;/div&gt;
     );
   }
@@ -101,12 +103,40 @@
       </section>
       <!-- /.contents -->
 
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/64">React入門「Hello World!」</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>必ずしも Reactで JSXを使わなくてもいいそうだが、一般的には JSXの記法で書くことが多いようだ。特別なこだわりがないなら、JSXで書くほうがいい。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://ja.reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener noreferrer">JSX の導入 – React</a></li>
+            <li><a href="https://ja.reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener noreferrer">JSX の導入 – React</a></li>
+            <li><a href="https://www.to-r.net/media/react-tutorial04/" target="_blank" rel="noopener noreferrer">JSXの基本 – React入門 - to-R Media</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
       <div class="postFooter">
-        <!-- <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/？" target="_blank" rel="noopener noreferrer">
-            
-          </a>』のデモページです。
-        </p> -->
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-7-23">2021年7月23日</time>
         </div>

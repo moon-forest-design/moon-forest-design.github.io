@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/68">
-  <title>デモページ：時刻表示「class構文によるコンポーネント化」</title>
+  <title>時刻表示「class構文によるコンポーネント化」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="デモページ：Reactを試すシリーズ。class構文によるコンポーネント化。">
+  <meta name="description" content="Reactを試すシリーズ。class構文によるコンポーネント化。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="デモページ：時刻表示「class構文によるコンポーネント化」">
-  <meta property="og:description" content="デモページ：Reactを試すシリーズ。class構文によるコンポーネント化。">
+  <meta property="og:title" content="時刻表示「class構文によるコンポーネント化」">
+  <meta property="og:description" content="Reactを試すシリーズ。class構文によるコンポーネント化。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/68">
   <meta name="robots" content="noindex">
@@ -39,7 +39,6 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>今回は、関数ではなく classで定義する「クラス構文（class）」と呼ばれる方法でコンポーネントを作成する。関数の propsと似たような役割として state（状態）がある。</li>
-            <li>公式 Docsの MAIN CONCEPTSの「state とライフサイクル」に、クラス構文にしたほうが良い場合の事例が掲載されている。引数を受け取る書き方ではないほうが都合が良いときもあるらしい。クラス構文で書くことによってのみ発生するメリット、あるいはクラス構文でしか成しえない処理がある。状況に応じて使い分けることになるようだ。例えば、起動時に一度だけ初期化したいような場合は、ライフサイクルメソッドを有するクラス構文のほうが良いのかもしれない。</li>
             <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形にする。</li>
             <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
             <li>Classが DOMとして描画されるときのことを Reactでは「マウント (mounting)」と呼ぶ。Classが生成した DOMが削除されるときのことを React では「アンマウント (unmounting)」と呼ぶ。</li>
@@ -152,13 +151,39 @@
       </section>
       <!-- /.contents -->
 
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/64">React入門「Hello World!」</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>クラス構文にしたほうが都合が良いときもあるらしい。クラス構文で書くことによってのみ発生するメリット、あるいはクラス構文でしか成しえない処理があるようだ。</li>
+            <li>状況に応じて使い分けることになりそうだ。例えば、起動時に一度だけ初期化したい処理があるような場合は、ライフサイクルメソッドを有するクラス構文のほうが良いのかもしれない。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://ja.reactjs.org/docs/state-and-lifecycle.html" target="_blank" rel="noopener noreferrer">state とライフサイクル – React</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
 
       <div class="postFooter">
-        <!-- <p class="postDescription">
-          ※：記事『<a href="https://moon-forest-design.com/archives/？" target="_blank" rel="noopener noreferrer">
-            
-          </a>』のデモページです。
-        </p> -->
         <div class="postDate">
           作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月25日</time>
         </div>

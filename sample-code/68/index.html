@@ -9,12 +9,12 @@
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/68">
   <title>時刻表示「class構文によるコンポーネント化」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。class構文によるコンポーネント化。">
+  <meta name="description" content="Reactを試すシリーズ。class構文によるコンポーネント化。Stateを使ってみよう。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
   <meta property="og:title" content="時刻表示「class構文によるコンポーネント化」">
-  <meta property="og:description" content="Reactを試すシリーズ。class構文によるコンポーネント化。">
+  <meta property="og:description" content="Reactを試すシリーズ。class構文によるコンポーネント化。Stateを使ってみよう。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/68">
   <meta name="robots" content="noindex">
@@ -38,7 +38,8 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>今回は、関数ではなく classで定義する「クラス構文（class）」と呼ばれる方法でコンポーネントを作成する。関数の propsと似たような役割として state（状態）がある。</li>
+            <li>今回は、関数ではなく classで定義する「クラス構文（class）」と呼ばれる方法でコンポーネント Class Componentを作成する。</li>
+            <li>Class Componentの主な特徴として、State（状態）がある。Stateは Propsと違い、値を変更できる。</li>
             <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形にする。</li>
             <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
             <li>Classが DOMとして描画されるときのことを Reactでは「マウント (mounting)」と呼ぶ。Classが生成した DOMが削除されるときのことを React では「アンマウント (unmounting)」と呼ぶ。</li>
@@ -167,8 +168,9 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>クラス構文にしたほうが都合が良いときもあるらしい。クラス構文で書くことによってのみ発生するメリット、あるいはクラス構文でしか成しえない処理があるようだ。</li>
-            <li>状況に応じて使い分けることになりそうだ。例えば、起動時に一度だけ初期化したい処理があるような場合は、ライフサイクルメソッドを有するクラス構文のほうが良いのかもしれない。</li>
+            <li>クラス構文にしたほうが都合が良いときもあるらしい。クラス構文で書くことによってのみ発生するメリット、あるいはクラス構文でしか成しえない処理があるようだ。状況に応じて使い分けることになりそうだ。例えば、起動時に一度だけ初期化したい処理があるような場合は、ライフサイクルメソッドを有するクラス構文のほうが良いのかもしれない。</li>
+            <li>似たような感じがするので、Propsと Stateを比べることもあるが、とくに対比的なものではなく、「どちらが優れているか？　どちらを使うか？」という話ではない。例えば、Stateの初期値として Propsの内容を利用しても良い。</li>
+            <li>Reactは Stateが変更されたタイミングでコンポーネントの再描画を行う。ゆえに即時更新が必要にならない状況であれば、Stateではなく Propsを使うほうがいいかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->

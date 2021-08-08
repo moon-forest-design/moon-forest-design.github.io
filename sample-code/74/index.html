@@ -38,14 +38,14 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>event.targetは、「イベントを発生させたオブジェクトへの参照」するプロパティ。ここでは、event.target.valueとし、input要素で入力された値を参照することになる。似たような名称のものに、event.currentTargetがある。用途に応じて使い分ける。</li>
+            <li>event.targetは、「イベントを発生させたオブジェクトへの参照」を行うプロパティ。ここでは、event.target.valueとし、input要素で入力された値を参照することになる。似たような名称のものに、event.currentTargetがある。用途に応じて使い分ける。</li>
             <li>input要素の value属性は初期状態で空にしておく。入力されたら値を表示するのに使用する。</li>
             <li>input要素の onChange属性は、入力イベントが発生したら関数setTextDataを起動する役割。</li>
             <li>関数setTextData内で 10文字以上入力できないバリデーションを行っている。10文字を越えたら slice()で 10文字までに切り整える。</li>
             <li>関数setTextDataが呼び出されるたびに render()で再描画することで、入力した値が value属性値として表示できる。</li>
           </ul>
 
-
+          <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
             const style = {
@@ -76,7 +76,7 @@
             );
             render();
           </script>
-
+          <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->

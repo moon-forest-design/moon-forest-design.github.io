@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/65">
-  <title>React入門「関数によるコンポーネント化」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/81">
+  <title>React入門「イベント処理の基礎2」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
+  <meta name="description" content="Reactを試すシリーズ。Reactのイベント処理の基礎2。入力欄input要素で使ってみる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React入門「関数によるコンポーネント化」">
-  <meta property="og:description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
+  <meta property="og:title" content="React入門「イベント処理の基礎2」">
+  <meta property="og:description" content="Reactを試すシリーズ。Reactのイベント処理の基礎2。入力欄input要素で使ってみる。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/65">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/81">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「関数によるコンポーネント化」</h1>
+      <h1 class="siteTitle">React入門「イベント処理の基礎2」</h1>
     </div>
   </header>
 
@@ -38,54 +38,103 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>前回の React入門 Hello World!の続き。「コンポーネント」と呼ばれる書き方。</li>
-            <li>ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で定義する書き方。このようにすることで再利用しやすくなる。</li>
-            <li>関数名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける &lt;App /&gt;も一文字目が「A」になっている。試しに &lt;textView /&gt;にしたらダメで &lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。</li>
-            <li>React.StrictModeは、おそらく JavaScriptの "use strict";みたいなものだろう。</li>
+            <li>イベント処理1の続き。今回は input要素を使った入力欄。入力したものがコンソールに表示される。</li>
+            <li>onChange属性を使用。仮引数 eventで受取り、「event.target.value」で内容を表示している。onChangeなので入力のたびに表示される。</li>
+            <li>event.targetは、「イベントを発生させたオブジェクトへの参照」を行うプロパティ。ここでは、event.target.valueとし、input要素で入力された値を参照している。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            function TextView() {
-              return <p>Reactテスト：コンポーネントを使う（関数で定義）</p>;
+            const InputText = () => {
+              return (
+                <div>
+                  <input type="text" defaultValue="" onChange={event => console.log(event.target.value)} />
+                </div>
+              )
             }
             ReactDOM.render(
-              <React.StrictMode>
-                <TextView />
-              </React.StrictMode>,
+              <InputText />,
               document.getElementById('root')
             );
           </script>
           <!-- Reactコード　ここまで -->
 
+          <ul>
+            <li>以下は、同じ仕様の入力欄だが、onChange属性内に処理を書かずに、コールバック関数として外に書いた場合のサンプル。</li>
+          </ul>
+
+          <!-- Reactコード　ここから -->
+          <div id="root2" class="reactRoot"></div>
+          <script type="text/babel">
+            const InputText2 = () => {
+              // コールバック関数
+              const handleInput= (event) => {
+                // イベントハンドラを書く
+                console.log(event.target.value)
+              }
+              return (
+                <div>
+                  <input type="text" defaultValue="" onChange={handleInput}/>
+                </div>
+              )
+            }
+            ReactDOM.render(
+              <InputText2 />,
+              document.getElementById('root2')
+            );
+          </script>
+          <!-- Reactコード　ここまで -->
+
+
         </section>
         <!-- /.content -->
-
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML</h4>
+          <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
+&lt;!-- onChange属性内に処理を書いた場合のコード --&gt;
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  function App() {
-    return &lt;p&gt;Reactテスト：コンポーネントを使う（関数で定義）&lt;/p&gt;;
+  const InputText = () =&gt; {
+    return (
+      &lt;div&gt;
+        &lt;input type="text" defaultValue="" onChange={event =&gt; console.log(event.target.value)} /&gt;
+      &lt;/div&gt;
+    )
   }
   ReactDOM.render(
-    &lt;React.StrictMode&gt;
-      &lt;App /&gt;
-    &lt;/React.StrictMode&gt;,
+    &lt;InputText /&gt;,
     document.getElementById('root')
+  );
+&lt;/script&gt;
+
+&lt;!-- onChange属性外に処理を書いた場合のコード --&gt;
+&lt;div id="root2" class="reactRoot"&gt;&lt;/div&gt;
+&lt;script type="text/babel"&gt;
+  const InputText2 = () =&gt; {
+    // コールバック関数
+    const handleInput= (event) =&gt; {
+      // イベントハンドラを書く
+      console.log(event.target.value)
+    }
+    return (
+      &lt;div&gt;
+        &lt;input type="text" defaultValue="" onChange={handleInput}/&gt;
+      &lt;/div&gt;
+    )
+  }
+  ReactDOM.render(
+    &lt;InputText2 /&gt;,
+    document.getElementById('root2')
   );
 &lt;/script&gt;
 </code>
 </pre>
-
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
@@ -93,7 +142,8 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/75">React入門「コンポーネントのいろいろな書き方」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/80">React入門「イベント処理の基礎1」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/74">React入門「バリデーション」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -105,8 +155,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>関数名の一文字目を大文字にするルールは忘れやすい。はじめのうちはとくに忘れやすい。うっかりしてなぜ動かないのか気づかずに無駄に時間をすごすことになりがち。気をつけよう。</li>
-            <li>関数で書く方法以外にも ES6の classで定義する方法もある。他にもいくつか書き方があるようだが、廃止になったものもある。古いコードを見たときに、はじめのうちは混乱するかもしれない。</li>
+            <li>React入門「イベント処理の基礎1」でも書いたが、このくらいシンプルだと分かり良い。これをふまえて、React入門「バリデーション」のコードを見ると段階的な理解がしやすい。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -114,16 +163,16 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://www.tohoho-web.com/ex/react.html" target="_blank">React入門 - とほほのWWW入門</a></li>
+            <li><a href="https://www.to-r.net/media/react-tutorial08/" target="_blank" rel="noopener noreferrer">Reactのイベント設定 – React入門 - to-R Media</a></li>
           </ul>
         </section>
         <!-- /.content -->
       </section>
       <!-- /.contents -->
-
+      
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月22日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-8">2021年8月8日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

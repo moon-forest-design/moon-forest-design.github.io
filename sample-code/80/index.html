@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/80">
-  <title>React入門「イベント処理1」</title>
+  <title>React入門「イベント処理の基礎1」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。Reactのイベント処理1。">
+  <meta name="description" content="Reactを試すシリーズ。Reactのイベント処理の基礎1。クリックするとコンソール表示するボタン。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React入門「イベント処理1」">
-  <meta property="og:description" content="Reactを試すシリーズ。Reactのイベント処理1。">
+  <meta property="og:title" content="React入門「イベント処理の基礎1」">
+  <meta property="og:description" content="Reactを試すシリーズ。Reactのイベント処理の基礎1。クリックするとコンソール表示するボタン。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/80">
   <meta name="robots" content="noindex">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門「イベント処理1」</h1>
+      <h1 class="siteTitle">React入門「イベント処理の基礎1」</h1>
     </div>
   </header>
 
@@ -39,16 +39,16 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>Reactのイベント処理は、on系の属性を使用する。（例：onClick属性、onChange属性など）</li>
-            <li>onClick={...}のように書き、中には関数を指定する。関数には、イベントハンドラ（ユーザの操作により発生した処理に対する命令群）を書く。今回のサンプルでは、ボタンがクリックされたら「クリックされた」とコンソール表示するようアロー関数で書いている。</li>
+            <li>onClick={...}のように書き、中には関数を指定する。関数内には、イベントハンドラを書く。イベントハンドラとは、ユーザの操作により発生した要件に対して処理すべき命令群）今回のサンプルでは、ボタンがクリックされたら「クリックされた」とコンソール表示されるようにアロー関数で書いている。</li>
           </ul>
 
-
+          <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
             const ClickBtn = () => {
               return (
                 <div>
-                  <button onClick={() => console.log('clicked')}>Click me!</button>
+                  <button onClick={() => console.log('clicked 1')}>Click me!</button>
                 </div>
               )
             }
@@ -57,7 +57,32 @@
               document.getElementById('root')
             );
           </script>
+          <!-- Reactコード　ここまで -->
+          <ul>
+            <li>以下は、同じ仕様のボタンだが、onClick属性内に処理を書かずに、コールバック関数として外に書いた場合のサンプル。</li>
+          </ul>
 
+          <!-- Reactコード　ここから -->
+          <div id="root2" class="reactRoot"></div>
+          <script type="text/babel">
+            const ClickBtn2 = () => {
+              // コールバック関数
+              const handleBtn= () => {
+                // イベントハンドラを書く
+                console.log('clicked 2')
+              }
+              return (
+                <div>
+                  <button onClick={handleBtn}>Click me!</button>
+                </div>
+              )
+            }
+            ReactDOM.render(
+              <ClickBtn2 />,
+              document.getElementById('root2')
+            );
+          </script>
+          <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
@@ -67,17 +92,40 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
+&lt;!-- onClick属性内に処理を書いた場合のコード --&gt;
+&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
   const ClickBtn = () =&gt; {
     return (
       &lt;div&gt;
-        &lt;button onClick={() =&gt; console.log('clicked')}&gt;Click me!&lt;/button&gt;
+        &lt;button onClick={() =&gt; console.log('clicked 1')}&gt;Click me!&lt;/button&gt;
       &lt;/div&gt;
     )
   }
   ReactDOM.render(
     &lt;ClickBtn /&gt;,
     document.getElementById('root')
+  );
+&lt;/script&gt;
+
+&lt;!-- onClick属性外に処理を書いた場合のコード --&gt;
+&lt;div id="root2" class="reactRoot"&gt;&lt;/div&gt;
+&lt;script type="text/babel"&gt;
+  const ClickBtn2 = () =&gt; {
+    // コールバック関数
+    const handleBtn= () =&gt; {
+      // イベントハンドラを書く
+      console.log('clicked 2')
+    }
+    return (
+      &lt;div&gt;
+        &lt;button onClick={handleBtn}&gt;Click me!&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  }
+  ReactDOM.render(
+    &lt;ClickBtn2 /&gt;,
+    document.getElementById('root2')
   );
 &lt;/script&gt;
 </code>
@@ -91,7 +139,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/81">React入門「イベント処理2」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/81">React入門「イベント処理の基礎2」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -103,7 +151,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>React公式の MAIN CONCEPTを読んでいると、イベント処理あたりから徐々に怪しくなってくる。JavaScriptでよく使用していた addEventListener()は使わない。アロー関数による省略された記述。コールバック関数なども当然使用される。シンプルな形で慣れていけると良い。</li>
+            <li>より実践的なコードは、どのような場面で使用する技術なのかイメージしやすく分かりやすいが、いかんせん内容が複雑になりがちだ。今回のサンプルのように、シンプルなコードも見て慣れていくと理解しやすい。</li>
           </ul>
         </section>
         <!-- /.content -->

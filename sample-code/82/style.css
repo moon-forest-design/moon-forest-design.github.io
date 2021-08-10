@@ -2,7 +2,7 @@
 
 /* base
 ================================================== */
-body, h1, h2, p, ul, li {
+body, h1, h2, p, ul, li, ol {
   margin: 0;
   padding: 0;
 }
@@ -22,9 +22,7 @@ img {
 img, svg, iframe {
   vertical-align: bottom;
 }
-.lineThrough {
-  text-decoration: line-through;
-}
+
 
 /* header
 ================================================== */
@@ -55,7 +53,7 @@ img, svg, iframe {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 3.3rem;
+    font-size: 3.1rem;
   }
   .brNone {
     display: none;
@@ -134,11 +132,17 @@ img, svg, iframe {
   margin-bottom: 1em;
   text-indent: 1em;
 }
-.content ul {
+.content > ul {
   margin: 0 1em 2em 2em;
 }
-.content li {
+.content > ul li {
   margin-bottom: .7em;
+}
+.content > ul li ul {
+  margin: .7em 1em 2em 2em;
+}
+.content > ul li ol {
+  margin: .7em 1em 2em 2.2em;
 }
 .content a {
   text-decoration: none;

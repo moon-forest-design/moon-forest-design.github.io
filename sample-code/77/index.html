@@ -43,10 +43,11 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>Reactには、型をチェックするためのライブラリがある。例えば、Stringなのか Numberなのか、あるいは他の予想外のおかしなデータが混入していないかを開発時にチェックするためだ。型をチェックするためのライブラリは「PropTypes」と呼ばれている。</li>
-            <li>試しに 開発用の Reactと prop-types.min.jsを CDNで読み込む形にした。</li>
-            <li>数値データを受け取りたいところ {this.props.num}に、あえて文字列 "Sara"を渡した。しかし、コンソールに warningエラーが出るはずなのだが、なぜか出なかった。React Developer Toolsで確認してもエラーなし。開発モードにはなっているので、コードで何か足りないのかもしれない。保留。</li>
-            <li>また、何かしらのトラブルで期待する値が入らない場合のためにデフォルト値を設定することができる。</li>
+            <li>Reactには、型をチェックするための「PropTypes」というライブラリがあった。しかし、Reactのバージョン16.0.0以降から Reactパッケージから廃止され、外部パッケージに切り離されたそうだ。おそらく、バージョン 17で試したので warningエラーが出なかったのだろう。型チェックを行いたければ、TypeScriptを使うべし。</li>
+            <li class="lineThrough">Reactには、型をチェックするためのライブラリがある。例えば、Stringなのか Numberなのか、あるいは他の予想外のおかしなデータが混入していないかを開発時にチェックするためだ。型をチェックするためのライブラリは「PropTypes」と呼ばれている。</li>
+            <li class="lineThrough">試しに 開発用の Reactと prop-types.min.jsを CDNで読み込む形にした。</li>
+            <li class="lineThrough">数値データを受け取りたいところ {this.props.num}に、あえて文字列 "Sara"を渡した。しかし、コンソールに warningエラーが出るはずなのだが、なぜか出なかった。React Developer Toolsで確認してもエラーなし。開発モードにはなっているので、コードで何か足りないのかもしれない。保留。</li>
+            <li class="lineThrough">また、何かしらのトラブルで期待する値が入らない場合のためにデフォルト値を設定することができる。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -144,6 +145,7 @@
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
             <li><a href="http://basic-react.axlight.com/html/appendix-05.html" target="_blank" rel="noopener noreferrer">Appendix 05: PropTypes · GitBook</a></li>
+            <li><a href="https://ics.media/entry/200310/" target="_blank" rel="noopener noreferrer">React今昔物語 - ICS MEDIA</a></li>
           </ul>
         </section>
         <!-- /.content -->

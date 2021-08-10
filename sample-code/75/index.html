@@ -199,8 +199,8 @@
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>現状、関数で書くのが一般的には主流とのこと。</li>
-            <li>ライフサイクルメソッドが必要なときは、class構文で書くほう（Class Component）が都合が良い場合もあるらしい。状況に応じて使い分けることになるようだ。</li>
-            <li>Stateについては、React 16.8以降であれば Function Componentに useStateを使うことで解決できるようになったそうなので問題がない。useStateは、React Hooksで使用できる。</li>
+            <li>ライフサイクルメソッドが必要なときは、class構文（Class Component）で書く必要があった。しかし、React Hooksという APIを使えばその必要はない。例えば、Stateを使いたければ、React Hooksの useStateがある。React 16.8以降であれば、関数（Function Component）＋ React Hooksで良いみたい。</li>
+            <li>古いコードを見たときに、class構文（Class Component）にお目にかかることはあるかもしれない。残念ながら、知らずとも良いとはならないだろう。</li>
           </ul>
         </section>
         <!-- /.content -->

@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/83">
-  <title>React入門「コンポーネント間での情報の受け渡し」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/84">
+  <title>React Hooks入門「useState」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。Reactコンポーネント間での情報の受け渡し。">
+  <meta name="description" content="React Hooksを試すシリーズ。useStateを使ってみる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React入門「コンポーネント間での情報の受け渡し」">
-  <meta property="og:description" content="Reactを試すシリーズ。Reactコンポーネント間での情報の受け渡し。">
+  <meta property="og:title" content="React Hooks入門「useState」">
+  <meta property="og:description" content="React Hooksを試すシリーズ。useStateを使ってみる。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/83">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/84">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門「コンポーネント間での情報の受け渡し」</h1>
+      <h1 class="siteTitle">React Hooks入門「useState」</h1>
     </div>
   </header>
 
@@ -38,34 +38,32 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>親コンポーネント（ParentComponent）から、子コンポーネント（ChildComponent）へ引数を受け渡す方法。例えば、親コンポーネントを呼び出すときに「name='山田'」とし、親コンポーネントから子コンポーネントを呼び出すときに「name={this.props.name}」とすれば受け渡すことができる。</li>
+            <li>今回は、以前 <a href="https://yellowredfox.github.io/sample-code/76/index.html">Class Componentで作成したカウントアップボタン</a>を、Function Componentで書き直してみた。Class Componentではいわゆる「State」を使用。Function Componentでは代わりに、React Hooksの useStateを使う。</li>
+            <li>Reactのコードを外部ファイルに書き出して、React Hooksを使用する場合は、importやexportで指定する必要があるはずなのだが、CDNで試した分ではとくに何もする必要がなかった。バージョンによる違いだろうか。不明。</li>
+            <li>useStateの定義は次のように書く。「const [状態変数, 状態変更関数] = React.useState(状態の初期値);」</li>
+            <li>return()内の&lt;&gt;と&lt;/&gt;は、これ何だろうね。これまでは div要素を書くことが多かったようだが、こういう書き方もあるのか。どうやって調べたら（検索したら）いいんだ。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            class ChildComponent extends React.Component {
-              render() {
-                return (
-                  <div>
-                    <p>子：{this.props.name} 一郎</p>
-                  </div>
-                )
-              }
-            };
-            class ParentComponent extends React.Component {
-              render() {
-                return (
-                  <div>
-                    <p>親：{this.props.name} 太郎</p>
-                    <ChildComponent name={this.props.name} />
-                  </div>
-                )
-              }
-            };
+            const CountUpBtn = () => {
+              // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
+              const [count, changeCount] = React.useState(0);
+              return (
+                // 何だこれ？？？
+                <>
+                  <button onClick={() => changeCount(count + 1)} className='countBtn'>
+                    {count}
+                  </button>
+                </>
+              )
+            }
             //コンポーネントの描画
             ReactDOM.render(
-              <ParentComponent name='山田' />,
+              <React.StrictMode>
+                <CountUpBtn />
+              </React.StrictMode>,
               document.getElementById('root')
             );
           </script>
@@ -81,28 +79,23 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  class ChildComponent extends React.Component {
-    render() {
-      return (
-        &lt;div&gt;
-          &lt;p&gt;子：{this.props.name} 一郎&lt;/p&gt;
-        &lt;/div&gt;
-      )
-    }
-  };
-  class ParentComponent extends React.Component {
-    render() {
-      return (
-        &lt;div&gt;
-          &lt;p&gt;親：{this.props.name} 太郎&lt;/p&gt;
-          &lt;ChildComponent name={this.props.name} /&gt;
-        &lt;/div&gt;
-      )
-    }
-  };
+  const CountUpBtn = () =&gt; {
+    // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
+    const [count, changeCount] = React.useState(0);
+    return (
+      // 何だこれ？？？
+      &lt;&gt;
+        &lt;button onClick={() =&gt; changeCount(count + 1)} className='countBtn'&gt;
+          {count}
+        &lt;/button&gt;
+      &lt;/&gt;
+    )
+  }
   //コンポーネントの描画
   ReactDOM.render(
-    &lt;ParentComponent name='山田' /&gt;,
+    &lt;React.StrictMode&gt;
+      &lt;CountUpBtn /&gt;
+    &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
 &lt;/script&gt;
@@ -117,7 +110,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/66">React入門「引数Props」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/76">カウントアップボタン「class構文によるコンポーネント」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -129,7 +122,9 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>Ref関数を使う方法もある。情報の管理に Reduxを使うのか、Hooksの useRefなどでも良いのか。</li>
+            <li>なるほど、Function Componentで書く人が増えた理由が分かる気がした。とてもシンプルに書ける。「super(props);」を書いたり、thisが指し示す対象を意識しなければいけなかったり、bindが必要だとか、Class Componentはいろいろとやることが多い。必要がないかぎり、Class Componentで書くことはないだろう。</li>
+            <li>React Hooksを定義する場合は、Function Component内のトップレベルで宣言しなければならない。うっかり Function Component内に関数を書き、その中で定義しようとすることもあるかもしれない。気をつけよう。</li>
+            <li>更新のタイミングに関連性がない場合は、別々の useStateで管理するほうがいい。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -137,6 +132,8 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
+            <li><a href="https://ja.reactjs.org/docs/hooks-state.html" target="_blank" rel="noopener noreferrer">ステートフックの利用法 – React</a></li>
+            <li><a href="https://qiita.com/Mitsuzara/items/98d1bc4a83265a764084" target="_blank" rel="noopener noreferrer">5分でわかるReact Hooks - Qiita</a></li>
             <li><a href="https://www.to-r.net/media/react-tutorial10/" target="_blank" rel="noopener noreferrer">コンポーネント間で情報の受け渡し - React入門 - to-R Media</a></li>
           </ul>
         </section>
@@ -146,7 +143,7 @@
       
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-8-10">2021年8月10日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-11">2021年8月11日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

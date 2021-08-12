@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/69">
-  <title>React入門「formイベント基礎」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/85">
+  <title>React Hooks入門「useEffect」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。関数で定義したイベント処理。form要素の onSubmit属性で submitボタンを作成。">
+  <meta name="description" content="React Hooksを試すシリーズ。useEffectを使ってみる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="submitボタン「formイベント基礎」">
-  <meta property="og:description" content="Reactを試すシリーズ。関数で定義したイベント処理。form要素の onSubmit属性で submitボタンを作成。">
+  <meta property="og:title" content="React Hooks入門「useEffect」">
+  <meta property="og:description" content="React Hooksを試すシリーズ。useEffectを使ってみる。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/69">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/85">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「formイベント基礎」</h1>
+      <h1 class="siteTitle">React Hooks入門「useEffect」</h1>
     </div>
   </header>
 
@@ -38,77 +38,77 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>form要素内のbutton要素をクリックすると、form要素の onSubmit属性に指定してある関数 handleSubmitを呼び出す。関数内では2つの処理を行っている。</li>
-            <li>1つは、button要素をクリックしたことで発生するデフォルト処理を抑止するために、「e.preventDefault();」している。</li>
-            <li>2つ目は、クリックされたことが分かるよう「You clicked submit.」とコンソール表示している。</li>
+            <li>今回は、以前 <a href="https://yellowredfox.github.io/sample-code/76/index.html">Class Componentで作成したカウントアップボタン</a>を、Function Componentで書き直してみた。Class Componentではいわゆる「State」を使用。Function Componentでは代わりに、React Hooksの useStateを使う。</li>
+            <li>Reactのコードを外部ファイルに書き出して、React Hooksを使用する場合は、importやexportで指定する必要があるはずなのだが、CDNで試した分ではとくに何もする必要がなかった。バージョンによる違いだろうか。不明。</li>
+            <li>useStateの定義は次のように書く。「const [状態変数, 状態変更関数] = React.useState(状態の初期値);」</li>
+            <li>return()内の&lt;&gt;と&lt;/&gt;は、これ何だろうね。これまでは div要素を書くことが多かったようだが、こういう書き方もあるのか。どうやって調べたら（検索したら）いいんだ。</li>
+            <li>。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            function Form() {
-              function handleSubmit(e) {
-                // button要素をクリックしたことで発生するデフォルト処理を抑止
-                e.preventDefault();
-                console.log('You clicked submit.');
-              }
-
+            const CountUp = () => {
+              const [count, changeCount] = React.useState(0)
+              React.useEffect(()=>{
+                const timer = setInterval(()=>{
+                  console.log(count)
+                },1000)
+                return () => {
+                  clearInterval(timer)
+                }
+              },[count])
               return (
-                <form onSubmit={handleSubmit}>
-                  <button type="submit">Submit</button>
-                </form>
-              );
+                <>
+                  <p>カウント：{count}</p>
+                  <input type="button" value="10" onClick={() => changeCount(10)} />
+                </>
+              )
             }
-
+            //コンポーネントの描画
             ReactDOM.render(
               <React.StrictMode>
-                <Form />
+                <CountUp />
               </React.StrictMode>,
               document.getElementById('root')
             );
-
           </script>
           <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
-
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML</h4>
+          <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  function Form() {
-    function handleSubmit(e) {
-      // button要素をクリックしたことで発生するデフォルト処理を抑止
-      e.preventDefault();
-      console.log('You clicked submit.');
-    }
-
+  const CountUpBtn = () =&gt; {
+    // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
+    const [count, changeCount] = React.useState(0);
     return (
-      &lt;form onSubmit={handleSubmit}&gt;
-        &lt;button type="submit"&gt;Submit&lt;/button&gt;
-      &lt;/form&gt;
-    );
+      // 何だこれ？？？
+      &lt;&gt;
+        &lt;button onClick={() =&gt; changeCount(count + 1)} className='countBtn'&gt;
+          {count}
+        &lt;/button&gt;
+      &lt;/&gt;
+    )
   }
-
+  //コンポーネントの描画
   ReactDOM.render(
     &lt;React.StrictMode&gt;
-      &lt;Form /&gt;
+      &lt;CountUpBtn /&gt;
     &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
-
 &lt;/script&gt;
 </code>
 </pre>
-
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
@@ -116,8 +116,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/80">React入門「buttonイベント基礎」</a></li>
-            <li><a href="https://yellowredfox.github.io/sample-code/81">React入門「inputイベント基礎」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/76">カウントアップボタン「class構文によるコンポーネント」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -128,23 +127,27 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>...</p>
+          <ul>
+            <li>なるほど、Function Componentで書く人が増えた理由が分かる気がした。とてもシンプルに書ける。「super(props);」を書いたり、thisが指し示す対象を意識しなければいけなかったり、bindが必要だとか、Class Componentはいろいろとやることが多い。必要がないかぎり、Class Componentで書くことはないだろう。</li>
+            <li>React Hooksを定義する場合は、Function Component内のトップレベルで宣言しなければならない。うっかり Function Component内に関数を書き、その中で定義しようとすることもあるかもしれない。気をつけよう。</li>
+          </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/handling-events.html" target="_blank" rel="noopener noreferrer">イベント処理 – React</a></li>
+            <li><a href="https://qiita.com/Mitsuzara/items/98d1bc4a83265a764084" target="_blank" rel="noopener noreferrer">5分でわかるReact Hooks - Qiita</a></li>
+            <li><a href="https://www.to-r.net/media/react-tutorial10/" target="_blank" rel="noopener noreferrer">コンポーネント間で情報の受け渡し - React入門 - to-R Media</a></li>
           </ul>
         </section>
         <!-- /.content -->
       </section>
       <!-- /.contents -->
-
+      
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-26">2021年7月26日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-11">2021年8月11日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

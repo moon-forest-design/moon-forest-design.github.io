@@ -41,7 +41,7 @@
             <li>今回は、以前 <a href="https://yellowredfox.github.io/sample-code/76/index.html">Class Componentで作成したカウントアップボタン</a>を、Function Componentで書き直してみた。Class Componentではいわゆる「State」を使用。Function Componentでは代わりに、React Hooksの useStateを使う。</li>
             <li>Reactのコードを外部ファイルに書き出して、React Hooksを使用する場合は、importやexportで指定する必要があるはずなのだが、CDNで試した分ではとくに何もする必要がなかった。バージョンによる違いだろうか。不明。</li>
             <li>useStateの定義は次のように書く。「const [状態変数, 状態変更関数] = React.useState(状態の初期値);」</li>
-            <li>return()内の&lt;&gt;と&lt;/&gt;は、これ何だろうね。これまでは div要素を書くことが多かったようだが、こういう書き方もあるのか。どうやって調べたら（検索したら）いいんだ。</li>
+            <li>return()内の&lt;&gt;と&lt;/&gt;は、複数の要素を返したいときに使用する。レンダー時に無視されるので、div要素などで囲む必要がないときなどに利用するといい。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -51,7 +51,7 @@
               // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
               const [count, changeCount] = React.useState(0);
               return (
-                // 何だこれ？？？
+                // 複数の要素を返したいときは、<>と</>で囲む
                 <>
                   <button onClick={() => changeCount(count + 1)} className='countBtn'>
                     {count}

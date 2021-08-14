@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/84">
-  <title>React Hooks入門「useState」</title>
+  <title>React Hooks入門「useState()」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="React Hooksを試すシリーズ。useStateを使ってみる。">
+  <meta name="description" content="React Hooksを試すシリーズ。useState()を使ってみる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React Hooks入門「useState」">
-  <meta property="og:description" content="React Hooksを試すシリーズ。useStateを使ってみる。">
+  <meta property="og:title" content="React Hooks入門「useState()」">
+  <meta property="og:description" content="React Hooksを試すシリーズ。useState()を使ってみる。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/84">
   <meta name="robots" content="noindex">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React Hooks入門「useState」</h1>
+      <h1 class="siteTitle">React Hooks入門「useState()」</h1>
     </div>
   </header>
 
@@ -38,10 +38,17 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>今回は、以前 <a href="https://yellowredfox.github.io/sample-code/76/index.html">Class Componentで作成したカウントアップボタン</a>を、Function Componentで書き直してみた。Class Componentではいわゆる「State」を使用。Function Componentでは代わりに、React Hooksの useStateを使う。</li>
-            <li>Reactのコードを外部ファイルに書き出して、React Hooksを使用する場合は、importやexportで指定する必要があるはずなのだが、CDNで試した分ではとくに何もする必要がなかった。バージョンによる違いだろうか。不明。</li>
-            <li>useStateの定義は次のように書く。「const [状態変数, 状態変更関数] = React.useState(状態の初期値);」</li>
-            <li>return()内の&lt;&gt;と&lt;/&gt;は、複数の要素を返したいときに使用する。レンダー時に無視されるので、div要素などで囲む必要がないときなどに利用するといい。</li>
+            <li>以前 <a href="https://yellowredfox.github.io/sample-code/76/index.html">Class Componentで作成したカウントアップボタン</a>を、Function Componentで書き直してみた。Class Componentではいわゆる「State」を使用するわけだが、Function Componentでは代わりに、React Hooksの useState()を使うことで解決する。</li>
+            <li>Reactのコードを inde.jsxなどの外部ファイルに書き出しており、かつ React Hooksを使用する場合は、importや exportで指定する必要がある。今回は HTMLファイルに直接書いているのでその必要はない。</li>
+            <li>useStateの定義は「const [ 状態変数, 状態変更関数 ] = React.useState( 状態の初期値を指定 );」のように書く。現在の stateの値（状態変数）と、それを更新するための関数（状態変更関数）とをペアにして返す。</li>
+            <li>以下、useState()に関する Tips。
+              <ul>
+                <li>useState()を定義する場合は、Function Component内のトップレベルで宣言しなければならない。うっかり Function Component内に関数を書き、その中で定義しようとするとエラーが発生する。</li>
+                <li>useState()は、繰り返される再レンダーの間も Reactによって保持される。</li>
+                <li>Class Componentにおける this.setStateと似ているが、新しい stateが古いものとマージされないという違いがある。</li>
+                <li>複数の state（状態）を定義したい場合、更新のタイミングに関連性がなければ、useState()は別々に宣言するほうがいい。</li>
+              </ul>
+            </li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -51,12 +58,9 @@
               // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
               const [count, changeCount] = React.useState(0);
               return (
-                // 複数の要素を返したいときは、<>と</>で囲む
-                <>
-                  <button onClick={() => changeCount(count + 1)} className='countBtn'>
-                    {count}
-                  </button>
-                </>
+                <button onClick={() => changeCount(count + 1)} className='countBtn'>
+                  {count}
+                </button>
               )
             }
             //コンポーネントの描画
@@ -83,12 +87,9 @@
     // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
     const [count, changeCount] = React.useState(0);
     return (
-      // 何だこれ？？？
-      &lt;&gt;
-        &lt;button onClick={() =&gt; changeCount(count + 1)} className='countBtn'&gt;
-          {count}
-        &lt;/button&gt;
-      &lt;/&gt;
+      &lt;button onClick={() =&gt; changeCount(count + 1)} className='countBtn'&gt;
+        {count}
+      &lt;/button&gt;
     )
   }
   //コンポーネントの描画
@@ -122,9 +123,9 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>なるほど、Function Componentで書く人が増えた理由が分かる気がした。とてもシンプルに書ける。「super(props);」を書いたり、thisが指し示す対象を意識しなければいけなかったり、bindが必要だとか、Class Componentはいろいろとやることが多い。必要がないかぎり、Class Componentで書くことはないだろう。</li>
-            <li>React Hooksを定義する場合は、Function Component内のトップレベルで宣言しなければならない。うっかり Function Component内に関数を書き、その中で定義しようとすることもあるかもしれない。気をつけよう。</li>
-            <li>更新のタイミングに関連性がない場合は、別々の useStateで管理するほうがいい。</li>
+            <li>なるほど、Function Componentで書く人が増える理由が分かる気がした。とてもシンプルに書ける。「super(props);」を書いたり、thisが指し示す対象を意識しなければいけなかったり、bindが必要だとか、Class Componentはいろいろとやることが多い。必要性がないかぎり、Class Componentで書くことはないだろう。</li>
+            <li>見た印象だけでも大きく違うが、それだけではないらしい。例えば、Class Componentで書くと、ライフサイクルメソッドにしばられることで、無関係なロジックが混在して再利用しがたいというような問題が起きやすくなるそうだ。複雑なアプリならとくに可能性は増す。本来あるべき Reactの「コンポーネント」という概念に反して、適したロジックで分割しにくくなるのであれば問題だ。分割しやすい Function Componentが主流の書き方になるのは当然の結果なのかもしれない。</li>
+            <li>Class Componentが有する機能を、Function Componentでも書けるようにしたものが Hooksである。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -132,6 +133,8 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
+            <li><a href="https://ja.reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener noreferrer">フックの導入 – React</a></li>
+            <li><a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a></li>
             <li><a href="https://ja.reactjs.org/docs/hooks-state.html" target="_blank" rel="noopener noreferrer">ステートフックの利用法 – React</a></li>
             <li><a href="https://qiita.com/Mitsuzara/items/98d1bc4a83265a764084" target="_blank" rel="noopener noreferrer">5分でわかるReact Hooks - Qiita</a></li>
             <li><a href="https://www.to-r.net/media/react-tutorial10/" target="_blank" rel="noopener noreferrer">コンポーネント間で情報の受け渡し - React入門 - to-R Media</a></li>

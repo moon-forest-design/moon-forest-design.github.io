@@ -147,6 +147,26 @@ img, svg, iframe {
 .content a {
   text-decoration: none;
 }
+.content table {
+  border-collapse: collapse;
+  text-align: center;
+  border-top: 1px solid #302833;
+  border-left: 1px solid #302833;
+}
+.content table th,
+.content table th {
+  width: 25%;
+  padding: .5em;
+  border-right: 1px solid #302833;
+  border-bottom: 1px solid #302833;
+  background-color: #ffccaa;
+}
+.content table td,
+.content table td {
+  padding: .5em 1em;
+  border-right: 1px solid #302833;
+  border-bottom: 1px solid #302833;
+}
 .code {
   padding: 0 1.5em;
   box-sizing: border-box;

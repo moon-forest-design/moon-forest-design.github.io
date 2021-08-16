@@ -38,7 +38,13 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>今回は useEffect()を試す。React公式によると、useEffect()は、Class Componentにおける「ライフサイクルメソッド」の代わりに使えるものらしい。例えば、componentDidMount、componentDidUpdate、及び componentWillUnmountと同様の目的で使える。これらをひとまとめにして Function Componentで使えるようにしたものが useEffect()とのことだ。</li>
+            <li>今回は useEffect()を試す。React公式によると、useEffect()は、Class Componentにおける「ライフサイクルメソッド」を Function Componentでも使えるようにしたものなのだそうだ。useEffect()を使うと、例えば次のようなメソッドを、Function Componentでも同様の目的で使えるようになる。
+              <ul>
+                <li>componentDidMount</li>
+                <li>componentDidUpdate</li>
+                <li>componentWillUnmount</li>
+              </ul>
+            </li>
             <li>公式「<a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a>」に掲載されているコードを試してみた。useEffect()により、ページタイトルを強制的に変更している。また、ボタンをクリックすると、ページタイトル部分は動的に更新される仕様。</li>
           </ul>
 
@@ -47,14 +53,14 @@
           <script type="text/babel">
             const CountUpBtn = () => {
               // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
-              const [count, changeCount] = React.useState(0);
+              const [count, setCount] = React.useState(0);
               // useEffect（副作用フック）を使うよ
               React.useEffect(() => {
                 // クリックのたびにドキュメントのタイトル部分を更新する
                 document.title = `You clicked ${count} times`;
               });
               return (
-                <button onClick={() => changeCount(count + 1)} className='countBtn'>
+                <button onClick={() => setCount(count + 1)} className='countBtn'>
                   {count}
                 </button>
               )
@@ -125,16 +131,15 @@
         <section class="content">
           <h3 class="heading-3">Tips</h3>
           <ul>
-            <li>React界隈では、ライフサイクルメソッド内で行うような操作を「副作用（side-effects）」と呼ぶ。例えば、外部データの取得・購読、あるいは手動での DOM更新などの操作のことだ。</li>
-            <li>useEffect()は「副作用フック」と呼ばれる。useEffect()を使えば、Function Component内で「副作用」を実行することが可能になる。</li>
-            <li>デフォルトでは、初回のレンダーも含む毎回のレンダー時にこの「副作用関数 useEffect()」が呼び出される。</li>
+            <li>React界隈では、ライフサイクルメソッド内で行うような操作を「副作用（side-effects）」と呼ぶ。例えば、Fetchによる外部データの取得・購読、あるいは手動での DOM更新などの操作のことだ。それゆえに、副作用を操作できる useEffect()は、「副作用フック」と呼ばれる。</li>
+            <li>デフォルトでは、初回のレンダーも含む毎回のレンダー時にこの「副作用関数 useEffect()」が呼び出される。useEffect()による副作用は常に「レンダー後」に起きると覚えておくと良いかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>useEffect()に関するコードをいくつか見てみないとまだ何とも言い難い。さらに進めよう。</li>
+            <li>それぞれのライフサイクルメソッドごとに何かしら書き方が違うのかと思いがちだが、どうやらそういうことではないらしい。たしかにそれでは Class Component同じ轍を踏むことになりかねない。それでは Class Componentで componentWillUnmount内に書いていたコードを記述する必要があった場合（クリーンアップが必要な場合）はどのようにすればいいのかと言うと、useEffect()内に return () => { ... };を記述してあげれば良いようだ。それだけでうまいこと認識してくれる。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -143,6 +148,7 @@
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
             <li><a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a></li>
+            <li><a href="https://ja.reactjs.org/docs/hooks-effect.html" target="_blank" rel="noopener noreferrer">副作用フックの利用法 – React</a></li>
           </ul>
         </section>
         <!-- /.content -->

@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/83">
-  <title>React入門「コンポーネント間での情報の受け渡し」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/88">
+  <title>React Hooks入門「関数によるカウントアップタイマー」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。Reactコンポーネント間での情報の受け渡し。">
+  <meta name="description" content="React Hooksを試すシリーズ。関数によるカウントアップタイマー。useEffect()でクリーンアップ処理。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React入門「コンポーネント間での情報の受け渡し」">
-  <meta property="og:description" content="Reactを試すシリーズ。Reactコンポーネント間での情報の受け渡し。">
+  <meta property="og:title" content="React Hooks入門「関数によるカウントアップタイマー」">
+  <meta property="og:description" content="React Hooksを試すシリーズ。関数によるカウントアップタイマー。useEffect()でクリーンアップ処理。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/83">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/88">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「コンポーネント間での情報の受け渡し」</h1>
+      <h1 class="siteTitle">React Hooks入門<br class="brNone">「関数によるカウントアップタイマー」</h1>
     </div>
   </header>
 
@@ -38,34 +38,39 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>親コンポーネント（ParentComponent）から、子コンポーネント（ChildComponent）へ引数を受け渡す方法。例えば、親コンポーネントを呼び出すときに「name='山田'」とし、親コンポーネントから子コンポーネントを呼び出すときに「name={this.props.name}」とすれば受け渡すことができる。</li>
+            <li>useEffect()でクリーンアップしたいときのコードその2。<a href="https://yellowredfox.github.io/sample-code/78">class構文で書かれているカウントアップタイマー</a>を、関数で書き直してみた。</li>
+            <li>useEffect()の第2引数には、依存関係配列を指定。これにより、レンダリングごとではなく、secondsが更新された時のみ副作用フックを実行できる。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            class ChildComponent extends React.Component {
-              render() {
-                return (
-                  <div>
-                    <p>子：{this.props.name} 一郎</p>
-                  </div>
-                )
-              }
+            const Timer = () => {
+              // ステートフック
+              const [seconds, setTick] = React.useState(0);
+              // 副作用フック
+              React.useEffect(() => {
+                const timerID = setInterval(
+                  () => setTick(seconds + 1),
+                  1000
+                );
+                // クリーンアップ処理
+                return () => {
+                  clearInterval(timerID);
+                };
+              // 依存関係配列
+              }, [seconds]);
+
+              return (
+                <p>{seconds}</p>
+              );
+
             };
-            class ParentComponent extends React.Component {
-              render() {
-                return (
-                  <div>
-                    <p>親：{this.props.name} 太郎</p>
-                    <ChildComponent name={this.props.name} />
-                  </div>
-                )
-              }
-            };
-            //コンポーネントの描画
+
             ReactDOM.render(
-              <ParentComponent name='山田' />,
+              <React.StrictMode>
+                <Timer />
+              </React.StrictMode>,
               document.getElementById('root')
             );
           </script>
@@ -73,43 +78,50 @@
 
         </section>
         <!-- /.content -->
+
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-          <h4 class="heading-4">HTML</h4>
+            <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  class ChildComponent extends React.Component {
-    render() {
-      return (
-        &lt;div&gt;
-          &lt;p&gt;子：{this.props.name} 一郎&lt;/p&gt;
-        &lt;/div&gt;
-      )
-    }
+  const Timer = () =&gt; {
+    // ステートフック
+    const [seconds, setTick] = React.useState(0);
+    // 副作用フック
+    React.useEffect(() =&gt; {
+      const timerID = setInterval(
+        () =&gt; setTick(seconds + 1),
+        1000
+      );
+      // クリーンアップ処理
+      return () =&gt; {
+        clearInterval(timerID);
+      };
+    // 依存関係配列
+    }, [seconds]);
+
+    return (
+      &lt;p&gt;{seconds}&lt;/p&gt;
+    );
+
   };
-  class ParentComponent extends React.Component {
-    render() {
-      return (
-        &lt;div&gt;
-          &lt;p&gt;親：{this.props.name} 太郎&lt;/p&gt;
-          &lt;ChildComponent name={this.props.name} /&gt;
-        &lt;/div&gt;
-      )
-    }
-  };
-  //コンポーネントの描画
+
   ReactDOM.render(
-    &lt;ParentComponent name='山田' /&gt;,
+    &lt;React.StrictMode&gt;
+      &lt;Timer /&gt;
+    &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
 &lt;/script&gt;
 </code>
 </pre>
+
         </section>
         <!-- /.content -->
+
       </section>
       <!-- /.contents -->
 
@@ -117,7 +129,10 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/66">React入門「引数Props」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/86">React Hooks入門「useEffect()とは？」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/87">React Hooks入門「useEffect()でクリーンアップ処理」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/89">React Hooks入門「関数による時刻表示」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/78">React入門「class構文によるカウントアップタイマー」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -129,7 +144,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>Ref関数を使う方法もある。情報の管理に Reduxを使うのか、Hooksの useRefなどでも良いのか。</li>
+            <li>React Hooksを使用した Function Componentのコードがもっと公式に掲載されていると良いのだが、現状あまり見当たらないのでこれで良いのか何とも言えない。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -137,16 +152,18 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://www.to-r.net/media/react-tutorial10/" target="_blank" rel="noopener noreferrer">コンポーネント間で情報の受け渡し - React入門 - to-R Media</a></li>
+            <li><a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a></li>
+            <li><a href="https://ja.reactjs.org/docs/hooks-effect.html" target="_blank" rel="noopener noreferrer">副作用フックの利用法 – React</a></li>
+            <li><a href="https://www.to-r.net/media/react-tutorial-hooks-useeffect/" target="_blank" rel="noopener noreferrer">useEffect / React Hooks – React入門 - to-R Media</a></li>
           </ul>
         </section>
         <!-- /.content -->
       </section>
       <!-- /.contents -->
-      
+
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-8-10">2021年8月10日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-17">2021年8月17日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

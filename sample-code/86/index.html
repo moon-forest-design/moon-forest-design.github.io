@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://yellowredfox.github.io/sample-code/86">
-  <title>React Hooks入門「useEffect()」</title>
+  <title>React Hooks入門「useEffect()とは？」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="React Hooksを試すシリーズ。副作用フックと呼ばれるuseEffect()を使ってみる。">
+  <meta name="description" content="React Hooksを試すシリーズ。副作用フック「useEffect()」を使ってみる。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React Hooks入門「useEffect()」">
-  <meta property="og:description" content="React Hooksを試すシリーズ。副作用フックと呼ばれるuseEffect()を使ってみる。">
+  <meta property="og:title" content="React Hooks入門「useEffect()とは？」">
+  <meta property="og:description" content="React Hooksを試すシリーズ。副作用フック「useEffect()」を使ってみる。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yellowredfox.github.io/sample-code/86">
   <meta name="robots" content="noindex">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React Hooks入門「useEffect()」</h1>
+      <h1 class="siteTitle">React Hooks入門<br class="brNone">「useEffect()とは？」</h1>
     </div>
   </header>
 
@@ -56,7 +56,7 @@
               const [count, setCount] = React.useState(0);
               // useEffect（副作用フック）を使うよ
               React.useEffect(() => {
-                // クリックのたびにドキュメントのタイトル部分を更新する
+                // クリックのたびにページタイトルを更新する
                 document.title = `You clicked ${count} times`;
               });
               return (
@@ -119,7 +119,8 @@
         <section class="content">
           <ul>
             <li><a href="https://yellowredfox.github.io/sample-code/76">カウントアップボタン「class構文によるコンポーネント」</a></li>
-            <li><a href="https://yellowredfox.github.io/sample-code/84">React Hooks入門「useState()」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/84">React Hooks入門「useState()とは？」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/87">React Hooks入門「useEffect()でクリーンアップ処理1」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -139,7 +140,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>それぞれのライフサイクルメソッドごとに何かしら書き方が違うのかと思いがちだが、どうやらそういうことではないらしい。たしかにそれでは Class Component同じ轍を踏むことになりかねない。それでは Class Componentで componentWillUnmount内に書いていたコードを記述する必要があった場合（クリーンアップが必要な場合）はどのようにすればいいのかと言うと、useEffect()内に return () => { ... };を記述してあげれば良いようだ。それだけでうまいこと認識してくれる。</li>
+            <li>それぞれのライフサイクルメソッドごとに何かしら書き方が違うのかと思いがちだが、どうやらそういうことではないらしい。たしかに Class Component同じ轍を踏むことになりかねない。それでは Class Componentで componentWillUnmount内に書いていたコードを記述する必要があった場合（クリーンアップが必要な場合）はどのようにすればいいのかと言うと、<a href="https://yellowredfox.github.io/sample-code/87">useEffect()内に「return () => { ... };」</a>を記述してあげれば良いようだ。それだけでうまいこと認識してくれる。</li>
           </ul>
         </section>
         <!-- /.content -->

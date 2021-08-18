@@ -40,7 +40,7 @@
           <ul>
             <li>useEffect()でクリーンアップしたいときのお話。Class Componentにおける componentWillUnmountの処理と同じようなことを、Function Componentの useEffect()で行いたいときのやり方。</li>
             <li>公式「<a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a>」及び「<a href="https://ja.reactjs.org/docs/hooks-effect.html" target="_blank" rel="noopener noreferrer">副作用フックの利用法 – React</a>」などに掲載されているコード。ChatAPIというモジュールがあると仮定した状況での話。実際に同じ名称のものは実在するが、それを指しているかは不明。</li>
-            <li>やり方は、useEffect()内で「return () => { ... };」を書くと、その中はクリーンアップの処理となる。</li>
+            <li>やり方は、useEffect()内で「return () => { ... };」を書くと、その中はクリーンアップの処理として扱われる。Fetchの解除や clearIntervalなどをここで書く。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -114,7 +114,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>処理の動作を確認できないこともあって、イメージしがたい。clearInterval()を使うコードで試してみよう。</li>
+            <li>「これはそういうものだ」「そうなるんだろうな」とは思うけれど、仮定の話なので十分にイメージはしがたい。clearInterval()を使う<a href="https://yellowredfox.github.io/sample-code/88">カウントアップタイマー</a>と<a href="https://yellowredfox.github.io/sample-code/89">時刻表示</a>のコードを、クラス構文から関数に書き直して試してみよう。</li>
           </ul>
         </section>
         <!-- /.content -->

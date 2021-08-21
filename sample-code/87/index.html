@@ -40,7 +40,7 @@
           <ul>
             <li>useEffect()でクリーンアップしたいときのお話。Class Componentにおける componentWillUnmountの処理と同じようなことを、Function Componentの useEffect()で行いたいときのやり方。</li>
             <li>公式「<a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a>」及び「<a href="https://ja.reactjs.org/docs/hooks-effect.html" target="_blank" rel="noopener noreferrer">副作用フックの利用法 – React</a>」などに掲載されているコード。ChatAPIというモジュールがあると仮定した状況での話。実際に同じ名称のものは実在するが、それを指しているかは不明。</li>
-            <li>やり方は、useEffect()内で「return () => { ... };」を書くと、その中はクリーンアップの処理として扱われる。Fetchの解除や clearIntervalなどをここで書く。</li>
+            <li>やり方は、useEffect()内で「return () => { ... };」を書くと、その中はクリーンアップの処理として扱われる。例えば、Fetchの解除や clearIntervalなどはここで書く。</li>
           </ul>
 
           <!-- Reactコード　ここから -->

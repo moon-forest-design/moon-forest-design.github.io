@@ -45,20 +45,27 @@
                 <li>componentWillUnmount</li>
               </ul>
             </li>
-            <li>公式「<a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a>」に掲載されているコードを試してみた。useEffect()により、ページタイトルを強制的に変更している。また、ボタンをクリックすると、ページタイトル部分は動的に更新される仕様。</li>
+            <li>公式「<a href="https://ja.reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener noreferrer">フック早わかり – React</a>」に掲載されているコードを参考にして試してみた。useEffect()により、ページタイトルを強制的に変更する仕様である。また、ボタンをクリックすると、ページタイトル部分は動的に更新される。</li>
+            <li>useEffect()は次のような形で指定する。「useEffect( コールバック関数 [, 依存関係配列 ] )」
+              <ul>
+                <li>第2引数を空指定「[]」すると、初回のレンダリング時のみ実行される。componentDidMountのような扱いができる。</li>
+                <li>第2引数を省略すると、レンダーのたびに実行される。更新したいタイミングとなる変数を配列の形で指定してあげると無駄なく処理できる。これは componentDidUpdateを実行するような扱いとなる。</li>
+              </ul>
+            </li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
             const CountUpBtn = () => {
-              // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
+              // const [ 状態変数, 状態変更関数 ] = React.useState( 状態の初期値 );
               const [count, setCount] = React.useState(0);
-              // useEffect（副作用フック）を使うよ
+              // React.useEffect( コールバック関数 [, 依存関係配列 ] );
               React.useEffect(() => {
                 // クリックのたびにページタイトルを更新する
                 document.title = `You clicked ${count} times`;
-              });
+              // 依存関係配列
+              }, [count]);
               return (
                 <button onClick={() => setCount(count + 1)} className='countBtn'>
                   {count}
@@ -86,13 +93,14 @@
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
   const CountUpBtn = () =&gt; {
-    // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
+    // const [ 状態変数, 状態変更関数 ] = React.useState( 状態の初期値 );
     const [count, changeCount] = React.useState(0);
-    // useEffect（副作用フック）を使うよ
+    // React.useEffect( コールバック関数 [, 依存関係配列 ] );
     React.useEffect(() =&gt; {
       // クリックのたびにドキュメントのタイトル部分を更新する
       document.title = `You clicked ${count} times`;
-    });
+    // 依存関係配列
+    }, [count]);
     return (
       &lt;button onClick={() =&gt; changeCount(count + 1)} className='countBtn'&gt;
         {count}
@@ -130,17 +138,17 @@
       <section class="contents">
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
-          <h3 class="heading-3">Tips</h3>
+          <h3 class="heading-3">補足</h3>
           <ul>
             <li>React界隈では、ライフサイクルメソッド内で行うような操作を「副作用（side-effects）」と呼ぶ。例えば、Fetchによる外部データの取得・購読、あるいは手動での DOM更新などの操作のことだ。それゆえに、副作用を操作できる useEffect()は、「副作用フック」と呼ばれる。</li>
-            <li>デフォルトでは、初回のレンダーも含む毎回のレンダー時にこの「副作用関数 useEffect()」が呼び出される。useEffect()による副作用は常に「レンダー後」に起きると覚えておくと良いかもしれない。</li>
+            <li>デフォルトでは、毎回のレンダー後にこの「副作用関数 useEffect()」が呼び出される。第2引数の設定や return文を追加することで実行したいタイミングを変更することができる。</li>
           </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>それぞれのライフサイクルメソッドごとに何かしら書き方が違うのかと思いがちだが、どうやらそういうことではないらしい。たしかに Class Component同じ轍を踏むことになりかねない。それでは Class Componentで componentWillUnmount内に書いていたコードを記述する必要があった場合（クリーンアップが必要な場合）はどのようにすればいいのかと言うと、<a href="https://yellowredfox.github.io/sample-code/87">useEffect()内に「return () => { ... };」</a>を記述してあげれば良いようだ。それだけでうまいこと認識してくれる。</li>
+            <li>Class Componentの componentWillUnmount内に書いていたコードを、Function Componentで記述したい場合（クリーンアップが必要な場合）は、<a href="https://yellowredfox.github.io/sample-code/87">useEffect()内に「return () => { ... };」</a>を記述してあげれば良いようだ。それだけでうまいこと認識してくれる。詳しくは次回。</li>
           </ul>
         </section>
         <!-- /.content -->

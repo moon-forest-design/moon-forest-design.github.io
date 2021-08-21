@@ -39,7 +39,8 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>useEffect()でクリーンアップしたいときのコードその2。<a href="https://yellowredfox.github.io/sample-code/78">class構文で書かれているカウントアップタイマー</a>を、関数で書き直してみた。これで良いのかは何とも言えない。</li>
-            <li>useEffect()の第2引数には、依存関係配列を指定。これにより、レンダリングごとではなく、secondsが更新された時のみ副作用フックを実行できる。</li>
+            <li>useEffect()内の return文に、clearInterval(timerID);を指定することで、クリーンアップ処理となる。</li>
+            <li>useEffect()の第2引数には、依存関係配列 [seconds]を指定。これにより、レンダリングごとではなく、secondsが更新された時のみ副作用フックを実行できる。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -144,7 +145,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>公式に掲載されているコードは、まだ Class Componentで書かれていることが多い。React Hooksを使用した Function Componentのコードがもっと増えると参考になって良いのだが仕方がない。</li>
+            <li>公式に掲載されているコードは、まだ Class Componentで書かれていることが多い。React Hooksを使用した Function Componentのコードがもっと増えると参考になって良いのだが。</li>
           </ul>
         </section>
         <!-- /.content -->

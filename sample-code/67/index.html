@@ -37,15 +37,24 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <p>「JSX」は、JavaScriptの拡張言語。XMLの文法に従って記述するルールがある。以下、主な書き方の例。</p>
           <ul>
-            <li>()かっこ。例えば、return ();にすれば、複数行の要素を書いてもいい。ただし、returnは単一要素にしないとエラーになるので、div要素で囲む。</li>
-            <li>{}かっこ。JSX内で JavaScriptのコードを書きたい場合に使う。例えば、HTML内で変数を使いたいときに、constや letで宣言した値を、{変数名}と書くことで参照できるようになる。また、関数を呼び出すこともできる。
+            <li>「JSX」とは？
+              <ul>
+                <li>「JSX」は、JavaScriptの拡張言語。XMLの文法に従って記述するルールがある。</li>
+                <li>Reactで要素を使用する場合、React.createElement()という形式で記述する必要があるが、JSXを使えば一般的な HTML要素のような形で記述できるようになる。</li>
+                <li>外部ファイル化する場合は、拡張子を「.jsx」とする。</li>
+              </ul>
             </li>
-            <li>予約語とバッティングして使えない属性名がある。例えば、class属性は classNameと書く。for属性は htmlForと書く。value属性は defaultValueと書く。checked属性は defaultCheckedと書く。</li>
-            <li>CSSをあてるときは、style={{}}として、JSON形式で書く。</li>
-            <li>コメントは、{/* コメント */}のように書く。</li>
-            <li>終了タグ（閉じタグ）のない要素は、 / をつける。例えば、&lt;App /&gt;のように書く。</li>
+            <li>JSXの主な書き方。
+              <ul>
+                <li>()かっこ。例えば、return ();にすれば、複数行の要素を書いてもいい。ただし、returnは単一要素にしないとエラーになるので、div要素で囲む。</li>
+                <li>{}かっこ。JSX内で JavaScriptのコードを書きたい場合に使う。例えば、HTML内で変数を使いたいときに、constや letで宣言した値を、{変数名}と書くことで参照できるようになる。また、関数を呼び出すこともできる。
+                </li>
+                <li>予約語とバッティングして使えない属性名がある。例えば、class属性は classNameと書く。for属性は htmlForと書く。value属性は defaultValueと書く。checked属性は defaultCheckedと書く。-（ハイフン）でつながず、キャメルケース。</li>
+                <li>CSSをあてるときは、style={{}}として、JSON形式で書く。</li>
+                <li>コメントは、{/* コメント */}のように書く。</li>
+                <li>終了タグ（閉じタグ）のない要素は、 / をつける。例えば、&lt;App /&gt;のように書く。</li>
+              </ul>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -127,7 +136,6 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener noreferrer">JSX の導入 – React</a></li>
             <li><a href="https://ja.reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener noreferrer">JSX の導入 – React</a></li>
             <li><a href="https://www.to-r.net/media/react-tutorial04/" target="_blank" rel="noopener noreferrer">JSXの基本 – React入門 - to-R Media</a></li>
           </ul>

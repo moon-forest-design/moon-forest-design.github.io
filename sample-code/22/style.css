@@ -151,8 +151,17 @@ img, svg, iframe {
 .content p {
   margin-bottom: 1em;
 }
-.content ul {
+.content > ul {
   margin: 0 1em 2em 2em;
+}
+.content > ul li {
+  margin-bottom: .7em;
+}
+.content > ul li ul {
+  margin: .7em 1em 2em 2em;
+}
+.content > ul li ol {
+  margin: .7em 1em 2em 2.2em;
 }
 .content a {
   text-decoration: none;

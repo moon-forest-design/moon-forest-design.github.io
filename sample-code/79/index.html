@@ -61,7 +61,6 @@
                 return (
                   <div>
                     <h3>TODO</h3>
-                    <TodoList items={this.state.items} />
                     <form onSubmit={this.handleSubmit}>
                       <label htmlFor="new-todo">
                         やること
@@ -75,6 +74,7 @@
                         Add #{this.state.items.length + 1}
                       </button>
                     </form>
+                    <TodoList items={this.state.items} />
                   </div>
                 );
               }
@@ -234,7 +234,7 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>...</p>
+          <p>Class Componentで書く方法は、ルールがいろいろとあって大変だ。<a href="https://yellowredfox.github.io/sample-code/91">Function Componentで書く</a>ほうが手間は少ない。</p>
         </section>
         <!-- /.content -->
         <section class="content">

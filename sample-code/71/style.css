@@ -183,7 +183,7 @@ img, svg, iframe {
   flex-direction: column;
 }
 .reactRoot ul {
-  padding-left: 1em;
+  padding-left: 2em;
 }
 .colorGreen {
   color: green;

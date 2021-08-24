@@ -182,12 +182,7 @@ img, svg, iframe {
   align-items: center;
   flex-direction: column;
 }
-.reactRoot ul {
-  padding-left: 1em;
-}
-.colorGreen {
-  color: green;
-}
+
 
 /* footer
 ================================================== */

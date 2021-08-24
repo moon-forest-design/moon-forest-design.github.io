@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/70">
-  <title>React入門「class構文によるToggleボタン」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/92">
+  <title>React入門「class構文によるいいねボタン」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。class構文で定義したイベント処理。Toggleボタンを作成。">
+  <meta name="description" content="Reactを試すシリーズ。class構文によるコンポーネント化。いいねボタン。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React入門「class構文によるToggleボタン」">
-  <meta property="og:description" content="Reactを試すシリーズ。class構文で定義したイベント処理。Toggleボタンを作成。">
+  <meta property="og:title" content="React入門「class構文によるいいねボタン」">
+  <meta property="og:description" content="Reactを試すシリーズ。class構文によるコンポーネント化。いいねボタン。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/70">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/92">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「class構文によるToggleボタン」</h1>
+      <h1 class="siteTitle">React入門<br class="brNone">「class構文によるいいねボタン」</h1>
     </div>
   </header>
 
@@ -38,93 +38,82 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>class構文で定義したイベント処理のサンプル Toggleボタン。</li>
-            <li>onClick={this.handleClick} のように ()を末尾に付けずにメソッドを参照する場合は、そのメソッドは bind()しておく必要がある。コンストラクタ内で書かれている this.handleClickの thisは関数外なので bind()しなければならない。</li>
-            <li>setState()で、コンポーネントの更新を要求する。ただし、処理効率をより良くするため、即時に更新するとは限らない。</li>
+            <li>React公式の「<a href="https://ja.reactjs.org/docs/add-react-to-a-website.html" target="_blank" rel="noopener noreferrer">既存のウェブサイトに React を追加する</a>」で紹介されている いいねボタンを参考にして、一部 JSXで書き直した。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            class Toggle extends React.Component {
+            class LikeButton extends React.Component {
               constructor(props) {
                 super(props);
-                this.state = {isToggleOn: true};
-                // bind()は、コールバックで thisを機能させるために必要
-                this.handleClick = this.handleClick.bind(this);
-              }
-
-              handleClick() {
-                // setState()で、コンポーネントの更新を要求する
-                this.setState(prevState => ({
-                  isToggleOn: !prevState.isToggleOn
-                }));
+                this.state = { liked: false };
               }
 
               render() {
+                if (this.state.liked) {
+                  return 'You liked this !';
+                }
+
                 return (
-                  <button onClick={this.handleClick}>
-                    {this.state.isToggleOn ? 'ON' : 'OFF'}
+                  <button onClick={() => this.setState({ liked: true })}>
+                    Like
                   </button>
                 );
               }
             }
 
-            ReactDOM.render(
-              <Toggle />,
+            const reactRender = () => ReactDOM.render(
+              <React.StrictMode>
+                <LikeButton />
+              </React.StrictMode>,
               document.getElementById('root')
             );
-
+            reactRender();
           </script>
           <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
-
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML + React</h4>
+          <h4 class="heading-4">HTML + React</h4>
 <pre class="code">
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  class Toggle extends React.Component {
+  class LikeButton extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {isToggleOn: true};
-      // bind()は、コールバックで thisを機能させるために必要
-      this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-      // setState()で、コンポーネントの更新を要求する
-      this.setState(prevState =&gt; ({
-        isToggleOn: !prevState.isToggleOn
-      }));
+      this.state = { liked: false };
     }
 
     render() {
+      if (this.state.liked) {
+        return 'You liked this !';
+      }
+
       return (
-        &lt;button onClick={this.handleClick}&gt;
-          {this.state.isToggleOn ? 'ON' : 'OFF'}
+        &lt;button onClick={() =&gt; this.setState({ liked: true })}&gt;
+          Like
         &lt;/button&gt;
       );
     }
   }
 
-  ReactDOM.render(
-    &lt;Toggle /&gt;,
+  const reactRender = () =&gt; ReactDOM.render(
+    &lt;React.StrictMode&gt;
+      &lt;LikeButton /&gt;
+    &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
-
+  reactRender();
 &lt;/script&gt;
 </code>
 </pre>
-
         </section>
         <!-- /.content -->
-
       </section>
       <!-- /.contents -->
 
@@ -132,7 +121,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/76">React入門「class構文によるカウントアップボタン」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/93">React入門「class構文によるいいねボタン」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -143,23 +132,25 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>...</p>
+          <ul>
+            <li>できるだけ多くの Reactコードにふれて慣れよう。</li>
+          </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/handling-events.html" target="_blank">イベント処理 – React</a></li>
+            <li><a href="https://ja.reactjs.org/docs/add-react-to-a-website.html" target="_blank" rel="noopener noreferrer">既存のウェブサイトに React を追加する</a></li>
           </ul>
         </section>
         <!-- /.content -->
       </section>
       <!-- /.contents -->
-
+      
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-26">2021年7月26日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-24">2021年8月24日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

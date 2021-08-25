@@ -38,13 +38,18 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>今回は、関数ではなく classで定義する「クラス構文（class）」と呼ばれる方法でコンポーネント Class Componentを作成する。</li>
+            <li>今回は、関数ではなく、クラス構文（class）で定義するやり方でコンポーネントを作成する。一般的に「Class Component」と呼ばれる。</li>
             <li>Class Componentの主な特徴として、State（状態）がある。Stateは Propsと違い、値を変更できる。</li>
-            <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形にする。</li>
-            <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
-            <li>Classが DOMとして描画されるときのことを Reactでは「マウント (mounting)」と呼ぶ。Classが生成した DOMが削除されるときのことを React では「アンマウント (unmounting)」と呼ぶ。</li>
-            <li>ライフサイクルメソッド componentDidMount()には、DOMに描画された直後に実行したい処理を書く。</li>
-            <li>ライフサイクルメソッド componentWillUnmount()には、componentDidMount()メソッドの解除処理を書く。</li>
+            <li>React公式の「<a href="https://ja.reactjs.org/docs/state-and-lifecycle.html" target="_blank" rel="noopener noreferrer">state とライフサイクル</a>」で紹介されているコードを試してみよう。
+              <ul>
+                <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形にする。</li>
+                <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
+                <li>コンストラクタで作成した this.state（状態）を、コンストラクタ以外で更新したい場合は、setState()を使う。直接代入できるのは、コンストラクタ内のみ。</li>
+                <li>Classが DOMとして描画されるときのことを Reactでは「マウント (mounting)」と呼ぶ。Classが生成した DOMが削除されるときのことを React では「アンマウント (unmounting)」と呼ぶ。</li>
+                <li>ライフサイクルメソッド componentDidMount()には、DOMに描画された直後に実行したい処理を書く。</li>
+                <li>ライフサイクルメソッド componentWillUnmount()には、componentDidMount()メソッドの解除処理を書く。</li>
+              </ul>
+            </li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -170,8 +175,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>似たような印象があるため、Propsと Stateを比べることもあるが、とくに対比的なものではなく、「どちらが優れているか？　どちらを使うか？」という話でもない。例えば、Stateの初期値として Propsの内容を利用しても良い。</li>
-            <li>Reactは Stateが変更されたタイミングでコンポーネントの再描画を行う。ゆえに即時更新が必要にならない状況であれば、Stateではなく Propsを使うほうがいいかもしれない。</li>
+            <li>似たような印象があるため、Propsと Stateを比べることもあるが、とくに対比的なものではなく、「どちらが優れているか？　どちらを使うか？」という話でもない。例えば、Propsの内容を Stateの初期値として利用しても良い。</li>
           </ul>
         </section>
         <!-- /.content -->

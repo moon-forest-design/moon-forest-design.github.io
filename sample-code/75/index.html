@@ -38,7 +38,8 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>Reactのコンポーネントにはいろいろな書き方がある。おおよそ関数（Function Component）で書く方法が良さそう。とくに 4、もしくは 5のように仮引数を分割代入で受け取る書き方なら、シンプルでより良い印象。</li>
+            <li>Reactのコンポーネントと引数を使う場合には、いろいろな書き方がある。コンポーネントには、Class Componentと Function Componentがある。引数には、propsで受け取る方法もあるし、propsと記述せずに分割代入で書く方法もある。</li>
+            <li>おおよそ関数（Function Component）で書く方法が良さそう。とくに 4、もしくは 5のように仮引数を分割代入で受け取る書き方なら、シンプルでより良い印象。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -50,10 +51,12 @@
                 <div>コンポーネント1： {props.way}</div>
               );
             }
+
             // 2　アロー関数を使い、仮引数を propsで受け取る方法
             const Component2 = ( props ) => (
               <div>コンポーネント2： {props.way}</div>
             );
+
             // 3　アロー関数を使い、仮引数を propsで受け取る方法（returnあり）
             const Component3 = ( props ) => {
               // ※：ここに何かしらの処理が入る場合にreturnが必要になる
@@ -61,16 +64,19 @@
                 <div>コンポーネント3： {props.way}</div>
               );
             };
+
             // 4　関数 functionを使い、仮引数を分割代入で受け取る方法
             function Component4({ way }) {
               return (
                 <div>コンポーネント4： {way}</div>
               );
             }
+
             // 5　アロー関数を使い、仮引数を分割代入で受け取る方法
             const Component5 = ({ way }) => (
               <div>コンポーネント5： {way}</div>
             );
+
             // 6　class構文を使い、引数は this.props.***で受け取る方法
             class Component6 extends React.Component {
               render() {
@@ -79,6 +85,7 @@
                 );
               }
             }
+
             // 7　React.createClass()を使う方法　※：React 15.5で廃止になった
             // var Component7 = React.createClass({
             //   render: function() {
@@ -121,10 +128,12 @@
       &lt;div&gt;コンポーネント1： {props.way}&lt;/div&gt;
     );
   }
+
   // 2　アロー関数を使い、仮引数を propsで受け取る方法
   const Component2 = ( props ) =&gt; (
     &lt;div&gt;コンポーネント2： {props.way}&lt;/div&gt;
   );
+
   // 3　アロー関数を使い、仮引数を propsで受け取る方法（returnあり）
   const Component3 = ( props ) =&gt; {
     // ※：ここに何かしらの処理が入る場合にreturnが必要になる
@@ -132,16 +141,19 @@
       &lt;div&gt;コンポーネント3： {props.way}&lt;/div&gt;
     );
   };
+
   // 4　関数 functionを使い、仮引数を分割代入で受け取る方法
   function Component4({ way }) {
     return (
       &lt;div&gt;コンポーネント4： {way}&lt;/div&gt;
     );
   }
+
   // 5　アロー関数を使い、仮引数を分割代入で受け取る方法
   const Component5 = ({ way }) =&gt; (
     &lt;div&gt;コンポーネント5： {way}&lt;/div&gt;
   );
+
   // 6　class構文を使い、引数は this.props.***で受け取る方法
   class Component6 extends React.Component {
     render() {
@@ -150,6 +162,7 @@
       );
     }
   }
+
   // 7　React.createClass()を使う方法　※：React 15.5で廃止になった
   // var Component7 = React.createClass({
   //   render: function() {
@@ -198,7 +211,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>現状、関数で書くのが一般的には主流とのこと。</li>
+            <li>現状、コンポーネントは関数で書くのが一般的には主流とのこと。</li>
             <li>ライフサイクルメソッドが必要なときは、class構文（Class Component）で書く必要があった。しかし、React Hooksという APIを使えばその必要はない。例えば、Stateを使いたければ、React Hooksの useStateがある。React 16.8以降であれば、関数（Function Component）＋ React Hooksで良いみたい。</li>
             <li>古いコードを見たときに、class構文（Class Component）にお目にかかることはあるかもしれない。残念ながら、知らずとも良いとはならないだろう。</li>
           </ul>

@@ -182,22 +182,6 @@ img, svg, iframe {
   align-items: center;
   flex-direction: column;
 }
-.reactRoot h3 {
-  text-align: center;
-}
-.reactRoot form {
-  margin-bottom: 30px;
-}
-.reactRoot label {
-  margin-right: 8px;
-}
-.reactRoot input {
-  margin-right: 8px;
-}
-.reactRoot ul {
-  margin-bottom: 30px;
-  margin-left: 30px;
-}
 
 
 /* footer

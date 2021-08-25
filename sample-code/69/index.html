@@ -39,7 +39,7 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>form要素内のbutton要素をクリックすると、form要素の onSubmit属性に指定してある関数 handleSubmitを呼び出す。関数内では2つの処理を行っている。</li>
-            <li>1つは、button要素をクリックしたことで発生するデフォルト処理を抑止するために、「e.preventDefault();」している。</li>
+            <li>1つは、button要素をクリックしたことで発生するデフォルト処理を抑止するために、「e.preventDefault();」をしている。Reactでは falseを返してもデフォルトの動作を抑止することができないため、明示的に preventDefaultを呼び出す必要がある。</li>
             <li>2つ目は、クリックされたことが分かるよう「You clicked submit.」とコンソール表示している。</li>
           </ul>
 

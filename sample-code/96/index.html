@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/73">
-  <title>React入門「Array.map()の使い方」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/96">
+  <title>React入門「Array.map()とkey」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。ReactでArray.map()を使う方法。基礎。">
+  <meta name="description" content="Reactを試すシリーズ。ReactでArray.map()を使う方法。keyの設定。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React入門「Array.map()の使い方」">
-  <meta property="og:description" content="Reactを試すシリーズ。ReactでArray.map()を使う方法。基礎。">
+  <meta property="og:title" content="React入門「Array.map()とkey」">
+  <meta property="og:description" content="Reactを試すシリーズ。ReactでArray.map()を使う方法。keyの設定。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/73">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/96">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「Array.map()の使い方」</h1>
+      <h1 class="siteTitle">React入門<br class="brNone">「Array.map()とkey」</h1>
     </div>
   </header>
 
@@ -38,31 +38,51 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>配列に入っているデータを、Array.map()を使ってリストアップする方法。JavaScriptの Array.map(...)を使い慣れていれば、とくに難しいことはない。</li>
+            <li>React公式の「<a href="https://ja.reactjs.org/docs/lists-and-keys.html" target="_blank" rel="noopener noreferrer">リストと key</a>」で紹介されているコード。以前書いた <a href="https://yellowredfox.github.io/sample-code/73">Reactで Array.map()を使うときのやり方</a>は、key無し。今回は key有り。</li>
+            <li>Keyは、どの要素が変更・追加・削除されたのかを Reactが識別するために利用するそうだ。コードとして出力はされず、あくまでも React内での管理に利用される。</li>
+            <li>Key値の設定について
+              <ul>
+                <li>データ内に id値があればそれを流用するといい。</li>
+                <li>データ内に id値がなければ、indexを使う方法もあるが非推奨。</li>
+                <li><a href="https://yellowredfox.github.io/sample-code/91/index.html">UNIX時間を利用する例</a>もある。連番であることに意味はなく、一意であることが大事らしい。</li>
+              </ul>
+              
+            </li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
+            const ListItem = ({work, name}) => {
+              // 正しい書き方：関数で書く場合は、この li要素に key属性をつけないらしい
+              return <li>{work} : {name}</li>;
+            };
+
+            const MemberList = (props) => {
+              const members = props.members;
+              const listItems = members.map((member) =>
+                // 正しい書き方：関数を呼び出すときに key属性をつけるだけでいいらしい
+                <ListItem key={member.id.toString()}
+                          work={member.work}
+                          name={member.name}
+                />
+              );
+              return (
+                <ul>
+                  {listItems}
+                </ul>
+              );
+            };
+
             const members = [
-              { name: 'Rabbit', work: 'Web Director' },
-              { name: 'Cat', work: 'Web Designer' },
-              { name: 'Fox', work: 'Web Programmer' },
-              { name: 'Raccoon dog', work: 'Markup Engineer' },
+              { id: 1, name: 'Rabbit', work: 'Web Director' },
+              { id: 2, name: 'Cat', work: 'Web Designer' },
+              { id: 3, name: 'Fox', work: 'Web Programmer' },
+              { id: 4, name: 'Raccoon dog', work: 'Markup Engineer' },
             ];
-            const MemberList = ({ name, work }) => (
-              <li>{work} : {name}</li>
-            );
-            const TextView = () => (
-              <ul>
-                {members.map((member) => (
-                  <MemberList name={member.name} work={member.work} />
-                ))}
-              </ul>
-            );
             ReactDOM.render(
               <React.StrictMode>
-                <TextView />
+                <MemberList members={members} />
               </React.StrictMode>,
               document.getElementById('root')
             );
@@ -80,25 +100,36 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
+  const ListItem = ({work, name}) =&gt; {
+    // 正しい書き方：関数で書く場合は、この li要素に key属性をつけないらしい
+    return &lt;li&gt;{work} : {name}&lt;/li&gt;;
+  };
+
+  const MemberList = (props) =&gt; {
+    const members = props.members;
+    const listItems = members.map((member) =&gt;
+      // 正しい書き方：関数を呼び出すときに key属性をつけるだけでいいらしい
+      &lt;ListItem key={member.id.toString()}
+                work={member.work}
+                name={member.name}
+      /&gt;
+    );
+    return (
+      &lt;ul&gt;
+        {listItems}
+      &lt;/ul&gt;
+    );
+  };
+
   const members = [
-    { name: 'Rabbit', work: 'Web Director' },
-    { name: 'Cat', work: 'Web Designer' },
-    { name: 'Fox', work: 'Web Programmer' },
-    { name: 'Raccoon dog', work: 'Markup Engineer' },
+    { id: 1, name: 'Rabbit', work: 'Web Director' },
+    { id: 2, name: 'Cat', work: 'Web Designer' },
+    { id: 3, name: 'Fox', work: 'Web Programmer' },
+    { id: 4, name: 'Raccoon dog', work: 'Markup Engineer' },
   ];
-  const MemberList = ({ name, work }) =&gt; (
-      &lt;li&gt;{work} : {name}&lt;/li&gt;
-  );
-  const TextView = () =&gt; (
-    &lt;ul&gt;
-      {members.map((member) =&gt; (
-        &lt;MemberList name={member.name} work={member.work} /&gt;
-      ))}
-    &lt;/ul&gt;
-  );
   ReactDOM.render(
     &lt;React.StrictMode&gt;
-      &lt;TextView /&gt;
+      &lt;MemberList members={members} /&gt;
     &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
@@ -116,7 +147,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/96">React入門「Array.map()とkey」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/73">React入門「Array.map()の使い方」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -127,14 +158,14 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>分かり良いように Array.map()についてだけ書かれているコード。Keyについては、<a href="https://yellowredfox.github.io/sample-code/96">React入門「Array.map()とkey」</a>にて書いた。</p>
+          <p>状況によっては ul要素の中に直接 Array.map()のコードを記述してもかまわないが、map()内がネストしすぎるようであれば、できるだけ外に抽出して書くほうが良いそうです。</p>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="http://basic-react.axlight.com/html/lesson-07.html" target="_blank" rel="noopener noreferrer">Lesson 07: 配列からの展開 · GitBook</a></li>
+            <li><a href="https://ja.reactjs.org/docs/lists-and-keys.html" target="_blank" rel="noopener noreferrer">リストと key – React</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -143,7 +174,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-30">2021年7月30日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-26">2021年8月26日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

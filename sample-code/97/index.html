@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/96">
-  <title>React入門「Array.map()とkey」</title>
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/97">
+  <title>React Hooks入門「名前入力欄」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。ReactでArray.map()を使う方法。keyの設定。">
+  <meta name="description" content="Reactを試すシリーズ。制御されたコンポーネント。入力欄に名前を入力し、サブミットボタンを押すとポップアップメッセージが表示される。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="React入門「Array.map()とkey」">
-  <meta property="og:description" content="Reactを試すシリーズ。ReactでArray.map()を使う方法。keyの設定。">
+  <meta property="og:title" content="React入門「名前入力欄」">
+  <meta property="og:description" content="Reactを試すシリーズ。制御されたコンポーネント。入力欄に名前を入力し、サブミットボタンを押すとポップアップメッセージが表示される。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/96">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/97">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「Array.map()とkey」</h1>
+      <h1 class="siteTitle">React Hooks入門<br class="brNone">「名前入力欄」</h1>
     </div>
   </header>
 
@@ -38,50 +38,38 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>React公式の「<a href="https://ja.reactjs.org/docs/lists-and-keys.html" target="_blank" rel="noopener noreferrer">リストと key</a>」で紹介されているコード。以前書いた <a href="https://yellowredfox.github.io/sample-code/73">Reactで Array.map()を使うときのやり方</a>は、key無し。今回は key有り。</li>
-            <li>Keyは、どの要素が変更・追加・削除されたのかを Reactが識別するために利用するそうだ。コードとして出力はされず、あくまでも React内での管理に利用される。</li>
-            <li>Key値の設定について
-              <ul>
-                <li>データ内に id値があればそれを流用するといい。</li>
-                <li>データ内に id値がなければ、indexを使う方法もあるが非推奨。</li>
-                <li><a href="https://yellowredfox.github.io/sample-code/91/index.html">UNIX時間を利用する例</a>もある。連番であることに意味はなく、一意であることが大事らしい。</li>
-              </ul>
-            </li>
+            <li>React公式の「<a href="https://ja.reactjs.org/docs/forms.html" target="_blank" rel="noopener noreferrer">フォーム</a>」で紹介されているコード。Class Componentで書かれているものを、Function Componentで書き直した。</li>
+            <li>入力欄に名前を入力し、サブミットボタンを押すとポップアップメッセージが表示される仕様。やっていることは、<a href="https://yellowredfox.github.io/sample-code/91">React入門「関数によるTodoリスト」</a>とほぼ同じ。入力されたデータをストックしないだけ。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            const ListItem = ({work, name}) => {
-              // 正しい書き方：関数で書く場合は、この li要素に key属性をつけないらしい
-              return <li>{work} : {name}</li>;
-            };
+            const NameForm = () => {
+              const [value, setvalue] = React.useState("");
 
-            const MemberList = (props) => {
-              const members = props.members;
-              const listItems = members.map((member) =>
-                // 正しい書き方：関数を呼び出すときに key属性をつけるだけでいいらしい
-                <ListItem key={member.id.toString()}
-                          work={member.work}
-                          name={member.name}
-                />
-              );
+              const handleChange = (event) => {
+                setvalue(event.target.value);
+              };
+
+              const handleSubmit = (event) => {
+                event.preventDefault();
+                alert('A name was submitted: ' + value);
+                setvalue("");
+              }
+
               return (
-                <ul>
-                  {listItems}
-                </ul>
+                <form onSubmit={handleSubmit}>
+                  <label htmlFor="name">名前：</label>
+                  <input id="name" type="text" value={value} onChange={handleChange} />
+                  <input type="submit" value="送信（テスト）" />
+                </form>
               );
-            };
 
-            const members = [
-              { id: 1, name: 'Rabbit', work: 'Web Director' },
-              { id: 2, name: 'Cat', work: 'Web Designer' },
-              { id: 3, name: 'Fox', work: 'Web Programmer' },
-              { id: 4, name: 'Raccoon dog', work: 'Markup Engineer' },
-            ];
+            };
             ReactDOM.render(
               <React.StrictMode>
-                <MemberList members={members} />
+                <NameForm />
               </React.StrictMode>,
               document.getElementById('root')
             );
@@ -99,36 +87,31 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  const ListItem = ({work, name}) =&gt; {
-    // 正しい書き方：関数で書く場合は、この li要素に key属性をつけないらしい
-    return &lt;li&gt;{work} : {name}&lt;/li&gt;;
-  };
+  const NameForm = () =&gt; {
+    const [value, setvalue] = React.useState("");
 
-  const MemberList = (props) =&gt; {
-    const members = props.members;
-    const listItems = members.map((member) =&gt;
-      // 正しい書き方：関数を呼び出すときに key属性をつけるだけでいいらしい
-      &lt;ListItem key={member.id.toString()}
-                work={member.work}
-                name={member.name}
-      /&gt;
-    );
+    const handleChange = (event) =&gt; {
+      setvalue(event.target.value);
+    };
+
+    const handleSubmit = (event) =&gt; {
+      event.preventDefault();
+      alert('A name was submitted: ' + value);
+      setvalue("");
+    }
+
     return (
-      &lt;ul&gt;
-        {listItems}
-      &lt;/ul&gt;
+      &lt;form onSubmit={handleSubmit}&gt;
+        &lt;label htmlFor="name"&gt;名前：&lt;/label&gt;
+        &lt;input id="name" type="text" value={value} onChange={handleChange} /&gt;
+        &lt;input type="submit" value="送信（テスト）" /&gt;
+      &lt;/form&gt;
     );
-  };
 
-  const members = [
-    { id: 1, name: 'Rabbit', work: 'Web Director' },
-    { id: 2, name: 'Cat', work: 'Web Designer' },
-    { id: 3, name: 'Fox', work: 'Web Programmer' },
-    { id: 4, name: 'Raccoon dog', work: 'Markup Engineer' },
-  ];
+  };
   ReactDOM.render(
     &lt;React.StrictMode&gt;
-      &lt;MemberList members={members} /&gt;
+      &lt;NameForm /&gt;
     &lt;/React.StrictMode&gt;,
     document.getElementById('root')
   );
@@ -146,7 +129,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://yellowredfox.github.io/sample-code/73">React入門「Array.map()の使い方」</a></li>
+            <li><a href="https://yellowredfox.github.io/sample-code/84">React Hooks入門「useState()とは？」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -157,14 +140,16 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>状況によっては ul要素の中に直接 Array.map()のコードを記述してもかまわないが、map()内がネストしすぎるようであれば、できるだけ外に抽出して書くほうが良いそうです。</p>
+          <ul>
+            <li>Reactによって値が制御される入力フォーム要素は「制御されたコンポーネント」と呼ばれるそうだ。</li>
+          </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/lists-and-keys.html" target="_blank" rel="noopener noreferrer">リストと key – React</a></li>
+            <li><a href="https://ja.reactjs.org/docs/forms.html" target="_blank" rel="noopener noreferrer">フォーム – React</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -173,7 +158,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-8-26">2021年8月26日</time>
+          作成日: <time class="releaseDate" datetime="2021-8-27">2021年8月27日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

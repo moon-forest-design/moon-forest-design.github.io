@@ -2,7 +2,7 @@
 
 /* base
 ================================================== */
-body, h1, h2, p, ul, li, ol {
+body, h1, h2, p, ul, li {
   margin: 0;
   padding: 0;
 }
@@ -45,7 +45,7 @@ img, svg, iframe {
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
-    font-size: 2.1rem;
+    font-size: 2.6rem;
   }
   .brNone {
     display: none;
@@ -53,7 +53,7 @@ img, svg, iframe {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 3.1rem;
+    font-size: 4rem;
   }
   .brNone {
     display: none;
@@ -199,6 +199,9 @@ img, svg, iframe {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.reactRoot form {
+  margin-bottom: 20px;
 }
 
 

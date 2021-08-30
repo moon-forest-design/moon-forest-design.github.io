@@ -39,7 +39,7 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>class構文で定義したイベント処理のサンプル カウントアップボタン。</li>
-            <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
+            <li>JavaScriptの classでは、サブクラスのコンストラクタを定義する際は常に「super」を呼ぶ必要がある。super()と書くことで、親のコンストラクタ（React.Component）を呼び出すことができる。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
             <li>onClick={this.incrementCount} のように ()を末尾に付けずにメソッドを参照する場合は、そのメソッドは bind()しておく必要がある。</li>
             <li>setState()で、コンポーネントの更新を要求する。ただし、処理効率をより良くするため、即時に更新するとは限らない。</li>
           </ul>

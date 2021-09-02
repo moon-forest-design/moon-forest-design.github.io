@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://yellowredfox.github.io/sample-code/102">
+  <title>React入門「WikipediaのAPI」</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="React入門「WikipediaのAPI」">
+  <meta property="og:description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yellowredfox.github.io/sample-code/102">
+  <meta name="robots" content="noindex">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">React入門<br class="brNone">「WikipediaのAPI」</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <ul>
+            <li>「<a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank" rel="noopener noreferrer">React Tutorial: An Overview and Walkthrough</a>」で紹介されているコード。Wikipedia APIからデータを取得して表示する内容。検索対象だけ変更した。</li>
+            <li>ライフサイクルメソッド componentDidMount()の役割を説明する上で、変数の初期化や、Fetch APIのデータ取得、setInterval()などが挙げられる。これは Fetch APIを使った場合のコード。</li>
+            <li>取得したデータは配列に格納している。配列の第3要素には検索対象の概要が入るはずだが、以前と仕様が変わったのか？　何かしらの理由で空になるようだ。</li>
+          </ul>
+
+          <!-- Reactコード　ここから -->
+          <div id="root" class="reactRoot"></div>
+          <script type="text/babel">
+            class App extends React.Component {
+              state = {
+                data: []
+              };
+              // ライフサイクルメソッド componentDidMount()
+              componentDidMount() {
+                const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Japan&format=json&origin=*&limit=1";
+                // fetch使用
+                fetch(url)
+                  .then(result => result.json())
+                  .then(result => {
+                    this.setState({
+                      data: result
+                  })
+                });
+              }
+
+              render() {
+                const { data } = this.state;
+
+                const result = data.map((entry, index) => {
+                  console.log(entry);
+                  return <li key={index}>{entry}</li>;
+                });
+
+                return <div className="container"><ul>{result}</ul></div>;
+              }
+            }
+            ReactDOM.render(
+              <App />,
+              document.getElementById("root")
+            );
+          </script>
+          <!-- Reactコード　ここまで -->
+
+        </section>
+        <!-- /.content -->
+
+
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+            <h4 class="heading-4">HTML + React</h4>
+<pre class="code">
+<code>
+&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;script type="text/babel"&gt;
+  class App extends React.Component {
+    state = {
+      data: []
+    };
+    // ライフサイクルメソッド componentDidMount()
+    componentDidMount() {
+      const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Japan&format=json&origin=*&limit=1";
+      // fetch使用
+      fetch(url)
+        .then(result =&gt; result.json())
+        .then(result =&gt; {
+          this.setState({
+            data: result
+        })
+      });
+    }
+
+    render() {
+      const { data } = this.state;
+
+      const result = data.map((entry, index) =&gt; {
+        console.log(entry);
+        return &lt;li key={index}&gt;{entry}&lt;/li&gt;;
+      });
+
+      return &lt;div className="container"&gt;&lt;ul&gt;{result}&lt;/ul&gt;&lt;/div&gt;;
+    }
+  }
+  ReactDOM.render(
+    &lt;App /&gt;,
+    document.getElementById("root")
+  );
+&lt;/script&gt;
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://yellowredfox.github.io/sample-code/79">React入門「class構文によるTodoリスト」</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>エラー処理もほしい。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank" rel="noopener noreferrer">React Tutorial: An Overview and Walkthrough</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-9-2">2021年9月2日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <a class="backSignboard" href="https://yellowredfox.github.io/">
+          <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤狐のプロフィールロゴ" width="100" height="100">
+          <h2 class="backSignboard__title">キアカラボ</h2>
+        </a>
+        <p class="office">
+          キアカラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -202,8 +202,8 @@ img, svg, iframe {
 }
 
 .reactRoot .container {
-  width: 100%;
-  max-width: 100%;
+  width: 80%;
+  max-width: 80%;
 }
 .reactRoot h3,
 .reactRoot h4 {
@@ -243,6 +243,7 @@ img, svg, iframe {
   max-width: 100%;
   margin-bottom: 20px;
   padding: .8em;
+  box-sizing: border-box;
   display: block;
 }
 .reactRoot button {

@@ -36,16 +36,16 @@
           <h3 class="heading-3">要点</h3>
           <p>今回も、CSSの max-widthのお話です。例えば仮に、画面幅が 1280pxのモニタがあるとします。CSSで画像の幅を 640pxに指定した場合、次のようにおさまり良く表示されるのでとくに問題はありません。</p>
           <div class="parent pc1280">
-            <img class="childImg" src="../../img/logo-peachblossomrabbit.png" alt="サンプル画像">
+            <img class="childImg" src="logo-yellowredfox.png" alt="サンプル画像">
           </div>
           <p>しかしこれを、画面幅 360pxのスマホで見ると、ちょっと困った感じになります。画面幅が小さくなると、次のように画像がはみ出してしまうのです。デザイン的な意図があってあえてやっていれば構いませんが、そうでないなら困ります。</p>
           <div class="parent mobaile360">
-            <img class="childImg" src="../../img/logo-peachblossomrabbit.png" alt="サンプル画像">
+            <img class="childImg" src="logo-yellowredfox.png" alt="サンプル画像">
           </div>
           <p>このようなときは max-widthを指定しておくと、うまいこと解決できます。画面内でおさまるように表示したければ、「max-width: 100%;」とすれば良いだけです。</p>
           <p>つまり、画像に指定した widthの値でおさまる画面幅であればそのまま表示されます。おさまらなければ、%で指定した値で、画面の幅（もしくは親要素の幅）にあわせてうまいこと表示されます。max-widthは、状況に応じて widthを上書きしてくれる役立つプロパティです。</p>
           <div class="parent mobaile360">
-            <img class="childImg maxWidth" src="../../img/logo-peachblossomrabbit.png" alt="サンプル画像">
+            <img class="childImg maxWidth" src="logo-yellowredfox.png" alt="サンプル画像">
           </div>
 
         </section>
@@ -121,10 +121,12 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="profile">
-        <a class="backSignboard" href="https://peachblossomrabbit.github.io/">
-          <img class="backSignboard__logo" src="../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ">
-          <h2 class="backSignboard__title">モモハナラボ</h2>
-        </a>
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://peachblossomrabbit.github.io/">
+            <img class="backSignboard__logo" src="../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
         <p class="office">
           モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
         </p>

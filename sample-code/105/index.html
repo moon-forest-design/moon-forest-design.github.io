@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/102">
-  <title>React入門「クラス構文によるWikipediaのAPI」</title>
+  <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/105">
+  <title>React入門「関数によるWikipediaのAPI」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。">
+  <meta name="description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。Function Component版。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="React入門「クラス構文によるWikipediaのAPI」">
-  <meta property="og:description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。">
+  <meta property="og:title" content="React入門「関数によるWikipediaのAPI」">
+  <meta property="og:description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。Function Component版。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/102">
+  <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/105">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「クラス構文によるWikipediaのAPI」</h1>
+      <h1 class="siteTitle">React入門<br class="brNone">「関数によるWikipediaのAPI」</h1>
     </div>
   </header>
 
@@ -38,41 +38,34 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>「<a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank" rel="noopener noreferrer">React Tutorial: An Overview and Walkthrough</a>」で紹介されているコード。Wikipedia APIを利用してデータを取得し、表示する仕様。検索対象だけ変更した。</li>
-            <li>ライフサイクルメソッド componentDidMount()の役割を説明する上で、変数の初期化や、Fetch APIのデータ取得、setInterval()などが挙げられる。これは Fetch APIを使った場合のコード。</li>
-            <li>取得したデータは配列に格納している。配列の第3要素には検索対象の概要が入るはずだが、以前と仕様が変わったのか？　何かしらの理由で空になるようだ。</li>
+            <li>Class Componentで書かれている「<a href="https://peachblossomrabbit.github.io/sample-code/102">React入門「WikipediaのAPI」</a>」のコードを、Function Componentで書き直した。</li>
+            <li>気をつけたいポイントは 2つ。
+              <ul>
+                <li>stateの初期化は、「React.useState([])」のように配列として行う。0や空文字ではダメ。</li>
+                <li>ライフサイクルメソッド componentDidMount()として React.useEffect()を使うので、React.useEffect()の第2引数に「[]」をつけるのを忘れてはいけない。初回だけで良い。[data]などと書いてしまうと、データ取得し続けてしまうようだ。</li>
+              </ul>
+            </li>
           </ul>
+
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            class App extends React.Component {
-              state = {
-                data: []
-              };
-              // ライフサイクルメソッド componentDidMount()
-              componentDidMount() {
+            const App = () => {
+              const [data, setData] = React.useState([]);
+              React.useEffect(() => {
                 const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Japan&format=json&origin=*&limit=1";
-                // fetch使用
                 fetch(url)
                   .then(result => result.json())
-                  .then(result => {
-                    this.setState({
-                      data: result
-                  })
-                });
-              }
+                  .then(result => setData(result));
+              }, []);
 
-              render() {
-                const { data } = this.state;
+              const result = data.map((entry, index) => {
+                console.log(entry);
+                return <li key={index}>{entry}</li>;
+              });
+              return <div className="container"><ul>{result}</ul></div>;
 
-                const result = data.map((entry, index) => {
-                  console.log(entry);
-                  return <li key={index}>{entry}</li>;
-                });
-
-                return <div className="container"><ul>{result}</ul></div>;
-              }
             }
             ReactDOM.render(
               <App />,
@@ -93,33 +86,21 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  class App extends React.Component {
-    state = {
-      data: []
-    };
-    // ライフサイクルメソッド componentDidMount()
-    componentDidMount() {
+  const App = () =&gt; {
+    const [data, setData] = React.useState([]);
+    React.useEffect(() =&gt; {
       const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Japan&format=json&origin=*&limit=1";
-      // fetch使用
       fetch(url)
         .then(result =&gt; result.json())
-        .then(result =&gt; {
-          this.setState({
-            data: result
-        })
-      });
-    }
+        .then(result =&gt; setData(result));
+    }, []);
 
-    render() {
-      const { data } = this.state;
+    const result = data.map((entry, index) =&gt; {
+      console.log(entry);
+      return &lt;li key={index}&gt;{entry}&lt;/li&gt;;
+    });
+    return &lt;div className="container"&gt;&lt;ul&gt;{result}&lt;/ul&gt;&lt;/div&gt;;
 
-      const result = data.map((entry, index) =&gt; {
-        console.log(entry);
-        return &lt;li key={index}&gt;{entry}&lt;/li&gt;;
-      });
-
-      return &lt;div className="container"&gt;&lt;ul&gt;{result}&lt;/ul&gt;&lt;/div&gt;;
-    }
   }
   ReactDOM.render(
     &lt;App /&gt;,
@@ -139,7 +120,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/105">React入門「関数によるWikipediaのAPI」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/102">React入門「クラス構文によるWikipediaのAPI」</a></li>
             <li><a href="https://peachblossomrabbit.github.io/sample-code/82">React入門「ライフサイクルメソッド」</a></li>
           </ul>
         </section>
@@ -152,7 +133,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>エラー処理もほしい。</li>
+            <li>ご迷惑をおかけしないように、useEffect()の第2引数は忘れずに指定しよう。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -161,6 +142,7 @@
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
             <li><a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank" rel="noopener noreferrer">React Tutorial: An Overview and Walkthrough</a></li>
+            <li><a href="https://www.to-r.net/media/react-tutorial-hooks-useeffect/" target="_blank" rel="noopener noreferrer">useEffect / React Hooks – React入門 - to-R Media</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -169,7 +151,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-9-2">2021年9月2日</time>
+          作成日: <time class="releaseDate" datetime="2021-9-9">2021年9月9日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

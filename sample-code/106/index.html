@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/102">
-  <title>React入門「クラス構文によるWikipediaのAPI」</title>
+  <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/106">
+  <title>React入門「関数によるjsonplaceholderのAPI」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。">
+  <meta name="description" content="Reactを試すシリーズ。jsonplaceholderのAPIでデータ取得。Function Component版。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="React入門「クラス構文によるWikipediaのAPI」">
-  <meta property="og:description" content="Reactを試すシリーズ。WikipediaのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。">
+  <meta property="og:title" content="React入門「関数によるjsonplaceholderのAPI」">
+  <meta property="og:description" content="Reactを試すシリーズ。jsonplaceholderのAPIでデータ取得。Function Component版。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/102">
+  <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/106">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「クラス構文によるWikipediaのAPI」</h1>
+      <h1 class="siteTitle">React入門<br class="brNone">「関数によるjsonplaceholderのAPI」</h1>
     </div>
   </header>
 
@@ -38,46 +38,56 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>「<a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank" rel="noopener noreferrer">React Tutorial: An Overview and Walkthrough</a>」で紹介されているコード。Wikipedia APIを利用してデータを取得し、表示する仕様。検索対象だけ変更した。</li>
-            <li>ライフサイクルメソッド componentDidMount()の役割を説明する上で、変数の初期化や、Fetch APIのデータ取得、setInterval()などが挙げられる。これは Fetch APIを使った場合のコード。</li>
-            <li>取得したデータは配列に格納している。配列の第3要素には検索対象の概要が入るはずだが、以前と仕様が変わったのか？　何かしらの理由で空になるようだ。</li>
+            <li>Class Componentで書かれている「<a href="https://peachblossomrabbit.github.io/sample-code/105">React入門「クラス構文によるjsonplaceholderのAPI」</a>」のコードを、Function Componentで書き直した。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
           <script type="text/babel">
-            class App extends React.Component {
-              state = {
-                data: []
-              };
-              // ライフサイクルメソッド componentDidMount()
-              componentDidMount() {
-                const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Japan&format=json&origin=*&limit=1";
-                // fetch使用
-                fetch(url)
-                  .then(result => result.json())
-                  .then(result => {
-                    this.setState({
-                      data: result
+            const Photos = ({ photo }) => {
+              return (
+                <figure className="thumbnail">
+                  <img src={photo.thumbnailUrl} alt={photo.title} className="thumbnail__img" />
+                  <figcaption className="thumbnail__title">{photo.title}</figcaption>
+                </figure>
+              );
+            };
+
+            const App = () => {
+              const [photos, setPhotos] = React.useState([]);
+              const [isLoading, setsLoading] = React.useState(true);
+              const [errors, setError] = React.useState(null);
+              React.useEffect(() => {
+                fetch(`https://jsonplaceholder.typicode.com/photos?id=1`)
+                  .then(response => response.json())
+                  .then(data => {
+                    setPhotos(data);
+                    setsLoading(false);
                   })
-                });
-              }
+                  .catch(error => {
+                    setError(error);
+                    setsLoading(false);
+                  })
+              }, []);
 
-              render() {
-                const { data } = this.state;
+              return (
+                <section className="section">
+                  <div className="container">
+                    {!isLoading ? (
+                      photos.map(photo => {
+                        return <Photos key={photo.id} photo={photo} />;
+                      })
+                    ) : (
+                      <p>Loading...</p>
+                    )}
+                  </div>
+                </section>
+              );
 
-                const result = data.map((entry, index) => {
-                  console.log(entry);
-                  return <li key={index}>{entry}</li>;
-                });
+            };
 
-                return <div className="container"><ul>{result}</ul></div>;
-              }
-            }
-            ReactDOM.render(
-              <App />,
-              document.getElementById("root")
-            );
+            ReactDOM.render(<App />, document.getElementById("root"));
+
           </script>
           <!-- Reactコード　ここまで -->
 
@@ -93,38 +103,50 @@
 <code>
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
-  class App extends React.Component {
-    state = {
-      data: []
-    };
-    // ライフサイクルメソッド componentDidMount()
-    componentDidMount() {
-      const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Japan&format=json&origin=*&limit=1";
-      // fetch使用
-      fetch(url)
-        .then(result =&gt; result.json())
-        .then(result =&gt; {
-          this.setState({
-            data: result
+  const Photos = ({ photo }) =&gt; {
+    return (
+      &lt;figure className="thumbnail"&gt;
+        &lt;img src={photo.thumbnailUrl} alt={photo.title} className="thumbnail__img" /&gt;
+        &lt;figcaption className="thumbnail__title"&gt;{photo.title}&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    );
+  };
+
+  const App = () =&gt; {
+    const [photos, setPhotos] = React.useState([]);
+    const [isLoading, setsLoading] = React.useState(true);
+    const [errors, setError] = React.useState(null);
+    React.useEffect(() =&gt; {
+      fetch(`https://jsonplaceholder.typicode.com/photos?id=1`)
+        .then(response =&gt; response.json())
+        .then(data =&gt; {
+          setPhotos(data);
+          setsLoading(false);
         })
-      });
-    }
+        .catch(error =&gt; {
+          setError(error);
+          setsLoading(false);
+        })
+    }, []);
 
-    render() {
-      const { data } = this.state;
+    return (
+      &lt;section className="section"&gt;
+        &lt;div className="container"&gt;
+          {!isLoading ? (
+            photos.map(photo =&gt; {
+              return &lt;Photos key={photo.id} photo={photo} /&gt;;
+            })
+          ) : (
+            &lt;p&gt;Loading...&lt;/p&gt;
+          )}
+        &lt;/div&gt;
+      &lt;/section&gt;
+    );
 
-      const result = data.map((entry, index) =&gt; {
-        console.log(entry);
-        return &lt;li key={index}&gt;{entry}&lt;/li&gt;;
-      });
+  };
 
-      return &lt;div className="container"&gt;&lt;ul&gt;{result}&lt;/ul&gt;&lt;/div&gt;;
-    }
-  }
-  ReactDOM.render(
-    &lt;App /&gt;,
-    document.getElementById("root")
-  );
+  ReactDOM.render(&lt;App /&gt;, document.getElementById("root"));
+
 &lt;/script&gt;
 </code>
 </pre>
@@ -139,10 +161,9 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/105">React入門「関数によるWikipediaのAPI」</a></li>
             <li><a href="https://peachblossomrabbit.github.io/sample-code/104">React入門「クラス構文によるjsonplaceholderのAPI」</a></li>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/106">React入門「関数によるjsonplaceholderのAPI」</a></li>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/82">React入門「ライフサイクルメソッド」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/102">React入門「クラス構文によるWikipediaのAPI」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/105">React入門「関数によるWikipediaのAPI」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -154,7 +175,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>エラー処理もほしい。</li>
+            <li>例外処理をどうするかは今後の課題。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -162,7 +183,7 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank" rel="noopener noreferrer">React Tutorial: An Overview and Walkthrough</a></li>
+            <li><a href="https://codepen.io/team/codepen/pen/RvOYKb" target="_blank" rel="noopener noreferrer">React Component with Fetch API</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -171,7 +192,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-9-2">2021年9月2日</time>
+          作成日: <time class="releaseDate" datetime="2021-9-10">2021年9月10日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

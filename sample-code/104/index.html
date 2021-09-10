@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/104">
-  <title>React入門「jsonplaceholderのAPI」</title>
+  <title>React入門「クラス構文によるjsonplaceholderのAPI」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。。">
+  <meta name="description" content="Reactを試すシリーズ。jsonplaceholderのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。例外処理catch()あり。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="React入門「jsonplaceholderのAPI」">
-  <meta property="og:description" content="Reactを試すシリーズ。。">
+  <meta property="og:title" content="React入門「クラス構文によるjsonplaceholderのAPI」">
+  <meta property="og:description" content="Reactを試すシリーズ。jsonplaceholderのAPIでデータ取得。ライフサイクルメソッド componentDidMount()を使用。例外処理catch()あり。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/104">
   <meta name="robots" content="noindex">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「jsonplaceholderのAPI」</h1>
+      <h1 class="siteTitle">React入門<br class="brNone">「クラス構文によるjsonplaceholderのAPI」</h1>
     </div>
   </header>
 
@@ -39,8 +39,8 @@
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>「<a href="https://codepen.io/team/codepen/pen/RvOYKb" target="_blank" rel="noopener noreferrer">React Component with Fetch API</a>」で紹介されているコード。jsonplaceholderの APIを利用してデータを取得し、表示する仕様。取得するデータは photoに変更した。また、「?」をつけて、1件（id=1）のみにした。うまくいけば、サイズ 150 x 150のグリーンの画像が表示されるはず。</li>
-            <li><a href="http://jsonplaceholder.typicode.com/" target="_blank" rel="noopener noreferrer">jsonplaceholder</a>は、Fetch APIのテストなどに利用できるサイトとのこと。アカウント登録は不要。「Fetch APIをちょっと試したいだけなんだけどな」というニーズに応えてくれる。データはダミー。</li>
-            <li>以前試した「<a href="https://peachblossomrabbit.github.io/sample-code/102">WikipediaのAPI</a>」にはエラー処理がなかったが、今回のコードには catch()あり。</li>
+            <li><a href="http://jsonplaceholder.typicode.com/" target="_blank" rel="noopener noreferrer">jsonplaceholder</a>は、Fetch APIのテストなどに利用できるサイトとのこと。アカウント登録は不要。「Fetch APIをちょっと試したいな」というニーズに応えてくれる。データはダミー。</li>
+            <li>以前試した「<a href="https://peachblossomrabbit.github.io/sample-code/102">WikipediaのAPI</a>」には例外処理がなかったが、今回のコードには catch()あり。しかし、コンソールにエラーをはくわけでもなく、とくに何を表示するでもない仕様となっているようだ。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -179,7 +179,10 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/102">React入門「WikipediaのAPI」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/106">React入門「関数によるjsonplaceholderのAPI」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/102">React入門「クラス構文によるWikipediaのAPI」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/105">React入門「関数によるWikipediaのAPI」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/82">React入門「ライフサイクルメソッド」</a></li>
           </ul>
         </section>
         <!-- /.content -->

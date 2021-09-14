@@ -40,15 +40,14 @@
           <ul>
             <li>reactを試すために CDNを利用。
               <ul>
-                <li>CDNは、開発者用とプロダクション用が用意されている。開発者用を「開発するときに使用するもの」と解釈してしまったが勘違いだったようだ。開発者用は、いわゆる「開発者が中身を見たい」ときに使うためのものと考えたほうが近しい。ゆえに圧縮・最適化されていない。CDNを利用する場合に指定するのはプロダクション用。react.production.min.js、react-dom.production.min.jsを使う。</li>
-                <li>CDNを利用する場合は、開発者用でもプロダクション用でもどちらにせよ babel.min.jsも読み込む必要があるようだ。本来は、事前にコンパイルしておけばいいことなので、あまり好ましくないが仕方がない。</li>
+                <li>開発者用とプロダクション用の CDNが用意されている。開発者用を「開発するときに使用するもの」と解釈してしまったが勘違いだったようだ。開発者用はおそらく、いわゆる「開発者が中身を見たい」ときに使うためのものと考えたほうが近しい。ゆえに圧縮・最適化されていない。CDNを利用する場合に指定するのはプロダクション用。react.production.min.js、react-dom.production.min.jsを使う。</li>
+                <li>また、babel.min.jsも読み込む必要がある。本来は、事前にコンパイルしておけばいいことなので、あまり好ましくはないが仕方がない。</li>
               </ul>
             </li>
-            <li>空のdiv要素（#root）に対して、script要素を使って、p要素を書き加えている。Reactは、JavaScriptを使って仮想DOM（Virtual DOM）という形であれこれ作成できる。JavaScriptで生成した DOMを模倣したデータ構造の差分を、実際の DOMに反映する形。ゆえに、部分的な更新が多いページにおいては処理が高速になる。</li>
-            <li>script要素には、type属性で "text/babel"を指定。</li>
-            <li>ReactDOM.render()にて、HTMLを差し込む。第一引数に element（HTML文）。第二引数に container（差し込み先）。</li>
-            <li>第一引数で指定する要素に class属性を使用したらエラーが出た。react（JSX）では className属性を使用する。</li>
-            <li>script要素の内容を外部呼び出し（main.jsあるいはmain.jsx）にしてみたがエラーが出た。クロスオリジンエラー。<a href="https://peachblossomrabbit.github.io/sample-code/108">JSXを外部ファイルで書き出すのであれば、サーバ環境が必要</a>なのかもしれない。</li>
+            <li>Reactは、JavaScriptを使って仮想 DOM（Virtual DOM）という形であれこれを作成できる。JavaScriptで生成した DOMを模倣したデータ構造の差分を、実際の DOMに反映する形。ゆえに、部分的な更新が多いページにおいては処理が高速になるメリットがある。</li>
+            <li>ReactDOM.render()にて、HTMLを差し込む。第一引数に element（HTML文）。第二引数に container（差し込み先）。空のdiv要素（#root）に対して、script要素で p要素を書き加えている。script要素には、type属性で "text/babel"を指定。</li>
+            <li>第一引数で指定する要素に class属性を使用したらエラーが出た。<a href="https://peachblossomrabbit.github.io/sample-code/67">react（JSX）</a>では className属性を使用する。</li>
+            <li>script要素の内容を外部呼び出し（main.jsあるいはmain.jsx）にしてみたがエラーが出た。クロスオリジンエラー。<a href="https://peachblossomrabbit.github.io/sample-code/108">JSXを外部ファイルで書き出すのであれば、サーバ環境が必要</a>になる。</li>
           </ul>
 
           <!-- Reactコード　ここから -->
@@ -69,12 +68,12 @@
           <h4 class="heading-4">HTML + React</h4>
 <pre class="code">
 <code>
-&lt;!-- reactの使用に必要なものを読み込む --&gt;
+&lt;!-- reactを使用するために必要なものを読み込む --&gt;
 &lt;script src="https://unpkg.com/react@17/umd/react.development.js"&gt;&lt;/script&gt;
 &lt;script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"&gt;&lt;/script&gt;
 &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
 
-&lt;!-- reactを使用したコード --&gt;
+&lt;!-- reactに関するコード --&gt;
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
 &lt;script type="text/babel"&gt;
   ReactDOM.render(

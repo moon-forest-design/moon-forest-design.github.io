@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/108">
-  <title>React入門「Hello React!」</title>
+  <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/65">
+  <title>React入門「関数によるコンポーネント化」</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。Reactのコードを別ファイルに書き出して「Hello React!」を表示するやり方。">
+  <meta name="description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="React入門「Hello React!」">
-  <meta property="og:description" content="Reactを試すシリーズ。Reactのコードを別ファイルに書き出して「Hello React!」を表示するやり方。">
+  <meta property="og:title" content="React入門「関数によるコンポーネント化」">
+  <meta property="og:description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/108">
+  <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/65">
   <meta name="robots" content="noindex">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「Hello React!」</h1>
+      <h1 class="siteTitle">React入門<br class="brNone">「関数によるコンポーネント化」</h1>
     </div>
   </header>
 
@@ -38,47 +38,54 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>簡便にReactを試すだけなら、<a href="https://peachblossomrabbit.github.io/sample-code/64">関連するライブラリ群を CDNで読み込んで、HTMLファイル内にReactのコードを書く</a>のがもっとも手間がなく Reactだけに集中できて良い。しかし、「Reactのコードを HTMLファイル内に書きたくない。HTMLファイル外に書き出したい」と思ったならば、何かしらの方法でサーバを起てる必要がある。</li>
-            <li>Node.jsにて、Create React Appを入れても良いが、「そこまでではない」ということであれば、VSCodeの拡張 Live Serverを使うと良いかもしれない。今回は Live Serverを入れて、HTMLファイル内にReactのコードを、外部ファイル index.jsxに書き出した。問題なければ、「Hello React!」と表示される。</li>
+            <li>前回の <a href="https://peachblossomrabbit.github.io/sample-code/64">React入門 Hello World!</a>の続き。Reactの「コンポーネント」と呼ばれる書き方。</li>
+            <li>例えば、ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数のような形で定義する。機能的に分割できるひとまとまりがコンポーネント（部品）。このように分割しておくことで再利用しやすくなる。</li>
+            <li>コンポーネント名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける &lt;App /&gt;も一文字目が「A」になっている。試しに &lt;textView /&gt;にしたらダメで &lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。</li>
+            <li>React.StrictModeは、おそらく JavaScriptの "use strict";みたいなものだろう。</li>
           </ul>
 
-          <!-- Reactを書き出すための div要素 -->
+          <!-- Reactコード　ここから -->
           <div id="root" class="reactRoot"></div>
+          <script type="text/babel">
+            function TextView() {
+              return <p>Reactテスト：コンポーネントを使う（関数で定義）</p>;
+            }
+            ReactDOM.render(
+              <React.StrictMode>
+                <TextView />
+              </React.StrictMode>,
+              document.getElementById('root')
+            );
+          </script>
+          <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
+
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-          <h4 class="heading-4">HTML</h4>
+            <h4 class="heading-4">HTML + React</h4>
 <pre class="code">
 <code>
-&lt;!-- reactを使用する上で必要なものをCDNで読み込む --&gt;
-&lt;script src="https://unpkg.com/react@17/umd/react.development.js"&gt;&lt;/script&gt;
-&lt;script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"&gt;&lt;/script&gt;
-&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
-
-&lt;!-- Reactを書き出すための div要素 --&gt;
 &lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
-
-&lt;!-- Reactのコードを外部ファイルから読み込む --&gt;
-&lt;script type="text/babel" src="index.jsx"&gt;&lt;/script&gt;
+&lt;script type="text/babel"&gt;
+  function App() {
+    return &lt;p&gt;Reactテスト：コンポーネントを使う（関数で定義）&lt;/p&gt;;
+  }
+  ReactDOM.render(
+    &lt;React.StrictMode&gt;
+      &lt;App /&gt;
+    &lt;/React.StrictMode&gt;,
+    document.getElementById('root')
+  );
+&lt;/script&gt;
 </code>
 </pre>
-
-          <h4 class="heading-4">JavaScript（jsxファイル）</h4>
-<pre class="code">
-<code>
-ReactDOM.render(
-  &lt;p&gt;Hello React!&lt;/p&gt;,
-  document.getElementById('root')
-);
-</code>
-</pre>
-
 
         </section>
         <!-- /.content -->
+
       </section>
       <!-- /.contents -->
 
@@ -86,7 +93,8 @@ ReactDOM.render(
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/64">React入門「Hello World!」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/94">React入門「関数コンポーネントの機能的分割」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/75">React入門「コンポーネントのいろいろな書き方」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -98,7 +106,8 @@ ReactDOM.render(
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>Live Serverを使えば、それほどわずらわしくもない。</li>
+            <li>関数名の一文字目を大文字にするルールは忘れやすい。はじめのうちはとくに忘れやすい。うっかりしてなぜ動かないのか気づかずに無駄に時間をすごすことになりがち。気をつけよう。</li>
+            <li>関数で書く方法以外にも ES6の classで定義する方法もある。他にもいくつか書き方があるようだが、廃止になったものもある。古いコードを見たときに、はじめのうちは混乱するかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -106,16 +115,16 @@ ReactDOM.render(
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/hello-world.html" target="_blank">Hello World – React</a></li>
+            <li><a href="https://www.tohoho-web.com/ex/react.html" target="_blank">React入門 - とほほのWWW入門</a></li>
           </ul>
         </section>
         <!-- /.content -->
       </section>
       <!-- /.contents -->
-      
+
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-9-12">2021年9月12日</time>
+          作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月22日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド
@@ -146,7 +155,5 @@ ReactDOM.render(
     </div>
   </footer>
 
-  <!-- <script type="text/babel" src="index.jsx"></script> -->
-  <script type="text/babel" src="index.jsx"></script>
 </body>
 </html>

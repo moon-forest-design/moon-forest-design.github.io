@@ -53,7 +53,7 @@ img, svg, iframe {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .brNone {
     display: none;
@@ -147,6 +147,24 @@ img, svg, iframe {
 .content a {
   text-decoration: none;
 }
+.content table {
+  border-collapse: collapse;
+  text-align: center;
+  border-top: 1px solid #302833;
+  border-left: 1px solid #302833;
+}
+.content table th {
+  width: 25%;
+  padding: .5em;
+  border-right: 1px solid #302833;
+  border-bottom: 1px solid #302833;
+  background-color: #f09199;
+}
+.content table td {
+  padding: .5em 1em;
+  border-right: 1px solid #302833;
+  border-bottom: 1px solid #302833;
+}
 .code {
   padding: 0 1.5em;
   box-sizing: border-box;
@@ -174,11 +192,13 @@ img, svg, iframe {
 }
 
 
-/* reactRoot
+/* demoRoot
 ================================================== */
-.reactRoot {
+.demoRoot {
   margin: 100px 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 

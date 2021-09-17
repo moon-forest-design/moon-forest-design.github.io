@@ -7,26 +7,22 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/69">
-  <title>React入門「formイベント基礎」</title>
+  <title>クリックイベント付きの div要素を for文で 5つ表示する</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。関数で定義したイベント処理。form要素の onSubmit属性で submitボタンを作成。">
+  <meta name="description" content="クリックイベント付きの div要素を for文で 5つ表示するJavaScriptコード。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="submitボタン「formイベント基礎」">
-  <meta property="og:description" content="Reactを試すシリーズ。関数で定義したイベント処理。form要素の onSubmit属性で submitボタンを作成。">
+  <meta property="og:title" content="クリックイベント付きの div要素を for文で 5つ表示する">
+  <meta property="og:description" content="クリックイベント付きの div要素を for文で 5つ表示するJavaScriptコード。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/69">
   <meta name="robots" content="noindex">
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  <!-- Don't use this in production: -->
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「formイベント基礎」</h1>
+      <h1 class="siteTitle">クリックイベント付きの div要素を <br class="brNone">for文で 5つ表示する</h1>
     </div>
   </header>
 
@@ -38,37 +34,11 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>form要素内のbutton要素をクリックすると、form要素の onSubmit属性に指定してある関数 handleSubmitを呼び出す。関数内では2つの処理を行っている。</li>
-            <li>1つは、button要素をクリックしたことで発生するデフォルト処理を抑止するために、「e.preventDefault();」をしている。Reactでは falseを返してもデフォルトの動作を抑止することができないため、明示的に preventDefaultを呼び出す必要がある。</li>
-            <li>2つ目は、クリックされたことが分かるよう「You clicked submit.」とコンソール表示している。</li>
+            <li>div要素をクリックすると、何番目の div要素かをコンソール表示する仕様。</li>
           </ul>
 
-          <!-- Reactコード　ここから -->
-          <div id="root" class="reactRoot"></div>
-          <script type="text/babel">
-            function Form() {
-              function handleSubmit(e) {
-                // button要素をクリックしたことで発生するデフォルト処理を抑止
-                e.preventDefault();
-                console.log('You clicked submit.');
-              }
-
-              return (
-                <form onSubmit={handleSubmit}>
-                  <button type="submit">Submit</button>
-                </form>
-              );
-            }
-
-            ReactDOM.render(
-              <React.StrictMode>
-                <Form />
-              </React.StrictMode>,
-              document.getElementById('root')
-            );
-
-          </script>
-          <!-- Reactコード　ここまで -->
+          <!-- demoコード -->
+          <div id="demo"></div>
 
         </section>
         <!-- /.content -->
@@ -76,33 +46,17 @@
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML + React</h4>
+            <h4 class="heading-4">JavaScript</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
-&lt;script type="text/babel"&gt;
-  function Form() {
-    function handleSubmit(e) {
-      // button要素をクリックしたことで発生するデフォルト処理を抑止
-      e.preventDefault();
-      console.log('You clicked submit.');
-    }
-
-    return (
-      &lt;form onSubmit={handleSubmit}&gt;
-        &lt;button type="submit"&gt;Submit&lt;/button&gt;
-      &lt;/form&gt;
-    );
+for (let i = 0; i &lt; 5; i++) {
+  const demo = document.getElementById('demo');
+  const div = document.createElement('div');
+  div.onclick = function() {
+    console.log(`This is box # ${i}`);
   }
-
-  ReactDOM.render(
-    &lt;React.StrictMode&gt;
-      &lt;Form /&gt;
-    &lt;/React.StrictMode&gt;,
-    document.getElementById('root')
-  );
-
-&lt;/script&gt;
+  demo.appendChild(div);
+}
 </code>
 </pre>
 
@@ -116,8 +70,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/80">React入門「buttonイベント基礎」</a></li>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/81">React入門「inputイベント基礎」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/68">クロージャとは？</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -128,14 +81,16 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>...</p>
+          <ul>
+            <li>「div.onclick = function() {...}」という書き方をしたことがこれまでなかったのでメモ。</li>
+          </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/handling-events.html" target="_blank" rel="noopener noreferrer">イベント処理 – React</a></li>
+            <li><a href="https://github.com/oreilly-japan/learning-react-2e-ja/blob/master/chapter-02/2.1/2.1.2/04.html" target="_blank" rel="noopener noreferrer">「Reactハンズオンラーニング 第2版 ―Webアプリケーション開発のベストプラクティス」</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -144,7 +99,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-26">2021年7月26日</time>
+          作成日: <time class="releaseDate" datetime="2021-9-7">2021年9月7日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド
@@ -174,6 +129,12 @@
       </div>
     </div>
   </footer>
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="main.js"></script>
 
 </body>
 </html>

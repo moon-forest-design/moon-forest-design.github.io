@@ -7,26 +7,22 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/68">
-  <title>React入門「class構文による時刻表示」</title>
+  <title>クロージャとは？</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。class構文によるコンポーネント化。ライフサイクルメソッドを使ってみよう。">
+  <meta name="description" content="JavaScriptにおける「クロージャ」とは何か？　説明が分かり良かったページのメモ。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="React入門「class構文による時刻表示」">
-  <meta property="og:description" content="Reactを試すシリーズ。class構文によるコンポーネント化。ライフサイクルメソッドを使ってみよう。">
+  <meta property="og:title" content="クロージャとは？">
+  <meta property="og:description" content="JavaScriptにおける「クロージャ」とは何か？　説明が分かり良かったページのメモ。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/68">
   <meta name="robots" content="noindex">
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  <!-- Don't use this in production: -->
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「class構文による時刻表示」</h1>
+      <h1 class="siteTitle">クロージャとは？</h1>
     </div>
   </header>
 
@@ -38,63 +34,26 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>今回は、関数ではなく、クラス構文（class）で定義するやり方でコンポーネントを作成する。一般的に「Class Component」と呼ばれる。</li>
-            <li>Class Componentの主な特徴として、State（状態）がある。Stateは Propsと違い、値を変更できる。</li>
-            <li>React公式の「<a href="https://ja.reactjs.org/docs/state-and-lifecycle.html" target="_blank" rel="noopener noreferrer">state とライフサイクル</a>」で紹介されているコードを試してみよう。
+            <li>クロージャとは？
               <ul>
-                <li>コンポーネントを呼び出すときに、「&lt;Clock date={new Date()} /&gt;」のようにして日付を取得して引数として渡すのではなく、classで定義したコンポーネント側で処理してもらう形にする。</li>
-                <li>super()は、親のコンストラクタ（React.Component）を呼び出している。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
-                <li>コンストラクタで作成した this.state（状態）を、コンストラクタ以外で更新したい場合は、setState()を使う。直接代入できるのは、コンストラクタ内のみ。</li>
-                <li>Classが DOMとして描画されるときのことを Reactでは「マウント (mounting)」と呼ぶ。Classが生成した DOMが削除されるときのことを React では「アンマウント (unmounting)」と呼ぶ。</li>
-                <li>ライフサイクルメソッド componentDidMount()には、DOMに描画された直後に実行したい処理を書く。</li>
-                <li>ライフサイクルメソッド componentWillUnmount()には、componentDidMount()メソッドの解除処理を書く。</li>
+                <li>関数と、その関数の定義時のコンテキストをセットにした特殊なオブジェクトのこと。</li>
+                <li>変数 cntの状態を保持し続けているところに注目。</li>
+              </ul>
+            </li>
+            <li>クロージャを理解するポイント。
+              <ul>
+                <li>関数は定義時のコンテキストで実行される。（※重要）</li>
+                <li>関数は第一級オブジェクトなので、定義時のコンテキストとは異なるコンテキスト上でも実行できる。</li>
+                <li>関数は定義時のコンテキストとは異なるコンテキスト上にある変数に代入された時にクロージャになる。</li>
+              </ul>
+            </li>
+            <li>クロージャの用途。
+              <ul>
+                <li>グローバル変数を使わずに関数に「状態」を持たせる。（疑似プライベート変数）</li>
+                <li>関数を作る関数。</li>
               </ul>
             </li>
           </ul>
-
-          <!-- Reactコード　ここから -->
-          <div id="root" class="reactRoot"></div>
-          <script type="text/babel">
-            // クラス構文でコンポーネントを作成
-            class Clock extends React.Component {
-              constructor(props) {
-                // super(props)は、this.stateを使うために必要
-                super(props);
-                this.state = {date: new Date()};
-              }
-              // 現在の日時を取得
-              tick() {
-                this.setState({
-                  date: new Date()
-                });
-              }
-              // componentDidMount()は、レンダー直後に実行したい処理を書く
-              componentDidMount() {
-                this.timerID = setInterval(
-                  () => this.tick(),
-                  1000
-                );
-              }
-              // componentWillUnmount()は、componentDidMount()の解除処理を書く
-              componentWillUnmount() {
-                clearInterval(this.timerID);
-              }
-              // this.propsとthis.stateを調べて、React要素などを返す
-              render() {
-                return <p>時刻　{this.state.date.toLocaleTimeString()}</p>;
-              }
-
-            }
-
-            ReactDOM.render(
-              <React.StrictMode>
-                <Clock />
-              </React.StrictMode>,
-              document.getElementById('root')
-            );
-
-          </script>
-          <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
@@ -102,52 +61,20 @@
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML + React</h4>
+            <h4 class="heading-4">JavaScript</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
-&lt;script type="text/babel"&gt;
-  // クラス構文でコンポーネントを作成
-  class Clock extends React.Component {
-    constructor(props) {
-      // super(props)は、this.stateを使うために必要
-      super(props);
-      this.state = {date: new Date()};
-    }
-
-    // componentDidMount()は、レンダー直後に実行したい処理を書く
-    componentDidMount() {
-      this.timerID = setInterval(
-        () =&gt; this.tick(),
-        1000
-      );
-    }
-
-    // componentWillUnmount()は、componentDidMount()の解除処理を書く
-    componentWillUnmount() {
-      clearInterval(this.timerID);
-    }
-    
-    tick() {
-      this.setState({
-        date: new Date()
-      });
-    }
-
-    render() {
-      return &lt;p&gt;時刻　{this.state.date.toLocaleTimeString()}&lt;/p&gt;;
-    }
-
-  }
-
-  ReactDOM.render(
-    &lt;React.StrictMode&gt;
-      &lt;Clock /&gt;
-    &lt;/React.StrictMode&gt;,
-    document.getElementById('root')
-  );
-
-&lt;/script&gt;
+var createCounter = function () {
+  var cnt = 0;
+  return function () {
+    cnt += 1;
+    console.log(cnt);
+  };
+};
+var counter = createCounter();
+counter(); // 1
+counter(); // 2
+counter(); // 3
 </code>
 </pre>
 
@@ -161,9 +88,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/82">React入門「ライフサイクルメソッド」</a></li>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/78">React入門「class構文によるカウントアップタイマー」</a></li>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/89">React Hooks入門「関数による時刻表示」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/66">ECMAScript modulesの import / exportを試す</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -175,7 +100,7 @@
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>似たような印象があるため、Propsと Stateを比べることもあるが、とくに対比的なものではなく、「どちらが優れているか？　どちらを使うか？」という話でもない。例えば、Propsの内容を Stateの初期値として利用しても良い。</li>
+            <li>今回のクロージャ、それからコールバック関数や、再帰関数などもそう。なかなか慣れない。コードを束ねるただの箱のようにしか関数を使えていない。まだまだ使い慣れる必要がある。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -183,7 +108,7 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/state-and-lifecycle.html" target="_blank" rel="noopener noreferrer">state とライフサイクル – React</a></li>
+            <li><a href="https://analogic.jp/closure/" target="_blank" rel="noopener noreferrer">関数を理解すればクロージャは難しくない！｜もっこりJavaScript｜ANALOGIC（アナロジック）</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -192,7 +117,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-25">2021年7月25日</time>
+          作成日: <time class="releaseDate" datetime="2021-9-7">2021年9月7日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド
@@ -222,6 +147,12 @@
       </div>
     </div>
   </footer>
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="main.js"></script>
 
 </body>
 </html>

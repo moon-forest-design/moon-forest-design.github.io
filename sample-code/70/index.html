@@ -7,26 +7,22 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/70">
-  <title>React入門「class構文によるToggleボタン」</title>
+  <title>関数の合成</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。class構文で定義したイベント処理。Toggleボタンを作成。">
+  <meta name="description" content="。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="React入門「class構文によるToggleボタン」">
-  <meta property="og:description" content="Reactを試すシリーズ。class構文で定義したイベント処理。Toggleボタンを作成。">
+  <meta property="og:title" content="関数の合成">
+  <meta property="og:description" content="。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/70">
   <meta name="robots" content="noindex">
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  <!-- Don't use this in production: -->
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「class構文によるToggleボタン」</h1>
+      <h1 class="siteTitle">関数の合成</h1>
     </div>
   </header>
 
@@ -38,49 +34,11 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>class構文で定義したイベント処理のサンプル Toggleボタン。</li>
-            <li>onClick={this.handleClick} のように ()を末尾に付けずにメソッドを参照する場合は、そのメソッドは bind()しておく必要がある。コンストラクタ内で書かれている this.handleClickの thisは関数外なので bind()しなければならない。
-              <ul>
-                <li>bind()が手間であれば、アロー関数を使う方法もある。例：onClick={() => this.handleClick()}</li>
-              </ul>
-            </li>
-            <li>setState()で、コンポーネントの更新を要求する。ただし、処理効率をより良くするため、即時に更新するとは限らない。</li>
+            <li>「<a href="https://github.com/oreilly-japan/learning-react-2e-ja/blob/master/chapter-03/3.3/3.3.6/03.html" target="_blank">Reactハンズオンラーニング 第2版 ―Webアプリケーション開発のベストプラクティス</a>」の P58に掲載されているコード。関数の合成とは、「関数を順番に、もしくは並行に呼び出したり、いくつかの関数呼び出しを束ねてより大きな関数を作ることで、アプリケーションの全体を構築する過程のこと」と P57に書かれている。</li>
+            <li>このコードは、各関数を、関数 composeに引数として渡し、oneFunctionへ束ねている。関数 compose内で reduce()を使用し、各関数をひとつずつ実行するイメージ。</li>
+            <li>結果はコンソール表示される。（例：Object { ampm: "PM", hours: 4 }）</li>
           </ul>
 
-          <!-- Reactコード　ここから -->
-          <div id="root" class="reactRoot"></div>
-          <script type="text/babel">
-            class Toggle extends React.Component {
-              constructor(props) {
-                super(props);
-                this.state = {isToggleOn: true};
-                // bind()は、コールバックで thisを機能させるために必要
-                this.handleClick = this.handleClick.bind(this);
-              }
-
-              handleClick() {
-                // setState()で、コンポーネントの更新を要求する
-                this.setState(prevState => ({
-                  isToggleOn: !prevState.isToggleOn
-                }));
-              }
-
-              render() {
-                return (
-                  <button onClick={this.handleClick}>
-                    {this.state.isToggleOn ? 'ON' : 'OFF'}
-                  </button>
-                );
-              }
-            }
-
-            ReactDOM.render(
-              <Toggle />,
-              document.getElementById('root')
-            );
-
-          </script>
-          <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
@@ -88,41 +46,52 @@
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML + React</h4>
+            <h4 class="heading-4">JavaScript</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
-&lt;script type="text/babel"&gt;
-  class Toggle extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {isToggleOn: true};
-      // bind()は、コールバックで thisを機能させるために必要
-      this.handleClick = this.handleClick.bind(this);
-    }
+// ページが表示された時刻を生成
+const createClockTime = date => ({date});
 
-    handleClick() {
-      // setState()で、コンポーネントの更新を要求する
-      this.setState(prevState =&gt; ({
-        isToggleOn: !prevState.isToggleOn
-      }));
-    }
+// 午前か午後か評価し、情報を付加（例：16時なら PMが入る）
+const appendAMPM = ({date}) =>
+  ({
+      date,
+      ampm: (date.getHours() >= 12) ? "PM" : "AM"
+  });
 
-    render() {
-      return (
-        &lt;button onClick={this.handleClick}&gt;
-          {this.state.isToggleOn ? 'ON' : 'OFF'}
-        &lt;/button&gt;
-      );
-    }
-  }
+// 24時間制を12時間制表記へ変換
+const civilianHours = clockTime => {
+  const hours = clockTime.date.getHours();
+  return {
+    ...clockTime,
+    hours: (hours > 12) ?
+      hours - 12 :
+      hours
+  };
+};
 
-  ReactDOM.render(
-    &lt;Toggle /&gt;,
-    document.getElementById('root')
-  );
+// 不要になったプロパティを削除し、必要なプロパティのみ返す
+const removeDate = clockTime => {
+  let newTime = {...clockTime};
+  delete newTime.date;
+  return newTime;
+};
 
-&lt;/script&gt;
+// 高階関数を使った関数の合成を行う。reduce()で各関数をひとつずつ実行して集約していく
+const compose = (...fns) =>
+  (arg) => fns.reduce((composed, f) => f(composed), arg);
+
+
+// 関数composeに関数を引数として渡し、oneFunctionへ代入
+const oneFunction = compose(
+  createClockTime,
+  appendAMPM,
+  civilianHours,
+  removeDate
+);
+
+// 関数群が入っている oneFunctionに、引数「new Date()」を渡して実行した結果がコンソール表示される
+console.log(oneFunction(new Date())); 
 </code>
 </pre>
 
@@ -136,7 +105,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/76">React入門「class構文によるカウントアップボタン」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/69">クリックイベント付きの div要素を for文で 5つ表示する</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -147,14 +116,14 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>...</p>
+          <p>とても参考になる本。良い道標となる。</p>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/handling-events.html" target="_blank">イベント処理 – React</a></li>
+            <li>「<a href="https://github.com/oreilly-japan/learning-react-2e-ja/blob/master/chapter-03/3.3/3.3.6/03.html" target="_blank">Reactハンズオンラーニング 第2版 ―Webアプリケーション開発のベストプラクティス</a>」P58</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -163,7 +132,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-26">2021年7月26日</time>
+          作成日: <time class="releaseDate" datetime="2021-9-18">2021年9月18日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド
@@ -193,6 +162,12 @@
       </div>
     </div>
   </footer>
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="main.js"></script>
 
 </body>
 </html>

@@ -7,26 +7,22 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://peachblossomrabbit.github.io/sample-code/71">
-  <title>React入門「CSS」</title>
+  <title>カリー化とは？｜モモハナラボ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。CSSを設定する方法。">
+  <meta name="description" content="カリー化は「関数を戻り値にすることによって、できるところまで段階的に処理を進めておくことができるテクニック」">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="モモハナラボ">
-  <meta property="og:title" content="React入門「CSS」">
-  <meta property="og:description" content="Reactを試すシリーズ。CSSを設定する方法。">
+  <meta property="og:title" content="カリー化とは？">
+  <meta property="og:description" content="カリー化は「関数を戻り値にすることによって、できるところまで段階的に処理を進めておくことができるテクニック」">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://peachblossomrabbit.github.io/sample-code/71">
   <meta name="robots" content="noindex">
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  <!-- Don't use this in production: -->
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">React入門<br class="brNone">「CSS」</h1>
+      <h1 class="siteTitle">カリー化とは？</h1>
     </div>
   </header>
 
@@ -38,34 +34,18 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>CSSを設定する方法1つ目。要素に style属性で指定する。例えば「style={{ color : 'red' }}」のように書く。</li>
-            <li>CSSを設定する方法2つ目。一度変数でまとめて、要素に style属性で指定する。例えば「const colorBlue = {  color : 'red'  };」とし、「style={colorBlue}」のように書く。</li>
-            <li>CSSを設定する方法3つ目。className属性を使い、外部ファイルで指定。</li>
-            <li>style属性を使う場合は、キャメルケース（camel case）で書く必要がある。例えば background-colorなら backgroundColorと書く。</li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/70">関数の合成とは？</a>　のコードを見ていて、「カリー化」について理解不足だと感じたのでおさらい。カリー化については、本「<a href="https://github.com/oreilly-japan/learning-react-2e-ja/blob/master/chapter-03/3.3/3.3.4/02.html" target="_blank" rel="noopener noreferrer">Reactハンズオンラーニング 第2版</a>」の P54にて説明されている。カリー化とは、「その場で処理を実行せずに、関数として返却することで、処理の実行のタイミングを呼び出し元にゆだねることができる」とある。</li>
+            <li>しかしこの本に掲載されているコードは、カリー化の利用目的も含めたより実践に近い内容になっているためか、イメージはつかみやすいのだが、コード自体には頭がついていかない印象。そこで、意図するところを言葉で補い、簡略化してみた。おそらくこんな感じの話だ。</li>
+            <li>処理の流れ。
+              <ul>
+                <li>STEP1：num1の値が決まった時点で関数 addに引数として渡して実行し、関数を返してもらっていったん pendingに入れておく。</li>
+                <li>（～この間に APIによるデータ取得待ちなどが発生する～）</li>
+                <li>STEP2：num2の値が決まり実行できる状態になったら、関数 pendingにて引数を num2へ渡して実行する。</li>
+              </ul>
+            </li>
+            <li>カリー化がこういうものであるとするなら、自分の言葉で言い換えて書くと、「関数を戻り値にすることによって、できるところまで段階的に処理を進めておくことができるテクニック」と言えそうだ。</li>
+            <li>アロー関数で書くと簡潔に書けて良いのだが、知らない人には意図が見えにくくなるデメリットは感じる。functionで書くほうが「ああ、高階関数が関数を返しているわけね」と分かり良い。使い慣れるまでは、functionで書くほうが良いかもしれない。</li>
           </ul>
-
-          <!-- Reactコード　ここから -->
-          <div id="root" class="reactRoot"></div>
-          <script type="text/babel">
-            const colorBlue = { color : 'blue' }; 
-            const TextView = () => (
-              <div>
-                <p>CSSを設定する方法 3つ。</p>
-                <ul>
-                  <li style={{ color : 'red' }}>要素に style属性で直書き</li>
-                  <li style={colorBlue}>一度変数でまとめて、要素に style属性</li>
-                  <li className="colorGreen">外部ファイル</li>
-                </ul>
-              </div>
-            );
-            ReactDOM.render(
-              <React.StrictMode>
-                <TextView />
-              </React.StrictMode>,
-              document.getElementById('root')
-            );
-          </script>
-          <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
@@ -73,29 +53,35 @@
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">HTML + React</h4>
+            <h4 class="heading-4">JavaScript（アロー関数で書いた場合）</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
-&lt;script type="text/babel"&gt;
-  const colorBlue = { color : 'blue' }; 
-  const TextView = () =&gt; (
-    &lt;div&gt;
-      &lt;p&gt;CSSを設定する方法 3つ。&lt;/p&gt;
-      &lt;ul&gt;
-        &lt;li style={{ color : 'red' }}&gt;要素に style属性で直書き&lt;/li&gt;
-        &lt;li style={colorBlue}&gt;一度変数でまとめて、要素に style属性&lt;/li&gt;
-        &lt;li className="colorGreen"&gt;外部ファイル&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-  );
-  ReactDOM.render(
-    &lt;React.StrictMode&gt;
-      &lt;TextView /&gt;
-    &lt;/React.StrictMode&gt;,
-    document.getElementById('root')
-  );
-&lt;/script&gt;
+// 高階関数が戻り値として関数を返す「カリー化」と呼ばれるテクニック
+
+// 高階関数add
+const add = num1 => num2 =>
+  console.log(num1 + num2);
+
+// STEP1：num1の値が決まった時点で関数addに引数として渡して実行し、いったんpendingに入れておく
+const pending = add(1);
+
+// ～この間にデータ取得待ちなどが発生し、実行できる常態になったらSTEP2を行う～
+
+// STEP2：関数pendingにnum2を入れて実行する
+pending(2);
+</code>
+</pre>
+
+            <h4 class="heading-4">JavaScript（functionで書いた場合）</h4>
+<pre class="code">
+<code>
+function add(num1) {
+  return function(num2){
+    console.log(num1 + num2);
+  }
+}
+const pending = add(1);
+pending(2);
 </code>
 </pre>
 
@@ -109,7 +95,7 @@
         <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
         <section class="content">
           <ul>
-            <li><a href="https://peachblossomrabbit.github.io/sample-code/64">React入門「Hello World!」</a></li>
+            <li><a href="https://peachblossomrabbit.github.io/sample-code/70">関数の合成とは？</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -120,14 +106,16 @@
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
-          <p>...</p>
+          <ul>
+            <li>カリー化の「カリー」は、キャリーバックなどの carryの方かと思ったら、curryの方らしい。curryと言えばカレーライスなどのカレー（カリー）だ。何か別の意味があるのか。あるいは何かしらの根源的な意味がある言葉なのか。</li>
+          </ul>
         </section>
         <!-- /.content -->
         <section class="content">
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://ja.reactjs.org/docs/hello-world.html" target="_blank">Hello World – React</a></li>
+            <li>「<a href="https://github.com/oreilly-japan/learning-react-2e-ja/blob/master/chapter-03/3.3/3.3.4/02.html" target="_blank" rel="noopener noreferrer">Reactハンズオンラーニング 第2版 ―Webアプリケーション開発のベストプラクティス</a>」P54</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -136,7 +124,7 @@
 
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-7-29">2021年7月29日</time>
+          作成日: <time class="releaseDate" datetime="2021-9-19">2021年9月19日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド
@@ -166,6 +154,12 @@
       </div>
     </div>
   </footer>
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="main.js"></script>
 
 </body>
 </html>

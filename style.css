@@ -205,13 +205,6 @@ h1 {
   align-items: center;
   text-decoration: none;
 }
-.backSignboard__logo {
-  padding: .5em;
-  box-sizing: border-box;
-  border-radius: 50%;
-  border: 2px solid #0f2350;
-  background-color: #fffffc;
-}
 .backSignboard__title {
   color: #fffffc;
 }
@@ -275,8 +268,8 @@ h1 {
     opacity: .8
   }
   .backSignboard__logo {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin-right: 15px;
   }
   .backSignboard__title {

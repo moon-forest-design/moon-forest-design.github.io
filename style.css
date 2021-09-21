@@ -7,7 +7,7 @@
   #e4d2d8 鴇鼠（ときねず）
   #9790a4 薄鼠（うすねず）
   #b7282e 茜色（あかねいろ）
-  #fffffc 月白（げっぱく（
+  #fffffc 胡粉色（ごふんいろ）
   #fff 白
   #009 リンク色
   #551A8B リンク色：訪問済み
@@ -33,12 +33,15 @@ body {
 h1 {
   line-height: 1;
 }
+img {
+  vertical-align: bottom;
+}
 
 
 /* header
 ================================================== */
 .header {
-  margin-bottom: 5em;
+  margin-bottom: 100px;
   background-color: #192f60;
 }
 .header__inner {
@@ -54,11 +57,7 @@ h1 {
 .signboard__logo {
   width: 50px;
   height: auto;
-  margin-right: 1.5em;
-  padding: .5em;
-  border-radius: 50%;
-  border: 2px solid #0f2350;
-  background-color: #fffffc;
+  margin-right: 1em;
 }
 .signboard__title {
   letter-spacing: .1em;
@@ -88,7 +87,7 @@ h1 {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .labo {
-    margin-bottom: 4em;
+    margin-bottom: 100px;
   }
 }
 
@@ -99,16 +98,13 @@ h1 {
   font-size: 2.3rem;
   text-align: center;
   letter-spacing: .1em;
-  color: #fffffc;
 }
 .cardBoxTitle::after {
   display: block;
   font-size: 1rem;
   content: attr(data-subtitle);
-  color: #fffffc;
 }
 .card {
-  width: 350px;
   height: auto;
   text-align: center;
   border-radius: 4px;
@@ -142,6 +138,7 @@ h1 {
 }
 .card__description {
   font-size: 1.6rem;
+  padding: 0 1em;
 }
 @media screen and (max-width: 767px) { /* スマホ用 */
   .cardBox {
@@ -151,6 +148,7 @@ h1 {
     margin-bottom: 1em;
   }
   .card {
+    width: 300px;
     margin: 0 auto 3em;
   }
 }
@@ -166,13 +164,14 @@ h1 {
     margin-bottom: 1.7em;
   }
   .card {
+    width: 320px;
     margin-bottom: 3.5em;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .cardBox {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: flex-start;
     padding: 0 2em;
@@ -181,6 +180,7 @@ h1 {
     margin-bottom: 2em;
   }
   .card {
+    width: 350px;
     margin: 0 1em 4em;
   }
 }
@@ -238,9 +238,7 @@ h1 {
   }
   .office {
     font-size: 1.4rem;
-    width: 235px;
     margin: 0 auto;
-    text-align: left;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
@@ -250,7 +248,7 @@ h1 {
   .backSignboard__logo {
     width: 100px;
     height: 100px;
-    margin-right: 15px;
+    margin-right: 10px;
   }
   .backSignboard__title {
     font-size: 6rem;
@@ -268,9 +266,9 @@ h1 {
     opacity: .8
   }
   .backSignboard__logo {
-    width: 120px;
-    height: 120px;
-    margin-right: 15px;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
   }
   .backSignboard__title {
     font-size: 6rem;

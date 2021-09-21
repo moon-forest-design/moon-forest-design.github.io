@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/10">
+  <title>space-betweenの最後の行を左寄せにする方法｜モモハナラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Flexboxのjustify-contentでspace-betweenを指定したときに、最後の行を左寄せにする方法。jQuery使用。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="space-betweenの最後の行を左寄せにする方法">
+  <meta property="og:description" content="Flexboxのjustify-contentでspace-betweenを指定したときに、最後の行を左寄せにする方法。jQuery使用。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/10">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">space-betweenの最後の行を左寄せにする方法</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>Flexboxの「justify-content: space-between;」は、とても便利です。さらに「flex-wrap: wrap;」を使えば、二行になってもうまいこと……おさまらないんですよね。</p>
+          <p>例えば次のように、カラムや子要素の数によっては、最後の行が左寄せにならないのです。「こういうのもデザイン的に、有りかも？」などと言えるはずもなく。どうしたものか考える必要があります。</p>
+          <div class="parent">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+          </div>
+          <p>親要素の幅を固定にしてもかまわなければ、justify-contentに flex-startなどを指定すれば良いかもしれません。しかし、状況によっては可変にしたい場合もあるはずです。</p>
+          <p>調べてみたところ、二つの方法がみつかりました。1つは、<a href="https://blog.webcreativepark.net/2016/08/15-125202.html" target="_blank" rel="noopener noreferrer">疑似要素を使う方法</a>。もう一つは、<a href="https://qiita.com/QUANON/items/e14949abab3711ca8646" target="_blank" rel="noopener noreferrer">jQueryを使う方法</a>です。どちらも共通するのが、空の要素を追加することで穴埋めし、きれいに整えるということ。</p>
+          <p>今後、justify-contentが進化して簡単に対応できるようになるかもしれませんが、現状においてはこれらの方法を採用するしかなさそうです。一部参考にしつつ、コードを書いてみました。仕様は以下ようです。</p>
+          <ul>
+            <li>親要素の幅は、可変でもかまいません。</li>
+            <li>最後の行で不足する子要素の数だけ、空要素を追加します。</li>
+          </ul>
+          <div id="parent" class="parent">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+          </div>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div id="parent" class="parent"&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+  &lt;div class="child"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.parent {
+  display: flex;
+  justify-content: space-between;
+  width: 540px; /* 削除可 */
+  flex-wrap: wrap;
+}
+.child {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  background-color: #ec6800; /* 削除可 */
+}
+.isEmpty {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+</code>
+</pre>
+
+          <h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+  const $cellWidth = $('#parent .child').outerWidth(true); // 子要素の幅を取得
+  const $cellCount = $('#parent .child').length; // 子要素の数を取得
+  const $parentWidth = $('#parent').width(); // 親要素の幅を取得
+  const $columnCount = Math.trunc( $parentWidth / $cellWidth ); // 親要素の幅に設定可能なカラム数を算出
+  let $lackCell = 0; // 左寄せするために不足している子要素の数を最終的に入れる
+  let $gridCount = 0; // 行列（グリッド）にした場合の子要素の総数を計算するときに使用
+  while ($gridCount &lt; $cellCount) { // 行列（グリッド）にした場合の子要素の総数を算出
+    $gridCount += $columnCount;
+  }
+  $lackCell = $gridCount - $cellCount; // 左寄せするために不足している子要素の数を算出
+  for (let $j = 0; $j &lt; $lackCell; $j++) { // 左寄せするために不足している子要素の数だけ空要素を付け加える
+    $('#parent').append('&lt;div class="child isEmpty"&gt;&lt;/div&gt;');
+  }
+
+});
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>リロードすると、一瞬ちらっと表示を切り替える様子が見えてしまうのは残念なところです。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>.isEmptyの指定まるっといただきました。参考になりました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://blog.webcreativepark.net/2016/08/15-125202.html" target="_blank" rel="noopener noreferrer">Flexboxのjustify-contentで最後の行を左寄せにする方法 - to-R</a></li>
+            <li><a href="https://qiita.com/QUANON/items/e14949abab3711ca8646" target="_blank" rel="noopener noreferrer">Flexbox で全体を中央に配置しつつ最後の行を左揃えにする - Qiita</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-5-7">2021年5月7日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

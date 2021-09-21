@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/6/index.html">
+  <title>【React】関数コンポーネントの機能的分割｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Reactを試すシリーズ。関数コンポーネントの中で機能的に分割できるものは、関数として抽出するほうがいい。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【React】関数コンポーネントの機能的分割">
+  <meta property="og:description" content="Reactを試すシリーズ。関数コンポーネントの中で機能的に分割できるものは、関数として抽出するほうがいい。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/6/index.html">
+  <meta name="robots" content="noindex">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【React】<br class="brNone">関数コンポーネントの機能的分割</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="demo" class="heading-2" data-subheading="demonstration of the code">デモ</h2>
+        <!-- Reactを書き出すための div要素 #root -->
+        <div id="root" class="reactRoot"></div>
+
+
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <ul>
+            <li>React公式の「<a href="https://ja.reactjs.org/docs/components-and-props.html" target="_blank" rel="noopener noreferrer">コンポーネントと props</a>」で紹介されているコード。「関数コンポーネントの中で機能的に分割できるものは、関数として抽出するほうがいいよ」というお話。関数 Commentの中にすべて書いてしまうのではなく、UserInfoの部分を外に出し、さらにその中の Avatarすらも外に切り出すくらいで良いと。細かくコンポーネント化する。</li>
+          </ul>
+
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">JavaScript（jsxファイル）</h4>
+<pre class="code">
+<code>
+function formatDate(date) {
+  return date.toLocaleDateString();
+}
+
+function Avatar({name, avatarUrl}) {
+  return (
+    &lt;img
+      className="Avatar"
+      src={avatarUrl}
+      alt={name}
+    /&gt;
+  );
+}
+
+function UserInfo({name, avatarUrl}) {
+  return (
+    &lt;div className="UserInfo"&gt;
+      &lt;Avatar name={name} avatarUrl={avatarUrl} /&gt;
+      &lt;div className="UserInfo-name"&gt;{name}&lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+function Comment({date, text, author}) {
+  return (
+    &lt;div className="Comment"&gt;
+      &lt;UserInfo name={author.name} avatarUrl={author.avatarUrl} /&gt;
+      &lt;div className="Comment-text"&gt;{text}&lt;/div&gt;
+      &lt;div className="Comment-date"&gt;
+        {formatDate(date)}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+const comment = {
+  date: new Date(),
+  text: 'I hope you enjoy learning React!',
+  author: {
+    name: 'peachblossomrabbit',
+    avatarUrl: 'logo-peachblossomrabbit.png',
+  },
+};
+
+const reactRender = () =&gt; ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;Comment
+      date={comment.date}
+      text={comment.text}
+      author={comment.author}
+    /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById('root')
+);
+reactRender();
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>React公式の「<a href="https://ja.reactjs.org/docs/components-and-props.html" target="_blank" rel="noopener noreferrer">コンポーネントと props</a>」では、いわゆる Propsを使っているが、分割代入のほうが分かり良いかと思い書き直してみた。しかし、「props.～」をつけるほうが分かり良いと感じる人もいるかもしれない。例えば、定数だと判別しやすいとか。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://ja.reactjs.org/docs/components-and-props.html" target="_blank" rel="noopener noreferrer">コンポーネントと props</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+      
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-8-25">2021年8月25日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング備忘メモ
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+<script type="text/babel" src="index.jsx"></script>
+
+</body>
+</html>

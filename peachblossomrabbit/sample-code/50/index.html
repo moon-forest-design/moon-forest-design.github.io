@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/50">
+  <title>押しボタン風のクリックアニメ｜モモハナラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="押しボタン風のクリックアニメーションです。ボタンをクリックすると、本物のボタンのような動作をします。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="押しボタン風のクリックアニメ">
+  <meta property="og:description" content="押しボタン風のクリックアニメーションです。ボタンをクリックすると、本物のボタンのような動作をします。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/50">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">押しボタン風のクリックアニメ</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、押しボタン風のクリックアニメーションです。ボタンをクリックすると、右下の方に少し動きます。何となく本物のボタンかのように見える動作をほどこします。ポイントは以下ようです。</p>
+          <ul>
+            <li>重要なのは、:activeです。要素に :activeをつけることでクリックしたときの動作を指定することができます。</li>
+            <li>ボタンを押し下げたかのように見える動作は、「transform: translate(2px, 3px);」を使用しました。</li>
+            <li>box-shadowで影を調整してあげることで、本物のボタンのような印象を強めます。</li>
+          </ul>
+
+          <div class="clickAnime">
+            <a class="clickAnime__link">クリックアニメ「押しボタン風」</a>
+          </div>
+
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div class="clickAnime"&gt;
+  &lt;a class="clickAnime__link" href=""&gt;クリックアニメ「押しボタン風」&lt;/a&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.clickAnime {
+  text-align: center;
+}
+.clickAnime__link {
+  padding: .6em 3em;
+  display: inline-block;
+  user-select: none;
+  color: #fffffc;
+  background-color: #769164;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .5);
+  border-radius: 4px;
+  transition: .3s;
+}
+.clickAnime__link:hover {
+  opacity: .9;
+}
+.clickAnime__link:active {
+  transform: translate(2px, 3px);
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .2),
+              2px 2px 3px 0 rgba(0, 0, 0, .3) inset;
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/59">ハンバーガーボタンのクリックアニメ</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>ボタンをクリックしたときの動作を確認しやすいように、デモ用のボタンは href属性を外してあります。</li>
+            <li>ページ内で使用するボタンであればかまいませんが、ページを移動してしまう場合にこのボタンを適用してしまうとあまり効果が伝わらないかもしれません。使いどころがよく分からないですね。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/:active" target="_blank" rel="noopener noreferrer">:active - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-6-21">2021年6月21日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+@charset "utf-8";
+
+/* color list
+  #ec6800 黄赤
+  #302833 黒紅
+  #241c1c 重い赤（ほぼ黒色）
+  #fffffc 胡粉色
+  #fca 赤みのある橙色
+*/
+
+/* base
+================================================== */
+body, h1, h2, h3, p, ul, li, figure {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: Verdana, メイリオ, sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.7;
+  color: #302833;
+  background-color: #ec6800;
+}
+h1 {
+  line-height: 1;
+}
+
+
+/* header
+================================================== */
+.header {
+  margin-bottom: 5em;
+  background-color: #241c1c;
+}
+.header__inner {
+  padding: 2em 1.5em;
+}
+.signboard {
+  display: flex;
+  align-items: center;
+}
+.signboard__link {
+  text-decoration: none;
+}
+.signboard__logo {
+  width: 50px;
+  height: auto;
+  margin-right: 1.5em;
+  padding: .5em;
+  border-radius: 50%;
+  border: 2px solid #fca;
+  background-color: #fffffc;
+}
+.signboard__title {
+  letter-spacing: .1em;
+  color: #fca;
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .signboard__logo:hover {
+    opacity: .9;
+  }
+  .signboard__title:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/* labo
+================================================== */
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .labo {
+    margin-bottom: 10em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .labo {
+    margin-bottom: 5em;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .labo {
+    margin-bottom: 4em;
+  }
+}
+
+
+/* cards
+================================================== */
+.cardsTitle {
+  font-size: 2.3rem;
+  text-align: center;
+  letter-spacing: .1em;
+  color: #302833;
+}
+.cardsTitle::after {
+  display: block;
+  font-size: 1rem;
+  content: attr(data-subtitle);
+  color: #fffffc;
+}
+.card {
+  width: 260px;
+  height: auto;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #fffffc;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+.cardTitle {
+  font-size: 1.6rem;
+  letter-spacing: .1em;
+  border-radius: 4px 4px 0 0;
+  color: #fffffc;
+  background-color: #302833;;
+}
+.cardTitle__link {
+  display: block;
+  padding: .5em;
+  text-decoration: none;
+  color: inherit;
+}
+.cardThumbnail {
+  position: relative;
+  overflow: hidden;
+}
+.cardThumbnail__img {
+  font-size: 1.4rem;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+  box-sizing: border-box;
+  color: inherit;
+}
+.cardThumbnail__description {
+  font-size: 1.6rem;
+  position: absolute;
+  top: 189px;
+  left: 0;
+  width: 260px;
+  height: 140px;
+  padding: .1em .5em;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: rgba(0, 0, 0, .6);
+  color: #fffffc;
+}
+.cardMenu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.6rem;
+  height: 50px;
+  color: #fffffc;
+  background-color: #302833;
+  border-radius: 0 0 4px 4px;
+}
+.cardMenu__item {
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+}
+.cardMenu__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .cardBox {
+    padding: 0 2em;
+  }
+  .cardsTitle {
+    margin-bottom: 1em;
+  }
+  .card {
+    margin: 0 auto 3em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .cardBox {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0 1.5em;
+  }
+  .cardsTitle {
+    margin-bottom: 1.7em;
+  }
+  .card {
+    margin-bottom: 3.5em;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .cardBox {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0 2em;
+  }
+  .cardsTitle {
+    margin-bottom: 2em;
+  }
+  .card {
+    margin: 0 1em 4em;
+  }
+  .isEmpty {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+
+/* footer
+================================================== */
+.footer {
+  font-family: Verdana, メイリオ, sans-serif;
+  background-color: #241c1c;
+}
+.footer__inner {
+  padding: 10em 1.5em 1em;
+  text-align: center;
+}
+.backSignboard {
+  display: inline-block;
+}
+.backSignboard__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.backSignboard__logo {
+  padding: .5em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid #fca;
+  background-color: #fffffc;
+}
+.backSignboard__title {
+  color: #fca;
+}
+.office {
+  padding-left: .5em;
+  letter-spacing: .1em;
+  color: #fffffc;
+}
+.office a {
+  text-decoration: none;
+  color: inherit;
+}
+.copyright {
+  color: #fca;
+}
+.copyrightHolder {
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .profile {
+    margin-bottom: 12em;
+  }
+  .backSignboard__logo {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+  }
+  .backSignboard__title {
+    font-size: 3rem;
+  }
+  .office {
+    font-size: 1.4rem;
+    width: 235px;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .profile {
+    margin-bottom: 12em;
+  }
+  .backSignboard__logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+  }
+  .backSignboard__title {
+    font-size: 6rem;
+  }
+  .office {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .profile {
+    margin-bottom: 12em;
+  }
+  .backSignboard__link:hover {
+    opacity: .8
+  }
+  .backSignboard__logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+  }
+  .backSignboard__title {
+    font-size: 6rem;
+  }
+  .office {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  .office a:hover {
+    opacity: .8
+  }
+}
+
+
+/* back-to-top
+================================================== */
+.back-to-top {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  margin: 3em;
+  text-decoration: none;
+}
+.back-to-top__btn {
+  display: none;
+  width: 100%;
+  height: auto;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: #241c1c;
+  border: 4px solid #fffffc;
+  border-radius: 50%;
+}

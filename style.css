@@ -1,11 +1,17 @@
 @charset "utf-8";
 
 /* color list
-  #e198b4 桃花色
-  #302833 黒紅
-  #241c1c 重い赤（ほぼ黒色）
-  #fffffc 胡粉色
-  #f09199 桃色
+  #192f60 紺青（こんじょう）
+  #302833 黒紅（くろべに）
+  #0f2350 濃藍（こいあい）
+  #e4d2d8 鴇鼠（ときねず）
+  #9790a4 薄鼠（うすねず）
+  #b7282e 茜色（あかねいろ）
+  #fffffc 月白（げっぱく（
+  #fff 白
+  #009 リンク色
+  #551A8B リンク色：訪問済み
+  #09182e 紺青を暗くした色
 */
 
 /* base
@@ -22,7 +28,7 @@ body {
   font-size: 1.0rem;
   line-height: 1.7;
   color: #302833;
-  background-color: #e198b4;
+  background-color: #fffffc;
 }
 h1 {
   line-height: 1;
@@ -33,7 +39,7 @@ h1 {
 ================================================== */
 .header {
   margin-bottom: 5em;
-  background-color: #241c1c;
+  background-color: #192f60;
 }
 .header__inner {
   padding: 2em 1.5em;
@@ -51,12 +57,12 @@ h1 {
   margin-right: 1.5em;
   padding: .5em;
   border-radius: 50%;
-  border: 2px solid #f09199;
+  border: 2px solid #0f2350;
   background-color: #fffffc;
 }
 .signboard__title {
   letter-spacing: .1em;
-  color: #f09199;
+  color: #fffffc;
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .signboard__logo:hover {
@@ -89,20 +95,20 @@ h1 {
 
 /* cards
 ================================================== */
-.cardsTitle {
+.cardBoxTitle {
   font-size: 2.3rem;
   text-align: center;
   letter-spacing: .1em;
-  color: #302833;
+  color: #fffffc;
 }
-.cardsTitle::after {
+.cardBoxTitle::after {
   display: block;
   font-size: 1rem;
   content: attr(data-subtitle);
   color: #fffffc;
 }
 .card {
-  width: 260px;
+  width: 350px;
   height: auto;
   text-align: center;
   border-radius: 4px;
@@ -114,7 +120,7 @@ h1 {
   letter-spacing: .1em;
   border-radius: 4px 4px 0 0;
   color: #fffffc;
-  background-color: #302833;;
+  background-color: #0f2350;;
 }
 .cardTitle__link {
   display: block;
@@ -134,44 +140,14 @@ h1 {
   box-sizing: border-box;
   color: inherit;
 }
-.cardThumbnail__description {
+.card__description {
   font-size: 1.6rem;
-  position: absolute;
-  top: 189px;
-  left: 0;
-  width: 260px;
-  height: 140px;
-  padding: .1em .5em;
-  box-sizing: border-box;
-  text-align: left;
-  background-color: rgba(0, 0, 0, .6);
-  color: #fffffc;
-}
-.cardMenu {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 1.6rem;
-  height: 50px;
-  color: #fffffc;
-  background-color: #302833;
-  border-radius: 0 0 4px 4px;
-}
-.cardMenu__item {
-  width: 100%;
-  height: auto;
-  list-style-type: none;
-}
-.cardMenu__link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
 }
 @media screen and (max-width: 767px) { /* スマホ用 */
   .cardBox {
     padding: 0 2em;
   }
-  .cardsTitle {
+  .cardBoxTitle {
     margin-bottom: 1em;
   }
   .card {
@@ -186,7 +162,7 @@ h1 {
     align-items: flex-start;
     padding: 0 1.5em;
   }
-  .cardsTitle {
+  .cardBoxTitle {
     margin-bottom: 1.7em;
   }
   .card {
@@ -196,23 +172,16 @@ h1 {
 @media screen and (min-width: 992px) { /* それ以外用 */
   .cardBox {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     align-items: flex-start;
     padding: 0 2em;
   }
-  .cardsTitle {
+  .cardBoxTitle {
     margin-bottom: 2em;
   }
   .card {
     margin: 0 1em 4em;
-  }
-  .isEmpty {
-    height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
   }
 }
 
@@ -221,7 +190,7 @@ h1 {
 ================================================== */
 .footer {
   font-family: Verdana, メイリオ, sans-serif;
-  background-color: #241c1c;
+  background-color: #192f60;
 }
 .footer__inner {
   padding: 10em 1.5em 1em;
@@ -240,11 +209,11 @@ h1 {
   padding: .5em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 2px solid #f09199;
+  border: 2px solid #0f2350;
   background-color: #fffffc;
 }
 .backSignboard__title {
-  color: #f09199;
+  color: #fffffc;
 }
 .office {
   padding-left: .5em;
@@ -256,7 +225,7 @@ h1 {
   color: inherit;
 }
 .copyright {
-  color: #f09199;
+  color: #fffffc;
 }
 .copyrightHolder {
   text-decoration: none;

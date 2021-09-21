@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/38">
+  <title>Slickの使い方｜モモハナラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="カルーセルスライダー「Slick」の使い方です。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="Slickの使い方">
+  <meta property="og:description" content="カルーセルスライダー「Slick」の使い方です。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/38">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">Slickの使い方</h1>
+    </div>
+  </header>
+
+  <ul class="slider">
+    <li class="slider__item"><img class="slider__img" src="slider1.jpg"></li>
+    <li class="slider__item"><img class="slider__img" src="slider2.jpg"></li>
+    <li class="slider__item"><img class="slider__img" src="slider3.jpg"></li>
+    <li class="slider__item"><img class="slider__img" src="slider4.jpg"></li>
+  </ul>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、カルーセルスライダー「Slick」の使い方です。ポイントは以下ようです。</p>
+          <ul>
+            <li>Slick本体はダウンロードしてもいいし、CDNを利用してもどちらでも構わない。今回は、手間が少ないので CDNを利用した。</li>
+            <li>slick.cssと slick-theme.cssの後に style.cssを読み込まなければいけない。そうしないと !importantをつけなければいけなくなる。無意味。順番をまもりましょう。</li>
+            <li>jquery.min.jsの後に、slick.min.jsを読み込まなければいけない。Slickは jQueryライブラリなので順番を間違うと動かない。</li>
+            <li>CSSでデザイン等を変更したい場合は、slick-theme.cssを見ればいい。slick-theme.cssで指定されている class名に対して、style.cssで追加・変更する形となる。</li>
+            <li>.slick-prevの「z-index: 100;」は指定したほうがいい。他の場所で position系（static以外）の処理を使っていると、階層の問題で表示されなくなることがある。</li>
+          </ul>
+
+          </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;!-- CSSファイルの読み込み --&gt;
+&lt;link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/&gt;
+&lt;link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;!-- JSファイルの読み込み --&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"&gt;&lt;/script&gt;
+&lt;script src="main.js"&gt;&lt;/script&gt;
+
+&lt;!-- カルーセルスライダーの表示 --&gt;
+&lt;ul class="slider"&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider1.jpg"&gt;&lt;/li&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider2.jpg"&gt;&lt;/li&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider3.jpg"&gt;&lt;/li&gt;
+  &lt;li class="slider__item"&gt;&lt;img class="slider__img" src="slider4.jpg"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+/* ----- リストマーカー非表示 ----- */
+.slider {
+  list-style-type: none;
+}
+/* ----- 矢印の位置 ----- */
+.slick-next {
+  right: 45px;
+  z-index: 99;
+}
+.slick-prev {
+  left: 20px;
+  z-index: 100;
+}
+/* ----- 矢印の大きさ ----- */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 50px;
+}
+/* ----- 画像の大きさ ----- */
+.slider__img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+/* ----- ページネーションの位置 ----- */
+.slick-dots {
+  bottom: 25px;
+}
+/* ----- ページネーションの色 ----- */
+.slick-dots li.slick-active button:before {
+  color: #fff;
+}
+</code>
+</pre>
+
+          <h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+  $('.slider').slick({
+    autoplay: true, // 自動再生するか？
+    autoplaySpeed: 3000, // 自動再生時の間隔ms
+    speed: 1000, // 画像が切り替わる速度
+    pauseOnHover: false, // 画像にマウスオーバしたときに停止するか？
+    dots: true, // ページネーションを表示するか？
+  });
+});
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/39">Swiperの使い方</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>想定していたより軽快に動作するので驚きました。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://kenwheeler.github.io/slick/" target="_blank" rel="noopener noreferrer">slick - the last carousel you'll ever need</a></li>
+            <li><a href="https://qiita.com/katsunory/items/25b385aae0f07b41e611" target="_blank" rel="noopener noreferrer">【jQuery】スライダー系プラグイン slickの使用方法 - Qiita</a></li>
+            <li><a href="https://qiita.com/ymeeto/items/7fc56eea4bd44487cdb7" target="_blank" rel="noopener noreferrer">スライダープラグイン「Slick」便利なオプション&動きサンプル集 - Qiita</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-6-9">2021年6月9日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

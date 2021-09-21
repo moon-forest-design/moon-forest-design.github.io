@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/25">
+  <title>stickyでメニューを固定する方法｜モモハナラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="「position: sticky;」を使って、ナビゲーション・メニューを固定する方法です。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="stickyでメニューを固定する方法">
+  <meta property="og:description" content="「position: sticky;」を使って、メニューを固定する方法です。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/25">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="siteTitle">stickyでメニューを固定する方法</h1>
+  </header>
+
+  <nav class="nav">
+    <ul class="navList">
+      <li class="navList__item"><a class="navList__link" href="">ホーム</a></li>
+      <li class="navList__item"><a class="navList__link" href="#summary">コード概要</a></li>
+      <li class="navList__item"><a class="navList__link" href="#relate">関連記事</a></li>
+      <li class="navList__item"><a class="navList__link" href="#note">編集後記</a></li>
+    </ul>
+  </nav>
+
+  <div class="mainVisual">
+    <img class="mainVisual__img" src="mainVisual.png" alt="おいしそうなパンの写真">
+  </div>
+  
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、上部に表示するナビゲーション・メニューを固定する方法について書きます。positionに stickyを指定することで、ウィンドウ画面の上辺に張り付くような形になります。ポイントは以下ようです。</p>
+          <ul>
+            <li>nav要素に対して、position: sticky;を指定します。一般的に nav要素は、header要素内に入れることが多いと思いますが、stickyが効くように、nav要素は header要素の外に出します。スクロールしたときに、兄弟要素がなければ stickyが効かないためです。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;header class="header"&gt;
+  &lt;h1 class="siteTitle"&gt;stickyでメニューを固定する方法&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav class="nav"&gt;
+  &lt;ul class="navList"&gt;
+    &lt;li class="navList__item"&gt;&lt;a class="navList__link" href=""&gt;ホーム&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="navList__item"&gt;&lt;a class="navList__link" href="#summary"&gt;コード概要&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="navList__item"&gt;&lt;a class="navList__link" href="#relate"&gt;関連記事&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="navList__item"&gt;&lt;a class="navList__link" href="#note"&gt;編集後記&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code>
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.nav {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  color: #fffffc;
+  background-color: #302833;
+}
+.navList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  list-style-type: none;
+}
+.navList__item {
+  width: 100%;
+}
+.navList__link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/24">ヘッダーを固定する方法（position: sticky;版）</a></li>
+            <li><a href="https://moon-forest-design.github.io/sample-code/14">object-fitで画像を画面いっぱいに表示する方法</a></li>
+            <li><a href="https://moon-forest-design.github.io/sample-code/6">スムーズスクロール（jQuery版）</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>前回の<a href="https://moon-forest-design.github.io/sample-code/24">「position: sticky;」を使って、ヘッダーを固定する方法</a>とやっていることは同じですが、stickyをあてる要素がウィンドウ画面の途中にあると、より sticky（張り付く）感が出ます。<a href="https://moon-forest-design.github.io/sample-code/23">「position: fixed;」を使った固定</a>との違いが分かり良いように思います。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考になりました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/position" target="_blank" rel="noopener noreferrer">position - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-5-24">2021年5月24日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

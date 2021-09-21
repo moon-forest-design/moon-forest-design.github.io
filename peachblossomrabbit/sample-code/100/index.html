@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/100">
+  <title>React入門「検索できる商品データ表」</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Reactを試すシリーズ。。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="React入門「検索できる商品データ表」">
+  <meta property="og:description" content="Reactを試すシリーズ。。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/100">
+  <meta name="robots" content="noindex">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">React入門<br class="brNone">「検索できる商品データ表」</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <ul>
+            <li>React公式の「<a href="https://ja.reactjs.org/docs/thinking-in-react.html" target="_blank" rel="noopener noreferrer">React の流儀</a>」で紹介されているコード。チュートリアル形式で「検索できる商品データ表」を制作する内容。以下、仕様。
+              <ul>
+                <li>初期状態ですべての商品データが一覧表示される。</li>
+                <li>検索入力欄に文字入力すると、該当する商品のみデータ表に残り表示される。</li>
+                <li>「Only show products in stock」にチェックを入れると、在庫のない商品は非表示になる。</li>　
+              </ul>
+            </li>
+            <li>制作の流れ。
+              <ul>
+                <li>Step 1: UIをコンポーネント分割し、階層構造にする</li>
+                <li>Step 2: propsのみで静的なバージョンを作成する</li>
+                <li>Step 3: 最低限必要な stateを定める</li>
+                <li>Step 4: stateを所有するコンポーネントを決める</li>
+                <li>Step 5: 逆方向のデータフローを追加する</li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- Reactコード　ここから -->
+          <div id="root" class="reactRoot"></div>
+          <script type="text/babel">
+            // カテゴリ見出しを表示
+            class ProductCategoryRow extends React.Component {
+              render() {
+                const category = this.props.category;
+                return (
+                  <tr>
+                    <th colSpan="2">
+                      {category}
+                    </th>
+                  </tr>
+                );
+              }
+            }
+            // 各商品データを表示
+            class ProductRow extends React.Component {
+              render() {
+                const product = this.props.product;
+                const name = product.stocked ?
+                  product.name :
+                  <span style={{color: 'red'}}>
+                    {product.name}
+                  </span>;
+
+                return (
+                  <tr>
+                    <td>{name}</td>
+                    <td>{product.price}</td>
+                  </tr>
+                );
+              }
+            }
+            // 商品データ表
+            class ProductTable extends React.Component {
+              render() {
+                const filterText = this.props.filterText;
+                const inStockOnly = this.props.inStockOnly;
+
+                const rows = [];
+                let lastCategory = null;
+
+                this.props.products.forEach((product) => {
+                  if (product.name.indexOf(filterText) === -1) {
+                    return;
+                  }
+                  if (inStockOnly && !product.stocked) {
+                    return;
+                  }
+                  if (product.category !== lastCategory) {
+                    rows.push(
+                      <ProductCategoryRow
+                        category={product.category}
+                        key={product.category} />
+                    );
+                  }
+                  rows.push(
+                    <ProductRow
+                      product={product}
+                      key={product.name}
+                    />
+                  );
+                  lastCategory = product.category;
+                });
+
+                return (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                  </table>
+                );
+              }
+            }
+            // 検索領域
+            class SearchBar extends React.Component {
+              constructor(props) {
+                super(props);
+                this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+                this.handleInStockChange = this.handleInStockChange.bind(this);
+              }
+              
+              handleFilterTextChange(e) {
+                this.props.onFilterTextChange(e.target.value);
+              }
+              
+              handleInStockChange(e) {
+                this.props.onInStockChange(e.target.checked);
+              }
+              
+              render() {
+                return (
+                  <form>
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      value={this.props.filterText}
+                      onChange={this.handleFilterTextChange}
+                    />
+                    <div>
+                      <input
+                        type="checkbox"
+                        checked={this.props.inStockOnly}
+                        onChange={this.handleInStockChange}
+                      />
+                      {' '}
+                      Only show products in stock
+                    </div>
+                  </form>
+                );
+              }
+            }
+            // イベント処理
+            class FilterableProductTable extends React.Component {
+              constructor(props) {
+                super(props);
+                this.state = {
+                  filterText: '',
+                  inStockOnly: false
+                };
+                
+                this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+                this.handleInStockChange = this.handleInStockChange.bind(this);
+              }
+
+              handleFilterTextChange(filterText) {
+                this.setState({
+                  filterText: filterText
+                });
+              }
+              
+              handleInStockChange(inStockOnly) {
+                this.setState({
+                  inStockOnly: inStockOnly
+                })
+              }
+
+              render() {
+                return (
+                  <div>
+                    <SearchBar
+                      filterText={this.state.filterText}
+                      inStockOnly={this.state.inStockOnly}
+                      onFilterTextChange={this.handleFilterTextChange}
+                      onInStockChange={this.handleInStockChange}
+                    />
+                    <ProductTable
+                      products={this.props.products}
+                      filterText={this.state.filterText}
+                      inStockOnly={this.state.inStockOnly}
+                    />
+                  </div>
+                );
+              }
+            }
+            // 商品データ
+            const PRODUCTS = [
+              {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
+              {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
+              {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
+              {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
+              {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
+              {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+            ];
+
+            ReactDOM.render(
+              <React.StrictMode>
+                <FilterableProductTable products={PRODUCTS} />
+              </React.StrictMode>,
+              document.getElementById('root')
+            );
+          </script>
+          <!-- Reactコード　ここまで -->
+
+        </section>
+        <!-- /.content -->
+
+
+        <section class="content">
+          <h3 class="heading-3">制作の流れメモ</h3>
+          <h4 class="heading-4">Step 1: UIをコンポーネント分割し、階層構造にする</h4>
+          <ul>
+            <li>すでに、JSON APIが実装済みで、デザイナーから「検索できる商品データ表」のデザインモックを受け取っている状況。</li>
+            <li>モックを作成したツール（Photoshopなど）内で使用したレイヤ名を、デザイナーから聞く。レイヤ名を参考にして、各コンポーネント名にする。</li>
+            <li>コンポーネント分割は、単一責任の原則（single responsibility principle）を指針とする。以下例。
+              <ul>
+                <li>FilterableProductTable： 「検索できる商品データ表」の本体</li>
+                <li>SearchBar： 検索領域</li>
+                <li>ProductTable： 商品データ表</li>
+                <li>ProductCategoryRow： カテゴリ見出し</li>
+                <li>ProductRow： 各商品データ（1行で表示）</li>
+              </ul>
+            </li>
+            <li>コンポーネント分割ができたら、見やすいように階層構造で並べる。</li>
+          </ul>
+          <h4 class="heading-4">Step 2: propsのみで静的なバージョンを作成する</h4>
+          <ul>
+            <li>まずデータを受け取って UIの描画だけを行うバージョンを作る。ユーザからの操作はできなくていい。</li>
+            <li>とりあえず propsを使う。この段階ではまだ stateを使わないでおく。</li>
+            <li>シンプルなアプリは、通常トップダウンで作った方が楽。大きなプロジェクトは、開発をしながらテストを書き、ボトムアップで進める方がより簡単。</li>
+          </ul>
+          <h4 class="heading-4">Step 3: 最低限必要な stateを定める</h4>
+            <ul>
+              <li>DRYの原則（don’t repeat yourself）を指針として、アプリケーションが必要とする最小限の構成で作る。必要なものが出てきたら、そのとき計算すればよい。例えば、配列に格納されているデータをカウントしておく変数は不要。lengthで算出できる。</li>
+              <li>stateを使用するべきか判断する。以下、基準。
+                <ul>
+                  <li>親コンポーネントから 受け取るだけで済むデータであれば、stateにする必要はない。</li>
+                  <li>時間が経過しても変化しないデータであれば、stateにする必要はない。</li>
+                  <li>コンポーネント内にある他のデータ（propsや state）を使って算出可能なデータであれば、stateにする必要はない。</li>
+                </ul>
+              </li>
+              <li>今回使用するデータは 4つ。stateにするのは 2つ。
+                <ul>
+                  <li>元となる商品のリスト</li>
+                  <li>ユーザが入力した検索文字列（stateにする）</li>
+                  <li>チェックボックスの値（stateにする）</li>
+                  <li>フィルタ済みの商品のリスト</li>
+                </ul>
+              </li>
+            </ul>
+          <h4 class="heading-4">Step 4: stateを所有するコンポーネントを決める</h4>
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/98">「摂氏・華氏の変換ツール（stateのリフトアップ）」</a>で学んだように、どのコンポーネントが stateを所有すべきかを考える必要がある。誤った選択はパフォーマンスを悪くする。以下、考える上でのポイント。
+              <ul>
+                <li>stateを使うすべてのコンポーネントを確認する</li>
+                <li>共通する親コンポーネントを見つける（あるいはさらに上位の祖先コンポーネントでもよい）</li>
+                <li>stateを所有するのにふさわしいコンポーネントが見つからない場合は、stateを保持するためだけの新しいコンポーネントを作り、階層構造上において共通する親コンポーネントの上位に祖先コンポーネントとして配置する</li>
+              </ul>
+            </li>
+            <li>今回の「検索できる商品データ表」の場合は、FilterableProductTableが stateを所有するコンポーネントとしてふさわしいことが分かる。</li>
+          </ul>
+          <h4 class="heading-4">Step 5: 逆方向のデータフローを追加する</h4>
+          <ul>
+            <li>階層構造の下位にある子コンポーネントから、親コンポーネントの stateを更新できる仕組みを作る。</li>
+            <li>今回の「検索できる商品データ表」の場合であれば、FilterableProductTableは SearchBarにコールバックを渡しておいて、stateを更新したいときに実行してもらう形にする。入力のたびに呼び出される onChangeイベントを利用する。このコールバックが実行された FilterableProductTableは、setState()を呼び出し、その結果としてアプリは更新される。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+
+
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+            <h4 class="heading-4">HTML + React</h4>
+<pre class="code">
+<code>
+&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;script type="text/babel"&gt;
+  // カテゴリ見出しを表示
+  class ProductCategoryRow extends React.Component {
+    render() {
+      const category = this.props.category;
+      return (
+        &lt;tr&gt;
+          &lt;th colSpan="2"&gt;
+            {category}
+          &lt;/th&gt;
+        &lt;/tr&gt;
+      );
+    }
+  }
+  // 各商品データを表示
+  class ProductRow extends React.Component {
+    render() {
+      const product = this.props.product;
+      const name = product.stocked ?
+        product.name :
+        &lt;span style={{color: 'red'}}&gt;
+          {product.name}
+        &lt;/span&gt;;
+
+      return (
+        &lt;tr&gt;
+          &lt;td&gt;{name}&lt;/td&gt;
+          &lt;td&gt;{product.price}&lt;/td&gt;
+        &lt;/tr&gt;
+      );
+    }
+  }
+  // 商品データ表
+  class ProductTable extends React.Component {
+    render() {
+      const filterText = this.props.filterText;
+      const inStockOnly = this.props.inStockOnly;
+
+      const rows = [];
+      let lastCategory = null;
+
+      this.props.products.forEach((product) =&gt; {
+        if (product.name.indexOf(filterText) === -1) {
+          return;
+        }
+        if (inStockOnly && !product.stocked) {
+          return;
+        }
+        if (product.category !== lastCategory) {
+          rows.push(
+            &lt;ProductCategoryRow
+              category={product.category}
+              key={product.category} /&gt;
+          );
+        }
+        rows.push(
+          &lt;ProductRow
+            product={product}
+            key={product.name}
+          /&gt;
+        );
+        lastCategory = product.category;
+      });
+
+      return (
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;Name&lt;/th&gt;
+              &lt;th&gt;Price&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;{rows}&lt;/tbody&gt;
+        &lt;/table&gt;
+      );
+    }
+  }
+  // 検索領域
+  class SearchBar extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+      this.handleInStockChange = this.handleInStockChange.bind(this);
+    }
+    
+    handleFilterTextChange(e) {
+      this.props.onFilterTextChange(e.target.value);
+    }
+    
+    handleInStockChange(e) {
+      this.props.onInStockChange(e.target.checked);
+    }
+    
+    render() {
+      return (
+        &lt;form&gt;
+          &lt;input
+            type="text"
+            placeholder="Search..."
+            value={this.props.filterText}
+            onChange={this.handleFilterTextChange}
+          /&gt;
+          &lt;div&gt;
+            &lt;input
+              type="checkbox"
+              checked={this.props.inStockOnly}
+              onChange={this.handleInStockChange}
+            /&gt;
+            {' '}
+            Only show products in stock
+          &lt;/div&gt;
+        &lt;/form&gt;
+      );
+    }
+  }
+  // イベント処理
+  class FilterableProductTable extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        filterText: '',
+        inStockOnly: false
+      };
+      
+      this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+      this.handleInStockChange = this.handleInStockChange.bind(this);
+    }
+
+    handleFilterTextChange(filterText) {
+      this.setState({
+        filterText: filterText
+      });
+    }
+    
+    handleInStockChange(inStockOnly) {
+      this.setState({
+        inStockOnly: inStockOnly
+      })
+    }
+
+    render() {
+      return (
+        &lt;div&gt;
+          &lt;SearchBar
+            filterText={this.state.filterText}
+            inStockOnly={this.state.inStockOnly}
+            onFilterTextChange={this.handleFilterTextChange}
+            onInStockChange={this.handleInStockChange}
+          /&gt;
+          &lt;ProductTable
+            products={this.props.products}
+            filterText={this.state.filterText}
+            inStockOnly={this.state.inStockOnly}
+          /&gt;
+        &lt;/div&gt;
+      );
+    }
+  }
+  // 商品データ
+  const PRODUCTS = [
+    {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
+    {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
+    {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
+    {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
+    {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
+    {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+  ];
+
+  ReactDOM.render(
+    &lt;React.StrictMode&gt;
+      &lt;FilterableProductTable products={PRODUCTS} /&gt;
+    &lt;/React.StrictMode&gt;,
+    document.getElementById('root')
+  );
+&lt;/script&gt;
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/79">React入門「class構文によるTodoリスト」</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li><a href="https://ja.reactjs.org/docs/thinking-in-react.html#and-thats-it" target="_blank" rel="noopener noreferrer">終わりに</a>にあるように、Reactを使うとこれまでよりも記述するコード量は一時的に増えるだろうけれど、コードを再利用することでだんだん減っていくのだろう。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://ja.reactjs.org/docs/thinking-in-react.html" target="_blank" rel="noopener noreferrer">React の流儀 – React</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-8-29">2021年8月29日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

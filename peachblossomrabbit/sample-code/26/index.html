@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/26">
+  <title>CSSで画面をパイルアップさせる表現方法｜モモハナラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="スクロールすると画面がスライドしながらパイルアップしていくような表現方法です。position（sticky）を使用。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="CSSで画面をパイルアップさせる表現方法">
+  <meta property="og:description" content="スクロールすると画面がスライドしながらパイルアップしていくような表現方法です。position（sticky）を使用。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/26">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+
+  <header class="header">
+    <div class="pileup">
+      <h1 class="siteTitle">CSSで画面をパイルアップさせる表現方法</h1>
+    </div>
+    <div class="pileup">
+      <p class="subTitle">画面を下へスクロールすると……</p>
+    </div>
+    <div class="pileup">
+      <p class="subTitle">パイルアップしているように……</p>
+    </div>
+    <div class="pileup">
+      <p class="subTitle">見えます。</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>すでにタイトルに書いた通り、画面を下へスクロールするとパイルアップ（pile up）していくように見える方法について書きます。ウィンドウ画面がスライドして積み重なっていくようなイメージです。ポイントは以下ようです。</p>
+          <ul>
+            <li>画面をパイルアップしたい要素を並べます。今回は div要素を使用しました。class名は .pileupです。</li>
+            <li>.pileupで重要なのは、「position: sticky;」と「top: 0;」です。これによって、ウィンドウ画面を積み重ねていくような動作がうまれます。他のプロパティは、ウィンドウにフル画面表示したり、上下左右で中央揃えする方法などです。</li>
+            <li>.titles--oddと .titles--evenは、色を交互につけるために使用しています。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;header class="header"&gt;
+  &lt;div class="pileup"&gt;
+    &lt;h1 class="siteTitle"&gt;CSSで画面をパイルアップさせる表現方法&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class="pileup"&gt;
+    &lt;p class="subTitle"&gt;画面を下へスクロールすると……&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="pileup"&gt;
+    &lt;p class="subTitle"&gt;パイルアップしているように……&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="pileup"&gt;
+    &lt;p class="subTitle"&gt;見えます。&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.pileup {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  letter-spacing: .1em;
+}
+.pileup:nth-of-type(even) {
+  color: #fffffc;
+  background-color: #302833;
+}
+.pileup:nth-of-type(odd) {
+  color: #302833;
+  background-color: #fffffc;
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/24">ヘッダーを固定する方法（position: sticky;版）</a></li>
+            <li><a href="https://moon-forest-design.github.io/sample-code/16">タイトルを上下左右で中央揃えにする方法</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>このような表現方法にも、正式名称があるのかもしれません。しかし、残念ながら存じあげないので、とりあえず「パイルアップスライダー」もしくは「パイリアップ」と呼ぶことにしました。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考になりました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/position" target="_blank" rel="noopener noreferrer">position - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-5-26">2021年5月26日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

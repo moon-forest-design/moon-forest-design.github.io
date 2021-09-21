@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/47">
+  <title>ボタンを透過するホバーアニメ｜モモハナラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="ボタンを透過するホバーアニメーションです。ボタンの上にマウスポインターをのせると、うっすら透過表示します。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="ボタンを透過するホバーアニメ">
+  <meta property="og:description" content="ボタンを透過するホバーアニメーションです。ボタンの上にマウスポインターをのせると、うっすら透過表示します。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/47">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">ボタンを透過するホバーアニメ</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、ボタンを透過するホバーアニメーションです。ポイントは以下ようです。</p>
+          <ul>
+            <li>a要素をボタンに仕立てます。「padding: .6em 3em;」で余白を調整し、ボタンの大きさをきめます。また、影（box-shadow）をつけたり、角丸（border-radius）にすることで、よりボタンらしく見えるようにします。</li>
+            <li>ホバーされたら、透過（opacity: .8;）します。</li>
+            <li>一瞬でパッと変わっても良いですが、じんわり変化させるために transitionも指定しました。アニメーションの時間は、0.5sです。（transition: .5s;）</li>
+          </ul>
+
+          <div class="hoverAnime">
+            <a class="hoverAnime__link" href="https://peachblossomrabbit.github.io/">ホバーアニメ「マウスをのせると透過します」</a>
+          </div>
+
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div class="hoverAnime"&gt;
+  &lt;a class="hoverAnime__link" href=""&gt;ホバーアニメ「マウスをのせると透過します」&lt;/a&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.hoverAnime {
+  text-align: center;
+}
+.hoverAnime__link {
+  padding: .6em 3em;
+  color: #fffffc;
+  background-color: #69821b;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .5);
+  border-radius: 4px;
+  transition: .5s;
+}
+.hoverAnime__link:hover {
+  opacity: .8;
+}
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section id="relate" class="contents">
+        <h2 id="relate" class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/48">ボタンの色が反転するホバーアニメ</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>ボタンを透過するホバーアニメーションは、うっすらと透過させることで、押下（クリック）できることを気づきやすくさせるメリットがあります。定番化しているため、他の凝ったホバーアニメーションにするよりも、クリック率は高まるかもしれません。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/transition" target="_blank" rel="noopener noreferrer">transition - CSS: カスケーディングスタイルシート | MDN</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-6-18">2021年6月18日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+
+</body>
+</html>

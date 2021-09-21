@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/1/index.html">
+  <title>【React入門】Hello World!｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Reactを試すシリーズ。初回はReactの基礎にふれる。「Hello World!」を表示する。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【React入門】Hello World!">
+  <meta property="og:description" content="Reactを試すシリーズ。初回はReactの基礎にふれる。「Hello World!」を表示する。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/1/index.html">
+  <meta name="robots" content="noindex">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【React入門】<br class="brNone">Hello World!</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+
+        <h2 id="demo" class="heading-2" data-subheading="demonstration of the code">デモ</h2>
+        <!-- Reactコード　ここから -->
+        <div id="root" class="reactRoot"></div>
+        <script type="text/babel">
+          ReactDOM.render(
+            <p>Hello World!</p>,
+            document.getElementById('root')
+          );
+        </script>
+        <!-- Reactコード　ここまで -->
+
+
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <ul>
+            <li>reactを試すために CDNを利用。
+              <ul>
+                <li>開発者用とプロダクション用の CDNが用意されている。開発者用を「開発するときに使用するもの」と解釈してしまったが勘違いだったようだ。開発者用はおそらく、いわゆる「開発者が中身を見たい」ときに使うためのものと考えたほうが近しい。ゆえに圧縮・最適化されていない。CDNを利用する場合に指定するのはプロダクション用。react.production.min.js、react-dom.production.min.jsを使う。</li>
+                <li>また、babel.min.jsも読み込む必要がある。本来は、事前にコンパイルしておけばいいことなので、あまり好ましくはないが仕方がない。</li>
+              </ul>
+            </li>
+            <li>Reactは、JavaScriptを使って仮想 DOM（Virtual DOM）という形であれこれを作成できる。JavaScriptで生成した DOMを模倣したデータ構造の差分を、実際の DOMに反映する形。ゆえに、部分的な更新が多いページにおいては処理が高速になるメリットがある。</li>
+            <li>ReactDOM.render()にて、HTMLを差し込む。第一引数に element（HTML文）。第二引数に container（差し込み先）。空のdiv要素（#root）に対して、script要素で p要素を書き加えている。script要素には、type属性で "text/babel"を指定。</li>
+            <li>第一引数で指定する要素に class属性を使用したらエラーが出た。<a href="https://moon-forest-design.github.io/yellowredfox/3/index.html">react（JSX）</a>では className属性を使用する。</li>
+            <li>script要素の内容を外部呼び出し（main.jsあるいはmain.jsx）にしてみたがエラーが出た。クロスオリジンエラー。<a href="https://moon-forest-design.github.io/yellowredfox/2/index.html">JSXを外部ファイルで書き出すのであれば、サーバ環境が必要</a>になる。</li>
+          </ul>
+
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML + React</h4>
+<pre class="code">
+<code>
+&lt;!-- reactを使用するために必要なものをCDNで読み込む --&gt;
+&lt;script src="https://unpkg.com/react@17/umd/react.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- reactを使って表示するためのコード --&gt;
+&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;script type="text/babel"&gt;
+  ReactDOM.render(
+    &lt;p&gt;Hello World!&lt;/p&gt;,
+    document.getElementById('root')
+  );
+&lt;/script&gt;
+</code>
+</pre>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>これだけだと Reactにどのようなメリットがあるのか分かりにくいけれども、Reactを理解する上での基礎の基礎となる。</li>
+            <li>トランスパイラ「Babel」は、モダンなJavaScriptコードを古いブラウザでも実行できるよう下位互換バージョンにコード変換するためだけのものと思っていたが、それだけではなかったようだ。Reactにおいては、JSXを実行可能な JavaScriptコードへ変換してくれる役割があるらしい。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://ja.reactjs.org/docs/hello-world.html" target="_blank" rel="noopener noreferrer">Hello World – React</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+      
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-7-22">2021年7月22日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング備忘メモ
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

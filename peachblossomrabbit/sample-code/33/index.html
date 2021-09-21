@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/33">
+  <title>ローディング待ちを表示する方法｜モモハナラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="ローディング待ちを表示する方法です。閲覧者は待ち状態であると認識しやすくなる効果があります。jQuery使用。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="ローディング待ちを表示する方法">
+  <meta property="og:description" content="ローディング待ちを表示する方法です。閲覧者は待ち状態であると認識しやすくなる効果があります。jQuery使用。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/33">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <h1 class="siteTitle">ローディング待ちを表示する方法</h1>
+    </div>
+  </header>
+
+  <div class="loadingWait">
+    <img class="loadingWait__img" src="loading.gif" alt="デモ：ローディング待ち画像">
+  </div>
+
+  <main class="main">
+    <div class="main__inner">
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <p>今回は、ローディング待ちを表示する方法について書きます。ローディング待ちとは、画面上に表示されるべきはずの要素がすべて表示されず、閲覧者が待っている状態のことを言います。そのような待ち状態のときに何も表示されないと、何が起きているのか分かりにくいため、閲覧者を不安にさせてしまう可能性があります。</p>
+          <p>閲覧者に不安感を与えないためには、「待ち状態」であることをお伝えするほうが親切です。一般的には、待ち状態であることを伝えために、くるくる回るような画像を使用することが多いようです。</p>
+          <p>何の話だか分からない場合は、ブラウザのリロードボタンを押していただくと、デモ用のローディング待ち画像が改めて表示されるはずです。お試しあれ。</p>
+          <p>制作する上でのポイントは、以下ようです。</p>
+          <ul>
+            <li>ローディング待ちの画像（loading.gif）を用意します。</li>
+            <li>画像（loading.gif）は、CSSで固定配置にして、さらに上下左右中央揃えにします。</li>
+            <li>要素がすべて表示（ロード）されたら、jQueryを使って、非表示に（フェードアウト）しています。</li>
+          </ul>
+
+          </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+          <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div class="loadingWait"&gt;
+  &lt;img class="loadingWait__img" src="loading.gif"&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">CSS</h4>
+<pre class="code">
+<code>
+.loadingWait {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: calc(50% - 50px);
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+}
+.loadingWait__img {
+  width: 100%;
+}
+</code>
+</pre>
+
+          <h4 class="heading-4">jQuery</h4>
+<pre class="code">
+<code>
+$(function() {
+  $(".loadingWait__img").fadeOut("slow");
+});
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 id="note" class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>デモ用では、fadeOut(3000)にしてあります。長めに設定しないと一瞬で消えてしまい、デモの意味がなくなるためです。"slow"を指定するか、あるいは指定なしが良いかは、そのサイトによります。</li>
+            <li>フェードアウトではなく、ローディング待ちの画像をさっさと消してしまいたいという方は、fadeOut()ではなく、hide()を使うと良いでしょう。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただいたページはとくにありませんでした。ローディング待ちの画像は、以下のサイトを利用させていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="http://www.ajaxload.info/" target="_blank" rel="noopener noreferrer">Ajaxload - Ajax loading gif generator</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-6-3">2021年6月3日</time>
+        </div>
+        <div class="postAuthor">
+          投稿者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <p>お使いのWebブラウザは、JavaScriptの設定がOFF（無効）になっているようです。</p>
+    <p>このWebサイトを、より良い形でご利用になるためには、JavaScriptの設定をON（有効）にする必要があります。</p>
+    <p>お手間さまですが、ご検討くださいますよう、よろしくお願い申しあげます。</p>
+  </noscript>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

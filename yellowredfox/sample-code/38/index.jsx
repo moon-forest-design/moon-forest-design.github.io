@@ -1,0 +1,53 @@
+'use strict';
+
+const Photos = ({ photo }) => {
+  return (
+    <figure className="thumbnail">
+      <img src={photo.thumbnailUrl} alt={photo.title} className="thumbnail__img" />
+      <figcaption className="thumbnail__title">{photo.title}</figcaption>
+    </figure>
+  );
+};
+
+class App extends React.Component {
+  state = {
+    photos: [],
+    isLoading: true,
+    errors: null
+  };
+
+  fetchPhotos() {
+    fetch(`https://jsonplaceholder.typicode.com/photos?id=1`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          photos: data,
+          isLoading: false
+        })
+      )
+      .catch(error => this.setState({ error, isLoading: false }));
+  }
+
+  componentDidMount() {
+    this.fetchPhotos();
+  }
+
+  render() {
+    const { isLoading, photos } = this.state;
+    return (
+      <section className="section">
+        <div className="container">
+          {!isLoading ? (
+            photos.map(photo => {
+              return <Photos key={photo.id} photo={photo} />;
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+      </section>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));

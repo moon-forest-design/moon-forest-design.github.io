@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/75">
+  <title>React入門「コンポーネントのいろいろな書き方」</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Reactを試すシリーズ。コンポーネントのいろいろな書き方。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="モモハナラボ">
+  <meta property="og:title" content="React入門「コンポーネントのいろいろな書き方」">
+  <meta property="og:description" content="Reactを試すシリーズ。コンポーネントのいろいろな書き方。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/peachblossomrabbit/sample-code/75">
+  <meta name="robots" content="noindex">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">React入門<br class="brNone">「コンポーネントのいろいろな書き方」</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <ul>
+            <li>Reactのコンポーネントと引数を使う場合には、いろいろな書き方がある。コンポーネントには、Class Componentと Function Componentがある。引数には、propsで受け取る方法もあるし、propsと記述せずに分割代入で書く方法もある。</li>
+            <li>おおよそ関数（Function Component）で書く方法が良さそう。とくに 4、もしくは 5のように仮引数を分割代入で受け取る書き方なら、シンプルでより良い印象。</li>
+          </ul>
+
+          <!-- Reactコード　ここから -->
+          <div id="root" class="reactRoot"></div>
+          <script type="text/babel">
+            // 1　関数 functionを使い、仮引数を propsで受け取る方法
+            function Component1( props ) {
+              return (
+                <div>コンポーネント1： {props.way}</div>
+              );
+            }
+
+            // 2　アロー関数を使い、仮引数を propsで受け取る方法
+            const Component2 = ( props ) => (
+              <div>コンポーネント2： {props.way}</div>
+            );
+
+            // 3　アロー関数を使い、仮引数を propsで受け取る方法（returnあり）
+            const Component3 = ( props ) => {
+              // ※：ここに何かしらの処理が入る場合にreturnが必要になる
+              return (
+                <div>コンポーネント3： {props.way}</div>
+              );
+            };
+
+            // 4　関数 functionを使い、仮引数を分割代入で受け取る方法
+            function Component4({ way }) {
+              return (
+                <div>コンポーネント4： {way}</div>
+              );
+            }
+
+            // 5　アロー関数を使い、仮引数を分割代入で受け取る方法
+            const Component5 = ({ way }) => (
+              <div>コンポーネント5： {way}</div>
+            );
+
+            // 6　class構文を使い、引数は this.props.***で受け取る方法
+            class Component6 extends React.Component {
+              render() {
+                return (
+                  <div>コンポーネント6： {this.props.way}</div>
+                );
+              }
+            }
+
+            // 7　React.createClass()を使う方法　※：React 15.5で廃止になった
+            // var Component7 = React.createClass({
+            //   render: function() {
+            //     return (
+            //       <div>コンポーネント7： {this.props.way}</div>
+            //     );
+            //   }
+            // });
+
+            const render = () => ReactDOM.render(
+              <React.StrictMode>
+                <Component1 way="関数 functionを使い、仮引数を propsで受け取る方法" />
+                <Component2 way="アロー関数を使い、仮引数を propsで受け取る方法" />
+                <Component3 way="アロー関数を使い、仮引数を propsで受け取る方法（returnあり）" />
+                <Component4 way="関数 functionを使い、仮引数を分割代入で受け取る方法" />
+                <Component5 way="アロー関数を使い、仮引数を分割代入で受け取る方法" />
+                <Component6 way="class構文を使い、引数は this.props.***で受け取る方法" />
+                { /* <Component7 way="React.createClass()を使う方法" /> */ }
+              </React.StrictMode>,
+              document.getElementById('root')
+            );
+            render();
+          </script>
+          <!-- Reactコード　ここまで -->
+
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+            <h4 class="heading-4">HTML + React</h4>
+<pre class="code">
+<code>
+&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;script type="text/babel"&gt;
+  // 1　関数 functionを使い、仮引数を propsで受け取る方法
+  function Component1( props ) {
+    return (
+      &lt;div&gt;コンポーネント1： {props.way}&lt;/div&gt;
+    );
+  }
+
+  // 2　アロー関数を使い、仮引数を propsで受け取る方法
+  const Component2 = ( props ) =&gt; (
+    &lt;div&gt;コンポーネント2： {props.way}&lt;/div&gt;
+  );
+
+  // 3　アロー関数を使い、仮引数を propsで受け取る方法（returnあり）
+  const Component3 = ( props ) =&gt; {
+    // ※：ここに何かしらの処理が入る場合にreturnが必要になる
+    return (
+      &lt;div&gt;コンポーネント3： {props.way}&lt;/div&gt;
+    );
+  };
+
+  // 4　関数 functionを使い、仮引数を分割代入で受け取る方法
+  function Component4({ way }) {
+    return (
+      &lt;div&gt;コンポーネント4： {way}&lt;/div&gt;
+    );
+  }
+
+  // 5　アロー関数を使い、仮引数を分割代入で受け取る方法
+  const Component5 = ({ way }) =&gt; (
+    &lt;div&gt;コンポーネント5： {way}&lt;/div&gt;
+  );
+
+  // 6　class構文を使い、引数は this.props.***で受け取る方法
+  class Component6 extends React.Component {
+    render() {
+      return (
+        &lt;div&gt;コンポーネント6： {this.props.way}&lt;/div&gt;
+      );
+    }
+  }
+
+  // 7　React.createClass()を使う方法　※：React 15.5で廃止になった
+  // var Component7 = React.createClass({
+  //   render: function() {
+  //     return (
+  //       &lt;div&gt;コンポーネント7： {this.props.way}&lt;/div&gt;
+  //     );
+  //   }
+  // });
+
+  const render = () =&gt; ReactDOM.render(
+    &lt;React.StrictMode&gt;
+      &lt;Component1 way="関数 functionを使い、仮引数を propsで受け取る方法" /&gt;
+      &lt;Component2 way="アロー関数を使い、仮引数を propsで受け取る方法" /&gt;
+      &lt;Component3 way="アロー関数を使い、仮引数を propsで受け取る方法（returnあり）" /&gt;
+      &lt;Component4 way="関数 functionを使い、仮引数を分割代入で受け取る方法" /&gt;
+      &lt;Component5 way="アロー関数を使い、仮引数を分割代入で受け取る方法" /&gt;
+      &lt;Component6 way="class構文を使い、引数は this.props.***で受け取る方法" /&gt;
+      { /* &lt;Component7 way="React.createClass()を使う方法" /&gt; */ }
+    &lt;/React.StrictMode&gt;,
+    document.getElementById('root')
+  );
+  render();
+&lt;/script&gt;
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Articles related to this information">関連記事</h2>
+        <section class="content">
+          <ul>
+            <li><a href="https://moon-forest-design.github.io/sample-code/65">React入門「関数によるコンポーネント化」</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>現状、コンポーネントは関数で書くのが一般的には主流とのこと。</li>
+            <li>ライフサイクルメソッドが必要なときは、class構文（Class Component）で書く必要があった。しかし、React Hooksという APIを使えばその必要はない。例えば、Stateを使いたければ、React Hooksの useStateがある。React 16.8以降であれば、関数（Function Component）＋ React Hooksで良いみたい。</li>
+            <li>古いコードを見たときに、class構文（Class Component）にお目にかかることはあるかもしれない。残念ながら、知らずとも良いとはならないだろう。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://www.tohoho-web.com/ex/react.html" target="_blank" target="_blank" rel="noopener noreferrer">React入門 - とほほのWWW入門</a></li>
+            <li><a href="http://basic-react.axlight.com/html/appendix-01.html" target="_blank" target="_blank" rel="noopener noreferrer">Appendix 01: 様々なコンポーネントの書き方 · GitBook</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-8-1">2021年8月1日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/">
+            <img class="backSignboard__logo" src="../../../img/logo-peachblossomrabbit.png" alt="月の森デザインの漫画キャラクター：桃花兎のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">モモハナラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          モモハナラボは「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」の姉妹サイトです。
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -57,8 +57,8 @@
                 <li>また、babel.min.jsも読み込む必要がある。本来は、事前にコンパイルしておけばいいことなので、あまり好ましくはないが仕方がない。</li>
               </ul>
             </li>
-            <li>Reactは、JavaScriptを使って仮想 DOM（Virtual DOM）という形であれこれを作成できる。JavaScriptで生成した DOMを模倣したデータ構造の差分を、実際の DOMに反映する形。ゆえに、部分的な更新が多いページにおいては処理が高速になるメリットがある。</li>
-            <li>ReactDOM.render()にて、HTMLを差し込む。第一引数に element（HTML文）。第二引数に container（差し込み先）。空のdiv要素（#root）に対して、script要素で p要素を書き加えている。script要素には、type属性で "text/babel"を指定。</li>
+            <li>Reactは、JavaScriptのライブラリ。仮想DOM（Virtual DOM）という形であれこれ作成できる。JavaScriptで生成した DOMを模倣したデータ構造の差分を、実際の DOMに反映する形。ゆえに、部分的な更新が多いページにおいては処理が高速になるメリットがある。</li>
+            <li>ReactDOM.render()にて、HTMLを差し込むことができる。第一引数に element（HTML文）。第二引数に container（差し込み先）。今回は、空のdiv要素（#root）に対して、p要素を書き加えている。script要素には、type属性で "text/babel"を指定。何かしらの問題がなければ、「Hello React!」が表示される。</li>
             <li>第一引数で指定する要素に class属性を使用したらエラーが出た。<a href="https://moon-forest-design.github.io/yellowredfox/3/index.html">react（JSX）</a>では className属性を使用する。</li>
             <li>script要素の内容を外部呼び出し（main.jsあるいはmain.jsx）にしてみたがエラーが出た。クロスオリジンエラー。<a href="https://moon-forest-design.github.io/yellowredfox/2/index.html">JSXを外部ファイルで書き出すのであれば、サーバ環境が必要</a>になる。</li>
           </ul>
@@ -136,7 +136,7 @@
           </a>
         </div>
         <p class="office">
-          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング備忘メモ
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
         </p>
       </div>
       <div class="copyright">

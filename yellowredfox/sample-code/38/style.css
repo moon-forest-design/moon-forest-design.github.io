@@ -174,9 +174,9 @@ img, svg, iframe {
 }
 
 
-/* reactRoot
+/* demoRoot
 ================================================== */
-.reactRoot {
+.demoRoot {
   margin: 100px 0 150px;
   display: flex;
   align-items: center;

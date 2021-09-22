@@ -158,7 +158,7 @@ img, svg, iframe {
   padding: .5em;
   border-right: 1px solid #302833;
   border-bottom: 1px solid #302833;
-  background-color: #f09199;
+  background-color: #fca;
 }
 .content table td {
   padding: .5em 1em;
@@ -225,11 +225,11 @@ img, svg, iframe {
   padding: .5em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 2px solid #f09199;
+  border: 2px solid #fca;
   background-color: #fffffc;
 }
 .backSignboard__title {
-  color: #f09199;
+  color: #fca;
 }
 .office {
   padding-left: .5em;
@@ -241,7 +241,7 @@ img, svg, iframe {
   color: inherit;
 }
 .copyright {
-  color: #f09199;
+  color: #fca;
 }
 .copyrightHolder {
   text-decoration: none;

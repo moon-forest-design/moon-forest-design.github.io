@@ -45,7 +45,7 @@ img, svg, iframe {
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
   .siteTitle {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
   }
   .brNone {
     display: none;
@@ -53,7 +53,7 @@ img, svg, iframe {
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .siteTitle {
-    font-size: 4rem;
+    font-size: 3.4rem;
   }
   .brNone {
     display: none;
@@ -176,9 +176,33 @@ img, svg, iframe {
 
 /* demo
 ================================================== */
-.demo {
+#demo {
   margin: 100px 0;
-  text-align: center;
+}
+#demo {
+  display: flex;
+  justify-content: space-around;
+}
+#demo > div {
+  background-color: #fca;
+}
+@media screen and (max-width: 576px) { /* スマホ用 */
+  #demo > div {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
+  #demo > div {
+    width: 70px;
+    height: 70px;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  #demo > div {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 
@@ -205,11 +229,11 @@ img, svg, iframe {
   padding: .5em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 2px solid #f09199;
+  border: 2px solid #fca;
   background-color: #fffffc;
 }
 .backSignboard__title {
-  color: #f09199;
+  color: #fca;
 }
 .office {
   padding-left: .5em;
@@ -221,7 +245,7 @@ img, svg, iframe {
   color: inherit;
 }
 .copyright {
-  color: #f09199;
+  color: #fca;
 }
 .copyrightHolder {
   text-decoration: none;

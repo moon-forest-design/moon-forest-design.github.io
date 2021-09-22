@@ -212,11 +212,11 @@ img, svg, iframe {
   padding: .5em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 2px solid #f09199;
+  border: 2px solid #fca;
   background-color: #fffffc;
 }
 .backSignboard__title {
-  color: #f09199;
+  color: #fca;
 }
 .office {
   padding-left: .5em;
@@ -228,7 +228,7 @@ img, svg, iframe {
   color: inherit;
 }
 .copyright {
-  color: #f09199;
+  color: #fca;
 }
 .copyrightHolder {
   text-decoration: none;

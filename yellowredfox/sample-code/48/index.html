@@ -30,15 +30,18 @@
     <div class="main__inner">
 
       <section class="contents">
+
+        <h2 id="demo" class="heading-2" data-subheading="demonstration of the code">デモ</h2>
+        <!-- デモ用 div要素 -->
+        <div id="root" class="demoRoot"></div>
+
+
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
             <li>div要素をクリックすると、何番目の div要素かをコンソール表示する仕様。</li>
           </ul>
-
-          <!-- demoコード -->
-          <div id="demo"></div>
 
         </section>
         <!-- /.content -->
@@ -50,12 +53,12 @@
 <pre class="code">
 <code>
 for (let i = 0; i &lt; 5; i++) {
-  const demo = document.getElementById('demo');
+  const root = document.getElementById('root');
   const div = document.createElement('div');
   div.onclick = function() {
     console.log(`This is box # ${i}`);
   }
-  demo.appendChild(div);
+  root.appendChild(div);
 }
 </code>
 </pre>

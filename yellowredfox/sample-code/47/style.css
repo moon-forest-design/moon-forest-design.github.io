@@ -174,11 +174,13 @@ img, svg, iframe {
 }
 
 
-/* reactRoot
+/* demoRoot
 ================================================== */
-.reactRoot {
+.demoRoot {
   margin: 100px 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 

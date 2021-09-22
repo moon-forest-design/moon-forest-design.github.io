@@ -174,32 +174,34 @@ img, svg, iframe {
 }
 
 
-/* demo
+/* demoRoot
 ================================================== */
-#demo {
+.demoRoot {
   margin: 100px 0;
-}
-#demo {
   display: flex;
+  /* align-items: center;
+  flex-direction: column; */
+}
+.demoRoot {
   justify-content: space-around;
 }
-#demo > div {
+.demoRoot > div {
   background-color: #fca;
 }
 @media screen and (max-width: 576px) { /* スマホ用 */
-  #demo > div {
+  .demoRoot > div {
     width: 40px;
     height: 40px;
   }
 }
 @media screen and (min-width: 577px) and (max-width: 991px) { /* タブレット用 */
-  #demo > div {
+  .demoRoot > div {
     width: 70px;
     height: 70px;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
-  #demo > div {
+  .demoRoot > div {
     width: 100px;
     height: 100px;
   }

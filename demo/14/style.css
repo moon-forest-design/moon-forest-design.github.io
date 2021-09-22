@@ -174,7 +174,7 @@ img, svg, iframe {
 ================================================== */
 .footer {
   font-family: Verdana, メイリオ, sans-serif;
-  background-color: #241c1c;
+  background-color: #192f60;
 }
 .footer__inner {
   padding: 10em 1.5em 1em;
@@ -189,15 +189,8 @@ img, svg, iframe {
   align-items: center;
   text-decoration: none;
 }
-.backSignboard__logo {
-  padding: .5em;
-  box-sizing: border-box;
-  border-radius: 50%;
-  border: 2px solid #f09199;
-  background-color: #fffffc;
-}
 .backSignboard__title {
-  color: #f09199;
+  color: #fffffc;
 }
 .office {
   padding-left: .5em;
@@ -209,7 +202,7 @@ img, svg, iframe {
   color: inherit;
 }
 .copyright {
-  color: #f09199;
+  color: #fffffc;
 }
 .copyrightHolder {
   text-decoration: none;
@@ -229,9 +222,7 @@ img, svg, iframe {
   }
   .office {
     font-size: 1.4rem;
-    width: 235px;
     margin: 0 auto;
-    text-align: left;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
@@ -241,7 +232,7 @@ img, svg, iframe {
   .backSignboard__logo {
     width: 100px;
     height: 100px;
-    margin-right: 15px;
+    margin-right: 10px;
   }
   .backSignboard__title {
     font-size: 6rem;
@@ -261,7 +252,7 @@ img, svg, iframe {
   .backSignboard__logo {
     width: 100px;
     height: 100px;
-    margin-right: 15px;
+    margin-right: 10px;
   }
   .backSignboard__title {
     font-size: 6rem;

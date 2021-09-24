@@ -182,6 +182,10 @@ img, svg, iframe {
   align-items: center;
   flex-direction: column;
 }
+.reactText {
+  padding: 1em;
+  background-color: #fca;
+}
 
 
 /* footer

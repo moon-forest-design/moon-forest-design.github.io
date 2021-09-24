@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/9/index.html">
-  <title>【React】props.children｜キアカラボ</title>
+  <title>【React入門】props.children｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Reactを試すシリーズ。子要素を受け取るprops.children。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【React】props.children">
+  <meta property="og:title" content="【React入門】props.children">
   <meta property="og:description" content="Reactを試すシリーズ。子要素を受け取るprops.children。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/9/index.html">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【React】<br class="brNone">props.children</h1>
+      <h1 class="siteTitle">【React入門】<br class="brNone">props.children</h1>
     </div>
   </header>
 
@@ -46,8 +46,8 @@
             <li>React公式の「<a href="https://ja.reactjs.org/docs/composition-vs-inheritance.html" target="_blank" rel="noopener noreferrer">コンポジション vs 継承</a>」で紹介されているコード。Reactでコンポーネントを再利用するときは、「コンポジション」と呼ばれるやり方がおすすめらしい。</li>
             <li>今回の事例では、例えばブログの sidebarなどのように事前に何が入るか分からないときに使える「props.children」を紹介している。コンポーネントをどのように分割し、組み合わせて構成（コンポジション）するのか参考になるだろう。以下、要点を記述。
               <ul>
-                <li>関数 WelcomeDialog()にて、関数 FancyBorder()の呼び出しを行っている。おもしろいのは、&lt;FancyBorder /&gt;ではないところだ。中にh3要素や p要素が含まれている。これらの&lt;FancyBorder&gt;内に記述されている子要素も引数として渡しているのだそうだ。そして、関数FancyBorder()で propsとして受け取ることができる。{props.children}と記述することで受け取った要素を構成し直して返す形だ。</li>
-                <li>関数FancyBorder()で返す div要素に対しては、ある程度決まった CSSがつけられている。さらに borderの色を指定することができる。つまり、明確に決まっている部分は指定しておき、あとはご自由にという柔軟な対応もできる汎用的な構成。</li>
+                <li>関数 WelcomeDialog()にて、関数 FancyBorder()の呼び出しを行っている。おもしろいのは、&lt;FancyBorder /&gt;ではないところだ。中に h3要素や p要素が含まれている。これらの&lt;FancyBorder&gt;内に記述されている子要素も引数として渡しているのだそうだ。そして、関数 FancyBorder()で propsとして受け取ることができる。{props.children}と記述することで受け取った要素を構成し直して返す形だ。</li>
+                <li>関数 FancyBorder()で返す div要素に対しては、ある程度決まった CSSがつけられている。さらに borderの色を指定することができる。つまり、明確に決まっている部分は指定しておき、「あとはご自由に」という形で柔軟な対応もできる汎用的な構成。</li>
               </ul>
             </li>
           </ul>
@@ -61,7 +61,7 @@
             <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;div id="root" class="demoRoot"&gt;&lt;/div&gt;
 </code>
 </pre>
 

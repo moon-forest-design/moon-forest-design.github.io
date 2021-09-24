@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/14/index.html">
-  <title>【React】コンポーネントのいろいろな書き方｜キアカラボ</title>
+  <title>【React入門】コンポーネントのいろいろな書き方｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Reactを試すシリーズ。コンポーネントのいろいろな書き方。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【React】コンポーネントのいろいろな書き方">
+  <meta property="og:title" content="【React入門】コンポーネントのいろいろな書き方">
   <meta property="og:description" content="Reactを試すシリーズ。コンポーネントのいろいろな書き方。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/14/index.html">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【React】<br class="brNone">コンポーネントのいろいろな書き方</h1>
+      <h1 class="siteTitle">【React入門】<br class="brNone">コンポーネントのいろいろな書き方</h1>
     </div>
   </header>
 
@@ -56,7 +56,7 @@
             <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;div id="root" class="demoRoot"&gt;&lt;/div&gt;
 </code>
 </pre>
 
@@ -104,7 +104,9 @@
     }
   }
 
-  // 7　React.createClass()を使う方法　※：React 15.5で廃止になった
+  // 7　React.createClass()を使う方法
+  // ※：2017年4月リリースのReact 15.5で、使用警告メッセージ
+  // ※：2017年9月リリースのReact 16で、正式に廃止になった
   // var Component7 = React.createClass({
   //   render: function() {
   //     return (
@@ -142,8 +144,8 @@
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>現状、コンポーネントは関数で書くのが一般的には主流とのこと。</li>
-            <li>ライフサイクルメソッドが必要なときは、class構文（Class Component）で書く必要があった。しかし、React Hooksという APIを使えばその必要はない。例えば、Stateを使いたければ、React Hooksの useStateがある。React 16.8以降であれば、関数（Function Component）＋ React Hooksで良いみたい。</li>
-            <li>古いコードを見たときに、class構文（Class Component）にお目にかかることはあるかもしれない。残念ながら、知らずとも良いとはならないだろう。</li>
+            <li>これまではライフサイクルメソッドが必要なときには、class構文（Class Component）で書く必要があった。しかし、React Hooksという APIを使えばその必要はない。例えば、Stateを使いたければ、React Hooksの useStateがある。React 16.8以降であれば、関数（Function Component）＋ React Hooksで良いみたい。</li>
+            <li>古いコードを見たときに、class構文（Class Component）にお目にかかることはあるかもしれない。現状においては残念ながら、知らずとも良いとはならないだろう。しかし、class構文で書くときに extendsする React.Componentが将来的に廃止になる予定らしいので、目にする機会は少なくなっていくのかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -151,6 +153,7 @@
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
+            <li>本<a href="https://github.com/oreilly-japan/learning-react-2e-ja" target="_blank" target="_blank" rel="noopener noreferrer">「Reactハンズオンラーニング 第2版 ―Webアプリケーション開発のベストプラクティス」</a></li>
             <li><a href="https://www.tohoho-web.com/ex/react.html" target="_blank" target="_blank" rel="noopener noreferrer">React入門 - とほほのWWW入門</a></li>
             <li><a href="http://basic-react.axlight.com/html/appendix-01.html" target="_blank" target="_blank" rel="noopener noreferrer">Appendix 01: 様々なコンポーネントの書き方 · GitBook</a></li>
           </ul>

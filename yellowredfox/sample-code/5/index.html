@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/5/index.html">
-  <title>【React入門】関数によるコンポーネント化｜キアカラボ</title>
+  <title>【React入門】はじめてのコンポーネント｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
+  <meta name="description" content="Reactを試すシリーズ。はじめてのコンポーネント。Function Componentを試す。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【React入門】関数によるコンポーネント化">
-  <meta property="og:description" content="Reactを試すシリーズ。関数によるコンポーネント化。">
+  <meta property="og:title" content="【React入門】はじめてのコンポーネント">
+  <meta property="og:description" content="Reactを試すシリーズ。はじめてのコンポーネント。Function Componentを試す。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/5/index.html">
   <meta name="robots" content="noindex">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【React入門】<br class="brNone">関数によるコンポーネント化</h1>
+      <h1 class="siteTitle">【React入門】<br class="brNone">はじめてのコンポーネント</h1>
     </div>
   </header>
 
@@ -43,15 +43,9 @@
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>今回は、Reactの「コンポーネント」と呼ばれる書き方を試す。例えば、ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数などの形で定義する。機能的に分割できるひとまとまりがコンポーネント（部品）。このように分割しておくことで再利用しやすくなる。</li>
+            <li>今回は、Reactの「コンポーネント」というお話。ReactDOM.render()の第一引数に直接 HTML要素を書くのではなく、関数で定義している。再利用できる形で機能的に分割したひとまとまりのことを「コンポーネント（部品）」と呼ぶ。</li>
             <li>コンポーネント名は、一文字目を大文字にしなければいけない。例えば、サンプルコードでよく見かける &lt;App /&gt;も一文字目が「A」になっている。試しに &lt;textView /&gt;にしたらダメで &lt;TextView /&gt;なら OKだった。これは JSXのルールらしい。</li>
             <li>React.StrictModeは、おそらく JavaScriptの "use strict";みたいなものだろう。</li>
-            <li>「コンポーネント」と呼ばれる書き方には主に 2通りある。
-              <ul>
-                <li>function component（関数コンポーネント）</li>
-                <li>class component（クラスコンポーネント）</li>
-              </ul>
-            </li>
           </ul>
 
         </section>
@@ -62,7 +56,7 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;div id="root" class="demoRoot"&gt;&lt;/div&gt;
 </code>
 </pre>
 
@@ -92,7 +86,7 @@ ReactDOM.render(
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>関数名の一文字目を大文字にするルールは忘れやすい。はじめのうちはとくに忘れやすい。うっかりしてなぜ動かないのか気づかずに無駄に時間をすごすことになりがち。気をつけよう。</li>
-            <li>関数で書く方法以外にも ES6の classで定義する方法もある。他にもいくつか書き方があるようだが、廃止になったものもある。古いコードを見たときに、はじめのうちは混乱するかもしれない。</li>
+            <li>関数で書く方法以外にも ES6の classで定義する方法もある。他にもいくつか書き方があるようだが、廃止になったものもある。古いコードを見たときに、はじめのうちは混乱するかもしれない。（※：後日、<a href="https://moon-forest-design.github.io/yellowredfox/sample-code/14/index.html">コンポーネントと引数の設定方法についてまとめ</a>ておいた）</li>
           </ul>
         </section>
         <!-- /.content -->

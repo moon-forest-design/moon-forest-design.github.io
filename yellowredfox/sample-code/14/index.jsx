@@ -41,7 +41,9 @@ class Component6 extends React.Component {
   }
 }
 
-// 7　React.createClass()を使う方法　※：React 15.5で廃止になった
+// 7　React.createClass()を使う方法
+// ※：2017年4月リリースのReact 15.5で、使用警告メッセージ
+// ※：2017年9月リリースのReact 16で、正式に廃止になった
 // var Component7 = React.createClass({
 //   render: function() {
 //     return (

@@ -46,15 +46,14 @@
             <li>「JSX」とは？
               <ul>
                 <li>「JSX」は、JavaScriptの拡張言語。XMLの文法に従って記述するルールがある。</li>
-                <li>Reactで要素を作成する場合、React.createElement()という形式で記述する必要がある。しかし、JSXを使えば一般的な HTML要素のような形で記述できるようになる。</li>
+                <li>Reactで要素を作成する場合、React.createElement()という形式で記述する必要がある。しかし、JSXを使えば一般的な HTML要素に似た形で記述できるようになる。</li>
                 <li>外部ファイル化する場合は、拡張子を「.jsx」とする。</li>
               </ul>
             </li>
             <li>JSXの主な書き方。
               <ul>
                 <li>()かっこ。例えば、return ();にすれば、複数行の要素を書いてもいい。ただし、returnは単一要素にしないとエラーになるので、div要素で囲む。（※：React.Fragmentという方法もあり）</li>
-                <li>{}かっこ。JSX内で JavaScriptのコードを書きたい場合に使う。例えば、HTML内で変数を使いたいときに、constや letで宣言した値を、{変数名}と書くことで参照できるようになる。また、関数を呼び出すこともできる。
-                </li>
+                <li>{}かっこ。JSX内で JavaScriptのコードを書きたい場合に使う。JavaScript式と呼ばれている書き方。例えば、HTML内で変数を使いたいときに、constや letで宣言した値を、{変数名}と書くことで参照できるようになる。また、関数を呼び出すこともできる。</li>
                 <li>予約語とバッティングして使えない属性名がある。例えば、class属性は classNameと書く。for属性は htmlForと書く。value属性は defaultValueと書く。checked属性は defaultCheckedと書く。-（ハイフン）でつながず、キャメルケース。</li>
                 <li>CSSをあてるときは、style={{}}として、JSON形式で書く。</li>
                 <li>コメントは、{/* コメント */}のように書く。</li>
@@ -71,7 +70,7 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;div id="root" class="reactRoot"&gt;&lt;/div&gt;
+&lt;div id="root" class="demoRoot"&gt;&lt;/div&gt;
 </code>
 </pre>
 
@@ -83,7 +82,7 @@ function App() {
   return (
     &lt;div className="reactText"&gt;
       &lt;p style={{ fontWeight: 'bold' }}&gt;「{prefix}JSX」&lt;/p&gt;
-      &lt;p&gt;JSXを使って書いた&lt;/p&gt;
+      &lt;p&gt;JSXを使って書いた。&lt;/p&gt;
     &lt;/div&gt;
   );
 }
@@ -107,6 +106,7 @@ ReactDOM.render(
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>Reactにおいて必ずしも JSXを使わなくてもいいそうだが、一般的には JSXの記法で書くことが多いようだ。特別なこだわりがないなら、JSXで書くほうがいい。</li>
+            <li>ブラウザは JSXを理解できないので、今度は逆に JSXを React.createElement()の形式に変換してあげる必要がある。その変換（コンパイル）は、Babelで行う。また、JSXだけでなくモダンな JavaScriptの構文はすべてのブラウザでサポートされていない状況にあるので、どのブラウザでも解釈できるようにするためにもコンパイルは必須といえる。</li>
           </ul>
         </section>
         <!-- /.content -->

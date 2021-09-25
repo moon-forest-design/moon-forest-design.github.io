@@ -18,10 +18,6 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/53/index.html">
   <meta name="robots" content="noindex">
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  <!-- Don't use this in production: -->
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
   <header class="header">
@@ -42,32 +38,41 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
-          <ul>
-            <li>Reactで開発を行いたい場合は次のような方法がある。手間なく容易にできる順に並べた。1、2はお試し。3、4が本格的な開発環境。
-              <ol>
-                <li>CDNを利用する。例えば unpkgなどを使えば、いつものローカル環境で試すことができるので気楽にはじめられる。サーバ環境が必要であれば、Live Serverなどを入れるといい。</li>
-                <li>Code Playgroundを利用する。Web上で気軽にコードを試すことができるので便利。しかし、慣れたテキストエディタのように打ち込むことができないので小さなストレスがたまり続ける。また、アカウント登録が必要な場合もあるので、面倒くさいと感じるかもしれない。JSFiddle、CodeSandbox、codePenなど。</li>
-                <li>Create React App利用する。Node.jsを導入し、Create React Appをインストールするだけで OK。</li>
-                <li>モジュールバンドラを利用する。webpackなど。</li>
-              </ol>
-            </li>
-            <li>その他、状況に応じて利用することで捗るツール。
-              <ul>
-                <li>サーバ側で構築しておく Webサイトを制作したい場合。Next.jsなど。</li>
-                <li>静的なコンテンツ中心の webサイトを制作したい場合。Gatsbyなど。</li>
-                <li>JavaScriptにはないモジュール機能が使いたい場合。Browserifyなど。</li>
-                <li>JavaScriptを高速化したい場合。Prepackなど。</li>
-              </ul>
-            </li>
-            <li>本格的に開発するときに求められる要件。
-              <ul>
-                <li>JSXおよびモダンなJavaScriptコードの変換。</li>
-                <li>コンポーネント間の依存関係の管理。</li>
-                <li>本番用ファイルへの最適化。</li>
-              </ul>
-            </li>
-          </ul>
-
+          <section>
+            <h4 class="heading-4">Reactで開発を行うときの方法</h4>
+            <p>Reactで開発を行いたい場合は主に次のような方法がある。手間なく容易にできる順に並べた。1、2はお試し。3、4がより本格的な開発を行う場合の環境。</p>
+            <ol>
+              <li>CDNを利用する。例えば <a href="../1/index.html">unpkgなどを使えば、いつものローカル環境で試すことができる</a>ので気楽にはじめられる。<a href="../2/index.html">サーバ環境が必要であれば、Live Serverなどを入れる></a>といい。</li>
+              <li>Code Playgroundを利用する。Web上で気軽にコードを試すことができるので便利。しかし、慣れたテキストエディタのように打ち込むことができないので小さなストレスがたまり続ける。また、アカウント登録が必要なサイトもあるので、面倒くさいと感じるかもしれない。JSFiddle、CodeSandbox、codePenなど。</li>
+              <li>Create React App利用する。<a href="../54/index.html">Node.jsを導入し、Create React Appをインストールする</a>だけで OK。</li>
+              <li>モジュールバンドラを利用する。webpack、Parcelなど。</li>
+            </ol>
+          </section>
+          <section>
+            <h4 class="heading-4">その他、状況に応じて利用すると捗るツール</h4>
+            <ul>
+              <li>サーバ側で構築しておく Webサイトを制作したい場合。Next.jsなど。</li>
+              <li>静的なコンテンツ中心の Webサイトを制作したい場合。Gatsbyなど。</li>
+              <li>JavaScriptにはないモジュール機能が使いたい場合。Browserifyなど。</li>
+              <li>JavaScriptを高速化したい場合。Prepackなど。</li>
+            </ul>
+          </section>
+          <section>
+            <h4 class="heading-4">最低限必要となる要件</h4>
+            <ul>
+              <li>Reactライブラリ本体。ReactおよびReactDOM。</li>
+              <li>コンパイラ。Babelなど。</li>
+            </ul>
+          </section>
+          <section>
+            <h4 class="heading-4">本格的に開発するときに求められる要件</h4>
+            <ul>
+              <li>JSXおよびモダンなJavaScriptコードの変換。</li>
+              <li>コンポーネント間の依存関係の管理。</li>
+              <li>本番用ファイルへの最適化。</li>
+            </ul>
+          </section>
+ 
         </section>
         <!-- /.content -->
 

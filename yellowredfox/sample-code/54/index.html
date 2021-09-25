@@ -54,8 +54,10 @@
           <section>
             <h4 class="heading-4">どこで何をどうするのか？</h4>
             <ul>
-              <li>作業場所は srcフォルダ内。とくに中身をいじるのは App.jsのようだ。</li>
-              <li>index.jsは、Reactライブラリなどを importし、App.jsを呼び出してレンダーしているだけなので、とくに変更する点はなさそうだ。</li>
+              <li>作業場所は srcフォルダ内。基礎となるのが index.js。Reactライブラリなどを importし、App.jsを呼び出してレンダーしている。さらに importしたいライブラリなどがあれば、ここに書く。</li>
+              <li>アプリを制作する上で中心となるファイルが App.js。</li>
+              <li>index.jsの CSSは、index.css。全体的に共通するスタイルを設定する。</li>
+              <li>App.jsの CSSは、App.css。</li>
             </ul>
           </section>
 
@@ -151,7 +153,7 @@ reportWebVitals();
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>いろいろな選択肢や方法があるため迷う。贅沢な悩み。</li>
+            <li>いろいろな選択肢や方法があるため迷った。進化が激しいため、最適なものは導入するタイミングによって違ってくるだろう。</li>
           </ul>
         </section>
         <!-- /.content -->

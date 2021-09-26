@@ -42,7 +42,7 @@
             <h4 class="heading-4">Create React App導入手順（Windows10）</h4>
             <ol>
               <li>Create React Appを導入するには、Node.jsが必要なので、<a href="https://nodejs.org/ja/download/" target="_blank" rel="noopener noreferrer">Node.jsをダウンロードしてインストール</a>する。とくに理由がないかぎり LTS版を選択するほうがいい。</li>
-              <li>Node.jsを利用するためには、ターミナル（コマンドラインツール）が必要になるので、<a href="https://gitforwindows.org/" target="_blank" rel="noopener noreferrer">git for windowsなどをダウンロードしてインストール</a>する。Git Bashが使えるようになる。手始めに Node.jsや npmのバージョンを確認する。</li>
+              <li>Node.jsを利用するためには、ターミナル（コマンドラインツール）が必要になるので、<a href="https://gitforwindows.org/" target="_blank" rel="noopener noreferrer">git for windowsなどをダウンロードしてインストール</a>する。Git Bashが使えるようになる。手始めに Node.jsや npmのバージョンを確認する。例：node -v</li>
               <li>適当な場所に Node用の作業フォルダを作成する。例 C:\Users\（ユーザ名）\node\</li>
               <li>上述のフォルダを右クリックし、「Git Bash here」を選択。npxコマンドを使用し Create React AppでReact環境を構築する。例：npx create-react-app react-labo</li>
               <li>React環境が構築される時間は、パソコンのスペックによる。スペックによっては 30分以上かかる可能性もある。</li>
@@ -54,8 +54,8 @@
           <section>
             <h4 class="heading-4">どこで何をどうするのか？</h4>
             <ul>
-              <li>作業場所は srcフォルダ内。基礎となるのが index.js。Reactライブラリなどを importし、App.jsを呼び出してレンダーしている。さらに importしたいライブラリなどがあれば、ここに書く。</li>
-              <li>アプリを制作する上で中心となるファイルが App.js。</li>
+              <li>作業場所は srcフォルダ内。基礎となるのが index.js。Reactライブラリなどを importし、App.jsを呼び出してレンダーしている。さらに他に importしたいライブラリなどがあれば、ここに書く。</li>
+              <li>アプリを制作する上で中心となるファイルが App.js。App.jsを中心にして他のコンポーネントファイルを importするイメージ。</li>
               <li>index.jsの CSSは、index.css。全体的に共通するスタイルを設定する。</li>
               <li>App.jsの CSSは、App.css。</li>
             </ul>
@@ -68,10 +68,10 @@
         <section class="content">
           <h3 class="heading-3">コード</h3>
 
-            <h4 class="heading-4">コマンド</h4>
+            <h4 class="heading-4">Node.jsコマンド（例）</h4>
 <pre class="code">
 <code>
-&lt;!-- Node.jsでバージョン確認（例） --&gt;
+&lt;!-- バージョン確認 --&gt;
 $ node -v
 v14.17.3
 $ npm -v
@@ -80,10 +80,33 @@ $ npx create-react-app --version
 npx: installed 67 in 91.618s
 4.0.3
 
-&lt;!-- Create React Appのインストール（例） --&gt;
+&lt;!-- Create React Appのインストールと起動 --&gt;
 $ npx create-react-app react-labo
 $ cd react-labo
 $ npm start
+</code>
+</pre>
+
+            <h4 class="heading-4">index.js</h4>
+<pre class="code">
+<code>
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
 </code>
 </pre>
 
@@ -118,29 +141,6 @@ export default App;
 </code>
 </pre>
 
-            <h4 class="heading-4">index.js</h4>
-<pre class="code">
-<code>
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
-  &lt;React.StrictMode&gt;
-    &lt;App /&gt;
-  &lt;/React.StrictMode&gt;,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-</code>
-</pre>
-
         </section>
         <!-- /.content -->
 
@@ -153,7 +153,7 @@ reportWebVitals();
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>いろいろな選択肢や方法があるため迷った。進化が激しいため、最適なものは導入するタイミングによって違ってくるだろう。</li>
+            <li>開発環境の構築にはいろいろな選択肢や方法があるため迷った。進化が激しいため、最適なものは導入するタイミングや状況によって違ってくるかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->

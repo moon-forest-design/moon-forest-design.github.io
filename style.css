@@ -24,7 +24,7 @@ html {
   font-size: 62.5%;
 }
 body {
-  font-family: Verdana, メイリオ, sans-serif;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   font-size: 1.0rem;
   line-height: 1.7;
   color: #302833;
@@ -180,7 +180,7 @@ img {
     margin-bottom: 2em;
   }
   .card {
-    width: 350px;
+    width: 200px;
     margin: 0 1em 4em;
   }
 }

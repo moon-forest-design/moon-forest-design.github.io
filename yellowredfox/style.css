@@ -114,7 +114,7 @@ h1 {
   letter-spacing: .1em;
   border-radius: 4px 4px 0 0;
   color: #fffffc;
-  background-color: #302833;;
+  background-color: #302833;
 }
 .cardTitle__link {
   display: block;
@@ -127,7 +127,9 @@ h1 {
   overflow: hidden;
 }
 .cardThumbnail__link {
+  display: block;
   text-decoration: none;
+  background-color: #fffffc;
 }
 .cardThumbnail__img {
   font-size: 1.4rem;

@@ -22,7 +22,7 @@ body {
   font-size: 1.0rem;
   line-height: 1.7;
   color: #302833;
-  background-color: #fffffc;
+  background-color: #192f60;
 }
 h1 {
   line-height: 1;
@@ -93,13 +93,13 @@ h1 {
   font-size: 2.3rem;
   text-align: center;
   letter-spacing: .1em;
-  color: #192f60;
+  color: #fffffc;
 }
 .cardsTitle::after {
   display: block;
   font-size: 1rem;
   content: attr(data-subtitle);
-  color: #192f60;
+  color: #fffffc;
 }
 .card {
   width: 260px;
@@ -113,7 +113,7 @@ h1 {
   letter-spacing: .1em;
   border-radius: 4px 4px 0 0;
   color: #fffffc;
-  background-color: #302833;;
+  background-color: #302833;
 }
 .cardTitle__link {
   display: block;
@@ -126,7 +126,9 @@ h1 {
   overflow: hidden;
 }
 .cardThumbnail__link {
+  display: block;
   text-decoration: none;
+  background-color: #fffffc;
 }
 .cardThumbnail__img {
   font-size: 1.4rem;

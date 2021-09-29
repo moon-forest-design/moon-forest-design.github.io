@@ -126,6 +126,9 @@ h1 {
   position: relative;
   overflow: hidden;
 }
+.cardThumbnail__link {
+  text-decoration: none;
+}
 .cardThumbnail__img {
   font-size: 1.4rem;
   width: 100%;

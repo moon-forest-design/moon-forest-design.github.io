@@ -42,7 +42,17 @@
           <h3 class="heading-3">要点</h3>
           <p>今回は、動画を画面いっぱいに表示する方法について書きます。以前、<a href="../14/index.html">静止画像（jpeg）を画面いっぱいに表示する方法</a>について書きましたが、今回はその動画版です。ポイントは以下ようです。</p>
           <ul>
-            <li>video要素を用意する。状況に応じて必要な属性を各種設定する。autoplay（自動再生）、loop（繰り返し）、playsinline（インライン再生）、muted（音無し）、poster（動画対応していないブラウザ対策用の静止画）など。</li>
+            <li>video要素を用意する。状況に応じて必要な属性を各種設定する。
+              <ul>
+                <li>autoplay（自動再生）</li>
+                <li>loop（繰り返し）</li>
+                <li>playsinline（インライン再生）　※：iOSの Safariで autoplayにしたければ playsinline属性が必要。</li>
+                <li>muted（音無し）　※：chromeで autoplayにしたければ muted属性が必要。</li>
+                <li>controls（操作パーツ）</li>
+                <li>preload（事前読み込み）</li>
+                <li>poster（動画読み込み前、及び動画対応していないブラウザ対策用の静止画）</li>
+              </ul>
+            </li>
             <li>video要素に直接 src属性を記述して動画を呼び出しても良いが、一般的には source要素を使って指定する。mp4だけでなく、aviや ogvなどの異なるフォーマットを複数指定しておくとユーザーのコーデック環境に左右されにくくなるメリットがある。</li>
             <li>widthに 100%、heightに 100vhを指定。画像の元サイズが幅 1920pxなので、max-widthで 1920pxを指定。</li>
             <li>object-fitに coverを指定。coverを指定することで、レスポンシブ対応となる。スマホやタブレットなど異なる画面サイズで表示してもうまく調整して表示してくれる。</li>
@@ -110,6 +120,7 @@
           <ul>
             <li><a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/video" target="_blank" rel="noopener noreferrer">&lt;video&gt;: 動画埋め込み要素 - HTML: HyperText Markup Language | MDN</a></li>
             <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/object-fit" target="_blank" rel="noopener noreferrer">object-fit - CSS: カスケーディングスタイルシート | MDN</a></li>
+            <li><a href="https://webdesign-trends.net/entry/14081" target="_blank" rel="noopener noreferrer">HTMLでのvideoタグを使った動画の埋め込み方法を解説！属性の使い方や注意点も | Web Design Trends</a></li>
           </ul>
         </section>
         <!-- /.content -->

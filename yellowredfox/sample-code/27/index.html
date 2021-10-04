@@ -46,6 +46,7 @@
             <li>以前 <a href="../10/index.html">Class Componentで作成したカウントアップボタン</a>を、Function Componentで書き直してみた。Class Componentではいわゆる「State」を使用するわけだが、Function Componentでは代わりに、React Hooksの useState()を使うことで解決する。</li>
             <li>Reactのコードを inde.jsxなどの外部ファイルに書き出しており、かつ React Hooksを使用する場合は、importや exportで指定する必要がある。今回は HTMLファイルに直接書いているのでその必要はない。</li>
             <li>useStateの定義は「const [ 状態変数, 状態変更関数 ] = React.useState( 状態の初期値を指定 );」のように書く。現在の stateの値（状態変数）と、それを更新するための関数（状態変更関数）とをペアにして返す。</li>
+            <li>たとえ内容が極小でも、慣習として onClick={...}内に関数は書かないほうが良いらしい。関数を外に書く場合の書き方を参考にされたし。</li>
           </ul>
 
         </section>
@@ -60,25 +61,48 @@
 </code>
 </pre>
 
-          <h4 class="heading-4">JavaScript（jsxファイル）</h4>
+          <h4 class="heading-4">jsx（関数を中に書く場合の書き方）</h4>
 <pre class="code">
 <code>
-  const CountUpBtn = () =&gt; {
-    // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
-    const [count, setCount] = React.useState(0);
-    return (
-      &lt;button onClick={() =&gt; setCount(count + 1)} className='countBtn'&gt;
-        {count}
-      &lt;/button&gt;
-    )
-  }
-  //コンポーネントの描画
-  ReactDOM.render(
-    &lt;React.StrictMode&gt;
-      &lt;CountUpBtn /&gt;
-    &lt;/React.StrictMode&gt;,
-    document.getElementById('root')
-  );
+const CountUpBtn = () =&gt; {
+  // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
+  const [count, setCount] = React.useState(0);
+  return (
+    &lt;button onClick={() =&gt; setCount(count + 1)} className='countBtn'&gt;
+      {count}
+    &lt;/button&gt;
+  )
+}
+//コンポーネントの描画
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;CountUpBtn /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById('root')
+);
+</code>
+</pre>
+
+          <h4 class="heading-4">jsx（関数を外に書く場合の書き方）</h4>
+<pre class="code">
+<code>
+const CountUpBtn = () =&gt; {
+  // const [状態変数, 状態変更関数] = React.useState(状態の初期値);
+  const [count, setCount] = React.useState(0);
+  const increment = () => setCount(count + 1);
+  return (
+    &lt;button onClick={increment} className='countBtn'&gt;
+      {count}
+    &lt;/button&gt;
+  )
+}
+//コンポーネントの描画
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;CountUpBtn /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById('root')
+);
 </code>
 </pre>
         </section>

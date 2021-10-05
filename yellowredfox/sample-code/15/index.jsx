@@ -1,6 +1,6 @@
 'use strict';
 
-// onClick属性内に処理を書いた場合のサンプル
+// onClick属性内に直接処理を書いた場合のサンプル
 const ClickBtn = () => {
   return (
     <div>

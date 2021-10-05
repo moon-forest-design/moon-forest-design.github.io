@@ -37,23 +37,17 @@
         <h2 id="demo" class="heading-2" data-subheading="demonstration of the code">デモ</h2>
         <!-- Reactを書き出すための div要素 #root -->
         <div id="root" class="demoRoot"></div>
+        <div id="root2" class="demoRoot"></div>
 
 
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
         <section class="content">
           <h3 class="heading-3">要点</h3>
           <ul>
-            <li>Reactのイベント処理は、on系の属性を使用する。（例：onClick属性、onChange属性など）</li>
-            <li>onClick={...}のように書き、中には関数を指定する。関数内には、イベントハンドラを書く。イベントハンドラとは、ユーザの操作により発生した要件に対して処理すべき命令群）今回のサンプルでは、ボタンがクリックされたら「クリックされた」とコンソール表示されるようにアロー関数で書いている。</li>
+            <li>ボタンを 2つ作成した。同じ仕様のボタンだが、1つ目は onClick属性内に直接処理を書き、2つ目は onClick属性内に処理を書かずに、コールバック関数として外に書いた場合のサンプルである。</li>
+            <li>Reactのイベント処理は、onを頭文字としたの属性で指定する。（例：onClick属性、onChange属性など）</li>
+            <li>例えば、onClick={...}のように書き、中には関数を指定する。関数内には、イベントハンドラを書く。イベントハンドラとは、ユーザの操作により発生した要件に対して処理すべき命令群のこと。今回のサンプルでは、ボタンがクリックされたら「クリックされた」とコンソール表示されるようにアロー関数で書いている。</li>
           </ul>
-          <ul>
-            <li>以下は、同じ仕様のボタンだが、onClick属性内に処理を書かずに、コールバック関数として外に書いた場合のサンプル。</li>
-          </ul>
-
-          <!-- Reactコード　ここから -->
-          <div id="root2" class="reactRoot"></div>
-
-          <!-- Reactコード　ここまで -->
 
         </section>
         <!-- /.content -->
@@ -63,52 +57,47 @@
           <h4 class="heading-4">HTML</h4>
 <pre class="code">
 <code>
-&lt;!-- onClick属性内に処理を書いた場合のコード --&gt;
+&lt;!-- onClick属性内に直接処理を書いた場合のコード --&gt;
 &lt;div id="root" class="demoRoot"&gt;&lt;/div&gt;
 
 &lt;!-- onClick属性外に処理を書いた場合のコード --&gt;
-&lt;div id="root2" class="reactRoot"&gt;&lt;/div&gt;
-
-
+&lt;div id="root2" class="demoRoot"&gt;&lt;/div&gt;
 </code>
 </pre>
 
           <h4 class="heading-4">jsx</h4>
 <pre class="code">
 <code>
-&lt;!-- onClick属性内に処理を書いた場合のコード --&gt;
-&lt;script type="text/babel"&gt;
-  const ClickBtn = () =&gt; {
-    return (
-      &lt;div&gt;
-        &lt;button onClick={() =&gt; console.log('clicked 1')}&gt;Click me!&lt;/button&gt;
-      &lt;/div&gt;
-    )
-  }
-  ReactDOM.render(
-    &lt;ClickBtn /&gt;,
-    document.getElementById('root')
-  );
-&lt;/script&gt;
+&lt;!-- onClick属性内に直接処理を書いた場合のコード --&gt;
+const ClickBtn = () =&gt; {
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() =&gt; console.log('clicked 1')}&gt;Click me!&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+ReactDOM.render(
+  &lt;ClickBtn /&gt;,
+  document.getElementById('root')
+);
 
 &lt;!-- onClick属性外に処理を書いた場合のコード --&gt;
-&lt;script type="text/babel"&gt;
-  const ClickBtn2 = () =&gt; {
-    // コールバック関数
-    const handleBtn= () =&gt; {
-      // イベントハンドラを書く
-      console.log('clicked 2')
-    }
-    return (
-      &lt;div&gt;
-        &lt;button onClick={handleBtn}&gt;Click me!&lt;/button&gt;
-      &lt;/div&gt;
-    )
+const ClickBtn2 = () =&gt; {
+  // コールバック関数
+  const handleBtn= () =&gt; {
+    // イベントハンドラを書く
+    console.log('clicked 2')
   }
-  ReactDOM.render(
-    &lt;ClickBtn2 /&gt;,
-    document.getElementById('root2')
-  );
+  return (
+    &lt;div&gt;
+      &lt;button onClick={handleBtn}&gt;Click me!&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+ReactDOM.render(
+  &lt;ClickBtn2 /&gt;,
+  document.getElementById('root2')
+);
 </code>
 </pre>
         </section>
@@ -123,7 +112,7 @@
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>Reactでは、イベントを表す propsには on[Event] という名前、イベントを処理するメソッドには handle[Event]という名前を付けるのが慣習となっている。</li>
-            <li>より実践的なコードは、どのような場面で使用する技術なのかイメージしやすく分かりやすいが、いかんせん内容が複雑になりがちだ。今回のサンプルのように、シンプルなコードも見て慣れていくと理解しやすい。</li>
+            <li>より実践的なコードは、どのような場面で使用する技術なのかイメージしやすく分かりやすいが、いかんせん内容が複雑になりがちだ。今回のサンプルのように、シンプルなコードも見て慣れておくと理解しやすくなる。</li>
           </ul>
         </section>
         <!-- /.content -->

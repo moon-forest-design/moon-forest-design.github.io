@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/55/index.html">
+  <title>【React入門】React.memo｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Reactを試すシリーズ。React.memoを使うと、コンポーネント内の子コンポーネントを再描画から除外できる。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【React入門】React.memo">
+  <meta property="og:description" content="Reactを試すシリーズ。React.memoを使うと、コンポーネント内の子コンポーネントを再描画から除外できる。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/55/index.html">
+  <meta name="robots" content="noindex">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【React入門】<br class="brNone">React.memo</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="demo" class="heading-2" data-subheading="demonstration of the code">デモ</h2>
+        <!-- Reactを書き出すための div要素 #root -->
+        <div id="root" class="demoRoot"></div>
+
+
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <ul>
+            <li>「<a href="https://qiita.com/baby-degu/items/ea4eede60bbe9c63a348" target="_blank" rel="noopener noreferrer">クリーンなReactプロジェクトの21のベストプラクティス - Qiita</a>」を参考にし、「<a href="../27/index.html">カウントアップボタン</a>」のコードを少しいじって、React.memoを試した。React.memoを使うと、コンポーネント内の子コンポーネントを再描画から除外したいときなどに役立つ。</li>
+            <li>例えば、カウントアップボタンを押すたびにテキスト1は再描画されてしまう。これはおもしろくない。表示する上で変更が発生しない情報なのだから、再描画から外すほうが良い。こんなときに、React.memoを使うと良い。</li>
+            <li>テキスト2は、React.memoを使っているので無駄に再描画しない。React.memoを適用するには、React.memo()で囲ってあげるだけでいい。</li>
+            <li>React.memoを使う場合・使わない場合の違いは、コンソール表示し、カウントアップボタンをクリックしてみれば分かるはずだ。</li>
+          </ul>
+
+        </section>
+        <!-- /.content -->
+
+
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+            <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div id="root" class="demoRoot"&gt;&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">jsx</h4>
+<pre class="code">
+<code>
+// React.memoを使わない場合
+const NoMemoChildComponent = ({ txt }) =&gt; {
+  console.log("rendered", txt);
+  return &lt;div className='countTxt'&gt; {txt} &lt;/div&gt;;
+};
+
+// React.memoを使う場合
+const MemoChildComponent = React.memo(({ txt }) =&gt; {
+  console.log("rendered", txt);
+  return &lt;div className='countTxt'&gt; {txt} &lt;/div&gt;;
+});
+
+const CountUpBtn = () =&gt; {
+  const text1 = "テキスト1：React.memoを使わない場合";
+  const text2 = "テキスト2：React.memoを使う場合";
+  const [count, setCount] = React.useState(0);
+  const increment = () =&gt; setCount(count + 1);
+  return (
+    &lt;div&gt;
+      &lt;NoMemoChildComponent txt={text1} /&gt;
+      &lt;button onClick={increment} className='countBtn'&gt;
+        ＋{count}
+      &lt;/button&gt;
+      &lt;MemoChildComponent txt={text2} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;CountUpBtn /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById('root')
+);  
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>メモ化には、React.memoの他にも useMemoと、useCallbackがある。
+              <ul>
+                <li>React.memoは、コンポーネントをメモ化する。</li>
+                <li>useMemoは、計算結果の値をメモ化する。</li>
+                <li>useCallbackは、コールバック関数をメモ化する。</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://qiita.com/baby-degu/items/ea4eede60bbe9c63a348" target="_blank" rel="noopener noreferrer">クリーンなReactプロジェクトの21のベストプラクティス - Qiita</a></li>
+            <li><a href="https://yukimasablog.com/usememo-usecallback-react-memo%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B%EF%BC%9F%E9%81%95%E3%81%84%E3%81%AF%EF%BC%9F" target="_blank" rel="noopener noreferrer">useMemo, useCallback, React.memoとは何か？違いは？ | yukimasablog</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-10-5">2021年10月5日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+  <script type="text/babel" src="index.jsx"></script>
+
+</body>
+</html>

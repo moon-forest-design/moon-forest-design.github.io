@@ -27,7 +27,7 @@ const CountUpBtn = () => {
     <button onClick={increment} className='countBtn'>
       {count}
     </button>
-  )
+  );
 }
 //コンポーネントの描画
 ReactDOM.render(

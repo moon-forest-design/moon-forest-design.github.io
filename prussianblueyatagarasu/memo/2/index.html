@@ -96,11 +96,23 @@
         <h2 id="environment" class="heading-2" data-subheading="Note about React development environment">React開発環境</h2>
 
         <section class="content">
+          <h3 class="heading-3">Reactお試し環境</h3>
+          <p>まだ入門レベルの段階にあり、Reactを試してみたいだけであれば、次の方法が有用。</p>
+          <dl>
+            <dt>CDNの利用</dt>
+            <dd>例えば <a href="../../../yellowredfox/sample-code/1/index.html" target="_blank" rel="noopener noreferrer">unpkgなどを使えば、いつものローカル環境で試すことができる</a>ので気楽にはじめられる。<a href="../../../yellowredfox/sample-code/2/index.html" target="_blank" rel="noopener noreferrer">サーバ環境が必要であれば、Live Serverなどを入れる</a>といい。</dd>
+            <dt>Code Playgroundの利用</dt>
+            <dd>Web上で気軽にコードを試すことができるので便利。しかし、慣れたテキストエディタのように打ち込むことができないので小さなストレスがたまり続ける。また、アカウント登録が必要なサイトもあるので、面倒くさいと感じるかもしれない。JSFiddle、CodeSandbox、codePenなど。</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
           <h3 class="heading-3">React開発環境（簡便な方法）</h3>
           <p>簡便に Reactの開発がはじめられるツール。webpackなどの設定の手間を省くことができるため、速やかに開発環境が構築できる。中身は 設定済みの webpack、Babel、ESLintなどが含まれている。</p>
           <dl>
             <dt>Create React App</dt>
-            <dd>新しい SPAを作りたいときに役立つツール。</dd>
+            <dd>新しい SPAを作りたいときに役立つツール。<a href="../../../yellowredfox/sample-code/54/index.html" target="_blank" rel="noopener noreferrer">Node.jsを導入し、インストールするだけ</a>で OK。</dd>
             <dt>Next.js</dt>
             <dd>サーバサイドで開発したいときに役立つツール。Zeit社が開発した。（※：後にVercel社に改名）</dd>
             <dt>Gatsby.js</dt>
@@ -111,7 +123,7 @@
 
         <section class="content">
           <h3 class="heading-3">React開発環境（ゼロから組み合わせる方法）</h3>
-          <p>次のようなものを組み合わせてツールチェインとして利用することができる。</p>
+          <p>次のようなものの中から必要なツールを選び、組み合わせてツールチェインとして利用する方法。</p>
           <dl>
             <dt>npm</dt>
             <dd>定番のパッケージマネージャ。</dd>
@@ -128,15 +140,6 @@
         <!-- /.content -->
 
         <section class="content">
-          <h3 class="heading-3">React開発支援ツール</h3>
-          <dl>
-            <dt>React Developer Tools</dt>
-            <dd>ブラウザの拡張アドオン。Reactによる開発時のデバッグに利用される。</dd>
-          </dl>
-        </section>
-        <!-- /.content -->
-
-        <section class="content">
           <h3 class="heading-3">型チェック</h3>
           <dl>
             <dt>TypeScript</dt>
@@ -145,6 +148,20 @@
             <dd>Facebook社が開発した JavaScript静的型チェッカー。</dd>
             <dt>PropTypes</dt>
             <dd>React標準の型チェックの方法として使われてきた。TypeScriptや Flowの登場により、影が薄くなった。</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">その他のツール</h3>
+          <p>その他、状況に応じて利用すると捗るツール。</p>
+          <dl>
+            <dt>React Developer Tools</dt>
+            <dd>ブラウザの拡張アドオン。Reactによる開発時のデバッグに利用される。</dd>
+            <dt>Browserify</dt>
+            <dd>JavaScriptにはないモジュール機能が使いたいときに利用。</dd>
+            <dt>Prepack</dt>
+            <dd>JavaScriptを高速化したい場合。</dd>
           </dl>
         </section>
         <!-- /.content -->

@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/13/index.html">
-  <title>【React入門】摂氏・華氏の変換｜キアカラボ</title>
+  <title>【React入門】class構文による摂氏・華氏の変換｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Reactを試すシリーズ。摂氏・華氏を変換するツールによるstateのリフトアップの説明。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【React入門】摂氏・華氏の変換">
+  <meta property="og:title" content="【React入門】class構文による摂氏・華氏の変換">
   <meta property="og:description" content="Reactを試すシリーズ。摂氏・華氏を変換するツールによるstateのリフトアップの説明。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/13/index.html">
@@ -26,7 +26,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【React入門】<br class="brNone">摂氏・華氏の変換</h1>
+      <h1 class="siteTitle">【React入門】<br class="brNone">class構文による摂氏・華氏の変換</h1>
     </div>
   </header>
 
@@ -68,104 +68,104 @@
           <h4 class="heading-4">jsx</h4>
 <pre class="code">
 <code>
-  // 摂氏・華氏を判別するための略称　c or f
-  const scaleNames = {
-    c: '摂氏（Celsius）',
-    f: '華氏（Fahrenheit）'
-  };
-  // 摂氏（Celsius）へ変換する計算式
-  function toCelsius(fahrenheit) {
-    return (fahrenheit - 32) * 5 / 9;
+// 摂氏・華氏を判別するための略称　c or f
+const scaleNames = {
+  c: '摂氏（Celsius）',
+  f: '華氏（Fahrenheit）'
+};
+// 摂氏（Celsius）へ変換する計算式
+function toCelsius(fahrenheit) {
+  return (fahrenheit - 32) * 5 / 9;
+}
+// 華氏（Fahrenheit）へ変換する計算式
+function toFahrenheit(celsius) {
+  return (celsius * 9 / 5) + 32;
+}
+// 摂氏・華氏の変換
+function tryConvert(temperature, convert) {
+  const input = parseFloat(temperature);
+  if (Number.isNaN(input)) {
+    return '';
   }
-  // 華氏（Fahrenheit）へ変換する計算式
-  function toFahrenheit(celsius) {
-    return (celsius * 9 / 5) + 32;
+  const output = convert(input);
+  const rounded = Math.round(output * 1000) / 1000;
+  return rounded.toString();
+}
+// 入力された値に応じてテキストを表示
+function BoilingVerdict(props) {
+  if (props.celsius &gt;= 100) {
+    return &lt;p&gt;結果：水は沸騰する（The water would boil.）&lt;/p&gt;;
   }
-  // 摂氏・華氏の変換
-  function tryConvert(temperature, convert) {
-    const input = parseFloat(temperature);
-    if (Number.isNaN(input)) {
-      return '';
-    }
-    const output = convert(input);
-    const rounded = Math.round(output * 1000) / 1000;
-    return rounded.toString();
+  return &lt;p&gt;結果：水は沸騰しない（The water would not boil.）&lt;/p&gt;;
+}
+// 温度（temperature）を入力するための仕組み
+class TemperatureInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
   }
-  // 入力された値に応じてテキストを表示
-  function BoilingVerdict(props) {
-    if (props.celsius &gt;= 100) {
-      return &lt;p&gt;結果：水は沸騰する（The water would boil.）&lt;/p&gt;;
-    }
-    return &lt;p&gt;結果：水は沸騰しない（The water would not boil.）&lt;/p&gt;;
+  // 入力処理
+  handleChange(e) {
+    this.props.onTemperatureChange(e.target.value);
   }
-  // 温度（temperature）を入力するための仕組み
-  class TemperatureInput extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleChange = this.handleChange.bind(this);
-    }
-    // 入力処理
-    handleChange(e) {
-      this.props.onTemperatureChange(e.target.value);
-    }
-    // 入力欄の再描画
-    render() {
-      const temperature = this.props.temperature;
-      const scale = this.props.scale;
-      return (
-        &lt;fieldset&gt;
-          &lt;legend&gt;{scaleNames[scale]} で温度を入力&lt;/legend&gt;
-          &lt;input value={temperature}
-                onChange={this.handleChange} /&gt;
-        &lt;/fieldset&gt;
-      );
-    }
+  // 入力欄の再描画
+  render() {
+    const temperature = this.props.temperature;
+    const scale = this.props.scale;
+    return (
+      &lt;fieldset&gt;
+        &lt;legend&gt;{scaleNames[scale]} で温度を入力&lt;/legend&gt;
+        &lt;input value={temperature}
+              onChange={this.handleChange} /&gt;
+      &lt;/fieldset&gt;
+    );
   }
-  // 本体
-  class Calculator extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
-      this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
-      this.state = {temperature: '', scale: 'c'};
-    }
-    // 摂氏（Celsius）の状態を変更
-    handleCelsiusChange(temperature) {
-      this.setState({scale: 'c', temperature});
-    }
-    // 華氏（Fahrenheit）の状態を変更
-    handleFahrenheitChange(temperature) {
-      this.setState({scale: 'f', temperature});
-    }
-    // 再描画
-    render() {
-      const scale = this.state.scale; // 換算尺度　c or f
-      const temperature = this.state.temperature; // 温度
-      const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
-      const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+}
+// 本体
+class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
+    this.state = {temperature: '', scale: 'c'};
+  }
+  // 摂氏（Celsius）の状態を変更
+  handleCelsiusChange(temperature) {
+    this.setState({scale: 'c', temperature});
+  }
+  // 華氏（Fahrenheit）の状態を変更
+  handleFahrenheitChange(temperature) {
+    this.setState({scale: 'f', temperature});
+  }
+  // 再描画
+  render() {
+    const scale = this.state.scale; // 換算尺度　c or f
+    const temperature = this.state.temperature; // 温度
+    const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+    const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
 
-      return (
-        &lt;div&gt;
-          &lt;TemperatureInput
-            scale="c"
-            temperature={celsius}
-            onTemperatureChange={this.handleCelsiusChange} /&gt;
-          &lt;TemperatureInput
-            scale="f"
-            temperature={fahrenheit}
-            onTemperatureChange={this.handleFahrenheitChange} /&gt;
-          &lt;BoilingVerdict
-            celsius={parseFloat(celsius)} /&gt;
-        &lt;/div&gt;
-      );
-    }
+    return (
+      &lt;div&gt;
+        &lt;TemperatureInput
+          scale="c"
+          temperature={celsius}
+          onTemperatureChange={this.handleCelsiusChange} /&gt;
+        &lt;TemperatureInput
+          scale="f"
+          temperature={fahrenheit}
+          onTemperatureChange={this.handleFahrenheitChange} /&gt;
+        &lt;BoilingVerdict
+          celsius={parseFloat(celsius)} /&gt;
+      &lt;/div&gt;
+    );
   }
-  ReactDOM.render(
-    &lt;React.StrictMode&gt;
-      &lt;Calculator /&gt;
-    &lt;/React.StrictMode&gt;,
-    document.getElementById('root')
-  );
+}
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;Calculator /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById('root')
+);
 </code>
 </pre>
 
@@ -182,7 +182,7 @@
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>片方の入力欄に入れた値に連動して、もう片方の入力欄の値が即座に変動するような仕組みを必要とするページをこれまで見たことがない。どのような場面で利用できるものだろう。</li>
-            <li>公式チュートリアルで紹介されている「三目並べ」のほうがイメージしやすいかもしれない。複数の子コンポーネント（square）がそれぞれ stateをもつよりも、親コンポーネント（board）が stateをもつほうがいいよねというお話。stateを、子コンポーネントから親コンポーネントへ上げる（リフトアップ）ことで、コードを複雑にせず、バグを減らすメリットがうまれる。</li>
+            <li>リフトアップについては、公式チュートリアルで紹介されている「<a href="../43/index.html">三目並べ</a>」のほうがイメージしやすいかもしれない。複数の子コンポーネント（square）がそれぞれ stateをもつよりも、親コンポーネント（board）が stateをもつほうがいいよねというお話。stateを、子コンポーネントから親コンポーネントへ上げる（リフトアップ）ことで、コードを複雑にせず、バグを減らすメリットがうまれる。</li>
           </ul>
         </section>
         <!-- /.content -->

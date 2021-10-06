@@ -73,38 +73,134 @@ img {
 }
 
 
-/* labo
+/* contents
 ================================================== */
 @media screen and (max-width: 767px) { /* スマホ用 */
-  .labo {
+  .contents {
     margin-bottom: 10em;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
-  .labo {
+  .contents {
     margin-bottom: 5em;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
-  .labo {
+  .contents {
     margin-bottom: 100px;
   }
 }
 
 
-/* cards
+/* labo
 ================================================== */
-.cardBoxTitle {
+.laboBoxTitle {
   font-size: 2.3rem;
   text-align: center;
   letter-spacing: .1em;
 }
-.cardBoxTitle::after {
+.laboBoxTitle::after {
+  display: block;
+  font-size: 1rem;
+  content: attr(data-subtitle);
+}
+.labo {
+  height: auto;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #fffffc;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+.laboTitle {
+  font-size: 1.6rem;
+  letter-spacing: .1em;
+  border-radius: 4px 4px 0 0;
+  color: #fffffc;
+  background-color: #0f2350;;
+}
+.laboTitle__link {
+  display: block;
+  padding: .5em;
+  text-decoration: none;
+  color: inherit;
+}
+.laboThumbnail {
+  position: relative;
+  overflow: hidden;
+}
+.laboThumbnail__img {
+  font-size: 1.4rem;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+  box-sizing: border-box;
+  color: inherit;
+}
+.labo__description {
+  font-size: 1.6rem;
+  padding: 0 1em;
+}
+@media screen and (max-width: 767px) { /* スマホ用 */
+  .laboBox__container {
+    padding: 0 2em;
+  }
+  .laboBoxTitle {
+    margin-bottom: 1em;
+  }
+  .labo {
+    width: 300px;
+    margin: 0 auto 3em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) { /* タブレット用 */
+  .laboBox__container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0 1.5em;
+  }
+  .laboBoxTitle {
+    margin-bottom: 1.7em;
+  }
+  .labo {
+    width: 320px;
+    margin-bottom: 3.5em;
+  }
+}
+@media screen and (min-width: 992px) { /* それ以外用 */
+  .laboBox__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0 2em;
+  }
+  .laboBoxTitle {
+    margin-bottom: 2em;
+  }
+  .labo {
+    width: 200px;
+    margin: 0 1em 4em;
+  }
+}
+
+
+/* cardBox
+================================================== */
+.cardsTitle {
+  font-size: 2.3rem;
+  text-align: center;
+  letter-spacing: .1em;
+  color: #302833;
+}
+.cardsTitle::after {
   display: block;
   font-size: 1rem;
   content: attr(data-subtitle);
 }
 .card {
+  width: 260px;
   height: auto;
   text-align: center;
   border-radius: 4px;
@@ -116,7 +212,7 @@ img {
   letter-spacing: .1em;
   border-radius: 4px 4px 0 0;
   color: #fffffc;
-  background-color: #0f2350;;
+  background-color: #302833;
 }
 .cardTitle__link {
   display: block;
@@ -128,6 +224,11 @@ img {
   position: relative;
   overflow: hidden;
 }
+.cardThumbnail__link {
+  display: block;
+  text-decoration: none;
+  background-color: #fffffc;
+}
 .cardThumbnail__img {
   font-size: 1.4rem;
   width: 100%;
@@ -136,19 +237,47 @@ img {
   box-sizing: border-box;
   color: inherit;
 }
-.card__description {
+.cardThumbnail__description {
   font-size: 1.6rem;
-  padding: 0 1em;
+  position: absolute;
+  top: 189px;
+  left: 0;
+  width: 260px;
+  height: 140px;
+  padding: .1em .5em;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: rgba(0, 0, 0, .6);
+  color: #fffffc;
+}
+.cardMenu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.6rem;
+  height: 50px;
+  color: #fffffc;
+  background-color: #302833;
+  border-radius: 0 0 4px 4px;
+}
+.cardMenu__item {
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+}
+.cardMenu__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 @media screen and (max-width: 767px) { /* スマホ用 */
   .cardBox {
     padding: 0 2em;
   }
-  .cardBoxTitle {
+  .cardsTitle {
     margin-bottom: 1em;
   }
   .card {
-    width: 300px;
     margin: 0 auto 3em;
   }
 }
@@ -160,28 +289,33 @@ img {
     align-items: flex-start;
     padding: 0 1.5em;
   }
-  .cardBoxTitle {
+  .cardsTitle {
     margin-bottom: 1.7em;
   }
   .card {
-    width: 320px;
     margin-bottom: 3.5em;
   }
 }
 @media screen and (min-width: 992px) { /* それ以外用 */
   .cardBox {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: flex-start;
     padding: 0 2em;
   }
-  .cardBoxTitle {
+  .cardsTitle {
     margin-bottom: 2em;
   }
   .card {
-    width: 200px;
     margin: 0 1em 4em;
+  }
+  .isEmpty {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-react/10/index.html">
+  <title>【React入門】class構文によるカウントアップボタン｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Reactを試すシリーズ。class構文によるコンポーネント化。クリックするとカウントアップするボタンを作る。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【React入門】class構文によるカウントアップボタン">
+  <meta property="og:description" content="Reactを試すシリーズ。class構文によるコンポーネント化。クリックするとカウントアップするボタンを作る。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-react/10/index.html">
+  <meta name="robots" content="noindex">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【React入門】<br class="brNone">class構文によるカウントアップボタン</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+      <section class="contents">
+        <h2 id="demo" class="heading-2" data-subheading="demonstration of the code">デモ</h2>
+        <!-- Reactを書き出すための div要素 #root -->
+        <div id="root" class="demoRoot"></div>
+
+
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the code">コード概要</h2>
+        <section class="content">
+          <h3 class="heading-3">要点</h3>
+          <ul>
+            <li>class構文で定義したイベント処理のサンプル カウントアップボタン。</li>
+            <li>JavaScriptの classでは、サブクラスのコンストラクタを定義する際は常に「super」を呼ぶ必要がある。super()と書くことで、親のコンストラクタ（React.Component）を呼び出すことができる。コンストラクタで this（this.stateなど）を使いたい場合は、「super(props);」と書く必要がある。</li>
+            <li>onClick={this.incrementCount} のように ()を末尾に付けずにメソッドを参照する場合は、そのメソッドは bind()しておく必要がある。</li>
+            <li>setState()で、コンポーネントの更新を要求する。ただし、処理効率をより良くするため、即時に更新するとは限らない。</li>
+          </ul>
+
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">コード</h3>
+
+            <h4 class="heading-4">HTML</h4>
+<pre class="code">
+<code>
+&lt;div id="root" class="demoRoot"&gt;&lt;/div&gt;
+</code>
+</pre>
+
+          <h4 class="heading-4">jsx</h4>
+<pre class="code">
+<code>
+  class CountUpBtn extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { count: 1 };
+      // bind()は、コールバックで thisを機能させるために必要
+      this.incrementCount = this.incrementCount.bind(this);
+    }
+    incrementCount() {
+      // setState()で、コンポーネントの更新を要求する
+      this.setState({ count: this.state.count + 1 });
+    }
+    render() {
+      return (
+        &lt;div&gt;
+          &lt;button onClick={this.incrementCount} className='countBtn'&gt;
+            {this.state.count}
+          &lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+  }
+
+  const render = () =&gt; ReactDOM.render(
+    &lt;React.StrictMode&gt;
+      &lt;CountUpBtn /&gt;
+    &lt;/React.StrictMode&gt;,
+    document.getElementById('root')
+  );
+  render();
+</code>
+</pre>
+
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <p>...</p>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="http://basic-react.axlight.com/html/appendix-02.html" target="_blank" rel="noopener noreferrer">Appendix 02: コンポーネントのstate · GitBook</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-8-2">2021年8月2日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+  <script type="text/babel" src="index.jsx"></script>
+
+</body>
+</html>

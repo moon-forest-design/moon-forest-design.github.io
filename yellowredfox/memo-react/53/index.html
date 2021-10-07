@@ -100,9 +100,19 @@
           <p>まだ入門レベルの段階にあり、Reactを試してみたいだけであれば、次の方法が有用。</p>
           <dl>
             <dt>CDNの利用</dt>
-            <dd>例えば <a href="../1/index.html" target="_blank" rel="noopener noreferrer">unpkgなどを使えば、いつものローカル環境で試すことができる</a>ので気楽にはじめられる。<a href="../2/index.html" target="_blank" rel="noopener noreferrer">サーバ環境が必要であれば、Live Serverなどを入れる</a>といい。</dd>
+            <dd>例えば <a href="../1/index.html">unpkgなどを使えば、いつものローカル環境で試すことができる</a>ので気楽にはじめられる。<a href="../2/index.html" target="_blank">サーバ環境が必要であれば、Live Serverなどを入れる</a>といい。</dd>
             <dt>Code Playgroundの利用</dt>
             <dd>Web上で気軽にコードを試すことができるので便利。しかし、慣れたテキストエディタのように打ち込むことができないので小さなストレスがたまり続ける。また、アカウント登録が必要なサイトもあるので、面倒くさいと感じるかもしれない。JSFiddle、CodeSandbox、codePenなど。</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">React開発環境（前提）</h3>
+          <p>お試しではなく、本格的に開発するのであれば、何にせよまず Node.jsが必要。</p>
+          <dl>
+            <dt>Node.js</dt>
+            <dd>「<a href="https://nodejs.org/ja/about/" target="_blank" rel="noopener noreferrer">スケーラブルなネットワークアプリケーションを構築するために設計された非同期型のイベント駆動の JavaScript環境です。</a>」（公式から引用）。</dd>
           </dl>
         </section>
         <!-- /.content -->
@@ -112,7 +122,7 @@
           <p>簡便に Reactの開発がはじめられるツール。webpackなどの設定の手間を省くことができるため、速やかに開発環境が構築できる。中身は 設定済みの webpack、Babel、ESLintなどが含まれている。</p>
           <dl>
             <dt>Create React App</dt>
-            <dd>新しい SPAを作りたいときに役立つツール。<a href="../54/index.html" target="_blank" rel="noopener noreferrer">Node.jsを導入し、インストールするだけ</a>で OK。</dd>
+            <dd>新しい SPAを作りたいときに役立つツール。<a href="../54/index.html">Node.jsを導入し、インストールするだけ</a>で OK。</dd>
             <dt>Next.js</dt>
             <dd>サーバサイドで開発したいときに役立つツール。Zeit社が開発した。（※：後にVercel社に改名）</dd>
             <dt>Gatsby.js</dt>
@@ -126,7 +136,7 @@
           <p>次のようなものの中から必要なツールを選び、組み合わせてツールチェインとして利用する方法。</p>
           <dl>
             <dt>npm</dt>
-            <dd>定番のパッケージマネージャ。</dd>
+            <dd>node package managerの略称。定番のパッケージマネージャ。Node.jsをインストールすると、すぐに使える状態になっている。</dd>
             <dt>yarn</dt>
             <dd>人気があるパッケージマネージャ。</dd>
             <dt>webpack</dt>
@@ -134,7 +144,7 @@
             <dt>Parcel</dt>
             <dd>モジュールバンドラ。</dd>
             <dt>Babel</dt>
-            <dd>定番のコンパイラ。</dd>
+            <dd>定番のトランスコンパイラ。Reactで使用する場合においては、JSXで書いたコードを、ブラウザが理解でき形にしてくれる。</dd>
           </dl>
         </section>
         <!-- /.content -->
@@ -174,28 +184,35 @@
         <h2 id="terms" class="heading-2" data-subheading="Note about React related terms">React関連用語</h2>
 
         <section class="content">
-          <h3 class="heading-3"></h3>
+          <h3 class="heading-3">React用語</h3>
+          <dl>
+            <dt>レンダー</dt>
+            <dd>レンダー（render）は、Reactを使った描画・再描画のこと。</dd>
+            <dt>コンテキスト</dt>
+            <dd>ルートコンポートでのみ Stateを保持するやり方では破綻しやすいため、大規模のアプリケーションを作成する場合は、コンテキストを利用する。Stateを中継する必要がなくなる。</dd>
+            <dt>HOC</dt>
+            <dd>higher-order componentの略称。高階コンポーネントのこと。</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">プログラミング共通用語</h3>
           <dl>
             <dt>SPA</dt>
             <dd>シングルページアプリケーション（single page application）の略称。画面遷移を必要とする状況において、ページ全体をロードせず、一部のみロードする仕組みで作られる。</dd>
-            <dt>レンダー</dt>
-            <dd>レンダー（render）は、描画すること。</dd>
             <dt>ツールチェイン</dt>
             <dd>案件に必要となるツールを組み合わせて作る開発環境のこと。パッケージマネージャやモジュールバンドラ、コンパイラなどを組み合わせて構築する。また、すでに組み合わせて公開されているものもある。（例：Create React App、Next.js、Gatsby.jsなど）</dd>
             <dt>パッケージマネージャ</dt>
             <dd>ソフトウェアのインストールやアンインストールを管理するツール。（例：npm、yarn）</dd>
             <dt>モジュールバンドラ</dt>
-            <dd>複数のファイルを 1つにまとめて出力してくれるツール。例えば、JavaScriptやCSSなど、をひとまとめにし、ミニファイ（余計なコードを取り除くこと）もしてくれるので、表示速度を向上させる利点がある。（例：webpack）</dd>
+            <dd>複数のファイルを 1つにまとめて出力してくれるツール。例えば、JavaScriptやCSSなどをひとまとめにしたり、ミニファイ（余計なコードを取り除くこと）もしてくれるので、表示速度を向上させる利点がある。（例：webpack）</dd>
             <dt>コンパイラ</dt>
             <dd>コンピュータなどが理解できる形に翻訳するツール。多くの場合、人間が理解しやすいプログラミング言語から、コンピュータが理解しやすい機械語へ変換するツールを指す。また、バージョンのダウングレードなどの変換を指すこともある。（例：Babel）</dd>
-            <dt>コンテキスト</dt>
-            <dd>ルートコンポートでのみ Stateを保持するやり方では破綻する規模のアプリケーションを作成する場合は、コンテキストを利用する。中継する必要がなくなる。</dd>
             <dt>GraphQL</dt>
             <dd>Web APIを宣言的に記述するための手法。</dd>
             <dt>テスト駆動開発</dt>
             <dd>実装よりもテストを先行させる開発手法。Jestなどを利用。</dd>
-            <dt>HOC</dt>
-            <dd>higher-order componentの略称。高階コンポーネントのこと。</dd>
           </dl>
         </section>
         <!-- /.content -->

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/1/index.html">
+  <title>【GatsbyJS入門】GatsbyJSのインストール｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="GatsbyJSとは？　静的サイトジェネレーターGatsbyJSの導入手順。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【GatsbyJS入門】GatsbyJSのインストール">
+  <meta property="og:description" content="GatsbyJSとは？　静的サイトジェネレーターGatsbyJSの導入手順。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/1/index.html">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">GatsbyJSのインストール</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="Overview of GatsbyJS">概要</h2>
+        <section class="content">
+          <h3 class="heading-3">GatsbyJSとは？</h3>
+          <ul>
+            <li>高速表示が期待できる静的サイトジェネレータのこと。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+            <h3 class="heading-3">GatsbyJSの利点と課題</h4>
+            <ul>
+              <li>利点
+                <ul>
+                  <li>表示が高速。静的サイトゆえに、一般的なこれまでの CMSのように直接的に DBを使用してサーバ上で HTMLファイルの生成をしない。また、Reactをベースにしているので、ページ内の部分的な更新処理ができるため速い。</li>
+                  <li>動的な表示もできる。基本的に静的なサイトだが、Headless CMSや GraphQLなどを利用することで動的な表示も可能。</li>
+                  <li>習熟度にあわせて導入できる。すでに用意されている Starterやテーマを利用すれば、エンジニアでなくても難しくはない。ゼロから制作する場合は、エンジニアであれば難しくないが、やりたいことの分だけ難易度は増していく。</li>
+                </ul>
+              </li>
+              <li>課題
+                <ul>
+                  <li>更新頻度が高いサイトや大規模なサイトには向かない。Next.jsなどを利用するほうがいい。棲み分け。</li>
+                  <li>広く利用されてはいないので、導入に不安がある。情報量、継続性などは現状においてまだまだ懸念される。</li>
+                </ul>
+              </li>
+            </ul>
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="GatsbyJS installation procedure">GatsbyJSのインストール手順（Windows版）</h2>
+
+        <section class="content">
+          <h3 class="heading-3">コマンドラインとNode.js</h3>
+          <ul>
+            <li>事前に、<a href="../../memo-devenv/1/index.html">コマンドラインツールとNode.jsをインストール</a>しておく。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">GatsbyJS</h4>
+          <ol>
+            <li>管理者権限で Git Bashを起動する。sudoなどが使える場合は、標準起動でも問題ない。臨機応変に対応されたし。</li>
+            <li>GatsbyJSの CLIツールをインストールする。CLI（コマンドラインインタフェース）をインストールすると、GatsbyJS独自のコマンドを使うことができるようになる。</li>
+            <li>Starterを利用してプロジェクトを作成する。GatsbyJSの作業場所（ディレクトリ名）を指定し、Starterは、<a href="https://www.gatsbyjs.com/starters/" target="_blank" rel="noopener noreferrer">Gatsby Starter Library</a>で案件にあったものを探すといい。</li>
+            <li>利用する Starterの内容によっては、ダウンロードに時間がかかるかもしれない。</li>
+            <li>ダウンロードが完了したら作成したディレクトリへ移動し、GatsbyJS開発環境を起ち上げる。</li>
+            <li>ブラウザに、http://localhost:8000/ を入力して表示する。今回の場合は、「Hello World!」と表示されれば成功。</li>
+            <li>Gitの対象から除外したい場合は、.gitignoreを修正。</li>
+          </ol>
+
+<pre class="code">
+<code>
+// GatsbyJSの CLIツールをインストール。
+$ npm install -g gatsby-cli
+
+// Starterを使用したプロジェクトの作成。
+// gatsby new [ディレクトリ名] [StarterのURL]
+$ gatsby new gatsby-test https://github.com/gatsbyjs/gatsby-starter-hello-world
+
+// GatsbyJS開発環境の起ち上げ。
+$ cd gatsby-test
+$ gatsby develop
+</code>
+</pre>
+      </section>
+      <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>Jamstackという制作概念を好ましく感じたので、GatsbyJSを試すことにした。Reactの練習にも良い。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://tech.bitbank.cc/20210201/" target="_blank" rel="noopener noreferrer">GatsbyJS 現代のWordpress</a></li>
+            <li><a href="https://zenn.dev/tomokiya/books/4b13342f6d878b93e06c/viewer/8d138c178851c9b27a58" target="_blank" rel="noopener noreferrer">Gatsbyの導入｜Gatsby入門</a></li>
+            <li><a href="https://reffect.co.jp/react/gatsby-basic-tutorial-for-beginners" target="_blank" rel="noopener noreferrer">基礎から始めるGatsbyJS入門 | アールエフェクト</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+      
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-10-14">2021年10月14日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

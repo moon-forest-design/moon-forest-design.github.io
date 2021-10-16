@@ -78,8 +78,9 @@
         <section class="content">
           <h3 class="heading-3">GatsbyJS</h4>
           <ol>
-            <li>管理者権限で Git Bashを起動する。sudoなどが使える場合は、標準起動でも問題ない。臨機応変に対応されたし。</li>
+            <li>右クリックをして管理者権限で Git Bashを起動する。sudoなどが使える場合は、標準起動でも問題ないが Windowsであればおそらく sudoは使えない。状況によって臨機応変に対応されたし。</li>
             <li>GatsbyJSの CLIツールをインストールする。CLI（コマンドラインインタフェース）をインストールすると、GatsbyJS独自のコマンドを使うことができるようになる。</li>
+            <li>CLIツールのインストールができたようであれば、バージョンを確認する。2021年10月においては CLIが Ver3.14.1で、GatsbyJS本体は Ver3.14.2と出た。Ver3以降であれば OK。</li>
             <li>Starterを利用してプロジェクトを作成する。GatsbyJSの作業場所（ディレクトリ名）を指定し、Starterは、<a href="https://www.gatsbyjs.com/starters/" target="_blank" rel="noopener noreferrer">Gatsby Starter Library</a>で案件にあったものを探すといい。</li>
             <li>利用する Starterの内容によっては、ダウンロードに時間がかかるかもしれない。</li>
             <li>ダウンロードが完了したら作成したディレクトリへ移動し、GatsbyJS開発環境を起ち上げる。</li>
@@ -91,6 +92,9 @@
 <code>
 // GatsbyJSの CLIツールをインストール。
 $ npm install -g gatsby-cli
+
+// CLIツールのバージョンを確認。
+$ gatsby --version
 
 // Starterを使用したプロジェクトの作成。
 // gatsby new [ディレクトリ名] [StarterのURL]

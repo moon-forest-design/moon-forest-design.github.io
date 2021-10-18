@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/1/index.html">
-  <title>【GatsbyJS入門】GatsbyJSのインストール｜キアカラボ</title>
+  <title>【GatsbyJS入門】GatsbyJS概要まとめ｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="GatsbyJSとは？　静的サイトジェネレーターGatsbyJSの導入手順。">
+  <meta name="description" content="GatsbyJSとは？">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【GatsbyJS入門】GatsbyJSのインストール">
-  <meta property="og:description" content="GatsbyJSとは？　静的サイトジェネレーターGatsbyJSの導入手順。">
+  <meta property="og:title" content="【GatsbyJS入門】GatsbyJS概要まとめ">
+  <meta property="og:description" content="GatsbyJSとは？">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/1/index.html">
   <meta name="robots" content="noindex">
@@ -22,7 +22,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">GatsbyJSのインストール</h1>
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">GatsbyJS概要まとめ</h1>
     </div>
   </header>
 
@@ -31,7 +31,7 @@
 
 
       <section class="contents">
-        <h2 id="summary" class="heading-2" data-subheading="Overview of GatsbyJS">概要</h2>
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the GatsbyJS">概要</h2>
         <section class="content">
           <h3 class="heading-3">GatsbyJSとは？</h3>
           <ul>
@@ -65,58 +65,53 @@
 
 
       <section class="contents">
-        <h2 id="summary" class="heading-2" data-subheading="GatsbyJS installation procedure">GatsbyJSのインストール手順（Windows版）</h2>
+        <h2 id="terms" class="heading-2" data-subheading="Note about GatsbyJS related terms">GatsbyJS Tips</h2>
 
         <section class="content">
-          <h3 class="heading-3">コマンドラインとNode.js</h3>
-          <ul>
-            <li>事前に、<a href="../../memo-devenv/1/index.html">コマンドラインツールとNode.jsをインストール</a>しておく。</li>
-          </ul>
+          <h3 class="heading-3">GatsbyJS関連用語</h3>
+          <dl>
+            <dt>ページコンポーネント</dt>
+            <dd>index.js、about.js、blog.js、404.jsなどの src/pages下に作成するファイル群のこと。例えば、index.jsはトップページ（Home）を単一ページとして表示する。</dd>
+            <dt>ビルディングブロックコンポーネント</dt>
+            <dd>header.js、footer.js、layout.jsなどの src/components下に作成するファイル群のこと。ページコンポーネント内の一部を構成するために利用される。例えば、header.jsを作成し、各ページコンポーネントから呼び出して、ヘッダーとして表示する。</dd>
+            <dt>プラグイン</dt>
+            <dd>GatsbyJSで制作した Webサイトに機能を追加するための npmパッケージのこと。必要な機能だけ別個にインストールする。車輪の再発明に陥らずに済む。</dd>
+            <dt>gatsby-config.js</dt>
+            <dd>Webサイトに関する情報を記述しておく特別な設定ファイル。プラグインの構成や、GraphQLなどの設定情報を記述する。<a href="https://www.gatsbyjs.com/docs/gatsby-config/">詳細</a></dd>
+            <dt>データレイヤー</dt>
+            <dd>GatsbyJSでは、データの取得・追加に GraphQLという技術を利用している。各ソースからソースプラグインを介してデータレイヤーにデータを取得し、GraphQLクエリを介して各コンポーネントへ追加する。</dd>
+            <dt>GraphiQLインターフェース</dt>
+            <dd>http://localhost:8000/___graphql で表示できる。GraphQLクエリを試すことができる。</dd>
+            <dt>useStaticQuery</dt>
+            <dd>GraphQLクエリをビルディングブロックコンポーネントに追加できるフック。</dd>
+            <dt>MDX</dt>
+            <dd>。</dd>
+          </dl>
         </section>
         <!-- /.content -->
 
         <section class="content">
-          <h3 class="heading-3">GatsbyJS</h4>
-          <ol>
-            <li>右クリックをして管理者権限で Git Bashを起動する。sudoなどが使える場合は、標準起動でも問題ないが Windowsであればおそらく sudoは使えない。状況によって臨機応変に対応されたし。</li>
-            <li>GatsbyJSの CLIツールをインストールする。CLI（コマンドラインインタフェース）をインストールすると、GatsbyJS独自のコマンドを使うことができるようになる。</li>
-            <li>CLIツールのインストールができたようであれば、バージョンを確認する。2021年10月においては CLIが Ver3.14.1で、GatsbyJS本体は Ver3.14.2と出た。Ver3以降であれば OK。</li>
-            <li>Starterを利用してプロジェクトを作成する。GatsbyJSの作業場所（ディレクトリ名）を指定し、Starterは、<a href="https://www.gatsbyjs.com/starters/" target="_blank" rel="noopener noreferrer">Gatsby Starter Library</a>で案件にあったものを探すといい。</li>
-            <li>利用する Starterの内容によっては、ダウンロードに時間がかかるかもしれない。</li>
-            <li>ダウンロードが完了したら作成したディレクトリへ移動し、GatsbyJS開発環境を起ち上げる。</li>
-            <li>ブラウザに、http://localhost:8000/ を入力して表示する。今回の場合は、「Hello World!」と表示されれば成功。</li>
-            <li>Gitの対象から除外したい場合は、.gitignoreを修正。</li>
-          </ol>
+          <h3 class="heading-3">GatsbyJSのおすすめプラグイン</h3>
+          <dl>
+            <dt>静止画像プラグイン</dt>
+            <dd>gatsby-plugin-image。</dd>
+            <dt>ソースプラグイン</dt>
+            <dd>gatsby-source-filesystem、gatsby-source-contentful。</dd>
 
-<pre class="code">
-<code>
-// GatsbyJSの CLIツールをインストール。
-$ npm install -g gatsby-cli
-
-// CLIツールのバージョンを確認。
-$ gatsby --version
-
-// Starterを使用したプロジェクトの作成。
-// gatsby new [ディレクトリ名] [StarterのURL]
-$ gatsby new gatsby-test https://github.com/gatsbyjs/gatsby-starter-hello-world
-
-// GatsbyJS開発環境の起ち上げ。
-$ cd gatsby-test
-$ gatsby develop
-</code>
-</pre>
-      </section>
-      <!-- /.content -->
+          </dl>
+        </section>
+        <!-- /.content -->
 
       </section>
       <!-- /.contents -->
+
 
       <section class="contents">
         <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>Jamstackという制作概念を好ましく感じたので、GatsbyJSを試すことにした。Reactの練習にも良い。</li>
+            <li>Jamstackという制作概念を好ましく感じたので、GatsbyJSを試すことにした。Reactや GraphQLの練習にも良い。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -124,9 +119,10 @@ $ gatsby develop
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
+            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-2/" target="_blank" rel="noopener noreferrer">Part 2: Use and Style React Components | Gatsby</a></li>
+            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-3/" target="_blank" rel="noopener noreferrer">Part 3: Add Features with Plugins | Gatsby</a></li>
             <li><a href="https://tech.bitbank.cc/20210201/" target="_blank" rel="noopener noreferrer">GatsbyJS 現代のWordpress</a></li>
-            <li><a href="https://zenn.dev/tomokiya/books/4b13342f6d878b93e06c/viewer/8d138c178851c9b27a58" target="_blank" rel="noopener noreferrer">Gatsbyの導入｜Gatsby入門</a></li>
-            <li><a href="https://reffect.co.jp/react/gatsby-basic-tutorial-for-beginners" target="_blank" rel="noopener noreferrer">基礎から始めるGatsbyJS入門 | アールエフェクト</a></li>
+            <li><a href="https://qiita.com/hppRC/items/00739eaf9ae7fc95c1ca" target="_blank" rel="noopener noreferrer">Reactの最強フレームワークGatsby.jsの良さを伝えたい！！ - Qiita</a></li>
           </ul>
         </section>
         <!-- /.content -->

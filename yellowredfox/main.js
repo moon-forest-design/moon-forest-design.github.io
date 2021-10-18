@@ -5,7 +5,7 @@
 // jQueryを使うよ
 $(function() {
   // justify-content: between;の最後の行を左寄せにする
-  const $aId = ["#memoReact", "#memoJs"]; // 左寄せにしたい親要素のIDを入力しておく
+  const $aId = ["#memoReact", "#memoJs", "#memoGatsby", "#memoDevenv"]; // 左寄せにしたい親要素のIDを入力しておく
   for (let $i = 0; $i < $aId.length; $i++) { // 
     const $cellWidth = $(`${$aId[$i]} .card`).outerWidth(true); // 子要素の幅を取得
     const $cellCount = $(`${$aId[$i]} .card`).length; // 子要素の数を取得

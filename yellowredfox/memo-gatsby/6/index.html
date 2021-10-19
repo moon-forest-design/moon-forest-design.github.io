@@ -6,23 +6,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/3/index.html">
-  <title>【GatsbyJS入門】gatsby-plugin-imageの導入｜キアカラボ</title>
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/6/index.html">
+  <title>【GatsbyJS入門】ファイル名の表示方法｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="GatsbyJSサイトに、プラグインgatsby-plugin-imageを導入する手順。">
+  <meta name="description" content="ディレクトリ内のファイル名を、データレイヤを使って、GatsbyJSサイトに表示する方法。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【GatsbyJS入門】gatsby-plugin-imageの導入">
-  <meta property="og:description" content="GatsbyJSサイトに、プラグインgatsby-plugin-imageを導入する手順。">
+  <meta property="og:title" content="【GatsbyJS入門】ファイル名の表示方法">
+  <meta property="og:description" content="ディレクトリ内のファイル名を、データレイヤを使って、GatsbyJSサイトに表示する方法。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/3/index.html">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/6/index.html">
   <meta name="robots" content="noindex">
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">gatsby-plugin-imageの導入</h1>
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">ファイル名の表示方法</h1>
     </div>
   </header>
 
@@ -35,28 +35,24 @@
         <h3 class="heading-3">要点</h3>
         <section class="content">
           <ol>
-            <li>右クリックをして管理者権限で Git Bashを起動する。</li>
-            <li>npmコマンドで、GatsbyJSのプラグインgatsby-plugin-imageをインストールする。gatsby-plugin-imageをインストールする場合は、あわせて gatsby-plugin-sharpとgatsby-source-filesystemもインストールしなければならない。これら 2つは、「peer dependencies（同等依存）」しているプラグイン。</li>
-            <li>gatsby-config.jsファイルに gatsby-plugin-imageと gatsby-plugin-sharpプラグインに関する設定情報を追加。</li>
-            <li>src下に画像用のディレクトリ（例：img）を作成し、画像を入れておく。（例：logo-yellowredfox.png）</li>
-            <li>index.jsなどのファイルに、import 及び表示したい箇所に &lt;StaticImage /&gt;を記述。alt属性や src属性を指定する。意味は、img要素と同様。</li>
-
+            <li>プロジェクトディレクトリの最上位（gatsby-config.jsなどがある場所）に、blogというディレクトリを作成する。</li>
+            <li>blogディレクトリ内に、拡張子.mdxのファイルを、3つ作成する。（例：post1.mdx、post2.mdx、post3.mdx）</li>
+            <li>ソースプラグイン gatsby-source-filesystemがインストールされているか確認する。確認の方法は、package-lock.jsonを見ればいいのかな？　インストールしていない場合は、インストールする。おそらく必要になるであろう<a href="../3/index.html">プラグイン gatsby-plugin-imageとあわせてインストール</a>してしまうといい。</li>
+            <li>gatsby-config.jsファイルに、gatsby-source-filesystemを利用して blogディレクトリに関する設定を追加する。</li>
+            <li>GraphiQLインターフェースで確認。エクスプローラーで allFileの nodesの nameにチェックし実行ボタンを押す。上述にて作成したmdxファイル名が表示されれば OK。</li>
+            <li>例えば、src/pages/下に blog.jsを作成し、次のようにする。
+              <ul>
+                <li>graphqlを importする。</li>
+                <li>{node.name}をファイルの数だけ繰り返し記述するために Array.mapを使用する。</li>
+                <li>GraphQLのデータを定数 queryへ代入する。</li>
+              </ul>
+            </li>
           </ol>
         </section>
         <!-- /.content -->
         
         <section class="content">
-          <h3 class="heading-3">プラグインgatsby-plugin-imageの導入手順</h3>
-
-          <section>
-            <h4 class="heading-4">コマンドライン</h4>
-<pre class="code">
-<code>
-// プラグインgatsby-plugin-imageをインストール。
-$ npm install gatsby-plugin-image gatsby-plugin-sharp gatsby-source-filesystem
-</code>
-</pre>
-          </section>
+          <h3 class="heading-3">手順</h3>
 
           <section>
             <h4 class="heading-4">gatsby-config.js</h4>
@@ -64,9 +60,19 @@ $ npm install gatsby-plugin-image gatsby-plugin-sharp gatsby-source-filesystem
 <code>
 // gatsby-config.jsファイルに設定を追加
 module.exports = {
+  siteMetadata: {
+    title: "サイト名",
+  },
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `blog`,
+        path: `${__dirname}/blog`,
+      }
+    },
   ],
 };
 </code>
@@ -74,14 +80,40 @@ module.exports = {
           </section>
 
           <section>
-            <h4 class="heading-4">index.jp</h4>
+            <h4 class="heading-4">blog.js</h4>
 <pre class="code">
 <code>
-// importする
-import { StaticImage } from 'gatsby-plugin-image';
+import * as React from 'react'
+import { graphql } from 'gatsby'
+import Layout from '../components/layout'
 
-// 表示したい場所に&lt;StaticImage /&gt;で指定（以下例）
-&lt;StaticImage alt="黄赤狐ロゴ" src="../img/logo-yellowredfox.png" /&gt;
+const BlogPage = () =&gt; {
+  return (
+    &lt;Layout pageTitle="My Blog Posts"&gt;
+      &lt;ul&gt;
+        {
+          data.allFile.nodes.map(node =&gt; (
+            &lt;li key={node.name}&gt;
+              {node.name}
+            &lt;/li&gt;
+          ))
+        }
+      &lt;/ul&gt;
+    &lt;/Layout&gt;
+  )
+}
+
+export const query = graphql`
+  query {
+    allFile {
+      nodes {
+        name
+      }
+    }
+  }
+`
+
+export default BlogPage
 </code>
 </pre>
           </section>
@@ -97,7 +129,7 @@ import { StaticImage } from 'gatsby-plugin-image';
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>プラグインgatsby-plugin-imageを使うことで、パフォーマンスはより良くなるそうだ。また、自動的に最適化されて、レスポンシブ対応になるとのこと。</li>
+            <li>ファイル名を取得できれば、slugとして利用できる。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -105,7 +137,7 @@ import { StaticImage } from 'gatsby-plugin-image';
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-3/" target="_blank" rel="noopener noreferrer">Part 3: Add Features with Plugins | Gatsby</a></li>
+            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-4/" target="_blank" rel="noopener noreferrer">Part 4: Query for Data with GraphQL | Gatsby</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -114,7 +146,7 @@ import { StaticImage } from 'gatsby-plugin-image';
       
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-10-14">2021年10月14日</time>
+          作成日: <time class="releaseDate" datetime="2021-10-19">2021年10月19日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

@@ -6,23 +6,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/3/index.html">
-  <title>【GatsbyJS入門】gatsby-plugin-imageの導入｜キアカラボ</title>
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/5/index.html">
+  <title>【GatsbyJS入門】サイト名の設定方法｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="GatsbyJSサイトに、プラグインgatsby-plugin-imageを導入する手順。">
+  <meta name="description" content="GatsbyJSサイトに、データレイヤを使ってサイト名を表示する方法。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【GatsbyJS入門】gatsby-plugin-imageの導入">
-  <meta property="og:description" content="GatsbyJSサイトに、プラグインgatsby-plugin-imageを導入する手順。">
+  <meta property="og:title" content="【GatsbyJS入門】サイト名の設定方法">
+  <meta property="og:description" content="GatsbyJSサイトに、データレイヤを使ってサイト名を表示する方法。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/3/index.html">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/5/index.html">
   <meta name="robots" content="noindex">
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">gatsby-plugin-imageの導入</h1>
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">サイト名の設定方法</h1>
     </div>
   </header>
 
@@ -35,28 +35,21 @@
         <h3 class="heading-3">要点</h3>
         <section class="content">
           <ol>
-            <li>右クリックをして管理者権限で Git Bashを起動する。</li>
-            <li>npmコマンドで、GatsbyJSのプラグインgatsby-plugin-imageをインストールする。gatsby-plugin-imageをインストールする場合は、あわせて gatsby-plugin-sharpとgatsby-source-filesystemもインストールしなければならない。これら 2つは、「peer dependencies（同等依存）」しているプラグイン。</li>
-            <li>gatsby-config.jsファイルに gatsby-plugin-imageと gatsby-plugin-sharpプラグインに関する設定情報を追加。</li>
-            <li>src下に画像用のディレクトリ（例：img）を作成し、画像を入れておく。（例：logo-yellowredfox.png）</li>
-            <li>index.jsなどのファイルに、import 及び表示したい箇所に &lt;StaticImage /&gt;を記述。alt属性や src属性を指定する。意味は、img要素と同様。</li>
-
+            <li>gatsby-config.jsファイルに、siteMetadataのtitleを追加する。</li>
+            <li>GraphiQLインターフェースで確認。エクスプローラーで siteの siteMetadataの titleにチェックし実行ボタンを押す。「title: "サイト名"」が表示されれば OK。</li>
+            <li>例えば、header.jsでサイト名を使用したい場合は次のようにする。
+              <ul>
+                <li>useStaticQueryと graphqlを importする。</li>
+                <li>useStaticQueryを使って、GraphQLのデータを定数 dataへ代入する。</li>
+                <li>サイト名を表示したい箇所に、{ data.site.siteMetadata.title }を記述する。</li>
+              </ul>
+            </li>
           </ol>
         </section>
         <!-- /.content -->
         
         <section class="content">
-          <h3 class="heading-3">プラグインgatsby-plugin-imageの導入手順</h3>
-
-          <section>
-            <h4 class="heading-4">コマンドライン</h4>
-<pre class="code">
-<code>
-// プラグインgatsby-plugin-imageをインストール。
-$ npm install gatsby-plugin-image gatsby-plugin-sharp gatsby-source-filesystem
-</code>
-</pre>
-          </section>
+          <h3 class="heading-3">手順</h3>
 
           <section>
             <h4 class="heading-4">gatsby-config.js</h4>
@@ -64,6 +57,9 @@ $ npm install gatsby-plugin-image gatsby-plugin-sharp gatsby-source-filesystem
 <code>
 // gatsby-config.jsファイルに設定を追加
 module.exports = {
+  siteMetadata: {
+    title: "サイト名",
+  },
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
@@ -74,14 +70,37 @@ module.exports = {
           </section>
 
           <section>
-            <h4 class="heading-4">index.jp</h4>
+            <h4 class="heading-4">header.js</h4>
 <pre class="code">
 <code>
-// importする
-import { StaticImage } from 'gatsby-plugin-image';
+import * as React from 'react'
 
-// 表示したい場所に&lt;StaticImage /&gt;で指定（以下例）
-&lt;StaticImage alt="黄赤狐ロゴ" src="../img/logo-yellowredfox.png" /&gt;
+// Step 1: Import the useStaticQuery hook and graphql tag
+import { useStaticQuery, graphql } from 'gatsby'
+
+const Header = () => {
+  /* Step 2: Use the useStaticQuery hook and
+    graphql tag to query for data
+    (The query gets run at build time) */
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
+  return (
+    &lt;header&gt;
+      {/* Step 3: Use the data in your component */}
+      &lt;h1&gt;{ data.site.siteMetadata.title }&lt;/h1&gt;
+    &lt;/header&gt;
+  )
+}
+
+export default Header
 </code>
 </pre>
           </section>
@@ -97,7 +116,7 @@ import { StaticImage } from 'gatsby-plugin-image';
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>プラグインgatsby-plugin-imageを使うことで、パフォーマンスはより良くなるそうだ。また、自動的に最適化されて、レスポンシブ対応になるとのこと。</li>
+            <li>サイト名を直接書かず、今回の方法で設定しておくと、何かしらの理由でサイト名に変更が発生したときに、gatsby-config.jsの 1箇所を修正するだけで済む。サイト名に限らず、ドメイン名なども設定しておくと良いかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -114,7 +133,7 @@ import { StaticImage } from 'gatsby-plugin-image';
       
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-10-14">2021年10月14日</time>
+          作成日: <time class="releaseDate" datetime="2021-10-19">2021年10月19日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

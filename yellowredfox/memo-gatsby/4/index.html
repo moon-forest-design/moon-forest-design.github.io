@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/4/index.html">
+  <title>【GatsbyJS入門】GatsbyJSのデータレイヤとは？｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="GatsbyJSのデータレイヤとは？　GraphQLとソースプラグインの役割。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【GatsbyJS入門】GatsbyJSのデータレイヤとは？">
+  <meta property="og:description" content="GatsbyJSのデータレイヤとは？　GraphQLとソースプラグインの役割。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/4/index.html">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">GatsbyJSのデータレイヤとは？</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the process">概要</h2>
+        <h3 class="heading-3">データレイヤとは？</h3>
+        <section class="content">
+          <blockquote class="citedImg">
+            <img src="data-layer.png" alt="GatsbyJSのデータレイヤ">
+            <p>
+              <cite>
+                <a href="https://www.gatsbyjs.com/docs/tutorial/part-4/" target="_blank" rel="noopener noreferrer">画像出典：Part 4: Query for Data with GraphQL | Gatsby</a>
+              </cite>
+            </p>
+          </blockquote>
+          <ul>
+            <li>GatsbyJSのデータレイヤについては、「<a href="https://www.gatsbyjs.com/docs/tutorial/part-4/" target="_blank" rel="noopener noreferrer">Part 4: Query for Data with GraphQL | Gatsby</a>」のページで紹介されている画像が分かり良いので引用させていただいた。GatsbyJSがどのようにしてデータを取り扱うのかイメージしやすいはずだ。</li>
+            <li>GatsbyJSのデータレイヤの仕組みは以下ようである。
+              <ol>
+                <li>データは各所いろいろなところに存在して構わない。パソコンのフォルダ内や、ヘッドレスCMSなど、GraphQLの技術を使ってアクセスできる場所であればどこでもいい。複数あってもかまわない。</li>
+                <li>それらの各所にあるデータは、ソースプラグインを導入することで取得することができる。ソースプラグインには、gatsby-source-filesystem、gatsby-source-contentfulなどがある。</li>
+                <li>取得したデータは、GraphQLデータレイヤから GraphQLクエリを使って各ページへ表示することになる。</li>
+              </ol>
+            </li>
+            <li>GraphQLに関するクエリ情報は、GraphiQL（http://localhost:8000/___graphql）にアクセスすることで確認できる。ページの構成は以下のようにおおまかに 3列に分かれている。左側にあるエクスプローラーで確認したいデータをチェックし、必要ならクエリエディタで編集し、実行ボタンを押すと右側のウィンドウに結果が表示される。
+              <ul>
+                <li>左：エクスプローラー</li>
+                <li>中：クエリエディタ</li>
+                <li>右：結果ウィンドウ</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <!-- /.content -->
+
+        <h3 class="heading-3">トランスフォーマープラグインとは？</h3>
+        <section class="content">
+          <blockquote class="citedImg">
+            <img src="data-layer-with-nodes.png" alt="GatsbyJSのデータレイヤ">
+            <p>
+              <cite>
+                <a href="https://www.gatsbyjs.com/docs/tutorial/part-5/" target="_blank" rel="noopener noreferrer">画像出典：Part 5: Transform Data to Use MDX | Gatsby</a>
+              </cite>
+            </p>
+          </blockquote>
+          <ul>
+            <li>GraphQLデータレイヤ内で処理をする場合、トランスフォーマープラグインを利用することがある。これについては、「<a href="https://www.gatsbyjs.com/docs/tutorial/part-5/" target="_blank" rel="noopener noreferrer">Part 5: Transform Data to Use MDX | Gatsby</a>」のページで紹介されている画像が分かり良いので引用させていただいた。</li>
+            <li>トランスフォーマープラグインを使うことで、MDXファイルに書かれているコンテンツの内容を、各ページへレンダリングすることができるようになる。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>現状、GatsbyJSのデータレイヤを使用する上で、ページコンポーネントの場合と、ビルディングブロックコンポーネントの場合では書き方が違うようなので注意されたし。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-4/" target="_blank" rel="noopener noreferrer">Part 4: Query for Data with GraphQL | Gatsby</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+      
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-10-19">2021年10月19日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

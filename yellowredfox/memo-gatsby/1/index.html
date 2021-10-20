@@ -85,7 +85,9 @@
             <dt>useStaticQuery</dt>
             <dd>GraphQLクエリをビルディングブロックコンポーネントに追加できるフック。</dd>
             <dt>MDX</dt>
-            <dd>Markdown + JSXファイル。</dd>
+            <dd>Markdown + JSXファイル。拡張子は、.mdx。</dd>
+            <dt>フロントマター</dt>
+            <dd>Frontmatter。MDXなどのファイル内に記述する情報。投稿タイトルや公開日、著者名など、コンテンツに関する情報を記述する。実際のページには直接表示されない仕組み。3つのハイフン（---）の開始セットと終了セットの間に記述する。</dd>
           </dl>
         </section>
         <!-- /.content -->
@@ -94,11 +96,15 @@
           <h3 class="heading-3">GatsbyJSのおすすめプラグイン</h3>
           <dl>
             <dt>画像プラグイン</dt>
-            <dd>gatsby-plugin-image。</dd>
+            <dd>画像表示に使用する。最適化機能を有する。gatsby-plugin-imageなど。</dd>
             <dt>ソースプラグイン</dt>
-            <dd>gatsby-source-filesystem、gatsby-source-contentful。</dd>
-            <dt>トランスフォーマープラグイン</dt>
-            <dd>gatsby-plugin-mdx。</dd>
+            <dd>各所にあるデータをGraphQLを利用して取得する。gatsby-source-filesystem、gatsby-source-contentfulなど。</dd>
+            <dt>MDXトランスフォーマープラグイン</dt>
+            <dd>ソースプラグインからコンテンツを取得し、より使いやすいものに変換する。gatsby-plugin-mdxなど。</dd>
+            <dt>コメントプラグイン</dt>
+            <dd>Markdownに機能を追加するために使用する。gatsby-remark-images、gatsby-remark-prismjs、gatsby-remark-autolink-headers。</dd>
+            <dt>MDXプラグイン</dt>
+            <dd>MDXを実装する。MDX実装を Reactコンポーネントにマップする。@mdx-js/mdx、@mdx-js/react。</dd>
 
           </dl>
         </section>

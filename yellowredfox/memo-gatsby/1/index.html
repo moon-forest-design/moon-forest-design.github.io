@@ -68,6 +68,26 @@
         <h2 id="terms" class="heading-2" data-subheading="Note about GatsbyJS related terms">GatsbyJS Tips</h2>
 
         <section class="content">
+          <h3 class="heading-3">GatsbyJSコマンド</h3>
+          <p>※付きは、プロジェクトのルートディレクトリにて実行のこと。</p>
+          <dl>
+            <dt>gatsby new</dt>
+            <dd>Gatsbyサイトを作成する。オプションを指定しない場合は対話型。</dd>
+            <dt>gatsby develop</dt>
+            <dd>開発サーバを起動する。（※）</dd>
+            <dt>gatsby build</dt>
+            <dd>デプロイ用にコンパイルする。（※）</dd>
+            <dt>gatsby serve</dt>
+            <dd>テスト用にサイトの本番ビルドを提供する？？？（※）</dd>
+            <dt>gatsby clean</dt>
+            <dd>.cacheディレクトリと publicディレクトリ内を消去する。（※）</dd>
+            <dt>gatsby info</dt>
+            <dd>バグを報告するときに必要となる環境情報を表示する。OSや CPU、Node.js、npmのバージョン情報、それと、インストール済みのパッケージ情報も確認できる。（※）</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
           <h3 class="heading-3">GatsbyJS関連用語</h3>
           <dl>
             <dt>ページコンポーネント</dt>
@@ -88,6 +108,14 @@
             <dd>Markdown + JSXファイル。拡張子は、.mdx。</dd>
             <dt>フロントマター</dt>
             <dd>Frontmatter。MDXなどのファイル内に記述する情報。投稿タイトルや公開日、著者名など、コンテンツに関する情報を記述する。実際のページには直接表示されない仕組み。3つのハイフン（---）の開始セットと終了セットの間に記述する。</dd>
+            <dt>File System Route API</dt>
+            <dd>src/pagesディレクトリ内のファイルに名前を付けるための特別な構文を定義することで、新しいページを動的に作成するAPI。</dd>
+            <dt>クエリ変数</dt>
+            <dd>Gatsbyでは、クエリ変数はページクエリ内でのみ使用できる。useStaticQueryフックでは使用できない。</dd>
+            <dt>StaticImageコンポーネント</dt>
+            <dd>静的な画像ソース用。</dd>
+            <dt>GatsbyImageコンポーネント</dt>
+            <dd>動的な画像ソース用。</dd>
           </dl>
         </section>
         <!-- /.content -->
@@ -101,6 +129,8 @@
             <dd>各所にあるデータをGraphQLを利用して取得する。gatsby-source-filesystem、gatsby-source-contentfulなど。</dd>
             <dt>MDXトランスフォーマープラグイン</dt>
             <dd>ソースプラグインからコンテンツを取得し、より使いやすいものに変換する。gatsby-plugin-mdxなど。</dd>
+            <dt>画像トランスフォーマープラグイン</dt>
+            <dd>画像の拡張子（.pngや.jpgなど）で終わるファイルノードを探し、そのファイルのImageSharpノードを作成する。gatsby-transformer-sharpなど。</dd>
             <dt>コメントプラグイン</dt>
             <dd>Markdownに機能を追加するために使用する。gatsby-remark-images、gatsby-remark-prismjs、gatsby-remark-autolink-headers。</dd>
             <dt>MDXプラグイン</dt>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/9/index.html">
+  <title>【GatsbyJS入門】GatsbyImageによる動的な画像表示｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="プラグインgatsby-transformer-sharpの導入。GatsbyImageコンポーネントを利用して、動的に画像を表示する方法。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【GatsbyJS入門】GatsbyImageによる動的な画像表示">
+  <meta property="og:description" content="プラグインgatsby-transformer-sharpの導入。GatsbyImageコンポーネントを利用して、動的に画像を表示する方法。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/9/index.html">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">GatsbyImageによる動的な画像表示</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the process">概要</h2>
+        <h3 class="heading-3">要点</h3>
+        <section class="content">
+          <ol>
+            <li>「<a href="../8/index.html">各ブログページの作成方法</a>」の続き。今回は、各ブログページにヒーロー画像を表示する方法。まず、各ブログページごとに、ディレクトリを作成する。ディレクトリ名は、各ブログページのファイル名（slug）にする。</li>
+            <li>各ブログページのファイルを各ディレクトリへ移動する。各ブログページのファイル名を、index.mdxへ変更する。</li>
+            <li><a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a>などの画像素材サイトを利用して、ヒーロー画像を用意する。ヒーロー画像をそれぞれ各ディレクトリへ入れる。</li>
+            <li>フロントマターに、画像に関する情報を書き加える。</li>
+            <li>トランスフォーマープラグイン gatsby-transformer-sharpをインストールする。</li>
+            <li>GraphiQLインターフェースで、ヒーロー画像に関する情報を取得できることを確認。</li>
+            <li>{mdx.slug}.jsを次のようにする。
+              <ul>
+                <li>GatsbyImageとgetImageを importする。</li>
+                <li>&lt;GatsbyImage&gt;を使って、画像を表示する。画像によってはクレジットを入れる。</li>
+                <li>上述 GraphiQLインターフェースで試したクエリを定数 queryへ代入する。</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+        <!-- /.content -->
+        
+        <section class="content">
+          <h3 class="heading-3">手順</h3>
+
+          <section>
+            <h4 class="heading-4">フロントマターの例</h4>
+<pre class="code">
+<code>
+blog/my-first-post/index.mdx
+---
+title: "My First Post"
+date: "2021-07-23"
+hero_image: "./christopher-ayme-ocZ-_Y7-Ptg-unsplash.jpg"
+hero_image_alt: "A gray pitbull relaxing on the sidewalk with its tongue hanging out"
+hero_image_credit_text: "Christopher Ayme"
+hero_image_credit_link: "https://unsplash.com/photos/ocZ-_Y7-Ptg"
+---
+
+blog/another-post/index.mdx
+---
+title: "Another Post"
+date: "2021-07-24"
+hero_image: "./anthony-duran-eLUBGqKGdE4-unsplash.jpg"
+hero_image_alt: "A grey and white pitbull wading happily in a pool"
+hero_image_credit_text: "Anthony Duran"
+hero_image_credit_link: "https://unsplash.com/photos/eLUBGqKGdE4"
+---
+
+blog/yet-another-post/index.mdx
+---
+title: "Yet Another Post"
+date: "2021-07-25"
+hero_image: "./jane-almon-7rriIaBH6JY-unsplash.jpg"
+hero_image_alt: "A white pitbull wearing big googly-eye glasses"
+hero_image_credit_text: "Jane Almon"
+hero_image_credit_link: "https://unsplash.com/photos/7rriIaBH6JY"
+---
+</code>
+</pre>
+          </section>
+
+          <section>
+            <h4 class="heading-4">コマンドライン</h4>
+<pre class="code">
+<code>
+$ npm install gatsby-transformer-sharp
+</code>
+</pre>
+          </section>
+
+          <section>
+            <h4 class="heading-4">GraphiQLインターフェース</h4>
+<pre class="code">
+<code>
+query ($id: String) {
+  mdx(id: {eq: $id}) {
+    frontmatter {
+      title
+      date(formatString: "MMMM D, YYYY")
+      hero_image_alt
+      hero_image_credit_link
+      hero_image_credit_text
+      hero_image {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+    body
+  }
+}
+</code>
+</pre>
+          </section>
+
+          <section>
+            <h4 class="heading-4">{mdx.slug}.js</h4>
+<pre class="code">
+<code>
+import * as React from 'react';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Layout from '../../components/layout';
+
+const BlogPost = ({ data }) =&gt; {
+  const image = getImage(data.mdx.frontmatter.hero_image);
+  return (
+    &lt;Layout pageTitle={data.mdx.frontmatter.title}&gt;
+      &lt;p&gt;Posted: {data.mdx.frontmatter.date}&lt;/p&gt;
+      &lt;GatsbyImage
+        image={image}
+        alt={data.mdx.frontmatter.hero_image_alt}
+      /&gt;
+      &lt;p&gt;
+        Photo Credit:{" "}
+        &lt;a href={data.mdx.frontmatter.hero_image_credit_link}&gt;
+          {data.mdx.frontmatter.hero_image_credit_text}
+        &lt;/a&gt;
+      &lt;/p&gt;
+      &lt;MDXRenderer&gt;
+        {data.mdx.body}
+      &lt;/MDXRenderer&gt;
+    &lt;/Layout&gt;
+  )
+};
+
+export const query = graphql`
+  query ($id: String) {
+    mdx(id: {eq: $id}) {
+      body
+      frontmatter {
+        title
+        date(formatString: "MMMM D, YYYY")
+        hero_image_alt
+        hero_image_credit_link
+        hero_image_credit_text
+        hero_image {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default BlogPost;
+</code>
+</pre>
+          </section>
+
+
+      </section>
+      <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>画像ファイルが壊れていると次のようなエラーが出る。「gatsby-plugin-sharp couldn't determine dimensions for file:～中略～This file is unusable and is most likely corrupt.」</li>
+            <li>プラグインgatsby-plugin-imageで表示していたトップページの画像が一時的に表示されなくなった。「gatsby clean」と「gatsby develop」などを繰り返しているうちに表示されるようになった。原因は不明。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-7/" target="_blank" rel="noopener noreferrer">Part 7: Add Dynamic Images from Data | Gatsby</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+      
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-10-22">2021年10月22日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -43,7 +43,7 @@
             <li>利用する Starterの内容によっては、ダウンロードに時間がかかるかもしれない。</li>
             <li>ダウンロードが完了したら作成したディレクトリへ移動し、GatsbyJS開発環境を起ち上げる。</li>
             <li>ブラウザに、http://localhost:8000/ を入力して表示する。今回の場合は、「Hello World!」と表示されれば成功。</li>
-            <li>Gitの対象から除外したい場合は、.gitignoreを修正。</li>
+            <li>Gitの対象から除外したい場合は、.gitignoreを編集。あるいは、VSCodeのソース管理にて右クリックして、「.gitignoreに追加」でも良いかもしれない。</li>
           </ol>
         </section>
         <!-- /.content -->
@@ -51,6 +51,8 @@
         <section class="content">
           <h3 class="heading-3">GatsbyJSのインストール手順（Windowsの場合）</h3>
 
+          <section>
+            <h4 class="heading-4">コマンドライン</h4>
 <pre class="code">
 <code>
 // GatsbyJSの CLIツールをインストール。
@@ -68,8 +70,24 @@ $ cd gatsby-test
 $ gatsby develop
 </code>
 </pre>
-      </section>
-      <!-- /.content -->
+          </section>
+
+          <section>
+            <h4 class="heading-4">.gitignoreの編集例</h4>
+<pre class="code">
+<code>
+#追加
+.prettier*
+gatsby-config.js
+*.json
+*.md
+src/
+</code>
+</pre>
+          </section>
+
+        </section>
+        <!-- /.content -->
 
       </section>
       <!-- /.contents -->

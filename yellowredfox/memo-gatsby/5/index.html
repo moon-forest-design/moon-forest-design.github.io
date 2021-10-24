@@ -35,13 +35,13 @@
         <h3 class="heading-3">要点</h3>
         <section class="content">
           <ol>
-            <li>gatsby-config.jsファイルに、siteMetadataのtitleを追加する。</li>
+            <li>gatsby-config.jsファイルに、siteMetadataの titleを追加する。</li>
             <li>GraphiQLインターフェースで確認。エクスプローラーで siteの siteMetadataの titleにチェックし実行ボタンを押す。「title: "サイト名"」が表示されれば OK。</li>
-            <li>例えば、header.jsでサイト名を使用したい場合は次のようにする。
+            <li>例えば、layout.jsでサイト名を使用したい場合は次のようにする。
               <ul>
                 <li>useStaticQueryと graphqlを importする。</li>
                 <li>useStaticQueryを使って、GraphQLのデータを定数 dataへ代入する。</li>
-                <li>サイト名を表示したい箇所に、{ data.site.siteMetadata.title }を記述する。</li>
+                <li>サイト名を表示したい箇所に、{ data.site.siteMetadata.title }を記述する。ここでは、title要素とheader要素にて使用。</li>
               </ul>
             </li>
           </ol>
@@ -70,18 +70,30 @@ module.exports = {
           </section>
 
           <section>
-            <h4 class="heading-4">header.js</h4>
+            <h4 class="heading-4">GraphiQLインターフェース</h4>
 <pre class="code">
 <code>
-import * as React from 'react'
+query MyQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}  
+</code>
+</pre>
+          </section>
 
-// Step 1: Import the useStaticQuery hook and graphql tag
-import { useStaticQuery, graphql } from 'gatsby'
+          <section>
+            <h4 class="heading-4">layout.js</h4>
+<pre class="code">
+<code>
+import * as React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
+import * as style from './layout.module.css';
 
-const Header = () => {
-  /* Step 2: Use the useStaticQuery hook and
-    graphql tag to query for data
-    (The query gets run at build time) */
+const Layout = ({ pageTitle, children }) =&gt; {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -90,17 +102,31 @@ const Header = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
-    &lt;header&gt;
-      {/* Step 3: Use the data in your component */}
-      &lt;h1&gt;{ data.site.siteMetadata.title }&lt;/h1&gt;
-    &lt;/header&gt;
+    &lt;div className={style.container}&gt;
+      &lt;title&gt;{pageTitle} | {data.site.siteMetadata.title}&lt;/title&gt;
+      &lt;header className={style.siteTitle}&gt;{data.site.siteMetadata.title}&lt;/header&gt;
+      &lt;nav&gt;
+        &lt;ul className={style.navLinks}&gt;
+          &lt;li className={style.navLinkItem}&gt;
+            &lt;Link to="/" className={style.navLinkText}&gt;Home&lt;/Link&gt;
+          &lt;/li&gt;
+          &lt;li className={style.navLinkItem}&gt;
+            &lt;Link to="/about" className={style.navLinkText}&gt;About&lt;/Link&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+      &lt;main&gt;
+        &lt;h1 className={style.heading}&gt;{pageTitle}&lt;/h1&gt;
+        {children}
+      &lt;/main&gt;
+    &lt;/div&gt;
   )
-}
+};
 
-export default Header
+export default Layout;
 </code>
 </pre>
           </section>

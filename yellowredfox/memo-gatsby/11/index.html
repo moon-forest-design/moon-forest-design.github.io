@@ -6,23 +6,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
-  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/3/index.html">
-  <title>【GatsbyJS入門】StaticImageによる画像表示｜キアカラボ</title>
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/11/index.html">
+  <title>【GatsbyJS入門】Layoutコンポーネント｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="プラグインgatsby-plugin-imageの導入。StaticImageコンポーネントを利用して、画像を表示する方法。">
+  <meta name="description" content="GatsbyJSサイトでLayoutコンポーネントの利用する方法。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【GatsbyJS入門】StaticImageによる画像表示">
-  <meta property="og:description" content="プラグインgatsby-plugin-imageの導入。StaticImageコンポーネントを利用して、画像を表示する方法。">
+  <meta property="og:title" content="【GatsbyJS入門】Layoutコンポーネント">
+  <meta property="og:description" content="GatsbyJSサイトでLayoutコンポーネントの利用する方法。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/3/index.html">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/11/index.html">
   <meta name="robots" content="noindex">
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">StaticImageによる画像表示</h1>
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">Layoutコンポーネント</h1>
     </div>
   </header>
 
@@ -35,56 +35,65 @@
         <h3 class="heading-3">要点</h3>
         <section class="content">
           <ol>
-            <li>右クリックをして管理者権限で Git Bashを起動する。</li>
-            <li>npmコマンドで、GatsbyJSのプラグインgatsby-plugin-imageをインストールする。gatsby-plugin-imageをインストールする場合は、あわせて gatsby-plugin-sharpとgatsby-source-filesystemもインストールしなければならない。これら 2つは、「peer dependencies（同等依存）」しているプラグイン。</li>
-            <li>gatsby-config.jsファイルに gatsby-plugin-imageと gatsby-plugin-sharpプラグインに関する設定情報を追加する。</li>
-            <li>src下に画像用のディレクトリ（例：img）を作成し、画像を入れておく。（例：logo-yellowredfox.png）</li>
-            <li>index.jsなどのファイルに、import 及び表示したい箇所に &lt;StaticImage /&gt;を記述。alt属性や src属性を指定する。意味は、img要素と同様。</li>
-
+            <li>src/components/下に layout.jsファイルを作成する。index.jsや about.jsから引数（props）を受け取り、引数を使って生成した要素群を returnする関数。</li>
+            <li>src/pages/下の index.jsから &lt;Layout&gt;を使って呼び出す。pageTitleのように直接明示して引数を渡す形、&lt;Layout&gt;～&lt;/Layout&gt;の中に記述するだけで引数 childrenとして渡される形、2つの方法がある。</li>
           </ol>
         </section>
         <!-- /.content -->
         
         <section class="content">
-          <h3 class="heading-3">プラグインgatsby-plugin-imageの導入手順</h3>
+          <h3 class="heading-3">手順</h3>
 
           <section>
-            <h4 class="heading-4">コマンドライン</h4>
+            <h4 class="heading-4">layout.js</h4>
 <pre class="code">
 <code>
-// プラグインgatsby-plugin-imageをインストール。
-$ npm install gatsby-plugin-image gatsby-plugin-sharp gatsby-source-filesystem
+import * as React from 'react'
+import { Link } from 'gatsby'
+
+const Layout = ({ pageTitle, children }) =&gt; {
+  return (
+    &lt;div&gt;
+      &lt;title&gt;{pageTitle}&lt;/title&gt;
+      &lt;nav&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;Link to="/"&gt;Home&lt;/Link&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;Link to="/about"&gt;About&lt;/Link&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+      &lt;main&gt;
+        &lt;h1&gt;{pageTitle}&lt;/h1&gt;
+        {children}
+      &lt;/main&gt;
+    &lt;/div&gt;
+  )
+}
+
+export default Layout
 </code>
 </pre>
           </section>
 
           <section>
-            <h4 class="heading-4">gatsby-config.js</h4>
+            <h4 class="heading-4">index.js</h4>
 <pre class="code">
 <code>
-// gatsby-config.jsファイルに設定を追加
-module.exports = {
-  plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-  ],
-};
+import * as React from 'react'
+import Layout from '../components/layout'
+
+const IndexPage = () =&gt; {
+  return (
+    &lt;Layout pageTitle="Home Page"&gt;
+      &lt;p&gt;I'm making this by following the Gatsby Tutorial.&lt;/p&gt;
+    &lt;/Layout&gt;
+  )
+}
+
+export default IndexPage
 </code>
 </pre>
           </section>
 
-          <section>
-            <h4 class="heading-4">index.jp</h4>
-<pre class="code">
-<code>
-// importする
-import { StaticImage } from 'gatsby-plugin-image';
-
-// 表示したい場所に&lt;StaticImage /&gt;で指定（以下例）
-&lt;StaticImage alt="黄赤狐ロゴ" src="../img/logo-yellowredfox.png" /&gt;
-</code>
-</pre>
-          </section>
 
       </section>
       <!-- /.content -->
@@ -97,7 +106,7 @@ import { StaticImage } from 'gatsby-plugin-image';
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>プラグインgatsby-plugin-imageを使うことで、パフォーマンスはより良くなるそうだ。また、自動的に最適化されて、レスポンシブ対応になるとのこと。すばらしい。</li>
+            <li>GatsbyJSでは、各ページの重複する部分を外部ファイルに書き出しておいて importすることができる。これらは、ビルディングブロックコンポーネントと呼ばれている。今回は、Layoutコンポーネントを試した。headerや footerも同様の措置を行う。</li>
           </ul>
         </section>
         <!-- /.content -->
@@ -105,7 +114,7 @@ import { StaticImage } from 'gatsby-plugin-image';
           <h3 class="heading-3">参考資料</h3>
           <p>参考にさせていただきました。ありがとうございました。</p>
           <ul>
-            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-3/" target="_blank" rel="noopener noreferrer">Part 3: Add Features with Plugins | Gatsby</a></li>
+            <li><a href="https://www.gatsbyjs.com/docs/tutorial/part-2/" target="_blank" rel="noopener noreferrer">Part 2: Use and Style React Components | Gatsby</a></li>
           </ul>
         </section>
         <!-- /.content -->
@@ -114,7 +123,7 @@ import { StaticImage } from 'gatsby-plugin-image';
       
       <div class="postFooter">
         <div class="postDate">
-          作成日: <time class="releaseDate" datetime="2021-10-14">2021年10月14日</time>
+          作成日: <time class="releaseDate" datetime="2021-10-24">2021年10月24日</time>
         </div>
         <div class="postAuthor">
           作成者: イールド

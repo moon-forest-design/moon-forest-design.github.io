@@ -35,15 +35,17 @@
         <h3 class="heading-3">要点</h3>
         <section class="content">
           <ol>
-            <li>「<a href="../8/index.html">各ブログページの作成方法</a>」の続き。今回は、各ブログページにヒーロー画像を表示する方法。まず、各ブログページごとに、ディレクトリを作成する。ディレクトリ名は、各ブログページのファイル名（slug）にする。</li>
-            <li>各ブログページのファイルを各ディレクトリへ移動する。各ブログページのファイル名を、index.mdxへ変更する。</li>
+            <li>「<a href="../8/index.html">各ブログページの作成方法</a>」の続き。今回は、各ブログページにヒーロー画像を表示する方法。まず、各mdxブログページごとに、ディレクトリを作成する。ディレクトリ名は、各mdxブログページのファイル名（slug）にする。</li>
+            <li>各mdxブログページのファイルを各ディレクトリへ移動する。各mdxブログページのファイル名を、index.mdxへ変更する。</li>
             <li><a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a>などの画像素材サイトを利用して、ヒーロー画像を用意する。ヒーロー画像をそれぞれ各ディレクトリへ入れる。</li>
             <li>フロントマターに、画像に関する情報を書き加える。</li>
             <li>トランスフォーマープラグイン gatsby-transformer-sharpをインストールする。</li>
+            <li>gatsby-config.jsに gatsby-transformer-sharpを追加。</li>
             <li>GraphiQLインターフェースで、ヒーロー画像に関する情報を取得できることを確認。</li>
             <li>{mdx.slug}.jsを次のようにする。
               <ul>
-                <li>GatsbyImageとgetImageを importする。</li>
+                <li>GatsbyImageと getImageを importする。</li>
+                <li>定数imageに「getImage(data.mdx.frontmatter.hero_image)を代入して使いやすいようにしておく。</li>
                 <li>&lt;GatsbyImage&gt;を使って、画像を表示する。画像によってはクレジットを入れる。</li>
                 <li>上述 GraphiQLインターフェースで試したクエリを定数 queryへ代入する。</li>
               </ul>
@@ -59,7 +61,7 @@
             <h4 class="heading-4">フロントマターの例</h4>
 <pre class="code">
 <code>
-blog/my-first-post/index.mdx
+// blog/my-first-post/index.mdx
 ---
 title: "My First Post"
 date: "2021-07-23"
@@ -69,7 +71,7 @@ hero_image_credit_text: "Christopher Ayme"
 hero_image_credit_link: "https://unsplash.com/photos/ocZ-_Y7-Ptg"
 ---
 
-blog/another-post/index.mdx
+// blog/another-post/index.mdx
 ---
 title: "Another Post"
 date: "2021-07-24"
@@ -79,7 +81,7 @@ hero_image_credit_text: "Anthony Duran"
 hero_image_credit_link: "https://unsplash.com/photos/eLUBGqKGdE4"
 ---
 
-blog/yet-another-post/index.mdx
+// blog/yet-another-post/index.mdx
 ---
 title: "Yet Another Post"
 date: "2021-07-25"
@@ -96,7 +98,34 @@ hero_image_credit_link: "https://unsplash.com/photos/7rriIaBH6JY"
             <h4 class="heading-4">コマンドライン</h4>
 <pre class="code">
 <code>
-$ npm install gatsby-transformer-sharp
+npm install gatsby-transformer-sharp
+</code>
+</pre>
+          </section>
+
+          <section>
+            <h4 class="heading-4">gatsby-config.js</h4>
+<pre class="code">
+<code>
+module.exports = {
+  /* Your site config here */
+  siteMetadata: {
+    title: "GatsbyJS TEST4",
+  },
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `blog`,
+        path: `${__dirname}/blog`,
+      }
+    },
+    "gatsby-plugin-mdx",
+    "gatsby-transformer-sharp",
+  ],
+}
 </code>
 </pre>
           </section>
@@ -107,6 +136,7 @@ $ npm install gatsby-transformer-sharp
 <code>
 query ($id: String) {
   mdx(id: {eq: $id}) {
+    body
     frontmatter {
       title
       date(formatString: "MMMM D, YYYY")
@@ -119,7 +149,6 @@ query ($id: String) {
         }
       }
     }
-    body
   }
 }
 </code>

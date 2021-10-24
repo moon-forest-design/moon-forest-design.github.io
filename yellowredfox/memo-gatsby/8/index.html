@@ -35,9 +35,17 @@
         <h3 class="heading-3">要点</h3>
         <section class="content">
           <ol>
-            <li>「<a href="../7/index.html">ブログコンテンツの表示方法</a>」の続き。コンテンツ内容をすべて blog.jsに表示していたが、各ブログページに切り分けて表示する。まず、src/pages/下に、ディレクトリ blogを作成する。</li>
+            <li>「<a href="../7/index.html">ブログコンテンツの表示方法</a>」の続き。コンテンツ内容（投稿タイトルと日付）を blog.jsに表示していたが、今回は Filesystem Route APIとクエリ変数を利用して、各ブログページに切り分けて表示する。まず、src/pages/下に、ディレクトリ blogを作成する。</li>
             <li>src/pages/下にあったblog.jsを、上述で作成したディレクトリ（src/pages/blog）下へ移動する。移動したら、ファイル名 blog.jsを index.jpへ変更する。</li>
-            <li>index.jp（src/pages/blog/index.jp）を編集する。importしている Layoutのパスを変更。&lt;Layout&gt;内に Array.mapを使って各ブログ情報を繰り返し表示。各ブログ情報を取得するためのクエリ情報を指定。&lt;Link&gt;にて、to={`/blog/${node.slug}`}とすることで、該当する slugを取得してうまいことページが表示される。</li>
+            <li>index.jp（src/pages/blog/index.jp）を編集する。
+              <ul>
+                <li>場所が変わったので importしている Layoutのパスを変更。</li>
+                <li>gatsbyからの importに Link追加。</li>
+                <li>&lt;Layout&gt;内に Array.mapを使って各ブログページの情報を繰り返し表示。</li>
+                <li>&lt;Link&gt;にて、to={`/blog/${node.slug}`}とすることで、該当する slugを取得してうまいことページが表示される。</li>
+                <li>各ブログ情報を取得するためのクエリ情報 queryを指定。slugを指定することで、&lt;Link&gt;にいきる。</li>
+              </ul>
+            </li>
             <li>src/pages/blog/下に {mdx.slug}.jsを作成。前回「<a href="../7/index.html">ブログコンテンツの表示方法</a>」で使用した MDXRendererを使ってコンテンツ内容を展開する。クエリ変数 $idを使うことでうまいこと該当するページが表示される。</li>
           </ol>
         </section>
@@ -47,7 +55,7 @@
           <h3 class="heading-3">手順</h3>
 
           <section>
-            <h4 class="heading-4">index.jp</h4>
+            <h4 class="heading-4">src/pages/blog/index.jp</h4>
 <pre class="code">
 <code>
 import * as React from 'react';
@@ -94,7 +102,7 @@ export default BlogPage;
           </section>
 
           <section>
-            <h4 class="heading-4">{mdx.slug}.js</h4>
+            <h4 class="heading-4">src/pages/blog/{mdx.slug}.js</h4>
 <pre class="code">
 <code>
 import * as React from 'react';

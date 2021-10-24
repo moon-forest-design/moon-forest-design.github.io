@@ -37,12 +37,13 @@
           <ol>
             <li>プロジェクトディレクトリの最上位（gatsby-config.jsなどがある場所）に、blogというディレクトリを作成する。</li>
             <li>blogディレクトリ内に、拡張子.mdxのファイルを、3つ作成する。（例：post1.mdx、post2.mdx、post3.mdx）</li>
-            <li>ソースプラグイン gatsby-source-filesystemがインストールされているか確認する。確認の方法は、package-lock.jsonを見ればいいのかな？　インストールしていない場合は、インストールする。おそらく必要になるであろう<a href="../3/index.html">プラグイン gatsby-plugin-imageとあわせてインストール</a>してしまうといい。</li>
-            <li>gatsby-config.jsファイルに設定を追加する。gatsby-source-filesystemを利用して blogディレクトリに関する情報（name、path）などの情報を取得するよう記述する。</li>
+            <li>ソースプラグイン gatsby-source-filesystemがインストールされているか確認する。確認の方法は「gatsby info」でいいかな。インストールしていない場合は、インストールする。おそらく必要になるであろう<a href="../3/index.html">プラグイン gatsby-plugin-imageとあわせてインストール</a>してしまうといい。</li>
+            <li>gatsby-config.jsファイルに設定を追加する。gatsby-source-filesystemを利用して blogディレクトリに関する情報（name、path）などを取得できるよう記述する。</li>
             <li>GraphiQLインターフェースで確認。エクスプローラーで allFileの nodesの nameにチェックし実行ボタンを押す。上述にて作成した mdxファイル名が表示されれば OK。</li>
-            <li>例えば、src/pages/下に blog.jsを作成し、次のようにする。
+            <li>例えば、src/pages/下に blog.jsを作成し、次のようにする。mdxファイル名が表示されれば OK。
               <ul>
                 <li>graphqlを importする。</li>
+                <li>クエリデータを、引数として受け取る。{ data }</li>
                 <li>Array.mapを使って、{node.name}をファイルの数だけ繰り返し記述する。</li>
                 <li>GraphQLのデータを定数 queryへ代入する。</li>
               </ul>
@@ -80,6 +81,26 @@ module.exports = {
           </section>
 
           <section>
+            <h4 class="heading-4">GraphiQLインターフェース</h4>
+<pre class="code">
+<code>
+query MyQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  allFile {
+    nodes {
+      name
+    }
+  }
+}  
+</code>
+</pre>
+          </section>
+
+          <section>
             <h4 class="heading-4">blog.js</h4>
 <pre class="code">
 <code>
@@ -87,7 +108,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 
-const BlogPage = () =&gt; {
+const BlogPage = ({ data }) =&gt; {
   return (
     &lt;Layout pageTitle="My Blog Posts"&gt;
       &lt;ul&gt;

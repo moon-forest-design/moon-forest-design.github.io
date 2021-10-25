@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-devenv/2/index.html">
+  <title>ターミナルのコマンドまとめ｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="ターミナルでよく使うコマンドをまとめておく。UNIX系、npmなど。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="ターミナルのコマンドまとめ">
+  <meta property="og:description" content="ターミナルでよく使うコマンドをまとめておく。UNIX系、npmなど。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-devenv/2/index.html">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">ターミナルの<br class="brNone">コマンドまとめ</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the GatsbyJS">概要</h2>
+        <section class="content">
+          <h3 class="heading-3">ターミナルとは？</h3>
+          <ul>
+            <li>コマンドと呼ばれる文字を入力することで、コンピュータに命令を行う方法。もしくはそのソフトウェア群。簡素な真っ黒い画面に入力を行う形になるため、コマンドを知らないと何もできない。同じような意味あいで、コマンドラインと呼ばれることもある。</li>
+            <li>ターミナル型のソフトウェア形式は CUI（Character User Interface）と呼ばれる。対して、コマンドを知らなくてもマウスなどを操作することで利用できるソフトウェア形式は GUI（Graphical User Interface）と呼ばれる。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 id="terms" class="heading-2" data-subheading="Note about Terminal command">主なコマンド</h2>
+
+        <section class="content">
+          <h3 class="heading-3">UNIX系コマンド</h3>
+          <dl>
+            <dt>cd</dt>
+            <dd>ディレクトリ間の移動。「cd ディレクトリ名」で、移動したいディレクトリへカレントが移る。「cd」だけ打つと、ホームディレクトリへ移動。</dd>
+            <dt>ls</dt>
+            <dd>ディレクトリ内にあるファイルを確認。「ls」はファイル名だけ表示。「ls -l」はファイル名と詳細を表示。「ls -al」は先頭が .（ドット）ではじまるファイルも含めて表示。 
+            </dd>
+            <dt>mkdir</dt>
+            <dd>ディレクトリを作成。「mkdir ディレクトリ名」として作成する。</dd>
+            <dt>rm</dt>
+            <dd>ファイル、あるいはディレクトリの削除。「rm -rf ディレクトリ名」とすれば、削除確認がないので簡便。</dd>
+            <dt>touch</dt>
+            <dd>空ファイルを作成。「touch ファイル名」とすれば、新規に空のファイルを作成する。</dd>
+            <dt>find</dt>
+            <dd>ファイル、あるいはディレクトリを探す。</dd>
+            <dt>chmod</dt>
+            <dd>ファイル、あるいはディレクトリのパーミッション変更。</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">npmコマンド</h3>
+          <dl>
+            <dt>npm -v</dt>
+            <dd>npmのバージョンを確認。</dd>
+            <dt>npm init</dt>
+            <dd>npmで管理するプロジェクトディレクトリを作成する。自動的に package.jsonファイルが生成される。質問にすべて Enterで応えるのが手間なら「npm init -y」とすれば簡便。</dd>
+            <dt>npm install</dt>
+            <dd>パッケージをインストールする。カレントディレクトリへ移動し、「npm install」とだけ打ち込むと package.jsonに記載されたパッケージが一括インストールされる。「npm install パッケージ名」とすれば指定したパッケージのみインストールされる。オプション「-g」をつければ、グローバルインストールになる。</dd>
+            <dt>npm uninstall</dt>
+            <dd>パッケージをアンインストールする。カレントディレクトリへ移動し、「npm uninstall パッケージ名」とすればアンインストールされる。</dd>
+            <dt>npm list</dt>
+            <dd>インストール済みのパッケージ一覧を表示する。</dd>
+            <dt>npm outdated</dt>
+            <dd>インストール済みのパッケージより新しいバージョンがあるか確認する。</dd>
+            <dt>npm update</dt>
+            <dd>パッケージをアップデートする。「npm update パッケージ名」とすればアップデートされる。</dd>
+            <dt>npm cache</dt>
+            <dd>キャッシュに関するコマンド。パッケージ関係で原因不明のエラーが出た場合は、「npm cache clean」としてキャッシュを削除するとうまくいくことがある。</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+          <h3 class="heading-3">GatsbyJSコマンド</h3>
+          <p>※付きは、プロジェクトのルートディレクトリにて実行のこと。</p>
+          <dl>
+            <dt>gatsby new</dt>
+            <dd>Gatsbyサイトを作成する。オプションを指定しない場合は対話型。</dd>
+            <dt>gatsby develop</dt>
+            <dd>開発サーバを起動する。（※）</dd>
+            <dt>gatsby build</dt>
+            <dd>デプロイ用にコンパイルする。（※）</dd>
+            <dt>gatsby serve</dt>
+            <dd>「gatsby build」して生成されたサイトを、ローカル開発環境で確認する。（※）</dd>
+            <dt>gatsby clean</dt>
+            <dd>.cacheディレクトリと publicディレクトリ内を消去する。（※）</dd>
+            <dt>gatsby info</dt>
+            <dd>バグを報告するときに必要となる環境情報を表示する。OSや CPU、Node.js、npmのバージョン情報、それと、インストール済みのパッケージ情報も確認できる。（※）</dd>
+          </dl>
+        </section>
+        <!-- /.content -->
+
+
+      </section>
+      <!-- /.contents -->
+
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>矢印キー「↑」を使うと、前に打ち込んだコマンドを表示できるので便利だ。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://www.tohoho-web.com/ex/npm.html" target="_blank" rel="noopener noreferrer">npm入門 - とほほのWWW入門</a></li>
+            <li><a href="https://qiita.com/standard-software/items/2ac49a409688733c90e7" target="_blank" rel="noopener noreferrer">npm よく使うコマンドまとめ - Qiita</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+      
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-10-25">2021年10月25日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

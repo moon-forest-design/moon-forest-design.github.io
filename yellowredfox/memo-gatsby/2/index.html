@@ -87,6 +87,23 @@ static/
 </pre>
           </section>
 
+          <section>
+            <h4 class="heading-4">.gitコマンド例</h4>
+<pre class="code">
+<code>
+# ファイルのキャッシュを削除する場合
+git rm --cached index.jp
+
+# ディレクトリのキャッシュを削除する場合
+git rm --cached -r src/
+
+# .gitignoreを反映させるため addして、コミットする
+git add .gitignore
+git commit -m ".gitignore（除外指定）を追加"
+</code>
+</pre>
+          </section>
+
         </section>
         <!-- /.content -->
 
@@ -109,6 +126,7 @@ static/
             <li><a href="https://tech.bitbank.cc/20210201/" target="_blank" rel="noopener noreferrer">GatsbyJS 現代のWordpress</a></li>
             <li><a href="https://zenn.dev/tomokiya/books/4b13342f6d878b93e06c/viewer/8d138c178851c9b27a58" target="_blank" rel="noopener noreferrer">Gatsbyの導入｜Gatsby入門</a></li>
             <li><a href="https://reffect.co.jp/react/gatsby-basic-tutorial-for-beginners" target="_blank" rel="noopener noreferrer">基礎から始めるGatsbyJS入門 | アールエフェクト</a></li>
+            <li><a href="https://sutara79.hatenablog.com/entry/2015/07/21/115842" target="_blank" rel="noopener noreferrer">Git: バージョン管理の対象から外したいファイルを「.gitignore」に記述する - すたらブログ</a></li>
           </ul>
         </section>
         <!-- /.content -->

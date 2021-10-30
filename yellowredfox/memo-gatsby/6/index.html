@@ -38,7 +38,7 @@
             <li>プロジェクトディレクトリの最上位（gatsby-config.jsなどがある場所）に、blogというディレクトリを作成する。</li>
             <li>blogディレクトリ内に、拡張子.mdxのファイルを、3つ作成する。（例：post1.mdx、post2.mdx、post3.mdx）</li>
             <li>ソースプラグイン gatsby-source-filesystemがインストールされているか確認する。確認の方法は「gatsby info」でいいかな。インストールしていない場合は、インストールする。おそらく必要になるであろう<a href="../3/index.html">プラグイン gatsby-plugin-imageとあわせてインストール</a>してしまうといい。</li>
-            <li>gatsby-config.jsファイルに設定を追加する。gatsby-source-filesystemを利用して blogディレクトリに関する情報（name、path）などを取得できるよう記述する。</li>
+            <li>gatsby-config.jsファイルに設定を追加する。gatsby-source-filesystemを利用して blogディレクトリに関する情報（name、path）などを取得できるよう記述する。nameは、表示するときのディレクトリ名（URLの一部）として使用される。例えば、blogであれば https://sample.com/blogとなる。pathは、開発の段階における実際のフォルダの場所。プロジェクトディレクトリ下の contentにあるのなら「${__dirname}/content」のように書く。nameと pathのディレクトリ名が一致する必要はない。</li>
             <li>GraphiQLインターフェースで確認。エクスプローラーで allFileの nodesの nameにチェックし実行ボタンを押す。上述にて作成した mdxファイル名が表示されれば OK。</li>
             <li>例えば、src/pages/下に blog.jsを作成し、次のようにする。mdxファイル名が表示されれば OK。
               <ul>
@@ -71,7 +71,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `blog`,
-        path: `${__dirname}/blog`,
+        path: `${__dirname}/content`,
       }
     },
   ],
@@ -151,6 +151,7 @@ export default BlogPage
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>ファイル名を取得できれば、slugとして利用できると思ったが、一般的には allMdx - nodes - slugを使うらしい。</li>
+            <li>gatsby-config.jsファイルで指定する pathは、src下に置くほうが良いかなと感じた。編集するファイルはほぼ src下にあるとしたほうが把握しておきやすい。しかし、できるだけ役割を分離するのであればプロジェクトディレクトリ下に直接置くほうが良いのかもしれない。とくに、ホームページを制作する人と、コンテンツを作る人が別であればそのほうが良いだろう。</li>
           </ul>
         </section>
         <!-- /.content -->

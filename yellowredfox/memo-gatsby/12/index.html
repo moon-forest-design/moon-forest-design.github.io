@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/12/index.html">
+  <title>【GatsbyJS入門】head要素のmetaデータ設定｜キアカラボ</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="プラグインgatsby-plugin-react-helmetとreact-helmetを導入し、head要素のmetaデータを設定する方法。OGP含む。">
+  <meta name="author" content="イールド（月の森デザイン）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キアカラボ">
+  <meta property="og:title" content="【GatsbyJS入門】head要素のmetaデータ設定">
+  <meta property="og:description" content="プラグインgatsby-plugin-react-helmetとreact-helmetを導入し、head要素のmetaデータを設定する方法。OGP含む。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/12/index.html">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">head要素のmetaデータ設定</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__inner">
+
+
+      <section class="contents">
+        <h2 id="summary" class="heading-2" data-subheading="A brief description of the process">概要</h2>
+        <h3 class="heading-3">要点</h3>
+        <section class="content">
+          <ol>
+            <li>プラグイン gatsby-plugin-react-helmetと react-helmetをインストールする。</li>
+            <li>gatsby-config.jsに、gatsby-plugin-react-helmetを追加する。</li>
+            <li>components下に seo.jsファイルを作成。</li>
+            <li>index.jsなどのページコンポーネントから seo.jsを呼び出す。</li>
+          </ol>
+        </section>
+        <!-- /.content -->
+        
+        <section class="content">
+          <h3 class="heading-3">手順</h3>
+
+          <section>
+            <h4 class="heading-4">コマンドライン</h4>
+<pre class="code">
+<code>
+npm install gatsby-plugin-react-helmet react-helmet
+</code>
+</pre>
+          </section>
+
+          <section>
+            <h4 class="heading-4">gatsby-config.js</h4>
+<pre class="code">
+<code>
+module.exports = {
+  /* Your site config here */
+  siteMetadata: {
+    title: "GatsbyJS TEST4",
+  },
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `blog`,
+        path: `${__dirname}/content`,
+      }
+    },
+    "gatsby-plugin-mdx",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-react-helmet",
+  ],
+}
+</code>
+</pre>
+          </section>
+
+          <section>
+            <h4 class="heading-4">seo.js</h4>
+<pre class="code">
+<code>
+import React from "react"
+import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
+import { useLocation } from "@reach/router"
+import { useStaticQuery, graphql } from "gatsby"
+
+const SEO = ({ title, description, image, article }) =&gt; {
+  const { pathname } = useLocation()
+  const { site } = useStaticQuery(query)
+
+  const {
+    defaultTitle,
+    titleTemplate,
+    defaultDescription,
+    siteUrl,
+    defaultImage,
+    twitterUsername,
+  } = site.siteMetadata
+
+  const seo = {
+    title: title || defaultTitle,
+    description: description || defaultDescription,
+    image: `${siteUrl}${image || defaultImage}`,
+    url: `${siteUrl}${pathname}`,
+  }
+
+  return (
+    &lt;Helmet title={seo.title} titleTemplate={titleTemplate}&gt;
+      &lt;meta name="description" content={seo.description} /&gt;
+      &lt;meta name="image" content={seo.image} /&gt;
+
+      {seo.url && &lt;meta property="og:url" content={seo.url} /&gt;}
+
+      {(article ? true : null) && &lt;meta property="og:type" content="article" /&gt;}
+
+      {seo.title && &lt;meta property="og:title" content={seo.title} /&gt;}
+
+      {seo.description && (
+        &lt;meta property="og:description" content={seo.description} /&gt;
+      )}
+
+      {seo.image && &lt;meta property="og:image" content={seo.image} /&gt;}
+
+      &lt;meta name="twitter:card" content="summary_large_image" /&gt;
+
+      {twitterUsername && (
+        &lt;meta name="twitter:creator" content={twitterUsername} /&gt;
+      )}
+
+      {seo.title && &lt;meta name="twitter:title" content={seo.title} /&gt;}
+
+      {seo.description && (
+        &lt;meta name="twitter:description" content={seo.description} /&gt;
+      )}
+
+      {seo.image && &lt;meta name="twitter:image" content={seo.image} /&gt;}
+    &lt;/Helmet&gt;
+  )
+}
+
+export default SEO
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  article: PropTypes.bool,
+}
+
+SEO.defaultProps = {
+  title: null,
+  description: null,
+  image: null,
+  article: false,
+}
+
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl: url
+        defaultImage: image
+        twitterUsername
+      }
+    }
+  }
+`
+</code>
+</pre>
+          </section>
+
+          <section>
+            <h4 class="heading-4">index.js</h4>
+<pre class="code">
+<code>
+import * as React from 'react'
+import Layout from '../components/layout'
+
+const IndexPage = () =&gt; {
+  return (
+    &lt;Layout pageTitle="Home Page"&gt;
+      &lt;seo /&gt;
+      &lt;p&gt;I'm making this by following the Gatsby Tutorial.&lt;/p&gt;
+    &lt;/Layout&gt;
+  )
+}
+
+export default IndexPage
+</code>
+</pre>
+          </section>
+
+
+      </section>
+      <!-- /.content -->
+
+      </section>
+      <!-- /.contents -->
+
+      <section class="contents">
+        <h2 class="heading-2" data-subheading="Editor's Note and Document that I used as a reference">編集後記</h2>
+        <section class="content">
+          <h3 class="heading-3">あとがき</h3>
+          <ul>
+            <li>とりあえず下書き。</li>
+          </ul>
+        </section>
+        <!-- /.content -->
+        <section class="content">
+          <h3 class="heading-3">参考資料</h3>
+          <p>参考にさせていただきました。ありがとうございました。</p>
+          <ul>
+            <li><a href="https://www.gatsbyjs.com/docs/add-page-metadata/" target="_blank" rel="noopener noreferrer">ページメタデータの追加</a></li>
+            <li><a href="https://www.gatsbyjs.com/docs/add-seo-component/" target="_blank" rel="noopener noreferrer">SEOコンポーネントの追加</a></li>
+            <li><a href="https://zenn.dev/tomokiya/books/4b13342f6d878b93e06c/viewer/79e7d5655d8d93f59124" target="_blank" rel="noopener noreferrer">SEO｜Gatsby入門</a></li>
+            <li><a href="https://qiita.com/atomyah/items/2624ea4f9394e4a992b8" target="_blank" rel="noopener noreferrer">Gatsby: SEO対策（Twitterカードなどmetaタグ設置） - Qiita</a></li>
+            <li><a href="https://reffect.co.jp/react/gatsby-react-helmet-seo" target="_blank" rel="noopener noreferrer">もう迷わないGatsby SEO メタタグの設定方法 | アールエフェクト</a></li>
+          </ul>
+        </section>
+        <!-- /.content -->
+      </section>
+      <!-- /.contents -->
+      
+      <div class="postFooter">
+        <div class="postDate">
+          作成日: <time class="releaseDate" datetime="2021-10-31">2021年10月31日</time>
+        </div>
+        <div class="postAuthor">
+          作成者: イールド
+        </div>
+      </div>
+      <!-- /.postFooter -->
+
+    </div>
+    <!-- /.main__inner -->
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="profile">
+        <div class="backSignboard">
+          <a class="backSignboard__link" href="https://moon-forest-design.github.io/yellowredfox/index.html">
+            <img class="backSignboard__logo" src="../../img/logo-yellowredfox.png" alt="月の森デザインの漫画キャラクター：黄赤 狐のプロフィールロゴ" width="100" height="100">
+            <h2 class="backSignboard__title">キアカラボ</h2>
+          </a>
+        </div>
+        <p class="office">
+          「<a href="https://moon-forest-design.com/" title="ホームページ制作の「月の森デザイン」" target="_blank" rel="noopener noreferrer">月の森デザイン</a>」のプログラミング研究室
+        </p>
+      </div>
+      <div class="copyright">
+        <p><small>Copyright &copy; 2021 <a class="copyrightHolder" href="https://moon-forest-design.com/" target="_blank" rel="noopener noreferrer">月の森デザイン</a> All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

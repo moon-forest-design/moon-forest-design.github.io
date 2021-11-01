@@ -62,7 +62,12 @@ npm install gatsby-plugin-react-helmet react-helmet
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: "GatsbyJS TEST4",
+    title: "GatsbyJS TEST",
+    titleTemplate: "%s ｜ サンプルだ",
+    description: "サンプルページです", // サイトの説明。
+    url: "https://www.sample.com", // 注：末尾にスラッシュ不要！
+    image: "/ogp.jpg", // staticディレクトリに配置された画像へのパス。※：おそらく OGP画像を指定。
+    twitterUsername: "@sample", // Twitterアカウントがあれば指定。
   },
   plugins: [
     "gatsby-plugin-image",

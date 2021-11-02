@@ -219,7 +219,9 @@ export default IndexPage
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>React.PropTypesは React v15.5から別パッケージになった。使う場合は、prop-typesライブラリをインストールしなければならない。インストールしていないが使えている。なぜでしょう。少し検索しただけでは情報見つからず。</li>
+            <li>React.PropTypesは、React v15.5から別パッケージになった。使いたい場合は、prop-typesライブラリをインストールしなければならない。インストールしていないが使えている。なぜでしょう。「npm list」コマンドで確認したところ、入っているようではある。GatsbyJSに内包されているのかな。少し検索しただけでは情報見つからず。</li>
+            <li>「lang="ja_JP"」を指定すると Warningエラーが出る。「lang="ja-JP"」にすると出ない。正しくは「lang="ja-JP"」のようだ。</li>
+            <li>useLocation()から代入するパス名は「pathname」にしなければいけないようだ。例えば「pathName」にすると undefinedになってしまう。</li>
           </ul>
         </section>
         <!-- /.content -->

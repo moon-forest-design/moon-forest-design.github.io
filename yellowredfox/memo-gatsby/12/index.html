@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../favicon.ico">
   <link rel="canonical" href="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/12/index.html">
-  <title>【GatsbyJS入門】head要素のmetaデータ設定｜キアカラボ</title>
+  <title>【GatsbyJS入門】head要素を設定する方法｜キアカラボ</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="プラグインgatsby-plugin-react-helmetとreact-helmetを導入し、head要素のmetaデータを設定する方法。OGP含む。">
+  <meta name="description" content="プラグインgatsby-plugin-react-helmetとreact-helmetを導入し、head要素のtitleやmetaデータを設定する方法。OGP含む。">
   <meta name="author" content="イールド（月の森デザイン）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="キアカラボ">
-  <meta property="og:title" content="【GatsbyJS入門】head要素のmetaデータ設定">
-  <meta property="og:description" content="プラグインgatsby-plugin-react-helmetとreact-helmetを導入し、head要素のmetaデータを設定する方法。OGP含む。">
+  <meta property="og:title" content="【GatsbyJS入門】head要素を設定する方法">
+  <meta property="og:description" content="プラグインgatsby-plugin-react-helmetとreact-helmetを導入し、head要素のtitleやmetaデータを設定する方法。OGP含む。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://moon-forest-design.github.io/yellowredfox/memo-gatsby/12/index.html">
   <meta name="robots" content="noindex">
@@ -22,7 +22,7 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">head要素のmetaデータ設定</h1>
+      <h1 class="siteTitle">【GatsbyJS入門】<br class="brNone">head要素を設定する方法</h1>
     </div>
   </header>
 
@@ -36,9 +36,21 @@
         <section class="content">
           <ol>
             <li>プラグイン gatsby-plugin-react-helmetと react-helmetをインストールする。</li>
-            <li>gatsby-config.jsに、gatsby-plugin-react-helmetを追加する。</li>
-            <li>components下に seo.jsファイルを作成。</li>
-            <li>index.jsなどのページコンポーネントから seo.jsを呼び出す。</li>
+            <li>gatsby-config.jsに、以下の指定を追加。
+              <ul>
+                <li>siteMetadata</li>
+                <li>gatsby-plugin-react-helmet</li>
+              </ul>
+            </li>
+            <li>components下に seo.jsファイルを作成。
+              <ul>
+                <li>react-helmet、@reach/router、prop-typesをインポートする。react-helmetは head要素を差し込む。@reach/routerは各ページのパスを取得する。prop-typesは型チェックに使用。</li>
+                <li>graphqlではサイト全体、もしくはトップページで使用するデータを取得する。引数からは各ページの個別のデータを取得して展開する。</li>
+                <li>一度オブジェクト seoで必要な形に整形し、さらに helmet要素内で title要素や meta要素として出力（return）している。</li>
+                <li>defaultPropsは初期値設定に使用。</li>
+              </ul>
+            </li>
+            <li>各ページコンポーネント（index.jsなど）から引数を渡して、seo.jsを呼び出す。</li>
           </ol>
         </section>
         <!-- /.content -->
@@ -62,22 +74,29 @@ npm install gatsby-plugin-react-helmet react-helmet
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: "GatsbyJS TEST",
-    titleTemplate: "%s ｜ サンプルだ",
-    description: "サンプルページです", // サイトの説明。
-    url: "https://www.sample.com", // 注：末尾にスラッシュ不要！
-    image: "/ogp.jpg", // staticディレクトリに配置された画像へのパス。※：おそらく OGP画像を指定。
-    twitterUsername: "@sample", // Twitterアカウントがあれば指定。
+    siteName: "（Webサイト名）",
+    siteSubTitle: "（トップページのサブタイトル）",
+    siteDescription: "（トップページの説明）",
+    siteUrl: "（トップページのURL　※最後の「/」は不要）",
+    siteOgpImage: "（OGP画像）",
+    siteAuthor: "（著作権利者名）",
   },
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
         name: `blog`,
         path: `${__dirname}/content`,
-      }
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/img`,
+      },
     },
     "gatsby-plugin-mdx",
     "gatsby-transformer-sharp",
@@ -92,96 +111,92 @@ module.exports = {
             <h4 class="heading-4">seo.js</h4>
 <pre class="code">
 <code>
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useLocation } from "@reach/router"
-import { useStaticQuery, graphql } from "gatsby"
+import * as React from 'react';
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
+import { useLocation } from "@reach/router";
+import PropTypes from "prop-types";
 
-const SEO = ({ title, description, image, article }) =&gt; {
-  const { pathname } = useLocation()
-  const { site } = useStaticQuery(query)
+const SEO = ({ pageTitle, pageDescription, imgPath, topPage }) =&gt; {
+  const { pathname } = useLocation();
 
+  const { site } = useStaticQuery(query);
   const {
-    defaultTitle,
-    titleTemplate,
-    defaultDescription,
+    siteName,
+    siteSubTitle,
+    siteDescription,
     siteUrl,
-    defaultImage,
-    twitterUsername,
-  } = site.siteMetadata
+    siteOgpImage,
+    siteAuthor,
+  } = site.siteMetadata;
 
   const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
-    url: `${siteUrl}${pathname}`,
-  }
+    title: pageTitle ? `${pageTitle} | ${siteName}` : `${siteName} | ${siteSubTitle}`,
+    description: pageDescription || siteDescription,
+    image: `${siteUrl}${imgPath || siteOgpImage}`,
+    url: pathname ? `${siteUrl}${pathname}` : `${siteUrl}`,
+    pageType: topPage ? "website" : "article",
+  };
 
   return (
-    &lt;Helmet title={seo.title} titleTemplate={titleTemplate}&gt;
+    &lt;Helmet&gt;
+      &lt;html lang="ja-JP" /&gt;
+      &lt;title&gt;{seo.title}&lt;/title&gt;
       &lt;meta name="description" content={seo.description} /&gt;
       &lt;meta name="image" content={seo.image} /&gt;
-
+      &lt;meta name="author" content={siteAuthor} /&gt;
+      &lt;link rel="canonical" href={seo.url} /&gt;
+      &lt;meta property="og:locale" content="ja-JP" /&gt;
+      {&lt;meta property="og:site_name" content={siteName} /&gt;}
       {seo.url && &lt;meta property="og:url" content={seo.url} /&gt;}
-
-      {(article ? true : null) && &lt;meta property="og:type" content="article" /&gt;}
-
+      {seo.pageType && &lt;meta property="og:type" content={seo.pageType} /&gt;}
       {seo.title && &lt;meta property="og:title" content={seo.title} /&gt;}
-
-      {seo.description && (
-        &lt;meta property="og:description" content={seo.description} /&gt;
-      )}
-
+      {seo.description && &lt;meta property="og:description" content={seo.description} /&gt;}
       {seo.image && &lt;meta property="og:image" content={seo.image} /&gt;}
-
       &lt;meta name="twitter:card" content="summary_large_image" /&gt;
-
-      {twitterUsername && (
-        &lt;meta name="twitter:creator" content={twitterUsername} /&gt;
-      )}
-
       {seo.title && &lt;meta name="twitter:title" content={seo.title} /&gt;}
-
-      {seo.description && (
-        &lt;meta name="twitter:description" content={seo.description} /&gt;
-      )}
-
+      {seo.description && &lt;meta name="twitter:description" content={seo.description} /&gt;}
       {seo.image && &lt;meta name="twitter:image" content={seo.image} /&gt;}
     &lt;/Helmet&gt;
   )
-}
+};
 
-export default SEO
-
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  article: PropTypes.bool,
-}
-
-SEO.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-  article: false,
-}
+export default SEO;
 
 const query = graphql`
-  query SEO {
+  query {
     site {
       siteMetadata {
-        defaultTitle: title
-        titleTemplate
-        defaultDescription: description
-        siteUrl: url
-        defaultImage: image
-        twitterUsername
+        siteName
+        siteSubTitle
+        siteDescription
+        siteUrl
+        siteOgpImage
+        siteAuthor
       }
     }
   }
-`
+`;
+
+SEO.defaultProps = {
+  pageTitle: null,
+  pageDescription: null,
+  imgPath: null,
+  topPage: false,
+};
+
+SEO.propTypes = {
+  siteName: PropTypes.string,
+  siteSubTitle: PropTypes.string,
+  siteDescription: PropTypes.string,
+  siteUrl: PropTypes.string,
+  siteOgpImage: PropTypes.string,
+  siteAuthor: PropTypes.string,
+  pageTitle: PropTypes.string,
+  pageDescription: PropTypes.string,
+  imgPath: PropTypes.string,
+  topPage: PropTypes.bool,
+};  
 </code>
 </pre>
           </section>
@@ -192,11 +207,12 @@ const query = graphql`
 <code>
 import * as React from 'react'
 import Layout from '../components/layout'
+import Seo from '../components/seo';
 
 const IndexPage = () =&gt; {
   return (
     &lt;Layout pageTitle="Home Page"&gt;
-      &lt;seo /&gt;
+      &lt;seo topPage={true} /&gt;
       &lt;p&gt;I'm making this by following the Gatsby Tutorial.&lt;/p&gt;
     &lt;/Layout&gt;
   )
@@ -219,8 +235,20 @@ export default IndexPage
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
-            <li>React.PropTypesは、React v15.5から別パッケージになった。使いたい場合は、prop-typesライブラリをインストールしなければならない。インストールしていないが使えている。なぜでしょう。「npm list」コマンドで確認したところ、入っているようではある。GatsbyJSに内包されているのかな。少し検索しただけでは情報見つからず。</li>
-            <li>「lang="ja_JP"」を指定すると Warningエラーが出る。「lang="ja-JP"」にすると出ない。正しくは「lang="ja-JP"」のようだ。</li>
+            <li>seo.jsは、「<a href="https://www.gatsbyjs.com/docs/add-seo-component/" target="_blank" rel="noopener noreferrer">SEOコンポーネントの追加</a>」のコードを参考にして手を加えた。
+              <ul>
+                <li>localeを追加した。「lang="ja_JP"」で指定すると Warningエラーが出る。「lang="ja-JP"」にするほうが良いようだ。</li>
+                <li>siteSubTitleを追加した。title要素は、トップページでは「サイト名｜サブタイトル」となり、各ページは「ページタイトル｜サイト名」となる。</li>
+                <li>authorを追加した。</li>
+                <li>urlは、pathnameがあるか確認し、あれば付加する形にした。</li>
+                <li>titleTemplateは意図通りにならないので使用しないことにした。</li>
+                <li>link要素（rel="canonical"）を追加した。</li>
+                <li>meta要素（property="og:site_name"）を追加した。</li>
+                <li>meta要素（property="og:type"）は、トップページを「website」、各ページを「article」とした。</li>
+                <li>twitterUsernameは削除した。</li>
+              </ul>
+            </li>
+            <li>React.PropTypesは、React v15.5から別パッケージになった。使いたい場合は、prop-typesライブラリをインストールしなければならない。しかし、インストールしていないが使えている。なぜでしょう。「npm list」コマンドで確認したところ、すでに入っているように見える。GatsbyJSに内包されているのかな。少し検索しただけでは情報見つからず。</li>
             <li>useLocation()から代入するパス名は「pathname」にしなければいけないようだ。例えば「pathName」にすると undefinedになってしまう。</li>
           </ul>
         </section>

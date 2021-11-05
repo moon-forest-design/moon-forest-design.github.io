@@ -37,7 +37,7 @@
           <ol>
             <li>src/styles/下に grobal.cssファイルを作成する。とりあえず、.containerの指定だけ記述。</li>
             <li>プロジェクトディレクトリ直下に、gatsby-browser.jsを作成する。上述の grobal.cssを importする。</li>
-            <li>src/components/下の layout.jsに以下指定。importは不要。
+            <li>src/components/下の layout.jsに以下指定。ここで CSSファイルを importする必要はない。
               <ul>
                 <li>div要素に className属性で指定。例：&lt;div className={grobal.container}&gt;</li>
               </ul>  
@@ -117,6 +117,7 @@ export default Layout;
         <section class="content">
           <h3 class="heading-3">あとがき</h3>
           <ul>
+            <li>gatsby-browser.jsは、ブラウザの処理に関する情報を記述しておく特別な設定ファイルとのこと。グローバルCSSを設定したい場合や、Gatsby Browser APIsを利用したいときなどに使用する。</li>
             <li>grobal.cssに要素型セレクタだけを指定するのであればとくに気にせず書けばいいけれど、classセレクタで書く場合はあまり好ましくない手間が入る。例えば、grobal.cssで「.container」と書いたら、layout.jsで「className={container}」と書きたくなるが、これはエラーになる。「className={grobal.container}」としてあげる必要があるようだ。見た目も悪い。いかがなものか。何か他に良い方法があるのかもしれない。</li>
           </ul>
         </section>

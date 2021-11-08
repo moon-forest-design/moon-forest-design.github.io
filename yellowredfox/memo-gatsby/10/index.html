@@ -111,7 +111,7 @@ export default Layout;
           <ul>
             <li>GatsbyJSサイトに styleを指定する方法はたくさんある。単に CSSファイルを importしてもいいし、CSS in JSや Tailwind CSSなどのフレームワークを使用してもかまわないとのこと。ただ、CSS Modulesを推してはいるようなので、試してみた。</li>
             <li>importは、「import { container } from './layout.module.css';」という書き方もできるが、数が増えるとものすごい手間なので見合わせた。</li>
-            <li>「import styles from './layout.module.css';」でも良いのではと思ったが、エラーが出るのでダメだった。</li>
+            <li>classNameに複数のクラスを指定したいときは、例えば、「className={`${style.container} ${style.otherColor}`}」とすればいい。一般的な class属性と同じ感覚で「class="style.container style.otherColor"」などと書こうものならエラーが出る。</li>
           </ul>
         </section>
         <!-- /.content -->

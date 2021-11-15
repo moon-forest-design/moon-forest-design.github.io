@@ -34,7 +34,6 @@
         <h2 id="summary" class="heading-2" data-subheading="A brief description of the process">概要</h2>
         <h3 class="heading-3">要点</h3>
         <section class="content">
-          <p>。</p>
           <ol>
             <li>/src/componentsディレクトリ下に sideBar.jsを作成する。このコンポーネントに、カテゴリやタグリストを追加していくイメージ。今回はとりあえず、タグリストだけ入れる。</li>
             <li>/src/componentsディレクトリ下に widgetTags.jsを作成する。前回のコードを流用したところ、エラーが出た。親切なことにどのようにすれば良いかも書かれている。どうやら、ビルディングブロックコンポーネントでは、useStaticQuery()を使いなさいということらしい。クエリを関数外に書いていたら、なかなかうまくいかず、<a href="https://vanilla-note.com/posts/creating-categories-pages/" target="_blank" rel="noopener noreferrer">Vanilla note</a>さんのコードを参考にさせていただくことにした。</li>

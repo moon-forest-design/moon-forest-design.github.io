@@ -300,7 +300,7 @@ export const pageQuery = graphql`
           <h3 class="heading-3">あとがき</h3>
           <ul>
             <li>layout.js、もしくは header.jsなどで helmetを設定している場合は、「import { Helmet } from "react-helmet"」などはいらなくなる。</li>
-            <li>クエリの slugは、いろいろな箇所にあるようだ。現状利用する上での細かな違いは分からないけれど、とりあえず、前に「/（スラッシュ）」が付くもの、付かないものがあるので注意が必要。例えば、ドメイン等と結合して使う場合に、コーディングを誤ると「//（スラスラ）」になる可能性がある。また、なぜか分からないが、fieldsが表示される場合とされない場合がある。不明。
+            <li>クエリの slugは、いろいろな箇所にあるようだ。現状利用する上での細かな違いは分からないけれど、とりあえず、前に「/（スラッシュ）」が付くもの、付かないものがあるので注意が必要。例えば、ドメイン等と結合して使う場合に、コーディングを誤ると「//（スラスラ）」になる可能性がある。
               <ul>
                 <li>edges - node - slug</li>
                 <li>edges - node - fields - slug</li>
@@ -308,6 +308,7 @@ export const pageQuery = graphql`
                 <li>nodes - fields - slug</li>
               </ul>
             </li>
+            <li>まれに、fieldsが表示される場合とされない場合がある。なぜなのだろうと分からないでいたが、gatsby-node.js内の createPage()で指定しているのだと分かった。</li>
           </ul>
         </section>
         <!-- /.content -->

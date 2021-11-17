@@ -131,10 +131,12 @@ const BlogList = ({ pageContext, data }) =&gt; {
   return (
     &lt;Layout&gt;
       {posts.map(({ node }) =&gt; {
+        const slug = node.slug;
+        const { title } = node.frontmatter;
         return (
-          &lt;div key={node.slug}&gt;
-            &lt;Link to={`/blog/${node.slug}`}&gt;
-              {node.frontmatter.title || node.slug}
+          &lt;div key={slug}&gt;
+            &lt;Link to={`/blog/${slug}`}&gt;
+              {title || slug}
             &lt;/Link&gt;
           &lt;/div&gt;
         );

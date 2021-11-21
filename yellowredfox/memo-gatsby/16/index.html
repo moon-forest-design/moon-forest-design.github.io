@@ -308,7 +308,8 @@ export const pageQuery = graphql`
                 <li>nodes - fields - slug</li>
               </ul>
             </li>
-            <li>まれに、fieldsが表示される場合とされない場合がある。なぜなのだろうと分からないでいたが、gatsby-node.js内の createPage()で指定しているのだと分かった。</li>
+            <li>まれに、fieldsが表示される場合とされない場合がある。なぜなのか分からないでいたが、gatsby-node.js内の createPage()で指定しているのだと分かった。上述のいろいろな箇所に slugが発生するのは、blogや tag、ページネーションなどのページを動的に作成するために、誤って不要な createPage()を複数行っていたようだ。</li>
+            <li>どちらも tags.jsというファイル名なので混乱するかもしれない。src/templates/tagTemplate.js、src/pages/tag-list.jsとしたほうが分かり良いかもしれない。</li>
           </ul>
         </section>
         <!-- /.content -->

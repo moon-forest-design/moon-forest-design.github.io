@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-blog-template-js",
     "path": "/memo/",
-    "result": {"data":{"allMdx":{"edges":[{"node":{"slug":"emmet/","frontmatter":{"title":"Emmetメモ"}}}]}},"pageContext":{"limit":2,"skip":0,"numPages":1,"currentPage":1}},
+    "result": {"data":{"allMdx":{"edges":[{"node":{"slug":"gatsby-remark-prismjs-mdx/","frontmatter":{"title":"GatsbyJSでシンタックスハイライトをMDXファイルに導入する"}}},{"node":{"slug":"github-actions-1/","frontmatter":{"title":"GitHub Actionsを試す"}}}]}},"pageContext":{"limit":2,"skip":0,"numPages":2,"currentPage":1}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

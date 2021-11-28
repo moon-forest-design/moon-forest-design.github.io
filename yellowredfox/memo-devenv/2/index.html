@@ -101,14 +101,16 @@
             <dd>Gatsbyサイトを作成する。オプションを指定しない場合は対話型。Starterを利用する場合は、ディレクトリ名と URLを指定する。例えば hello-worldの Starterを試したければ、「gatsby new hello-world https://github.com/gatsbyjs/gatsby-starter-hello-world」とすればいい。</dd>
             <dt>gatsby develop</dt>
             <dd>開発サーバを起動する。（※）</dd>
-            <dt>gatsby build</dt>
-            <dd>デプロイ用にコンパイルする。（※）</dd>
-            <dt>gatsby serve</dt>
-            <dd>「gatsby build」して生成されたサイトを、ローカル開発環境で確認する。（※）</dd>
             <dt>gatsby clean</dt>
             <dd>.cacheディレクトリと publicディレクトリ内を消去する。（※）</dd>
             <dt>gatsby info</dt>
             <dd>バグを報告するときに必要となる環境情報を表示する。OSや CPU、Node.js、npmのバージョン情報、それと、インストール済みのパッケージ情報も確認できる。（※）</dd>
+            <dt>gatsby build</dt>
+            <dd>本番用にコンパイルする。publicディレクトリ内に生成される。（※）</dd>
+            <dt>gatsby serve</dt>
+            <dd>「gatsby build」して生成されたサイトを、ローカル開発環境で確認する。（※）</dd>
+            <dt>npm run deploy</dt>
+            <dd>デプロイする。本番用にコンパイルし、GitHubなどに Pushする。（※）</dd>
           </dl>
         </section>
         <!-- /.content -->

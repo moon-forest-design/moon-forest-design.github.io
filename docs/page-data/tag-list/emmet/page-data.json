@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/emmet/",
-    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"emmet/","frontmatter":{"title":"Emmetメモ"}}}]}},"pageContext":{"tag":"Emmet"}},
+    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"emmet/","frontmatter":{"title":"【VSCode】Emmetメモ"}}}]}},"pageContext":{"tag":"Emmet"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

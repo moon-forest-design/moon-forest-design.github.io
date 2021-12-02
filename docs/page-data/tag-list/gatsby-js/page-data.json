@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-tag-template-js",
-    "path": "/tag-list/gatsby-js/",
-    "result": {"data":{"allMdx":{"totalCount":3,"edges":[{"node":{"slug":"gatsby-remark-code-titles-mdx/","frontmatter":{"title":"【GatsbyJS】コードブロックにタイトルを表示する方法"}}},{"node":{"slug":"gatsby-remark-external-links-mdx/","frontmatter":{"title":"【GatsbyJS】外部リンクを別タブで開く方法"}}},{"node":{"slug":"gatsby-remark-prismjs-mdx/","frontmatter":{"title":"【GatsbyJS】シンタックスハイライトを導入する方法"}}}]}},"pageContext":{"tag":"GatsbyJS"}},
-    "staticQueryHashes": ["171073001","3512877716","772138545"]}

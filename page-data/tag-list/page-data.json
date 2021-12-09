@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-tag-list-js",
     "path": "/tag-list/",
-    "result": {"data":{"allMdx":{"group":[{"fieldValue":"GatsbyJS","totalCount":6},{"fieldValue":"GitHub","totalCount":1},{"fieldValue":"Node.js","totalCount":1},{"fieldValue":"VSCode","totalCount":1}]}},"pageContext":{}},
+    "result": {"data":{"allMdx":{"group":[{"fieldValue":"GatsbyJS","totalCount":7},{"fieldValue":"GitHub","totalCount":1},{"fieldValue":"Node.js","totalCount":2},{"fieldValue":"VSCode","totalCount":1}]}},"pageContext":{}},
     "staticQueryHashes": ["171073001","3512877716"]}

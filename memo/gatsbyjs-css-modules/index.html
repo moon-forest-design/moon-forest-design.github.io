@@ -24,14 +24,12 @@
   <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
   <span class="token property">color</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token selector">ul</span> <span class="token punctuation">{</span>
+<span class="token selector">.navList</span> <span class="token punctuation">{</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> 0 0 50px 0<span class="token punctuation">;</span>
   <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-  <span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.navList</span> <span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">justify-content</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span>
+  <span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div><h3>5：header.jsを編集する</h3><ul><li>header.js用の CSSが使えるように importします。「<code class="language-text">import * as style from &#x27;./header.module.css&#x27;</code>;」と書きます。</li><li>ul要素に className属性を追加します。「<code class="language-text">&lt;ul className={style.navList}&gt;</code>」と書きます。</li></ul><div class="gatsby-code-title">header.js</div><div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">&#x27;react&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Link <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;gatsby&#x27;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> style <span class="token keyword">from</span> <span class="token string">&#x27;./header.module.css&#x27;</span><span class="token punctuation">;</span>

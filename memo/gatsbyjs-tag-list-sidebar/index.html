@@ -86,15 +86,20 @@ WidgetTags<span class="token punctuation">.</span>propTypes <span class="token o
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> Layout<span class="token punctuation">;</span></code></pre></div><h3>4：CSSを編集する</h3><ul><li>あとは、CSSを編集します。<a href="../gatsbyjs-css-modules">src/components/下に作成した layout.module.css</a>を、例えば次のような内容にします。美しいレイアウトではありませんが、最低限の形はつくはずです。</li></ul><div class="gatsby-code-title">src/components/layout.module.css</div><div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.container</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> Layout<span class="token punctuation">;</span></code></pre></div><h3>4：layout.module.cssを編集する</h3><ul><li><a href="../gatsbyjs-css-modules">src/components/下に作成した layout.module.css</a>を、CSSを編集します。例えば次のような内容にします。美しいレイアウトではありませんが、最低限の形はつくはずです。</li></ul><div class="gatsby-code-title">src/components/layout.module.css</div><div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.container</span> <span class="token punctuation">{</span>
   <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&quot;Helvetica Neue&quot;</span><span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> <span class="token string">&quot;Hiragino Kaku Gothic ProN&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hiragino Sans&quot;</span><span class="token punctuation">,</span> Meiryo<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
   <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
   <span class="token property">max-width</span><span class="token punctuation">:</span> 1100px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-flow</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">min-height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token selector">.contents</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+  <span class="token property">flex</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token selector">.main</span> <span class="token punctuation">{</span>
   <span class="token property">flex</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
@@ -114,6 +119,15 @@ WidgetTags<span class="token punctuation">.</span>propTypes <span class="token o
   <span class="token selector">.aside</span> <span class="token punctuation">{</span>
     <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div><ul><li>ちなみに次の部分は、コンテンツの量に関わらずフッターを下部に配置するためのコードです。</li></ul><div class="gatsby-code-title">src/components/layout.module.css</div><div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.container</span> <span class="token punctuation">{</span>
+  ～中略～
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-flow</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">min-height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.contents</span> <span class="token punctuation">{</span>
+  ～中略～
+  <span class="token property">flex</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div><h3>5：表示を確認する</h3><ul><li>「<code class="language-text">gatsby develop</code>」し、「http://localhost:8000/」へアクセスしましょう。サイドバーにタグリストが表示できれば OKです。</li></ul><h3>補足：エラーメッセージ</h3><ul><li>前回の<a href="../gatsbyjs-tags-page">タグリストとタグページを作成したときのコード</a>をそのまま流用すると、次のようなエラーが出るかもしれません。親切なことにどのようにすれば良いかも書かれていますね。どうやら、「ビルディングブロックコンポーネントでは、useStaticQuery()を使ってくださいね」ということらしいです。そういえば、そんな話を耳にしていたような気がします。忘れがちです。</li></ul><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">warn The GraphQL query in the non-page component
 &quot;C:/～（略）～/src/components/widgetTags.js&quot; will not be run.
 Exported queries are only executed for Page components. It&#x27;s possible you&#x27;re trying to create pages in your gatsby-node.js and that&#x27;s failing for some reason.

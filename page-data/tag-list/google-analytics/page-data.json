@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/google-analytics/",
-    "result": {"data":{"allMdx":{"totalCount":2,"edges":[{"node":{"slug":"google-analytics-multiple-websites/","frontmatter":{"title":"【Google Analytics】複数のWebサイトを個別に管理する方法"}}},{"node":{"slug":"google-analytics-words/","frontmatter":{"title":"【Google Analytics】Google Analytics関連用語まとめ"}}}]}},"pageContext":{"tag":"Google Analytics"}},
+    "result": {"data":{"allMdx":{"totalCount":2,"edges":[{"node":{"slug":"google-analytics-multiple-websites/","frontmatter":{"title":"【Google Analytics】複数のWebサイトを個別に管理する方法"}}},{"node":{"slug":"google-analytics-words/","frontmatter":{"title":"【Google Analytics】関連用語まとめ"}}}]}},"pageContext":{"tag":"Google Analytics"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

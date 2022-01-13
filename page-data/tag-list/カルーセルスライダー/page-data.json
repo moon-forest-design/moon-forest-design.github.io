@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/カルーセルスライダー/",
-    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"wordpress-smart-slider/","frontmatter":{"title":"【WordPress】カルーセルスライダー「Smart Slider 3」の導入と使い方"}}}]}},"pageContext":{"tag":"カルーセルスライダー"}},
+    "result": {"data":{"allMdx":{"totalCount":3,"edges":[{"node":{"slug":"carousel-slider-swiper/","frontmatter":{"title":"【カルーセルスライダー】「Swiper」の使い方"}}},{"node":{"slug":"carousel-slider-slick/","frontmatter":{"title":"【カルーセルスライダー】「Slick」の使い方"}}},{"node":{"slug":"wordpress-smart-slider/","frontmatter":{"title":"【WordPress】カルーセルスライダー「Smart Slider 3」の導入と使い方"}}}]}},"pageContext":{"tag":"カルーセルスライダー"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

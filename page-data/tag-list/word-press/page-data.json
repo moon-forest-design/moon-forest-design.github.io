@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/word-press/",
-    "result": {"data":{"allMdx":{"totalCount":2,"edges":[{"node":{"slug":"wordpress-smart-slider/","frontmatter":{"title":"【WordPress】カルーセルスライダー「Smart Slider 3」の導入と使い方"}}},{"node":{"slug":"wordpress-redirect-htaccess/","frontmatter":{"title":"【WordPress】リダイレクトしたいときに「.htaccess」に書いておくコードとその手順"}}}]}},"pageContext":{"tag":"WordPress"}},
+    "result": {"data":{"allMdx":{"totalCount":2,"edges":[{"node":{"slug":"wordpress-smart-slider/","frontmatter":{"title":"カルーセルスライダー「Smart Slider 3」の導入と使い方"}}},{"node":{"slug":"wordpress-redirect-htaccess/","frontmatter":{"title":"WordPressのサイトでリダイレクトしたいときに「.htaccess」に書いておくコードとその手順"}}}]}},"pageContext":{"tag":"WordPress"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

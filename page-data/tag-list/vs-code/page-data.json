@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-tag-template-js",
-    "path": "/tag-list/vs-code/",
-    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"vscode-emmet/","frontmatter":{"title":"【VSCode】Emmetメモ"}}}]}},"pageContext":{"tag":"VSCode"}},
-    "staticQueryHashes": ["171073001","3512877716","772138545"]}

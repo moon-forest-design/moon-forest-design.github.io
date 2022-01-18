@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tag-template-js",
+    "path": "/tag-list/j-query/",
+    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"css-page-scroll-urge-animation/","frontmatter":{"title":"ページのスクロールを促す CSSアニメーション"}}}]}},"pageContext":{"tag":"jQuery"}},
+    "staticQueryHashes": ["171073001","3512877716","772138545"]}

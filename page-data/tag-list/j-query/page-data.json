@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/j-query/",
-    "result": {"data":{"allMdx":{"totalCount":3,"edges":[{"node":{"slug":"css-page-scroll-fade-in-scrollreveal/","frontmatter":{"title":"スクロール時に「ふわっ」と表示させる方法 2"}}},{"node":{"slug":"css-page-scroll-fade-in-self-made/","frontmatter":{"title":"スクロール時に「ふわっ」と表示させる方法 1"}}},{"node":{"slug":"css-page-scroll-urge-animation/","frontmatter":{"title":"ページのスクロールを促す CSSアニメーション"}}}]}},"pageContext":{"tag":"jQuery"}},
+    "result": {"data":{"allMdx":{"totalCount":4,"edges":[{"node":{"slug":"jquery-page-scroll-fade-in-scrollreveal/","frontmatter":{"title":"スクロール時に「ふわっ」と表示させる方法 2"}}},{"node":{"slug":"jquery-page-top-back-button/","frontmatter":{"title":"トップへ戻るボタンの作り方"}}},{"node":{"slug":"jquery-page-scroll-fade-in-self-made/","frontmatter":{"title":"スクロール時に「ふわっ」と表示させる方法 1"}}},{"node":{"slug":"css-page-scroll-urge-animation/","frontmatter":{"title":"ページのスクロールを促す CSSアニメーション"}}}]}},"pageContext":{"tag":"jQuery"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/スムーズスクロール/",
-    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"smooth-scroll-self-made-jquery/","frontmatter":{"title":"スムーズスクロールの導入方法 1"}}}]}},"pageContext":{"tag":"スムーズスクロール"}},
+    "result": {"data":{"allMdx":{"totalCount":2,"edges":[{"node":{"slug":"smooth-scroll-scroll-behavior/","frontmatter":{"title":"スムーズスクロールの導入方法 2"}}},{"node":{"slug":"smooth-scroll-self-made-jquery/","frontmatter":{"title":"スムーズスクロールの導入方法 1"}}}]}},"pageContext":{"tag":"スムーズスクロール"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

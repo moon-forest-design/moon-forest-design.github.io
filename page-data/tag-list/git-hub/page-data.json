@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/git-hub/",
-    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"github-actions-1/","frontmatter":{"title":"GitHub Actionsを試す"}}}]}},"pageContext":{"tag":"GitHub"}},
+    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"github-actions-test/","frontmatter":{"title":"GitHub Actionsを試す"}}}]}},"pageContext":{"tag":"GitHub"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

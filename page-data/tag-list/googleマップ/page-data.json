@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/googleマップ/",
-    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"google-map-width-100percent/","frontmatter":{"title":"Googleマップの横幅を画面いっぱいで表示する方法"}}}]}},"pageContext":{"tag":"Googleマップ"}},
+    "result": {"data":{"allMdx":{"totalCount":2,"edges":[{"node":{"slug":"google-map-aspect-ratio-maintain-jquery/","frontmatter":{"title":"Googleマップの縦横比を維持して表示する方法"}}},{"node":{"slug":"google-map-width-100percent/","frontmatter":{"title":"Googleマップの横幅を画面いっぱいで表示する方法"}}}]}},"pageContext":{"tag":"Googleマップ"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

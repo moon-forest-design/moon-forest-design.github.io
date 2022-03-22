@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/visual-studio-code/",
-    "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"vscode-emmet/","frontmatter":{"title":"Visual Studio Codeの Emmetの使い方"}}}]}},"pageContext":{"tag":"Visual Studio Code"}},
+    "result": {"data":{"allMdx":{"totalCount":2,"edges":[{"node":{"slug":"vscode-live-server/","frontmatter":{"title":"Visual Studio Codeの Live Serverの使い方"}}},{"node":{"slug":"vscode-emmet/","frontmatter":{"title":"Visual Studio Codeの Emmetの使い方"}}}]}},"pageContext":{"tag":"Visual Studio Code"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

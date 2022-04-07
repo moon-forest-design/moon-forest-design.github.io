@@ -2,6 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /demo
 Disallow: /gatsby-test
-Disallow: /tag-list
 Sitemap: https://moon-forest-design.github.io/sitemap/sitemap-index.xml
 Host: https://moon-forest-design.github.io

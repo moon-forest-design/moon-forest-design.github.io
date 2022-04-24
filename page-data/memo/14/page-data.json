@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-blog-template-js",
     "path": "/memo/14",
-    "result": {"data":{"allMdx":{"edges":[{"node":{"slug":"nodejs-command/","frontmatter":{"title":"Node.jsで使うターミナルコマンド"}}},{"node":{"slug":"nodejs-install-windows10/","frontmatter":{"title":"Node.jsをインストールする方法（Windows10）"}}},{"node":{"slug":"nodejs-words/","frontmatter":{"title":"Node.jsの関連用語まとめ"}}},{"node":{"slug":"vscode-emmet/","frontmatter":{"title":"Visual Studio Codeの Emmetの使い方"}}}]}},"pageContext":{"limit":10,"skip":130,"numPages":14,"currentPage":14}},
+    "result": {"data":{"allMdx":{"edges":[{"node":{"slug":"wordpress-redirect-htaccess/","frontmatter":{"title":"WordPressのサイトでリダイレクトしたいときに「.htaccess」に書いておくコードとその手順"}}},{"node":{"slug":"nodejs-command/","frontmatter":{"title":"Node.jsで使うターミナルコマンド"}}},{"node":{"slug":"nodejs-install-windows10/","frontmatter":{"title":"Node.jsをインストールする方法（Windows10）"}}},{"node":{"slug":"nodejs-words/","frontmatter":{"title":"Node.jsの関連用語まとめ"}}},{"node":{"slug":"vscode-emmet/","frontmatter":{"title":"Visual Studio Codeの Emmetの使い方"}}}]}},"pageContext":{"limit":10,"skip":130,"numPages":14,"currentPage":14}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

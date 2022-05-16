@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/java-script/",
-    "result": {"data":{"allMdx":{"totalCount":4,"edges":[{"node":{"slug":"image-loading-lazy-lazysizes/","frontmatter":{"title":"画像を遅延読み込みする lazysizesを試す"}}},{"node":{"slug":"js-ecmascript-modules-import-export/","frontmatter":{"title":"ECMAScript modulesの import / exportを試す"}}},{"node":{"slug":"google-map-aspect-ratio-maintain-jquery/","frontmatter":{"title":"Googleマップの縦横比を維持して表示する方法"}}},{"node":{"slug":"javascript-words/","frontmatter":{"title":"JavaScriptの関連用語まとめ"}}}]}},"pageContext":{"tag":"JavaScript"}},
+    "result": {"data":{"allMdx":{"totalCount":4,"edges":[{"node":{"slug":"image-loading-lazy-lazysizes/","frontmatter":{"title":"画像を遅延読み込みする lazysizesを試す"}}},{"node":{"slug":"js-ecmascript-modules-import-export/","frontmatter":{"title":"ECMAScript modulesの import / exportを試す"}}},{"node":{"slug":"google-map-aspect-ratio-maintain-js/","frontmatter":{"title":"Googleマップの縦横比を維持して表示する方法"}}},{"node":{"slug":"javascript-words/","frontmatter":{"title":"JavaScriptの関連用語まとめ"}}}]}},"pageContext":{"tag":"JavaScript"}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

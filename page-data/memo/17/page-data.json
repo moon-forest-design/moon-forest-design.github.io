@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-blog-template-js",
     "path": "/memo/17",
-    "result": {"data":{"allMdx":{"edges":[{"node":{"slug":"flexbox-layout-basic-2-justify-content/","frontmatter":{"title":"Flexboxの justify-contentで子要素を整列する方法"}}},{"node":{"slug":"flexbox-layout-basic-1-flex-direction/","frontmatter":{"title":"Flexboxの flex-directionで行列を指定する方法"}}},{"node":{"slug":"css-gradation-various/","frontmatter":{"title":"CSSでグラデーションをつけるときのいろいろな方法"}}},{"node":{"slug":"vscode-emmet/","frontmatter":{"title":"Visual Studio Codeの Emmetの使い方"}}}]}},"pageContext":{"limit":10,"skip":160,"numPages":17,"currentPage":17}},
+    "result": {"data":{"allMdx":{"edges":[{"node":{"slug":"flexbox-layout-basic-3-align-items/","frontmatter":{"title":"Flexboxの align-itemsで子要素の配置を整える方法"}}},{"node":{"slug":"flexbox-layout-basic-2-justify-content/","frontmatter":{"title":"Flexboxの justify-contentで子要素を整列する方法"}}},{"node":{"slug":"flexbox-layout-basic-1-flex-direction/","frontmatter":{"title":"Flexboxの flex-directionで行列を指定する方法"}}},{"node":{"slug":"css-gradation-various/","frontmatter":{"title":"CSSでグラデーションをつけるときのいろいろな方法"}}},{"node":{"slug":"vscode-emmet/","frontmatter":{"title":"Visual Studio Codeの Emmetの使い方"}}}]}},"pageContext":{"limit":10,"skip":160,"numPages":17,"currentPage":17}},
     "staticQueryHashes": ["171073001","3512877716","772138545"]}

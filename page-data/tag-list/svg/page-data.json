@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/svg/",
     "result": {"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"slug":"svg-inkscape-image-inline-svg/","frontmatter":{"title":"Inkscapeで作成した SVG画像をインラインSVGとして利用する手順"}}}]}},"pageContext":{"tag":"SVG"}},
-    "staticQueryHashes": ["171073001","3512877716","772138545"]}
+    "staticQueryHashes": ["342892192","3512877716","4013004761","772138545"]}

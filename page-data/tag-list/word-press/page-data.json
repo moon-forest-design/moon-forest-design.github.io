@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-tag-template-js",
     "path": "/tag-list/word-press/",
     "result": {"data":{"allMdx":{"totalCount":5,"edges":[{"node":{"slug":"wordpress-sitemap-standard-danger/","frontmatter":{"title":"WordPressの XMLサイトマップに表示されるユーザー名を削除する方法"}}},{"node":{"slug":"wordpress-sitemap-standard/","frontmatter":{"title":"WordPressで XMLサイトマップを導入する方法"}}},{"node":{"slug":"wordpress-gutenberg-block-delete/","frontmatter":{"title":"WordPressの Gutenbergでブロックを削除する方法"}}},{"node":{"slug":"carousel-slider-wordpress-smart-slider/","frontmatter":{"title":"カルーセルスライダー「Smart Slider 3」の導入と使い方"}}},{"node":{"slug":"wordpress-redirect-htaccess/","frontmatter":{"title":"WordPressのサイトでリダイレクトしたいときに「.htaccess」に書いておくコードとその手順"}}}]}},"pageContext":{"tag":"WordPress"}},
-    "staticQueryHashes": ["171073001","3512877716","772138545"]}
+    "staticQueryHashes": ["342892192","3512877716","4013004761","772138545"]}
